@@ -3,7 +3,7 @@ package cn.gson.prohis.model.service.YXJ;
 
 
 import cn.gson.prohis.model.mapper.YXJ.userMapper;
-import cn.gson.prohis.model.pojos.YXJ.Users;
+import cn.gson.prohis.model.pojos.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
