@@ -1,0 +1,13 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.userMapper">
+    <resultMap id="user" type="cn.gson.prohis.model.pojos.Users">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pass" property="userPass"></result>
+    </resultMap>
+
+
+    <select id="findByUser" resultMap="user">
+        select * from users where user_name=#{userName}
+    </select>
+</mapper>
