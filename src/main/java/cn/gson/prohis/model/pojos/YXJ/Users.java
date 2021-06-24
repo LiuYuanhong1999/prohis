@@ -1,4 +1,4 @@
-package cn.gson.prohis.model.pojos;
+package cn.gson.prohis.model.pojos.YXJ;
 
 
 public class Users {

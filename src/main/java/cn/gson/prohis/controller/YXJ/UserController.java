@@ -1,8 +1,8 @@
-package cn.gson.prohis.controller;
+package cn.gson.prohis.controller.YXJ;
 
 
-import cn.gson.prohis.model.pojos.Users;
-import cn.gson.prohis.model.service.UserService;
+import cn.gson.prohis.model.pojos.YXJ.Users;
+import cn.gson.prohis.model.service.YXJ.UserService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
