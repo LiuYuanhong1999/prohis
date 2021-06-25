@@ -10,4 +10,25 @@
     <select id="findByUser" resultMap="user">
         select * from users where user_name=#{userName}
     </select>
+
+
+    <select id="findAll" resultMap="user">
+        select * from users
+    </select>
+
+
+
+<!--    //批量修改-->
+<update id="updateById" parameterType="users">
+        update users set user_name=#{userName,jdbcType=VARCHAR},
+                         user_pass=#{userPass,jdbcType=VARCHAR}
+where user_id in
+    <foreach collection="userId" item="userId" open="(" separator="," close=")">
+        #{userId}
+    </foreach>
+</update>
+
+
+
+
 </mapper>
