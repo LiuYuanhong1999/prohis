@@ -30,4 +30,8 @@ public class UserService {
    public int update(Map<String,Object> map){
         return bs.updateById(map);
    }
+
+   public  void deleteById(List<Integer> list){
+        bs.deleteById(list);
+   }
 }

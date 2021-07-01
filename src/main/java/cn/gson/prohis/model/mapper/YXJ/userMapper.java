@@ -17,4 +17,7 @@ public interface userMapper {
 
 
     public int updateById(Map<String,Object> map);
+
+
+    public void deleteById(List<Integer> list);
 }

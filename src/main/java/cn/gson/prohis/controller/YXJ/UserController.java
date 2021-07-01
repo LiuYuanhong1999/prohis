@@ -4,10 +4,7 @@ package cn.gson.prohis.controller.YXJ;
 import cn.gson.prohis.controller.LYH.AjaxResult;
 import cn.gson.prohis.model.pojos.Users;
 import cn.gson.prohis.model.service.YXJ.UserService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -43,7 +40,7 @@ public class UserController {
 
 
     /**
-     * 商品上架下架
+     * 批量修改
      */
     @RequestMapping( "/updateState")
     public AjaxResult updateState(String userName, String userPass, String userId)
@@ -58,6 +55,16 @@ public class UserController {
     }
 
 
+    //批量删除
+    @RequestMapping("/deleteById")
+    public void deleteById(@RequestParam("userId")String userId){
+            String[] userIds =userId.split(",");
+            List<Integer> list =new ArrayList<>();
+            for (String str:userIds){
+                list.add(Integer.parseInt(str));
+            }
+            bs.deleteById(list);
+    }
 
 
 //    /**

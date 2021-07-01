@@ -30,5 +30,13 @@ where user_id in
 
 
 
+    <delete id="deleteById">
+        delete from users where
+        <foreach collection="list" item="userId" separator="or">
+            user_id=#{userId}
+        </foreach>
+
+    </delete>
+
 
 </mapper>
