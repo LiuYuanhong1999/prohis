@@ -34,4 +34,8 @@ public class UserService {
    public  void deleteById(List<Integer> list){
         bs.deleteById(list);
    }
+
+    public int update2(Map<String,Object> map){
+        return bs.updateById2(map);
+    }
 }

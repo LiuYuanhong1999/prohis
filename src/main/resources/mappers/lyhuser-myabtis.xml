@@ -4,6 +4,7 @@
         <id column="user_id" property="userId"></id>
         <result column="user_name" property="userName"></result>
         <result column="user_pass" property="userPass"></result>
+        <result column="numbers" property="numbers"></result>
     </resultMap>
 
 
@@ -27,7 +28,13 @@ where user_id in
         #{userId}
     </foreach>
 </update>
-
+    <update id="updateById2" parameterType="users">
+        update users set numbers=numbers-#{numbers,jdbcType=INTEGER}
+        where user_id in
+        <foreach collection="userId" item="userId" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </update>
 
 
     <delete id="deleteById">

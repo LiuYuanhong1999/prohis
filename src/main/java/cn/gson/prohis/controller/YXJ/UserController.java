@@ -36,7 +36,19 @@ public class UserController {
             public List<Users> findAll(){
                 return  bs.findAll();
         }
-
+    /**
+     * 批量修改
+     */
+    @RequestMapping( "/updateState2")
+    public AjaxResult updateState2(String numbers, String userId)
+    {
+        Map<String, Object> map = new HashMap<>();
+        List<String> idList= Arrays.asList(userId.split(","));
+        map.put("numbers",numbers);
+        map.put("userId",idList);
+        bs.update2(map);
+        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("succes");
+    }
 
 
     /**

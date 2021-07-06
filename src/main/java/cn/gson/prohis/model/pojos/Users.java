@@ -7,7 +7,15 @@ public class Users {
 
   private String userName;
   private String userPass;
+  private Integer numbers;
 
+  public Integer getNumbers() {
+    return numbers;
+  }
+
+  public void setNumbers(Integer numbers) {
+    this.numbers = numbers;
+  }
 
   public long getUserId() {
     return userId;
