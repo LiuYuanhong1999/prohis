@@ -14,7 +14,7 @@
 
 <select id="findAll" resultMap="pharmacy">
 
-        select  * from lyhpharmacy
+        select  * from lyhpharmacy order by pharmacy_number asc
 
 </select>
 
