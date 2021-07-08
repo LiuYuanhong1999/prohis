@@ -8,9 +8,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-@Entity
-@Table(name = "lyhpharmacy", schema = "myhis", catalog = "")
-public class LyhpharmacyEntity {
+
+public class LyhPharmacyEntity {
     private int pharmacyId;
     private String pharmacyName;
     private String pharmacyState;
@@ -21,9 +20,8 @@ public class LyhpharmacyEntity {
     private Integer pharmacyNumber;
     private BigDecimal pharmacyPrice;
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pharmacy_id")
     public int getPharmacyId() {
         return pharmacyId;
     }
@@ -32,8 +30,7 @@ public class LyhpharmacyEntity {
         this.pharmacyId = pharmacyId;
     }
 
-    @Basic
-    @Column(name = "pharmacy_name")
+
     public String getPharmacyName() {
         return pharmacyName;
     }
@@ -42,8 +39,7 @@ public class LyhpharmacyEntity {
         this.pharmacyName = pharmacyName;
     }
 
-    @Basic
-    @Column(name = "pharmacy_state")
+
     public String getPharmacyState() {
         return pharmacyState;
     }
@@ -52,8 +48,7 @@ public class LyhpharmacyEntity {
         this.pharmacyState = pharmacyState;
     }
 
-    @Basic
-    @Column(name = "pharmacy_specifications")
+
     public String getPharmacySpecifications() {
         return pharmacySpecifications;
     }
@@ -62,8 +57,7 @@ public class LyhpharmacyEntity {
         this.pharmacySpecifications = pharmacySpecifications;
     }
 
-    @Basic
-    @Column(name = "pharmacy_Dosage")
+
     public String getPharmacyDosage() {
         return pharmacyDosage;
     }
@@ -72,10 +66,9 @@ public class LyhpharmacyEntity {
         this.pharmacyDosage = pharmacyDosage;
     }
 
-    @Basic
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
-    @Column(name = "pharmacy_date")
     public Timestamp getPharmacyDate() {
         return pharmacyDate;
     }
@@ -84,8 +77,7 @@ public class LyhpharmacyEntity {
         this.pharmacyDate = pharmacyDate;
     }
 
-    @Basic
-    @Column(name = "pharmacy_manufacturer")
+
     public String getPharmacyManufacturer() {
         return pharmacyManufacturer;
     }
@@ -94,8 +86,7 @@ public class LyhpharmacyEntity {
         this.pharmacyManufacturer = pharmacyManufacturer;
     }
 
-    @Basic
-    @Column(name = "pharmacy_number")
+
     public Integer getPharmacyNumber() {
         return pharmacyNumber;
     }
@@ -104,8 +95,7 @@ public class LyhpharmacyEntity {
         this.pharmacyNumber = pharmacyNumber;
     }
 
-    @Basic
-    @Column(name = "pharmacy_price")
+
     public BigDecimal getPharmacyPrice() {
         return pharmacyPrice;
     }
@@ -114,16 +104,5 @@ public class LyhpharmacyEntity {
         this.pharmacyPrice = pharmacyPrice;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LyhpharmacyEntity that = (LyhpharmacyEntity) o;
-        return pharmacyId == that.pharmacyId && Objects.equals(pharmacyName, that.pharmacyName) && Objects.equals(pharmacyState, that.pharmacyState) && Objects.equals(pharmacySpecifications, that.pharmacySpecifications) && Objects.equals(pharmacyDosage, that.pharmacyDosage) && Objects.equals(pharmacyDate, that.pharmacyDate) && Objects.equals(pharmacyManufacturer, that.pharmacyManufacturer) && Objects.equals(pharmacyNumber, that.pharmacyNumber) && Objects.equals(pharmacyPrice, that.pharmacyPrice);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(pharmacyId, pharmacyName, pharmacyState, pharmacySpecifications, pharmacyDosage, pharmacyDate, pharmacyManufacturer, pharmacyNumber, pharmacyPrice);
-    }
 }

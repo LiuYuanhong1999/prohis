@@ -1,7 +1,7 @@
 package cn.gson.prohis.model.service.LYH;
 
 import cn.gson.prohis.model.mapper.LYH.lyhPharmacyMapper;
-import cn.gson.prohis.model.pojos.LyhpharmacyEntity;
+import cn.gson.prohis.model.pojos.LyhPharmacyEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,11 +13,11 @@ public class lyhPharmacyService {
     lyhPharmacyMapper bs;
 
 
-    public List<LyhpharmacyEntity> findAll(){
+    public List<LyhPharmacyEntity> findAll(){
         return bs.findAll();
     }
 
-    public List<LyhpharmacyEntity> findByName(String pharmacyName){
+    public List<LyhPharmacyEntity> findByName(String pharmacyName){
         return bs.findByName(pharmacyName);
     }
 }
