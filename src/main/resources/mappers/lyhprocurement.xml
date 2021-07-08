@@ -10,12 +10,12 @@
         <result column="procurement_date"   property="procurementDate"></result>
         <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
 
-<association property="lyhProcurementDetailsEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
+<collection property="lyhProcurementDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
     <id column="pro_id" property="proId"></id>
     <result column="drug_id" property="drugId"></result>
     <result column="numbers" property="numbers"></result>
     <result column="procurement_id" property="procurementId"></result>
-</association>
+</collection>
     </resultMap>
 
 
@@ -28,4 +28,10 @@
                 #{userName}, #{procurementName}, #{procurementDate},
                 #{procurementFirstdate})
     </insert>
+
+
+    <select id="findAll" resultMap="procurement">
+
+select * from lyhprocurement a left join lyhprocurementdetails b on a.procurement_id=b.procurement_id
+    </select>
 </mapper>

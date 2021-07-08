@@ -126,13 +126,41 @@ private LyhDrugEntity lyhDrugEntity;
 
 
 
-  private LyhProcurementDetailsEntity lyhProcurementDetailsEntity;
+//  private LyhProcurementDetailsEntity lyhProcurementDetailsEntity;
+//
+//    public LyhProcurementDetailsEntity getLyhProcurementDetailsEntity() {
+//        return lyhProcurementDetailsEntity;
+//    }
+//
+//    public void setLyhProcurementDetailsEntity(LyhProcurementDetailsEntity lyhProcurementDetailsEntity) {
+//        this.lyhProcurementDetailsEntity = lyhProcurementDetailsEntity;
+//    }
 
-    public LyhProcurementDetailsEntity getLyhProcurementDetailsEntity() {
-        return lyhProcurementDetailsEntity;
+    private List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities;
+
+    public List<LyhProcurementDetailsEntity> getLyhProcurementDetailsEntities() {
+        return lyhProcurementDetailsEntities;
     }
 
-    public void setLyhProcurementDetailsEntity(LyhProcurementDetailsEntity lyhProcurementDetailsEntity) {
-        this.lyhProcurementDetailsEntity = lyhProcurementDetailsEntity;
+    public void setLyhProcurementDetailsEntities(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities) {
+        this.lyhProcurementDetailsEntities = lyhProcurementDetailsEntities;
+    }
+
+    @Override
+    public String toString() {
+        return "LyhProcurementEntity{" +
+                "procurementId=" + procurementId +
+                ", drugId=" + drugId +
+                ", procurementPrice=" + procurementPrice +
+                ", procurementState='" + procurementState + '\'' +
+                ", userName='" + userName + '\'' +
+                ", procurementName='" + procurementName + '\'' +
+                ", procurementDate=" + procurementDate +
+                ", procurementFirstdate=" + procurementFirstdate +
+                ", lyhDrugEntity=" + lyhDrugEntity +
+                ", lyhAuditEntities=" + lyhAuditEntities +
+                ", lyhDrugstoreEntities=" + lyhDrugstoreEntities +
+                ", lyhProcurementDetailsEntities=" + lyhProcurementDetailsEntities +
+                '}';
     }
 }

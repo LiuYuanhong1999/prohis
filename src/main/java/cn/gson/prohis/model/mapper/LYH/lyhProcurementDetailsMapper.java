@@ -10,5 +10,5 @@ import java.util.List;
 public interface lyhProcurementDetailsMapper {
 
 
-    public void insertDetails(@Param("list") List<LyhProcurementDetailsEntity> list);
+    public void insertDetails(LyhProcurementDetailsEntity lyhProcurementDetailsEntity);
 }

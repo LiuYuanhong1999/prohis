@@ -7,7 +7,7 @@
         <result column="procurement_id" property="procurementId"></result>
 
 
-        <collection property="lyhProcurementEntities" ofType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
+        <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
 
 
             <id column="procurement_id"         property="procurementId"></id>
@@ -18,19 +18,30 @@
             <result column="procurement_name"   property="procurementName"></result>
             <result column="procurement_date"   property="procurementDate"></result>
             <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
-        </collection>
+        </association>
     </resultMap>
 
 
-    <insert id="insertDetails" parameterType="java.util.List">
-            insert into lyhprocurementdetails(pro_id,drug_id,numbers,procurement_id)
-            values
-            <foreach collection="list" item="item" index="index" separator=",">
-                (
-                 #{item.proId,jdbcType=INTEGER},
-                #{item.drugId,jdbcType=INTEGER},
-                #{item.numbers,jdbcType=INTEGER},
-                #{item.procurementId,jdbcType=INTEGER})
-            </foreach>
+<!--    <insert id="insertDetails" parameterType="java.util.List">-->
+<!--            insert into lyhprocurementdetails(pro_id,drug_id,numbers,procurement_id)-->
+<!--            values-->
+<!--            <foreach collection="list" item="item" index="index" separator=",">-->
+<!--                (-->
+<!--                 #{item.proId,jdbcType=INTEGER},-->
+<!--                #{item.drugId,jdbcType=INTEGER},-->
+<!--                #{item.numbers,jdbcType=INTEGER},-->
+<!--                #{item.procurementId,jdbcType=INTEGER})-->
+<!--            </foreach>-->
+<!--    </insert>-->
+    <insert id="insertDetails">
+        insert into lyhprocurementdetails(pro_id,drug_id,numbers,procurement_id)
+        values
+
+            (
+            #{proId,jdbcType=INTEGER},
+            #{drugId,jdbcType=INTEGER},
+            #{numbers,jdbcType=INTEGER},
+            #{procurementId,jdbcType=INTEGER})
+
     </insert>
 </mapper>

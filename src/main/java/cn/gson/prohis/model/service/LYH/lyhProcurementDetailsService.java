@@ -16,7 +16,7 @@ public class lyhProcurementDetailsService {
 
 
 
-   public void insertDetails(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities){
-     bs.insertDetails(lyhProcurementDetailsEntities);
-   }
+//   public void insertDetails(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities){
+//     bs.insertDetails(lyhProcurementDetailsEntities);
+//   }
 }

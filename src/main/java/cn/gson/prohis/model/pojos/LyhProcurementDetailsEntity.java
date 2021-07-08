@@ -47,15 +47,24 @@ public class LyhProcurementDetailsEntity {
     }
 
 
+private LyhProcurementEntity lyhProcurementEntity;
 
-    private List<LyhProcurementEntity> lyhProcurementEntities;
-
-
-    public List<LyhProcurementEntity> getLyhProcurementEntities() {
-        return lyhProcurementEntities;
+    public LyhProcurementEntity getLyhProcurementEntity() {
+        return lyhProcurementEntity;
     }
 
-    public void setLyhProcurementEntities(List<LyhProcurementEntity> lyhProcurementEntities) {
-        this.lyhProcurementEntities = lyhProcurementEntities;
+    public void setLyhProcurementEntity(LyhProcurementEntity lyhProcurementEntity) {
+        this.lyhProcurementEntity = lyhProcurementEntity;
     }
+
+    //    private List<LyhProcurementEntity> lyhProcurementEntities;
+//
+//
+//    public List<LyhProcurementEntity> getLyhProcurementEntities() {
+//        return lyhProcurementEntities;
+//    }
+//
+//    public void setLyhProcurementEntities(List<LyhProcurementEntity> lyhProcurementEntities) {
+//        this.lyhProcurementEntities = lyhProcurementEntities;
+//    }
 }

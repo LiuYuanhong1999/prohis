@@ -12,10 +12,10 @@ public class lyhProcurementDetailsController {
     @Resource
     lyhProcurementDetailsService bs;
 
-    @RequestMapping("/insert-details")
-    public List<LyhProcurementDetailsEntity> add(@RequestBody List<LyhProcurementDetailsEntity> list){
-      bs.insertDetails(list);
-        System.out.println(list);
-      return list;
-    }
+//    @RequestMapping("/insert-details")
+//    public List<LyhProcurementDetailsEntity> add(@RequestBody List<LyhProcurementDetailsEntity> list){
+//      bs.insertDetails(list);
+//        System.out.println(list);
+//      return list;
+//    }
 }
