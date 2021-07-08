@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -63,4 +64,36 @@ public class LyhDrugEntity {
     }
 
 
+    private List<LyhDrugstoreEntity> lyhDrugstoreEntities;
+
+
+    public List<LyhDrugstoreEntity> getLyhDrugstoreEntities() {
+        return lyhDrugstoreEntities;
+    }
+
+    public void setLyhDrugstoreEntities(List<LyhDrugstoreEntity> lyhDrugstoreEntities) {
+        this.lyhDrugstoreEntities = lyhDrugstoreEntities;
+    }
+
+
+    private List<LyhProcurementEntity> lyhProcurementEntities;
+
+    public List<LyhProcurementEntity> getLyhProcurementEntities() {
+        return lyhProcurementEntities;
+    }
+
+    public void setLyhProcurementEntities(List<LyhProcurementEntity> lyhProcurementEntities) {
+        this.lyhProcurementEntities = lyhProcurementEntities;
+    }
+
+
+    private LyhSupplierEntity lyhSupplierEntity;
+
+    public LyhSupplierEntity getLyhSupplierEntity() {
+        return lyhSupplierEntity;
+    }
+
+    public void setLyhSupplierEntity(LyhSupplierEntity lyhSupplierEntity) {
+        this.lyhSupplierEntity = lyhSupplierEntity;
+    }
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.lyhProcurementDetailsMapper">
+    <resultMap id="procurementDetails" type="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
+        <id column="pro_id" property="proId"></id>
+        <result column="drug_id" property="drugId"></result>
+        <result column="numbers" property="numbers"></result>
+        <result column="procurement_id" property="procurementId"></result>
+
+
+        <collection property="lyhProcurementEntities" ofType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
+
+
+            <id column="procurement_id"         property="procurementId"></id>
+            <result column="drug_id"            property="drugId"></result>
+            <result column="procurement_price"  property="procurementPrice"></result>
+            <result column="procurement_state"  property="procurementState"></result>
+            <result column="user_name"          property="userName"></result>
+            <result column="procurement_name"   property="procurementName"></result>
+            <result column="procurement_date"   property="procurementDate"></result>
+            <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
+        </collection>
+    </resultMap>
+
+
+    <insert id="insertDetails" parameterType="java.util.List">
+            insert into lyhprocurementdetails(pro_id,drug_id,numbers,procurement_id)
+            values
+            <foreach collection="list" item="item" index="index" separator=",">
+                (
+                 #{item.proId,jdbcType=INTEGER},
+                #{item.drugId,jdbcType=INTEGER},
+                #{item.numbers,jdbcType=INTEGER},
+                #{item.procurementId,jdbcType=INTEGER})
+            </foreach>
+    </insert>
+</mapper>

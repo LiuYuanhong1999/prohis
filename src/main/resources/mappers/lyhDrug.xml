@@ -1,0 +1,20 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.lyhDrugMapper">
+    <resultMap id="drug" type="cn.gson.prohis.model.pojos.LyhDrugEntity">
+        <id column="drug_id" property="drugId"></id>
+        <result column="drug_name" property="drugName"></result>
+        <result column="drug_date" property="drugDate"></result>
+        <result column="drug_price" property="drugPrice"></result>
+        <result column="supplier_id" property="supplierId"></result>
+
+        <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+            <id column="supplier_id" property="supplierId"></id>
+            <result column="supplier_name" property="supplierName"></result>
+        </association>
+
+    </resultMap>
+    <select id="findById" resultMap="drug">
+        select * from lyh_drug a left join lyhsupplier b on a.supplier_id=b.supplier_id
+        where a.supplier_id=#{supplierId}
+    </select>
+</mapper>

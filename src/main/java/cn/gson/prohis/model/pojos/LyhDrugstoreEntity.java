@@ -74,4 +74,37 @@ public class LyhDrugstoreEntity {
     }
 
 
+
+
+    private LyhDrugEntity lyhDrugEntity;
+
+
+    public LyhDrugEntity getLyhDrugEntity() {
+        return lyhDrugEntity;
+    }
+
+    public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
+        this.lyhDrugEntity = lyhDrugEntity;
+    }
+
+
+    private LyhProcurementEntity lyhProcurementEntity;
+
+    public LyhProcurementEntity getLyhProcurementEntity() {
+        return lyhProcurementEntity;
+    }
+
+    public void setLyhProcurementEntity(LyhProcurementEntity lyhProcurementEntity) {
+        this.lyhProcurementEntity = lyhProcurementEntity;
+    }
+
+    private LyhAuditEntity lyhAuditEntity;
+
+    public LyhAuditEntity getLyhAuditEntity() {
+        return lyhAuditEntity;
+    }
+
+    public void setLyhAuditEntity(LyhAuditEntity lyhAuditEntity) {
+        this.lyhAuditEntity = lyhAuditEntity;
+    }
 }

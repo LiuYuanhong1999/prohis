@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhprocurementDao">
+  <resultMap id="BaseResultMap" type="generator.Lyhprocurement">
+    <id column="procurement_id" jdbcType="INTEGER" property="procurementId" />
+    <result column="drug_id" jdbcType="INTEGER" property="drugId" />
+    <result column="procurement_price" jdbcType="INTEGER" property="procurementPrice" />
+    <result column="procurement_state" jdbcType="VARCHAR" property="procurementState" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="procurement_name" jdbcType="VARCHAR" property="procurementName" />
+    <result column="procurement_date" jdbcType="TIMESTAMP" property="procurementDate" />
+    <result column="procurement_firstdate" jdbcType="TIMESTAMP" property="procurementFirstdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    procurement_id, drug_id, procurement_price, procurement_state, user_name, procurement_name, 
+    procurement_date, procurement_firstdate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lyhprocurement
+    where procurement_id = #{procurementId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lyhprocurement
+    where procurement_id = #{procurementId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="procurement_id" keyProperty="procurementId" parameterType="generator.Lyhprocurement" useGeneratedKeys="true">
+    insert into lyhprocurement (drug_id, procurement_price, procurement_state, 
+      user_name, procurement_name, procurement_date, 
+      procurement_firstdate)
+    values (#{drugId,jdbcType=INTEGER}, #{procurementPrice,jdbcType=INTEGER}, #{procurementState,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{procurementName,jdbcType=VARCHAR}, #{procurementDate,jdbcType=TIMESTAMP}, 
+      #{procurementFirstdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="procurement_id" keyProperty="procurementId" parameterType="generator.Lyhprocurement" useGeneratedKeys="true">
+    insert into lyhprocurement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drugId != null">
+        drug_id,
+      </if>
+      <if test="procurementPrice != null">
+        procurement_price,
+      </if>
+      <if test="procurementState != null">
+        procurement_state,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="procurementName != null">
+        procurement_name,
+      </if>
+      <if test="procurementDate != null">
+        procurement_date,
+      </if>
+      <if test="procurementFirstdate != null">
+        procurement_firstdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drugId != null">
+        #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="procurementPrice != null">
+        #{procurementPrice,jdbcType=INTEGER},
+      </if>
+      <if test="procurementState != null">
+        #{procurementState,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="procurementName != null">
+        #{procurementName,jdbcType=VARCHAR},
+      </if>
+      <if test="procurementDate != null">
+        #{procurementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procurementFirstdate != null">
+        #{procurementFirstdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generator.Lyhprocurement">
+    update lyhprocurement
+    <set>
+      <if test="drugId != null">
+        drug_id = #{drugId,jdbcType=INTEGER},
+      </if>
+      <if test="procurementPrice != null">
+        procurement_price = #{procurementPrice,jdbcType=INTEGER},
+      </if>
+      <if test="procurementState != null">
+        procurement_state = #{procurementState,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="procurementName != null">
+        procurement_name = #{procurementName,jdbcType=VARCHAR},
+      </if>
+      <if test="procurementDate != null">
+        procurement_date = #{procurementDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="procurementFirstdate != null">
+        procurement_firstdate = #{procurementFirstdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where procurement_id = #{procurementId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generator.Lyhprocurement">
+    update lyhprocurement
+    set drug_id = #{drugId,jdbcType=INTEGER},
+      procurement_price = #{procurementPrice,jdbcType=INTEGER},
+      procurement_state = #{procurementState,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      procurement_name = #{procurementName,jdbcType=VARCHAR},
+      procurement_date = #{procurementDate,jdbcType=TIMESTAMP},
+      procurement_firstdate = #{procurementFirstdate,jdbcType=TIMESTAMP}
+    where procurement_id = #{procurementId,jdbcType=INTEGER}
+  </update>
+</mapper>

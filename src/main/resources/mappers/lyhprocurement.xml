@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.lyhProcurementMapper">
+    <resultMap id="procurement" type="cn.gson.prohis.model.pojos.LyhProcurementEntity">
+        <id column="procurement_id"         property="procurementId"></id>
+        <result column="drug_id"            property="drugId"></result>
+        <result column="procurement_price"  property="procurementPrice"></result>
+        <result column="procurement_state"  property="procurementState"></result>
+        <result column="user_name"          property="userName"></result>
+        <result column="procurement_name"   property="procurementName"></result>
+        <result column="procurement_date"   property="procurementDate"></result>
+        <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
+
+<association property="lyhProcurementDetailsEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
+    <id column="pro_id" property="proId"></id>
+    <result column="drug_id" property="drugId"></result>
+    <result column="numbers" property="numbers"></result>
+    <result column="procurement_id" property="procurementId"></result>
+</association>
+    </resultMap>
+
+
+
+    <insert id="insertBy">
+        insert into lyhprocurement (drug_id, procurement_price, procurement_state,
+                                    user_name, procurement_name, procurement_date,
+                                    procurement_firstdate)
+        values (#{drugId}, #{procurementPrice}, #{procurementState},
+                #{userName}, #{procurementName}, #{procurementDate},
+                #{procurementFirstdate})
+    </insert>
+</mapper>

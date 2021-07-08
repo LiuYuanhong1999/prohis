@@ -1,10 +1,12 @@
 package cn.gson.prohis.model.pojos;
 
+import antlr.collections.impl.LList;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -92,5 +94,45 @@ public class LyhProcurementEntity {
         this.procurementFirstdate = procurementFirstdate;
     }
 
+private LyhDrugEntity lyhDrugEntity;
 
+    public LyhDrugEntity getLyhDrugEntity() {
+        return lyhDrugEntity;
+    }
+
+    public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
+        this.lyhDrugEntity = lyhDrugEntity;
+    }
+
+    private List<LyhAuditEntity> lyhAuditEntities;
+
+    public List<LyhAuditEntity> getLyhAuditEntities() {
+        return lyhAuditEntities;
+    }
+
+    public void setLyhAuditEntities(List<LyhAuditEntity> lyhAuditEntities) {
+        this.lyhAuditEntities = lyhAuditEntities;
+    }
+
+    public List<LyhDrugstoreEntity> lyhDrugstoreEntities;
+
+    public List<LyhDrugstoreEntity> getLyhDrugstoreEntities() {
+        return lyhDrugstoreEntities;
+    }
+
+    public void setLyhDrugstoreEntities(List<LyhDrugstoreEntity> lyhDrugstoreEntities) {
+        this.lyhDrugstoreEntities = lyhDrugstoreEntities;
+    }
+
+
+
+  private LyhProcurementDetailsEntity lyhProcurementDetailsEntity;
+
+    public LyhProcurementDetailsEntity getLyhProcurementDetailsEntity() {
+        return lyhProcurementDetailsEntity;
+    }
+
+    public void setLyhProcurementDetailsEntity(LyhProcurementDetailsEntity lyhProcurementDetailsEntity) {
+        this.lyhProcurementDetailsEntity = lyhProcurementDetailsEntity;
+    }
 }
