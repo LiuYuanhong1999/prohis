@@ -96,4 +96,15 @@ public class LyhDrugEntity {
     public void setLyhSupplierEntity(LyhSupplierEntity lyhSupplierEntity) {
         this.lyhSupplierEntity = lyhSupplierEntity;
     }
+
+
+    private List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities;
+
+    public List<LyhProcurementDetailsEntity> getLyhProcurementDetailsEntities() {
+        return lyhProcurementDetailsEntities;
+    }
+
+    public void setLyhProcurementDetailsEntities(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities) {
+        this.lyhProcurementDetailsEntities = lyhProcurementDetailsEntities;
+    }
 }

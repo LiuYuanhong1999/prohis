@@ -65,6 +65,19 @@ private LyhProcurementEntity lyhProcurementEntity;
 //    }
 //
 //    public void setLyhProcurementEntities(List<LyhProcurementEntity> lyhProcurementEntities) {
+//
+//
 //        this.lyhProcurementEntities = lyhProcurementEntities;
 //    }
+
+
+    private LyhDrugEntity drugEntity;
+
+    public LyhDrugEntity getDrugEntity() {
+        return drugEntity;
+    }
+
+    public void setDrugEntity(LyhDrugEntity drugEntity) {
+        this.drugEntity = drugEntity;
+    }
 }

@@ -8,8 +8,6 @@
 
 
         <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
-
-
             <id column="procurement_id"         property="procurementId"></id>
             <result column="drug_id"            property="drugId"></result>
             <result column="procurement_price"  property="procurementPrice"></result>
@@ -19,6 +17,8 @@
             <result column="procurement_date"   property="procurementDate"></result>
             <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
         </association>
+
+
     </resultMap>
 
 

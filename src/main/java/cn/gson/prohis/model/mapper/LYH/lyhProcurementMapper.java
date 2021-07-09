@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface lyhProcurementMapper {
+public interface    lyhProcurementMapper {
 
 public void insertBy(LyhProcurementEntity lyhProcurementEntity);
 
