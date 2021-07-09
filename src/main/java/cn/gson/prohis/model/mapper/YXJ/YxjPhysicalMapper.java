@@ -28,4 +28,12 @@ public interface YxjPhysicalMapper {
      * @param physical
      */
     void updatePhysical(YxjPhysical physical);
+
+    /**
+     * 根据ID删除类别
+     * @param phId
+     */
+    void delPhysical(YxjPhysical phId);
+
+
 }

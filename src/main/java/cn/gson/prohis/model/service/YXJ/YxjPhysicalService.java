@@ -38,4 +38,10 @@ public class YxjPhysicalService {
     public void updatePhysical(YxjPhysical physical){
         physicalMapper.updatePhysical(physical);
     }
+
+    /**
+     * 根据ID删除类别
+     * @param phId
+     */
+    public void delPhysical(YxjPhysical phId){ physicalMapper.delPhysical(phId);}
 }
