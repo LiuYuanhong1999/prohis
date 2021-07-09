@@ -1,7 +1,7 @@
 package cn.gson.prohis.controller.YXJ;
 
 import cn.gson.prohis.model.mapper.YXJ.PhysicalMapper;
-import cn.gson.prohis.model.pojos.Physical;
+import cn.gson.prohis.model.pojos.YxjPhysical;
 import cn.gson.prohis.model.service.YXJ.PhysicalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,8 +24,7 @@ public class PhysicalController {
      * @return
      */
     @RequestMapping("/findPhysical")
-    @ResponseBody
-    public List<Physical> findByPhysical(){
+    public List<YxjPhysical> findByPhysical(){
        return physicalService.findByPhysical();
     };
 
@@ -34,8 +33,7 @@ public class PhysicalController {
      * @param physical
      */
     @RequestMapping("/addPhysical")
-    @ResponseBody
-    public void addPhysical(@RequestBody Physical physical){
+    public void addPhysical(@RequestBody YxjPhysical physical){
         physicalService.addPhysical(physical);
     }
 
@@ -44,10 +42,16 @@ public class PhysicalController {
      * @param physical
      */
     @RequestMapping("/updatePhysical")
-    @ResponseBody
-    public void updatePhysical(@RequestBody Physical physical){
+    public void updatePhysical(@RequestBody YxjPhysical physical){
         physicalService.updatePhysical(physical);
     }
+
+    /**
+     * 根据ID删除类别
+     * @param phId
+     */
+    @RequestMapping("/delPhysical")
+    public void delPhysical(@RequestBody YxjPhysical phId) {physicalService.delPhysical(phId);}
 
 
 }

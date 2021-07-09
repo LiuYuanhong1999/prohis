@@ -1,10 +1,13 @@
 package cn.gson.prohis.model.pojos;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 /**
  * 体检类别实体
  */
-public class Physical {
+public class YxjPhysical {
 
   private long phId;
   private String phName;
@@ -12,7 +15,7 @@ public class Physical {
   private String phCharge;
   private double phPrice;
 
-
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   public long getPhId() {
     return phId;
   }

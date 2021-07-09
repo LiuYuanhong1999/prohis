@@ -1,6 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.gson.prohis.model.mapper.YXJ.PhysicalMapper">
-    <resultMap id="physical" type="cn.gson.prohis.model.pojos.Physical">
+    <resultMap id="physical" type="cn.gson.prohis.model.pojos.YxjPhysical">
         <id column="ph_id" property="phId"></id>
         <result column="ph_name" property="phName"></result>
         <result column="ph_type" property="phType"></result>
@@ -16,7 +16,7 @@
     <!--  新增体检类别  -->
     <insert id="addPhysical">
         INSERT INTO physical(ph_id,ph_name,ph_type,ph_charge,ph_price)
-        VALUES(#(phName),#(phType),#(phCharge),#(phPrice))
+        VALUES(#{phId},#{phName},#{phType},#{phCharge},#{phPrice})
     </insert>
 
 
@@ -25,4 +25,11 @@
         UPDATE physical SET ph_name=#{phName},ph_type=#{phType},ph_charge=#{phCharge},ph_price=#{phPrice}
         WHERE ph_id = #{phId}
     </update>
+
+
+    <!--  删除类别  -->
+    <delete id="delPhysical">
+        DELETE FROM physical WHERE ph_id = #{phId}
+    </delete>
+
 </mapper>

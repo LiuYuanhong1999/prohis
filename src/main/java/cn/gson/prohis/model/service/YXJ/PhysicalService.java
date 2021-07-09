@@ -1,7 +1,7 @@
 package cn.gson.prohis.model.service.YXJ;
 
 import cn.gson.prohis.model.mapper.YXJ.PhysicalMapper;
-import cn.gson.prohis.model.pojos.Physical;
+import cn.gson.prohis.model.pojos.YxjPhysical;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class PhysicalService {
      * 查询所有类别
      * @return
      */
-    public List<Physical> findByPhysical(){
+    public List<YxjPhysical> findByPhysical(){
         return physicalMapper.findByPhysical();
     };
 
@@ -27,7 +27,7 @@ public class PhysicalService {
      * /体检类别新增
      * @param physical
      */
-    public void addPhysical(Physical physical){
+    public void addPhysical(YxjPhysical physical){
         physicalMapper.addPhysical(physical);
     }
 
@@ -35,7 +35,13 @@ public class PhysicalService {
      * /体检类别修改
      * @param physical
      */
-    public void updatePhysical(Physical physical){
+    public void updatePhysical(YxjPhysical physical){
         physicalMapper.updatePhysical(physical);
     }
+
+    /**
+     * 根据ID删除类别
+     * @param phId
+     */
+    public void delPhysical(YxjPhysical phId){ physicalMapper.delPhysical(phId);}
 }
