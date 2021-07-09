@@ -24,7 +24,4 @@ select * from tyh_cash tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
 left join tyh_patient tp on th.hospital_id=tp.patient_id
     </select>
 
-    <insert id="addcash">
-
-    </insert>
 </mapper>
