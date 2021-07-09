@@ -9,18 +9,18 @@ import javax.persistence.GenerationType;
  */
 public class YxjPhysical {
 
-  private long phId;
+  private Integer phId;
   private String phName;
   private String phType;
   private String phCharge;
   private double phPrice;
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public long getPhId() {
+  public Integer getPhId() {
     return phId;
   }
 
-  public void setPhId(long phId) {
+  public void setPhId(Integer phId) {
     this.phId = phId;
   }
 
@@ -60,4 +60,14 @@ public class YxjPhysical {
     this.phPrice = phPrice;
   }
 
+  @Override
+  public String toString() {
+    return "YxjPhysical{" +
+            "phId=" + phId +
+            ", phName='" + phName + '\'' +
+            ", phType='" + phType + '\'' +
+            ", phCharge='" + phCharge + '\'' +
+            ", phPrice=" + phPrice +
+            '}';
+  }
 }

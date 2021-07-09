@@ -33,7 +33,7 @@ public interface YxjPhysicalMapper {
      * 根据ID删除类别
      * @param phId
      */
-    void delPhysical(YxjPhysical phId);
+    void delPhysical(Integer phId);
 
 
 }

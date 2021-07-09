@@ -1,5 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gson.prohis.model.mapper.YXJ.PhysicalMapper">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjPhysicalMapper">
     <resultMap id="physical" type="cn.gson.prohis.model.pojos.YxjPhysical">
         <id column="ph_id" property="phId"></id>
         <result column="ph_name" property="phName"></result>
