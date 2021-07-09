@@ -1,0 +1,27 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.cashMapper">
+    <resultMap id="cash" type="cn.gson.prohis.model.pojos.TyhCashEntity">
+        <id column="cash_num" property="cashNum"></id>
+        <result column="cash_date" property="cashDate"></result>
+        <result column="cash_price" property="cashPrice"></result>
+
+        <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+            <id column="hosreg_num" property="hosregNum"></id>
+            <result column="hosreg_date" property="hosregDate"></result>
+            <result column="hosreg_date" property="hosregDate"></result>
+            <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <select id="findAll" resultMap="cash">
+select * from tyh_cash tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
+left join tyh_patient tp on th.hospital_id=tp.patient_id
+    </select>
+
+</mapper>
