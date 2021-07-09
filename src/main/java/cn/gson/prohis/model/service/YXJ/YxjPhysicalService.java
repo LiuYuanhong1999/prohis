@@ -13,14 +13,14 @@ import java.util.List;
 @Service
 public class YxjPhysicalService {
     @Autowired
-    YxjPhysicalMapper physicalMapper;
+    YxjPhysicalMapper yxjPhysicalMapper;
 
     /**
      * 查询所有类别
      * @return
      */
     public List<YxjPhysical> findByPhysical(){
-        return physicalMapper.findByPhysical();
+        return yxjPhysicalMapper.findByPhysical();
     };
 
     /**
@@ -28,7 +28,12 @@ public class YxjPhysicalService {
      * @param physical
      */
     public void addPhysical(YxjPhysical physical){
-        physicalMapper.addPhysical(physical);
+        if (physical.getPhId()!=null){
+            yxjPhysicalMapper.updatePhysical(physical);
+        }else {
+            yxjPhysicalMapper.addPhysical(physical);
+        }
+
     }
 
     /**
@@ -36,12 +41,17 @@ public class YxjPhysicalService {
      * @param physical
      */
     public void updatePhysical(YxjPhysical physical){
-        physicalMapper.updatePhysical(physical);
+
+        yxjPhysicalMapper.updatePhysical(physical);
+
     }
 
     /**
      * 根据ID删除类别
      * @param phId
      */
-    public void delPhysical(YxjPhysical phId){ physicalMapper.delPhysical(phId);}
-}
+    public void delPhysical(Integer phId){
+
+        yxjPhysicalMapper.delPhysical(phId);}
+
+    }
