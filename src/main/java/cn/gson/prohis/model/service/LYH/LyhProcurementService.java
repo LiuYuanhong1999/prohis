@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LyhProcurementService {
@@ -33,4 +34,18 @@ public class LyhProcurementService {
     public List<LyhProcurementEntity> findAll(){
         return bs.findAll();
     }
+
+
+
+    public void deleteById(List<String> list){
+        bs.deleteById(list);
+    }
+
+
+    public int updateById(Map<String,Object> map){
+
+        return bs.updateById(map);
+    }
+
+
 }

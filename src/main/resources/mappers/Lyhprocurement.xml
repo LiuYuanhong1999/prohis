@@ -31,6 +31,25 @@
 
     </resultMap>
 
+<update id="updateById" parameterType="LyhProcurementEntity">
+    update lyhprocurement set procurement_state=#{procurementState,jdbcType=VARCHAR}
+where procurement_id in
+<foreach collection="procurementId" item="procurementId" open="(" separator="," close=")">
+
+    #{procurementId}
+
+</foreach>
+</update>
+
+
+    <delete id="deleteById" >
+
+delete from lyhprocurement where
+    <foreach collection="list" item="procurementId" separator="or">
+        procurement_id=#{procurementId}
+    </foreach>
+    </delete>
+
 
 
     <insert id="insertBy">

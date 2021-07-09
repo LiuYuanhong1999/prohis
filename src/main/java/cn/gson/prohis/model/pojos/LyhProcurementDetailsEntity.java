@@ -9,7 +9,7 @@ public class LyhProcurementDetailsEntity {
     private int proId;
     private Integer drugId;
     private Integer numbers;
-    private Integer procurementId;
+    private String procurementId;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getProId() {
@@ -38,11 +38,11 @@ public class LyhProcurementDetailsEntity {
     }
 
 
-    public Integer getProcurementId() {
+    public String getProcurementId() {
         return procurementId;
     }
 
-    public void setProcurementId(Integer procurementId) {
+    public void setProcurementId(String procurementId) {
         this.procurementId = procurementId;
     }
 

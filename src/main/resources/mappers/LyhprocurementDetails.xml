@@ -41,7 +41,7 @@
             #{proId,jdbcType=INTEGER},
             #{drugId,jdbcType=INTEGER},
             #{numbers,jdbcType=INTEGER},
-            #{procurementId,jdbcType=INTEGER})
+                #{procurementId,jdbcType=VARCHAR})
 
     </insert>
 </mapper>

@@ -11,7 +11,7 @@ import java.util.Objects;
 
 
 public class LyhProcurementEntity {
-    private int procurementId;
+    private String procurementId;
     private Integer drugId;
     private Integer procurementPrice;
     private String procurementState;
@@ -21,11 +21,11 @@ public class LyhProcurementEntity {
     private Timestamp procurementFirstdate;
 
 
-    public int getProcurementId() {
+    public String getProcurementId() {
         return procurementId;
     }
 
-    public void setProcurementId(int procurementId) {
+    public void setProcurementId(String procurementId) {
         this.procurementId = procurementId;
     }
 
