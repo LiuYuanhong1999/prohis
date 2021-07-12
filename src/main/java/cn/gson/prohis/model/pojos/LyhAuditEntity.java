@@ -11,9 +11,18 @@ import java.util.Objects;
 
 public class LyhAuditEntity {
     private int auditId;
-    private String prescriptionId;
+    private String procurementId;
     private Timestamp auditDate;
     private String auditUser;
+    private Integer auditState;
+
+    public Integer getAuditState() {
+        return auditState;
+    }
+
+    public void setAuditState(Integer auditState) {
+        this.auditState = auditState;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getAuditId() {
@@ -25,12 +34,12 @@ public class LyhAuditEntity {
     }
 
 
-    public String getPrescriptionId() {
-        return prescriptionId;
+    public String getProcurementId() {
+        return procurementId;
     }
 
-    public void setPrescriptionId(String prescriptionId) {
-        this.prescriptionId = prescriptionId;
+    public void setProcurementId(String procurementId) {
+        this.procurementId = procurementId;
     }
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

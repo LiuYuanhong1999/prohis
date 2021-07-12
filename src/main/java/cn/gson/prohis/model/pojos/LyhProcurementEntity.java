@@ -104,6 +104,8 @@ private LyhDrugEntity lyhDrugEntity;
         this.lyhDrugEntity = lyhDrugEntity;
     }
 
+
+
     private List<LyhAuditEntity> lyhAuditEntities;
 
     public List<LyhAuditEntity> getLyhAuditEntities() {

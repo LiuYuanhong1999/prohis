@@ -45,7 +45,6 @@ where user_id in
         <foreach collection="list" item="userId" separator="or">
             user_id=#{userId}
         </foreach>
-
     </delete>
 
 

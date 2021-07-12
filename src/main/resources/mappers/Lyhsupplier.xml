@@ -13,7 +13,8 @@
     </resultMap>
 
     <select id="findAll" resultMap="supplier">
-        select * from lyhsupplier a left join lyh_drug b on a.supplier_id=b.supplier_id
+        select * from lyhsupplier a
+        left join lyh_drug b on a.supplier_id=b.supplier_id
     </select>
 
 
