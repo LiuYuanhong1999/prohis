@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LyhDrugStoreService {
@@ -16,5 +17,10 @@ public class LyhDrugStoreService {
 
     public List<LyhDrugstoreEntity> findAll(){
         return bs.findAll();
+    }
+
+    public int updateById(Map<String,Object> map){
+
+        return bs.updateById(map);
     }
 }

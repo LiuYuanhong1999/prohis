@@ -30,7 +30,7 @@ public class LyhProcurementController {
 
     @RequestMapping("/update-procurement")
     public AjaxResult   updateState(String procurementState,String procurementId){
-        System.out.println(procurementState+"--------------------------------------");
+
         Map<String,Object> map=new HashMap<>();
         List<String> idList=Arrays.asList(procurementId.split(","));
         map.put("procurementState",procurementState);

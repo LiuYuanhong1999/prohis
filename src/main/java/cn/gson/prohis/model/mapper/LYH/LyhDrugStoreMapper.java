@@ -5,10 +5,13 @@ import cn.gson.prohis.model.pojos.LyhDrugstoreEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface LyhDrugStoreMapper {
 
 
     public List<LyhDrugstoreEntity> findAll();
+
+    public int updateById(Map<String,Object> map);
 }

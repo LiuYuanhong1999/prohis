@@ -50,4 +50,20 @@
             left join lyhsupplier e on b.supplier_id=e.supplier_id
         order by a.drugstore_date desc
     </select>
+
+    <update id="updateById" parameterType="LyhDrugstoreEntity">
+        UPDATE lyhdrugstore a
+            left join lyhaudit b on a.procurement_id=b.procurement_id
+            LEFT JOIN lyhprocurementdetails c on b.procurement_id=c.procurement_id
+            set  a.drugstore_number = a.drugstore_number+#{numbers,jdbcType=INTEGER}
+        where  b.procurement_id in
+<foreach collection="procurementId"  item="procurementId" open="(" separator="," close=")">
+       #{procurementId}
+</foreach>
+and c.drug_id in
+              <foreach collection="drugId" item="drugId" open="(" separator="," close=")">
+                  #{drugId}
+              </foreach>
+    </update>
+
 </mapper>

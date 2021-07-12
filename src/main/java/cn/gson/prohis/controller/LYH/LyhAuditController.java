@@ -37,8 +37,6 @@ public class LyhAuditController {
 
     @RequestMapping("/update-audit")
     public AjaxResult updateById(String auditState,String auditId){
-        System.out.println(auditState+"--------------------------------------");
-        System.out.println(auditId);
         Map<String,Object> map=new HashMap<>();
         List<String> idList= Arrays.asList(auditId.split(","));
         map.put("auditState",auditState);
