@@ -11,6 +11,6 @@
 
 
     <select id="findByCharge" resultMap="charge">
-        select * from z_charge
+        select * from zsx_charge
     </select>
 </mapper>

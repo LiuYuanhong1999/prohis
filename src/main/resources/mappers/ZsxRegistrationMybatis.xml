@@ -1,0 +1,25 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.ZSX.ZsxRegistrationMapper">
+    <resultMap id="registration" type="cn.gson.prohis.model.pojos.ZsxRegistration">
+        <id column="registration_id" property="registrationId"></id>
+        <result column="patient_data_id" property="patientDataId"></result>
+        <result column="room" property="room"></result>
+        <result column="doctot" property="doctot"></result>
+        <result column="registration_time" property="registrationTime"></result>
+        <result column="registration_fee" property="registrationFee"></result>
+        <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
+            <id column="patient_data_id" property="patientDataId"></id>
+            <result column="patient_data_card" property="patientDataCard"></result>
+            <result column="patient_data_name" property="patientDataName"></result>
+            <result column="patient_data_phone" property="patientDataPhone"></result>
+            <result column="patient_data_sex" property="patientDataSex"></result>
+            <result column="medical_card_number" property="medicalCardNumber"></result>
+        </association>
+    </resultMap>
+
+<!--查询挂号单，按照最新时间排序-->
+    <select id="findByRegistration" resultMap="registration">
+        select * from zsx_registration , zsx_patient_data
+        where zsx_registration.patient_data_id = zsx_patient_data.patient_data_id order by registration_time desc
+    </select>
+</mapper>
