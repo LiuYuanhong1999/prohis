@@ -50,4 +50,6 @@
             left join lyhsupplier e on b.supplier_id=e.supplier_id
         order by a.drugstore_date desc
     </select>
+
+
 </mapper>

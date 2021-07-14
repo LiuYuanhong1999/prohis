@@ -14,7 +14,16 @@ public class TyhHosnotEntity {
     private Double hosnotCash;
     private Double hosnotWar;
     private String hosnotSm;
+    private Integer hospitalId;
     private Integer hosnotZt;
+
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
 
     public String getHosnotNum() {
         return hosnotNum;
@@ -94,5 +103,25 @@ public class TyhHosnotEntity {
 
     public void setHosnotZt(Integer hosnotZt) {
         this.hosnotZt = hosnotZt;
+    }
+
+    public TyhHosregEntity tyhHosregEntity;
+
+    public TyhHosregEntity getTyhHosregEntity() {
+        return tyhHosregEntity;
+    }
+
+    public TyhHospitalEntity tyhHospitalEntity;
+
+    public TyhHospitalEntity getTyhHospitalEntity() {
+        return tyhHospitalEntity;
+    }
+
+    public void setTyhHospitalEntity(TyhHospitalEntity tyhHospitalEntity) {
+        this.tyhHospitalEntity = tyhHospitalEntity;
+    }
+
+    public void setTyhHosregEntity(TyhHosregEntity tyhHosregEntity) {
+        this.tyhHosregEntity = tyhHosregEntity;
     }
 }
