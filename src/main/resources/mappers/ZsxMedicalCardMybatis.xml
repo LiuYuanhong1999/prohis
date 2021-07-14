@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.ZSX.ZsxMedicalCardMapper">
+<!--    病人-->
+    <resultMap id="patientData" type="cn.gson.prohis.model.pojos.ZsxPatientData">
+        <id column="patient_data_id" property="patientDataId"></id>
+        <result column="patient_data_card" property="patientDataCard"></result>
+        <result column="patient_data_name" property="patientDataName"></result>
+        <result column="patient_data_phone" property="patientDataPhone"></result>
+        <result column="patient_data_sex" property="patientDataSex"></result>
+<!--        诊疗卡-->
+        <association property="medicalCard" javaType="cn.gson.prohis.model.pojos.ZsxMedicalCard">
+            <id column="medical_card_id" property="medicalCardId"></id>
+            <result column="medical_card_number" property="medicalCardNumber"></result>
+            <result column="medical_card_password" property="medicalCardPassword"></result>
+            <result column="medical_card_balance" property="medicalCardBalance"></result>
+            <result column="medical_card_lock" property="medicalCardLock"></result>
+ <!--            诊疗卡记录-->
+            <collection property="medicalCardRecords" ofType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
+                <id column="medical_card_record_id" property="medicalCardRecordId"></id>
+                <result column="medical_card_time" property="medicalCardTime"></result>
+            </collection>
+        </association>
+    </resultMap>
+
+    <!--查询挂号单，按照最新时间排序-->
+    <select id="findByMedicalCard" resultMap="patientData">
+        select * from zsx_medical_card
+            inner join  zsx_patient_data
+                on zsx_medical_card.medical_card_number=zsx_patient_data.medical_card_number
+            inner join zsx_medical_card_record
+                on zsx_medical_card.medical_card_id=zsx_medical_card_record.medical_card_id
+    </select>
+</mapper>
