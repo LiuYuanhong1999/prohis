@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 public class TyhPatientEntity {
+    public TyhHosregEntity tyhHosregEntity;
     private int patientId;
     private String patientName;
     private String patientSex;
@@ -41,8 +42,6 @@ public class TyhPatientEntity {
         this.patientYue = patientYue;
     }
 
-    public TyhHosregEntity tyhHosregEntity;
-
     public TyhHosregEntity getTyhHosregEntity() {
         return tyhHosregEntity;
     }
@@ -50,4 +49,16 @@ public class TyhPatientEntity {
     public void setTyhHosregEntity(TyhHosregEntity tyhHosregEntity) {
         this.tyhHosregEntity = tyhHosregEntity;
     }
+
+    @Override
+    public String toString() {
+        return "TyhPatientEntity{" +
+                "patientId=" + patientId +
+                ", patientName='" + patientName + '\'' +
+                ", patientSex='" + patientSex + '\'' +
+                ", patientYue=" + patientYue +
+                ", tyhHosregEntity=" + tyhHosregEntity +
+                '}';
+    }
+
 }

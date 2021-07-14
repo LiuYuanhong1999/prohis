@@ -18,10 +18,56 @@
         </association>
     </resultMap>
 
+    <resultMap id="cash2" type="cn.gson.prohis.model.pojos.TyhHosregEntity">
+        <id column="hosreg_num" property="hosregNum"></id>
+        <result column="hosreg_date" property="hosregDate"></result>
+        <result column="hosreg_date" property="hosregDate"></result>
+            <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </collection>
+    </resultMap>
 
     <select id="findAll" resultMap="cash">
-select * from tyh_cash tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
-left join tyh_patient tp on th.hospital_id=tp.patient_id
+        select * from tyh_cash tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+        <if test="cha != null">
+            where tc.cash_num like '%${cha}%'
+            or th.hosreg_num like '%${cha}%'
+            or tp.patient_name like '%${cha}%'
+        </if>
+        order by cash_date desc;
     </select>
 
+
+    <select id="findnum" resultMap="cash2">
+        select * from tyh_hosreg th
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+    </select>
+
+
+    <select id="findnum2" resultMap="cash2">
+        select * from tyh_hosreg th
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+        where th.hosreg_num=#{num}
+    </select>
+
+    <insert id="addcash">
+        INSERT INTO tyh_cash(cash_num,cash_date,hosreg_num,cash_price)
+        VALUES(#{cashNum},#{cashDate},#{hosregNum},#{cashPrice})
+    </insert>
+
+    <update id="updateyue">
+        update tyh_patient set patient_yue=patient_yue+#{cashPrice} where patient_id=#{id}
+    </update>
+
+    <delete id="delcash">
+        delete from tyh_cash where cash_num = #{cid}
+    </delete>
+
+    <update id="updateyue2">
+        update tyh_patient set patient_yue=patient_yue-#{price} where patient_id=#{pid}
+    </update>
 </mapper>

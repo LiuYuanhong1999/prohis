@@ -1,5 +1,9 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -10,7 +14,15 @@ public class TyhHosregEntity {
     private String hosnotNum;
     private Integer userId;
     private Integer patientId;
-    private Integer hospitalId;
+    private Integer hosregZt;
+
+    public Integer getHosregZt() {
+        return hosregZt;
+    }
+
+    public void setHosregZt(Integer hosregZt) {
+        this.hosregZt = hosregZt;
+    }
 
     public String getHosregNum() {
         return hosregNum;
@@ -20,6 +32,8 @@ public class TyhHosregEntity {
         this.hosregNum = hosregNum;
     }
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd ss:mm:DD")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Timestamp getHosregDate() {
         return hosregDate;
     }
@@ -52,14 +66,6 @@ public class TyhHosregEntity {
         this.patientId = patientId;
     }
 
-    public Integer getHospitalId() {
-        return hospitalId;
-    }
-
-    public void setHospitalId(Integer hospitalId) {
-        this.hospitalId = hospitalId;
-    }
-
     public List<TyhCashEntity> cashEntities;
 
     public List<TyhCashEntity> getCashEntities() {
@@ -78,5 +84,29 @@ public class TyhHosregEntity {
 
     public void setTyhPatientEntity(TyhPatientEntity tyhPatientEntity) {
         this.tyhPatientEntity = tyhPatientEntity;
+    }
+
+    public TyhHosnotEntity tyhHosnotEntity;
+
+    public TyhHosnotEntity getTyhHosnotEntity() {
+        return tyhHosnotEntity;
+    }
+
+    public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
+        this.tyhHosnotEntity = tyhHosnotEntity;
+    }
+
+
+    @Override
+    public String toString() {
+        return "TyhHosregEntity{" +
+                "hosregNum='" + hosregNum + '\'' +
+                ", hosregDate=" + hosregDate +
+                ", hosnotNum='" + hosnotNum + '\'' +
+                ", userId=" + userId +
+                ", patientId=" + patientId +
+                ", cashEntities=" + cashEntities +
+                ", tyhPatientEntity=" + tyhPatientEntity +
+                '}';
     }
 }

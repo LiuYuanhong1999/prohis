@@ -1,5 +1,8 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -50,5 +53,16 @@ public class TyhCashEntity {
 
     public void setTyhHosregEntity(TyhHosregEntity tyhHosregEntity) {
         this.tyhHosregEntity = tyhHosregEntity;
+    }
+
+    @Override
+    public String toString() {
+        return "TyhCashEntity{" +
+                "cashNum='" + cashNum + '\'' +
+                ", cashDate=" + cashDate +
+                ", hosregNum='" + hosregNum + '\'' +
+                ", cashPrice=" + cashPrice +
+                ", tyhHosregEntity=" + tyhHosregEntity +
+                '}';
     }
 }
