@@ -8,8 +8,17 @@ public class ZsxPatientData {
   private String patientDataName;
   private String patientDataPhone;
   private String patientDataSex;
+  private String medicalCardNumber;
 
-//  连接诊疗卡
+  public String getMedicalCardNumber() {
+    return medicalCardNumber;
+  }
+
+  public void setMedicalCardNumber(String medicalCardNumber) {
+    this.medicalCardNumber = medicalCardNumber;
+  }
+
+  //  连接诊疗卡
   private ZsxMedicalCard medicalCard;
 
   public ZsxMedicalCard getMedicalCard() {
