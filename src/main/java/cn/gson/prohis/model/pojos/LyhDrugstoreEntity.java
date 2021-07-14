@@ -13,7 +13,7 @@ public class LyhDrugstoreEntity {
     private Integer drugId;
     private Integer drugstoreNumber;
     private Timestamp drugstoreDate;
-    private Integer procurementId;
+    private String procurementId;
     private Integer auditId;
 
 
@@ -56,14 +56,13 @@ public class LyhDrugstoreEntity {
     }
 
 
-    public Integer getProcurementId() {
+    public String getProcurementId() {
         return procurementId;
     }
 
-    public void setProcurementId(Integer procurementId) {
+    public void setProcurementId(String procurementId) {
         this.procurementId = procurementId;
     }
-
 
     public Integer getAuditId() {
         return auditId;

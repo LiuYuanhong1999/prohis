@@ -44,4 +44,12 @@
                 #{procurementId,jdbcType=VARCHAR})
 
     </insert>
+
+
+
+    <update id="updateById">
+        update lyhprocurementDetails set numbers=#{numbers} where pro_id=#{proId}
+
+
+    </update>
 </mapper>

@@ -13,5 +13,7 @@ public interface LyhDrugStoreMapper {
 
     public List<LyhDrugstoreEntity> findAll();
 
-    public int updateById(Map<String,Object> map);
+//    public int updateById(Map<String,Object> map);
+
+public void updateById(int numbers,String procurementId,int drugId);
 }

@@ -19,8 +19,17 @@ public class LyhDrugStoreService {
         return bs.findAll();
     }
 
-    public int updateById(Map<String,Object> map){
+//    public int updateById(Map<String,Object> map){
+//
+//        return bs.updateById(map);
+//    }
 
-        return bs.updateById(map);
+//    public int updateById(List<LyhDrugstoreEntity> list){
+//        return bs.updateById(list);
+//    }
+
+    public void updateById(int numbers,String procurementId,int drugId){
+
+        bs.updateById(numbers,procurementId,drugId);
     }
 }

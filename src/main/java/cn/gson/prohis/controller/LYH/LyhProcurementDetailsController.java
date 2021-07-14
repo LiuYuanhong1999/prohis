@@ -16,4 +16,12 @@ public class LyhProcurementDetailsController {
 //        System.out.println(list);
 //      return list;
 //    }
+
+
+
+    @RequestMapping("/update-details")
+    public void updateById(Integer numbers ,Integer proId){
+                System.out.println(numbers+"----------------------"+proId);
+                bs.updateById(numbers,proId);
+            }
 }

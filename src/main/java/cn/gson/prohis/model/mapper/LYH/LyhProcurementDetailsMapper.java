@@ -11,4 +11,7 @@ public interface LyhProcurementDetailsMapper {
 
 
     public void insertDetails(LyhProcurementDetailsEntity lyhProcurementDetailsEntity);
+
+
+    public void updateById(Integer numbers,Integer proId);
 }

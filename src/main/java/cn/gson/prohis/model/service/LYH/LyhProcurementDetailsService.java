@@ -11,7 +11,9 @@ public class LyhProcurementDetailsService {
     @Resource
     LyhProcurementDetailsMapper bs;
 
-
+public void updateById(Integer numbers ,Integer proId){
+    bs.updateById(numbers,proId);
+}
 
 
 //   public void insertDetails(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities){
