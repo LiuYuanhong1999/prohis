@@ -1,0 +1,76 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.regMapper">
+    <resultMap id="hosreg" type="cn.gson.prohis.model.pojos.TyhHosregEntity">
+        <id column="hosreg_num" property="hosregNum"></id>
+        <result column="hosreg_date" property="hosregDate"></result>
+        <result column="hosreg_zt" property="hosregZt"></result>
+
+        <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+            <id column="patient_id" property="patientId"></id>
+            <result column="patient_name" property="patientName"></result>
+            <result column="patient_sex" property="patientSex"></result>
+            <result column="patient_yue" property="patientYue"></result>
+        </association>
+
+        <association property="tyhHosnotEntity" javaType="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+            <id column="hosnot_num" property="hosnotNum"></id>
+            <result column="hosnot_date" property="hosnotDate"></result>
+            <result column="hosnot_price" property="hosnotPrice"></result>
+            <result column="hosnot_cash" property="hosnotCash"></result>
+            <result column="hosnot_war" property="hosnotWar"></result>
+            <result column="hosnot_sm" property="hosnotSm"></result>
+            <result column="hosnot_zt" property="hosnotZt"></result>
+            <association property="tyhHospitalEntity" javaType="cn.gson.prohis.model.pojos.TyhHospitalEntity">
+                <id column="hospital_id" property="hospitalId"></id>
+                <result column="hospital_name" property="hospitalName"></result>
+                <result column="hospital_price" property="hospitalPrice"></result>
+                <collection property="tyhInpatientEntity" javaType="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+                    <id column="inp_id" property="inpId"></id>
+                    <result column="inp_name" property="inpName"></result>
+                </collection>
+            </association>
+        </association>
+
+
+    </resultMap>
+
+    <resultMap id="hosnotreg" type="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+            <id column="hosnot_num" property="hosnotNum"></id>
+            <result column="hosnot_date" property="hosnotDate"></result>
+            <result column="hosnot_price" property="hosnotPrice"></result>
+            <result column="hosnot_cash" property="hosnotCash"></result>
+            <result column="hosnot_war" property="hosnotWar"></result>
+            <result column="hosnot_sm" property="hosnotSm"></result>
+            <result column="hosnot_zt" property="hosnotZt"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="hosreg">
+            select * from tyh_hosreg th left join tyh_hosnot tn on th.hosnot_num=tn.hosnot_num
+            left join tyh_patient tp on th.patient_id=tp.patient_id
+            left join tyh_hospital ti on tn.hospital_id=ti.hospital_id
+            left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+            <if test="cha != '' and cha2 != ''">
+                where (th.hosreg_num like '%${cha}%'
+                or tip.inp_name like '%${cha}%'
+                or ti.hospital_name like '%${cha}%')
+                and th.hosreg_zt = #{cha2}
+            </if>
+            <if test="cha != '' and cha2 == ''">
+                where th.hosreg_num like '%${cha}%'
+                or tip.inp_name like '%${cha}%'
+                or ti.hospital_name like '%${cha}%'
+            </if>
+            <if test="cha == '' and cha2 != ''">
+                where th.hosreg_zt = #{cha2}
+            </if>
+            order by hosreg_date desc
+    </select>
+
+    <select id="findnot" resultMap="hosnotreg">
+        select * from tyh_hosnot where hosnot_zt = 0
+    </select>
+
+    <select id="findreg" resultMap="hosnotreg">
+        select * from tyh_hosnot where hosnot_num = #{num}
+    </select>
+</mapper>
