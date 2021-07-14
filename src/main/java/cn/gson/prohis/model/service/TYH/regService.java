@@ -12,6 +12,8 @@ import java.util.List;
 public class regService {
     @Resource
     regMapper regMapper;
+    @Resource
+    cashService cashService;
 
     public List<TyhHosregEntity> findAll(String cha,String cha2){
         System.out.println("1"+cha);
