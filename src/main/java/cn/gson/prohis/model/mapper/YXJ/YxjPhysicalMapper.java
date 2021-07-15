@@ -36,4 +36,10 @@ public interface YxjPhysicalMapper {
     void delPhysical(Integer phId);
 
 
+    /**
+     *
+     * @param phId
+     * @return
+     */
+    YxjPhysical selPhId(Integer phId);
 }

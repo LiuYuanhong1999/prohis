@@ -3,6 +3,7 @@ package cn.gson.prohis.model.pojos;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.List;
 
 /**
  * 体检类别实体
@@ -60,6 +61,20 @@ public class YxjPhysical {
     this.phPrice = phPrice;
   }
 
+  /**
+   * 一个类别对应多个记录
+   */
+  private List<YxjRecord> yxjRecordList;
+
+  public List<YxjRecord> getYxjRecordList() {
+    return yxjRecordList;
+  }
+
+  public void setYxjRecordList(List<YxjRecord> yxjRecordList) {
+    this.yxjRecordList = yxjRecordList;
+  }
+
+
   @Override
   public String toString() {
     return "YxjPhysical{" +
@@ -68,6 +83,7 @@ public class YxjPhysical {
             ", phType='" + phType + '\'' +
             ", phCharge='" + phCharge + '\'' +
             ", phPrice=" + phPrice +
+            ", yxjRecordList=" + yxjRecordList +
             '}';
   }
 }
