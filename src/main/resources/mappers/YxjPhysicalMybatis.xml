@@ -32,4 +32,10 @@
         DELETE FROM physical WHERE ph_id = #{phId}
     </delete>
 
+
+    <!--  查询体检类别ID  -->
+    <select id="selPhId" resultMap="physical">
+        SELECT * FROM physical where ph_id = #{phId}
+    </select>
+
 </mapper>
