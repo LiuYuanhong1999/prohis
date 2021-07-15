@@ -87,9 +87,10 @@
             left join lyhaudit b on a.procurement_id=b.procurement_id
             LEFT JOIN lyhprocurementdetails c on b.procurement_id=c.procurement_id
             set  a.drugstore_number = a.drugstore_number+#{numbers,jdbcType=INTEGER}
-            where  b.procurement_id =  #{procurementId}
-            and c.drug_id = #{drugId}
-
+            where
+          a.drug_id = #{drugId}
+            and
+               a.procurement_id =  #{procurementId}
     </update>
 
 

@@ -107,4 +107,16 @@ public class LyhDrugEntity {
     public void setLyhProcurementDetailsEntities(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities) {
         this.lyhProcurementDetailsEntities = lyhProcurementDetailsEntities;
     }
+
+
+
+//    private List<DrugStoreVo> list;
+//
+//    public List<DrugStoreVo> getList() {
+//        return list;
+//    }
+//
+//    public void setList(List<DrugStoreVo> list) {
+//        this.list = list;
+//    }
 }
