@@ -13,4 +13,16 @@ public interface regMapper {
     public List<TyhHosnotEntity> findnot();
 
     TyhHosnotEntity findreg(String num);
+
+    void addreg(TyhHosregEntity tyhHosregEntity);
+
+    void updatenot(String hosnotNum);
+
+    void suoding(String num);
+
+    void jiesuo(String num);
+
+    public List<TyhHosregEntity> findchureg();
+
+    TyhHosregEntity findchureg2(String num);
 }

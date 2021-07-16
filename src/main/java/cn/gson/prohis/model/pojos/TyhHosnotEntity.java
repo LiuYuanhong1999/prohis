@@ -124,4 +124,24 @@ public class TyhHosnotEntity {
     public void setTyhHosregEntity(TyhHosregEntity tyhHosregEntity) {
         this.tyhHosregEntity = tyhHosregEntity;
     }
+
+    public TyhPatientEntity tyhPatientEntity;
+
+    public TyhPatientEntity getTyhPatientEntity() {
+        return tyhPatientEntity;
+    }
+
+    public void setTyhPatientEntity(TyhPatientEntity tyhPatientEntity) {
+        this.tyhPatientEntity = tyhPatientEntity;
+    }
+
+    public YxjDeskEntity yxjDeskEntity;
+
+    public YxjDeskEntity getYxjDeskEntity() {
+        return yxjDeskEntity;
+    }
+
+    public void setYxjDeskEntity(YxjDeskEntity yxjDeskEntity) {
+        this.yxjDeskEntity = yxjDeskEntity;
+    }
 }

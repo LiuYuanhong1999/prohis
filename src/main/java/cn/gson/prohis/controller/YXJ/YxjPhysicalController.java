@@ -15,9 +15,6 @@ import java.util.List;
 @RestController
 public class YxjPhysicalController {
     @Autowired
-    YxjPhysicalMapper yxjPhysicalMapper;
-
-    @Autowired
     YxjPhysicalService yxjPhysicalService;
 
     /**
@@ -25,7 +22,6 @@ public class YxjPhysicalController {
      * @return
      */
     @RequestMapping("/findPhysical")
-    @ResponseBody
     public List<YxjPhysical> findByPhysical(){
        return yxjPhysicalService.findByPhysical();
     };
@@ -35,7 +31,6 @@ public class YxjPhysicalController {
      * @param physical
      */
     @RequestMapping("/addPhysical")
-    @ResponseBody
     public void addPhysical(@RequestBody YxjPhysical physical){
         yxjPhysicalService.addPhysical(physical);
     }
@@ -45,7 +40,6 @@ public class YxjPhysicalController {
      * @param physical
      */
     @RequestMapping("/updatePhysical")
-    @ResponseBody
     public void updatePhysical(@RequestBody YxjPhysical physical){
         yxjPhysicalService.updatePhysical(physical);
     }
@@ -55,8 +49,16 @@ public class YxjPhysicalController {
      * @param phId
      */
     @RequestMapping("/delPhysical")
-    @ResponseBody
     public void delPhysical(@RequestBody YxjPhysical phId) {yxjPhysicalService.delPhysical(phId.getPhId());}
 
 
+    /**
+     * 根据类别ID查询
+     * @param phId
+     * @return
+     */
+    @RequestMapping("/find-id")
+    public YxjPhysical selPhId(Integer phId){
+        return yxjPhysicalService.selPhId(phId);
+    }
 }

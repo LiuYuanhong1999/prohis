@@ -1,0 +1,47 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjRecordMapper">
+    <resultMap id="record" type="cn.gson.prohis.model.pojos.YxjRecord">
+        <id column="record_id" property="recordId"></id>
+        <result column="record_name" property="recordName"></result>
+        <result column="record_zxr" property="recordZxr"></result>
+        <result column="record_time" property="recordTime"></result>
+
+        <association property="yxjPhysical" javaType="cn.gson.prohis.model.pojos.YxjPhysical">
+            <id column="ph_id" property="phId"></id>
+            <result column="ph_name" property="phName"></result>
+            <result column="ph_type" property="phType"></result>
+            <result column="ph_charge" property="phCharge"></result>
+            <result column="ph_price" property="phPrice"></result>
+        </association>
+    </resultMap>
+
+    <!--  查询所有记录  -->
+    <select id="allRecord" resultMap="record">
+        SELECT * FROM yxj_record r LEFT JOIN physical p ON r.ph_id = p.ph_id ORDER BY record_time DESC
+    </select>
+
+
+    <!--  新增体检记录  -->
+    <insert id="addRecord">
+        INSERT INTO yxj_record(record_id,record_name,ph_id,record_zxr,record_time)
+        VALUES(#{recordId},#{recordName},#{phId},#{recordZxr},#{recordTime})
+    </insert>
+
+    <!--  修改体检记录  -->
+    <update id="updateRecord">
+        UPDATE yxj_record SET record_name=#{recordName},record_zxr=#{recordZxr},record_time=#{recordTime} WHERE record_id = #{recordId}
+    </update>
+
+    <!--  删除体检记录  -->
+    <delete id="delRecord">
+        DELETE FROM yxj_record WHERE record_id = #{recordId}
+    </delete>
+
+
+    <!--  查询体检类别  -->
+    <select id="selPhysical" resultMap="record">
+        SELECT * FROM physical
+    </select>
+
+
+</mapper>

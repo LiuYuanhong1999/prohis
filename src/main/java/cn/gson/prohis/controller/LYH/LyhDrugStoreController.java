@@ -3,10 +3,7 @@ package cn.gson.prohis.controller.LYH;
 import cn.gson.prohis.model.pojos.LyhDrugstoreEntity;
 import cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity;
 import cn.gson.prohis.model.service.LYH.LyhDrugStoreService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -22,49 +19,60 @@ public class LyhDrugStoreController {
         return bs.findAll();
     }
 
+@PostMapping(value = "/update-drugstore" , produces = "application/json")
+    public AjaxResult update(@RequestBody String json){
 
 
-    @PostMapping("/update-drugstore")
-    public int updateById(@RequestBody List<LyhDrugstoreEntity> lyhDrugstoreEntities){
-        System.out.println(lyhDrugstoreEntities+"--------------");
-        //int numbers = 0;
-        List<Integer> numbers = new ArrayList<>();
-        //int drugId=0;
-        List<Integer> drugId = new ArrayList<>();
-        for (LyhDrugstoreEntity entity : lyhDrugstoreEntities) {
+   bs.updateById(json);
 
+//    System.out.println(numbers);
+//    System.out.println(drugId);
+//    System.out.println(procurementId);
+//    bs.updateById(numbers,drugId,procurementId);
 
-//            System.out.println(entity);
-//            System.out.println(entity.getLyhProcurementEntity());
-//            System.out.println(entity.getLyhProcurementEntity().getLyhProcurementDetailsEntities());
-            for (LyhProcurementDetailsEntity detailsEntity : entity.getLyhProcurementEntity().getLyhProcurementDetailsEntities()) {
-//                System.out.println(detailsEntity.getNumbers());
-                detailsEntity.getNumbers();
+    return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("success");
+}
 
-               numbers.add(Integer.valueOf(detailsEntity.getNumbers()));
-
-               drugId.add(Integer.valueOf(detailsEntity.getDrugId()));
-
-
-
-            }
-//            System.out.println(numbers.get(0)+"---qqqqwww");
-//            System.out.println(drugId+"---qwwqqwq");
-            //采购详表
-            for (Integer integer : drugId) {
-
-            }
-
-//            bs.updateById(numbers,entity.getProcurementId(),drugId);
-        }
-
-return 0;
+//    @PostMapping("/update-drugstore")
+//    public int updateById(@RequestBody List<LyhDrugstoreEntity> lyhDrugstoreEntities){
 //
-//        bs.updateById(list);
-
-//        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
-
-    }
+//        bs.updateById(lyhDrugstoreEntities);
+////        System.out.println(lyhDrugstoreEntities+"--------------");
+////        //int numbers = 0;
+////        List<Integer> numbers = new ArrayList<>();
+////        //int drugId=0;
+////        List<Integer> drugId = new ArrayList<>();
+////        for (LyhDrugstoreEntity entity : lyhDrugstoreEntities) {
+////
+////
+////            for (LyhProcurementDetailsEntity detailsEntity : entity.getLyhProcurementEntity().getLyhProcurementDetailsEntities()) {
+//////                System.out.println(detailsEntity.getNumbers());
+////                detailsEntity.getNumbers();
+////
+////               numbers.add(Integer.valueOf(detailsEntity.getNumbers()));
+////
+////               drugId.add(Integer.valueOf(detailsEntity.getDrugId()));
+////
+////
+////
+////            }
+//////            System.out.println(numbers.get(0)+"---qqqqwww");
+//////            System.out.println(drugId+"---qwwqqwq");
+////            //采购详表
+////            for (Integer integer : drugId) {
+////
+////            }
+////
+//////            bs.updateById(numbers,entity.getProcurementId(),drugId);
+////        }
+//
+//return 0;
+////
+////        bs.updateById(list);
+//
+////        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
+//
+//    }
 }
 
 //    @RequestMapping("/update-drugstore")

@@ -20,7 +20,6 @@ public class cashService {
     }
 
     public void addcash(TyhCashEntity tyhCashEntity) {
-        System.out.println(tyhCashEntity);
         SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
         Date date = new Date();
         String a=myFmt.format(date);

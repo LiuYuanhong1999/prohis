@@ -1,0 +1,86 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhDrugStoreDetailsMapper">
+            <resultMap id="details" type="cn.gson.prohis.model.pojos.LyhDrugStoreDetailsEntity">
+                <id column="details_id" property="detailsId"></id>
+                <result column="details_name" property="detailsName"></result>
+                <result column="details_date" property="detailsDate"></result>
+                <result column="procurement_id" property="procurementId"></result>
+                <result column="drug_id" property="drugId"></result>
+                <result column="numbers" property="numbers"></result>
+                <association property="lyhProcurementDetailsEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
+                    <id column="pro_id" property="proId"></id>
+                    <result column="drug_id" property="drugId"></result>
+                    <result column="numbers" property="numbers"></result>
+                    <result column="procurement_id" property="procurementId"></result>
+
+
+                    <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
+                        <id column="procurement_id"         property="procurementId"></id>
+                        <result column="drug_id"            property="drugId"></result>
+                        <result column="procurement_price"  property="procurementPrice"></result>
+                        <result column="procurement_state"  property="procurementState"></result>
+                        <result column="user_name"          property="userName"></result>
+                        <result column="procurement_name"   property="procurementName"></result>
+                        <result column="procurement_date"   property="procurementDate"></result>
+                        <result column="procurement_firstdate"                   property="procurementFirstdate"></result>
+                    </association>
+
+
+
+                </association>
+
+                <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+                    <id column="drug_id" property="drugId"></id>
+                    <result column="drug_name" property="drugName"></result>
+                    <result column="drug_date" property="drugDate"></result>
+                    <result column="drug_price" property="drugPrice"></result>
+                    <result column="supplier_id" property="supplierId"></result>
+
+                    <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+                        <id column="supplier_id" property="supplierId"></id>
+                        <result column="supplier_name" property="supplierName"></result>
+                    </association>
+                </association>
+<association property="lyhDrugstoreEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugstoreEntity">
+    <id column="drugstore_id" property="drugstoreId"></id>
+    <result column="drug_id" property="drugId"></result>
+    <result column="drugstore_number" property="drugstoreNumber"></result>
+    <result column="drugstore_date" property="drugstoreDate"></result>
+    <result column="procurement_id" property="procurementId"></result>
+    <result column="audit_id" property="auditId"></result>
+
+</association>
+            </resultMap>
+
+
+
+
+    <select id="findAll" resultMap="details">
+        select * from lyhdrugstoredetails a
+        left join lyhprocurementdetails b on a.procurement_id=b.procurement_id
+        left join lyh_drug c on a.drug_id=c.drug_id
+        left join lyhprocurement d  on b.procurement_id=d.procurement_id
+        left join lyhsupplier e on c.supplier_id=e.supplier_id
+        <where>
+            <if test="drugId !=null and drugId !=''">
+             a.drug_id=#{drugId}
+            </if>
+
+            <if test="procurementId !=null and procurementId !=''">
+                and a.procurement_id =#{procurementId}
+            </if>
+
+
+           </where>
+
+
+
+
+    </select>
+
+
+    <insert id="insertDetails">
+        insert into lyhdrugstoredetails(drug_id,procurement_id,details_name,numbers)
+        values(#{drugId},#{procurementId},#{detailsName},#{numbers})
+    </insert>
+</mapper>

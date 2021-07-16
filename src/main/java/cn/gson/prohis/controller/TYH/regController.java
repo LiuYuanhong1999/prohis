@@ -3,6 +3,8 @@ package cn.gson.prohis.controller.TYH;
 import cn.gson.prohis.model.pojos.TyhHosnotEntity;
 import cn.gson.prohis.model.pojos.TyhHosregEntity;
 import cn.gson.prohis.model.service.TYH.regService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +29,20 @@ public class regController {
     @RequestMapping("/find-reg")
     public TyhHosnotEntity findreg(String num){
         return regService.findreg(num);
+    }
+
+    @PostMapping("add-reg")
+    public void addreg(@RequestBody TyhHosregEntity tyhHosregEntity){
+        regService.addreg(tyhHosregEntity);
+    }
+
+    @RequestMapping("suoding-reg")
+    public void suoding(String num){
+        regService.suoding(num);
+    }
+
+    @RequestMapping("jiesuo-reg")
+    public void jiesuo(String num){
+        regService.jiesuo(num);
     }
 }

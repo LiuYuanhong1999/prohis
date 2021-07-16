@@ -80,4 +80,17 @@ private LyhProcurementEntity lyhProcurementEntity;
     public void setDrugEntity(LyhDrugEntity drugEntity) {
         this.drugEntity = drugEntity;
     }
+
+
+
+    private List<LyhDrugStoreDetailsEntity> list;
+
+    public List<LyhDrugStoreDetailsEntity> getList() {
+        return list;
+    }
+
+    public void setList(List<LyhDrugStoreDetailsEntity> list) {
+        this.list = list;
+    }
+
 }

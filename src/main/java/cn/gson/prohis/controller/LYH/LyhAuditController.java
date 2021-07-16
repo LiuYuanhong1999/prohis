@@ -30,6 +30,7 @@ public class LyhAuditController {
 
     @PostMapping("/add-audit")
     public AjaxResult insertAudit(@RequestBody List<LyhAuditEntity> list){
+        System.out.println(list);
         bs.insertAudit(list);
         return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
     }

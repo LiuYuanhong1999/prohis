@@ -54,4 +54,14 @@ public class YxjPhysicalService {
 
         yxjPhysicalMapper.delPhysical(phId);}
 
+
+    /**
+     * 根据类别id查询
+     * @param phId
+     * @return
+     */
+    public YxjPhysical selPhId(Integer phId){
+        return yxjPhysicalMapper.selPhId(phId);
+    }
+
     }
