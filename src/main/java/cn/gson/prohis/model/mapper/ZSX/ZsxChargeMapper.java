@@ -9,4 +9,8 @@ import java.util.List;
 public interface ZsxChargeMapper {
 
     public List<ZsxCharge> findByCharge();
+
+    public void addCharge(ZsxCharge charge);
+
+    void updateCharge(ZsxCharge charge);
 }
