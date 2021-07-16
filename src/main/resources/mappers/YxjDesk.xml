@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjDeskMapper">
+    <resultMap id="desk" type="cn.gson.prohis.model.pojos.YxjDesk">
+        <id column="desk_id" property="deskId"></id>
+        <result column="desk_name" property="deskName"></result>
+        <result column="desk_time" property="deskTime"></result>
+    </resultMap>
+
+    <!--  查询所有科室  -->
+    <select id="selDesk" resultMap="desk">
+        SELECT * FROM yxj_desk
+    </select>
+
+
+    <!--  新增科室  -->
+    <insert id="addDesk">
+        INSERT INTO yxj_desk(desk_id,desk_name,desk_time)
+        VALUES(#{deskId},#{deskName},#{deskTime})
+    </insert>
+
+    <!--  修改科室  -->
+    <update id="updateDesk">
+        UPDATE yxj_desk SET desk_name=#{deskName} WHERE desk_id = #{deskId}
+    </update>
+
+    <!--  删除科室  -->
+    <delete id="delDesk">
+        DELETE FROM yxj_desk WHERE desk_id = #{deskId}
+    </delete>
+
+</mapper>
