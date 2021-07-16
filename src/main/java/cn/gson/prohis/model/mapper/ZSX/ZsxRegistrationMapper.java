@@ -10,4 +10,8 @@ public interface ZsxRegistrationMapper {
 //查询全部的挂号单
     public List<ZsxRegistration> findByRegistration();
 
+    void addRegistration(ZsxRegistration registration);
+
+    void updateRegistration(ZsxRegistration registration);
+
 }

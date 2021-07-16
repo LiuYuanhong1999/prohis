@@ -1,6 +1,9 @@
 package cn.gson.prohis.model.pojos;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 public class ZsxPatientData {
 
   private long patientDataId;
@@ -29,6 +32,7 @@ public class ZsxPatientData {
     this.medicalCard = medicalCard;
   }
 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   public long getPatientDataId() {
     return patientDataId;
   }
@@ -74,4 +78,16 @@ public class ZsxPatientData {
   }
 
 
+  @Override
+  public String toString() {
+    return "ZsxPatientData{" +
+            "patientDataId=" + patientDataId +
+            ", patientDataCard='" + patientDataCard + '\'' +
+            ", patientDataName='" + patientDataName + '\'' +
+            ", patientDataPhone='" + patientDataPhone + '\'' +
+            ", patientDataSex='" + patientDataSex + '\'' +
+            ", medicalCardNumber='" + medicalCardNumber + '\'' +
+            ", medicalCard=" + medicalCard +
+            '}';
+  }
 }

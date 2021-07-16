@@ -1,7 +1,9 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class ZsxRegistration {
 
@@ -9,7 +11,7 @@ public class ZsxRegistration {
   private String patientDataId;
   private String room;
   private String doctot;
-  private Date registrationTime;
+  private Timestamp registrationTime;
   private String registrationFee;
 
   private ZsxPatientData patient;
@@ -57,12 +59,13 @@ public class ZsxRegistration {
     this.doctot = doctot;
   }
 
-
-  public Date getRegistrationTime() {
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  public Timestamp getRegistrationTime() {
     return registrationTime;
   }
 
-  public void setRegistrationTime(Date registrationTime) {
+  public void setRegistrationTime(Timestamp registrationTime) {
     this.registrationTime = registrationTime;
   }
 

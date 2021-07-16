@@ -15,10 +15,10 @@
             <result column="medical_card_balance" property="medicalCardBalance"></result>
             <result column="medical_card_lock" property="medicalCardLock"></result>
  <!--            诊疗卡记录-->
-            <collection property="medicalCardRecords" ofType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
+            <association property="medicalCardRecords" javaType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
                 <id column="medical_card_record_id" property="medicalCardRecordId"></id>
                 <result column="medical_card_time" property="medicalCardTime"></result>
-            </collection>
+            </association>
         </association>
     </resultMap>
 
@@ -30,4 +30,28 @@
             inner join zsx_medical_card_record
                 on zsx_medical_card.medical_card_id=zsx_medical_card_record.medical_card_id
     </select>
+
+
+    <!--新增病人-->
+    <insert id="addPatient">
+        insert into zsx_patient_data values
+        (#{patientDataId},#{patientDataCard},#{patientDataName},#{patientDataPhone},#{patientDataSex},#{medicalCardNumber})
+    </insert>
+
+    <!--新增诊疗卡-->
+    <insert id="addMedicalCard">
+        insert into zsx_medical_card values
+        (#{medicalCardId},#{medicalCardNumber},#{medicalCardPassword},#{medicalCardBalance},#{medicalCardLock})
+    </insert>
+
+    <!--新增诊疗卡充值记录-->
+    <insert id="addMedicalCardRecords">
+        insert into zsx_medical_card_record values (#{medicalCardRecordId}#{medicalCardId},#{medicalCardNumber})
+    </insert>
+
+
+<!--修改诊疗卡-->
+    <update id="">
+        update zsx_patient_data set
+    </update>
 </mapper>

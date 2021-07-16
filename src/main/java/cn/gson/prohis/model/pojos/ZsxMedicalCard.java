@@ -1,7 +1,7 @@
 package cn.gson.prohis.model.pojos;
 
-
-import java.util.Set;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 public class ZsxMedicalCard {
 
@@ -11,16 +11,17 @@ public class ZsxMedicalCard {
   private String medicalCardBalance;
   private long medicalCardLock;
 
-  private Set<ZsxMedicalCardRecord> medicalCardRecords;
+  private ZsxMedicalCardRecord medicalCardRecords;
 
-  public Set<ZsxMedicalCardRecord> getMedicalCardRecords() {
+  public ZsxMedicalCardRecord getMedicalCardRecords() {
     return medicalCardRecords;
   }
 
-  public void setMedicalCardRecords(Set<ZsxMedicalCardRecord> medicalCardRecords) {
+  public void setMedicalCardRecords(ZsxMedicalCardRecord medicalCardRecords) {
     this.medicalCardRecords = medicalCardRecords;
   }
 
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   public long getMedicalCardId() {
     return medicalCardId;
   }
