@@ -1,7 +1,9 @@
 package cn.gson.prohis.model.service.LYH;
 
+import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreDetailsMapper;
 import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreMapper;
 import cn.gson.prohis.model.pojos.DrugStoreVo;
+import cn.gson.prohis.model.pojos.LyhDrugStoreDetailsEntity;
 import cn.gson.prohis.model.pojos.LyhDrugstoreEntity;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ public class LyhDrugStoreService {
     @Resource
     private LyhDrugStoreMapper bs;
 
+    @Resource
+    private LyhDrugStoreDetailsMapper ds;
 
     public List<LyhDrugstoreEntity> findAll(){
         return bs.findAll();
@@ -32,6 +36,12 @@ public void updateById(String json){
     for (DrugStoreVo vo : p) {
     bs.updateById(vo.getNumbers(),vo.getProcurementId(),vo.getDrugId());
 
+        LyhDrugStoreDetailsEntity detailsEntity=new LyhDrugStoreDetailsEntity();
+
+        detailsEntity.setDrugId(vo.getDrugId());
+        detailsEntity.setNumbers(vo.getNumbers());
+       detailsEntity.setProcurementId(vo.getProcurementId());
+        ds.insertDetails(detailsEntity);
     }
 
 

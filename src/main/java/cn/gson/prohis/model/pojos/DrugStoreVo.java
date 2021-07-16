@@ -4,7 +4,7 @@ public class DrugStoreVo {
 
     private String procurementId;
     private int numbers;
-        private int drugId;
+    private int drugId;
 
 
     public int getDrugId() {

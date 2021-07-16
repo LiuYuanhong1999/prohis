@@ -1,5 +1,8 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -10,7 +13,27 @@ public class LyhDrugStoreDetailsEntity {
     private String procurementId;
     private String detailsName;
     private Timestamp detailsDate;
+    private int drugId;
+    private int numbers;
 
+
+    public int getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(int numbers) {
+        this.numbers = numbers;
+    }
+
+
+
+    public int getDrugId() {
+        return drugId;
+    }
+
+    public void setDrugId(int drugId) {
+        this.drugId = drugId;
+    }
 
     public int getDetailsId() {
         return detailsId;
@@ -38,7 +61,8 @@ public class LyhDrugStoreDetailsEntity {
         this.detailsName = detailsName;
     }
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Timestamp getDetailsDate() {
         return detailsDate;
     }
@@ -49,6 +73,36 @@ public class LyhDrugStoreDetailsEntity {
 
 
 
+private LyhProcurementDetailsEntity lyhProcurementDetailsEntity;
+
+    public LyhProcurementDetailsEntity getLyhProcurementDetailsEntity() {
+        return lyhProcurementDetailsEntity;
+    }
+
+    public void setLyhProcurementDetailsEntity(LyhProcurementDetailsEntity lyhProcurementDetailsEntity) {
+        this.lyhProcurementDetailsEntity = lyhProcurementDetailsEntity;
+    }
 
 
+
+    private LyhDrugEntity lyhDrugEntity;
+
+    public LyhDrugEntity getLyhDrugEntity() {
+        return lyhDrugEntity;
+    }
+
+    public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
+        this.lyhDrugEntity = lyhDrugEntity;
+    }
+
+
+    public LyhDrugstoreEntity lyhDrugstoreEntity;
+
+    public LyhDrugstoreEntity getLyhDrugstoreEntity() {
+        return lyhDrugstoreEntity;
+    }
+
+    public void setLyhDrugstoreEntity(LyhDrugstoreEntity lyhDrugstoreEntity) {
+        this.lyhDrugstoreEntity = lyhDrugstoreEntity;
+    }
 }
