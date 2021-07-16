@@ -45,6 +45,7 @@
     <select id="findnum" resultMap="cash2">
         select * from tyh_hosreg th
         left join tyh_patient tp on th.patient_id=tp.patient_id
+        where th.hosreg_zt != 2
     </select>
 
 

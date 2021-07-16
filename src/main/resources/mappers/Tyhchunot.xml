@@ -1,0 +1,73 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.chunotMapper">
+    <resultMap id="chunot" type="cn.gson.prohis.model.pojos.TyhChunotEntity">
+        <id column="chunot_num" property="chunotNum"></id>
+        <result column="chunot_date" property="chunotDate"></result>
+        <result column="chunot_type" property="chunotType"></result>
+        <result column="chunot_yizhu" property="chunotYizhu"></result>
+        <result column="chunot_price" property="chunotPrice"></result>
+
+        <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+            <id column="hosreg_num" property="hosregNum"></id>
+            <result column="hosreg_date" property="hosregDate"></result>
+            <result column="hosreg_zt" property="hosregZt"></result>
+            <association property="tyhHosnotEntity" javaType="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+                <id column="hosnot_num" property="hosnotNum"></id>
+                <result column="hosnot_date" property="hosnotDate"></result>
+                <result column="hosnot_price" property="hosnotPrice"></result>
+                <result column="hosnot_cash" property="hosnotCash"></result>
+                <result column="hosnot_war" property="hosnotWar"></result>
+                <result column="hosnot_sm" property="hosnotSm"></result>
+                <result column="hosnot_zt" property="hosnotZt"></result>
+                <association property="tyhHospitalEntity" javaType="cn.gson.prohis.model.pojos.TyhHospitalEntity">
+                    <id column="hospital_id" property="hospitalId"></id>
+                    <result column="hospital_name" property="hospitalName"></result>
+                    <result column="hospital_price" property="hospitalPrice"></result>
+                    <collection property="tyhInpatientEntity" javaType="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+                        <id column="inp_id" property="inpId"></id>
+                        <result column="inp_name" property="inpName"></result>
+                    </collection>
+                </association>
+            </association>
+        </association>
+
+        <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+            <id column="patient_id" property="patientId"></id>
+            <result column="patient_name" property="patientName"></result>
+            <result column="patient_sex" property="patientSex"></result>
+            <result column="patient_yue" property="patientYue"></result>
+        </association>
+    </resultMap>
+
+
+    <select id="findchunot" resultMap="chunot">
+        select * from tyh_chunot tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
+            left join tyh_hosnot ts on th.hosnot_num=ts.hosnot_num
+            left join tyh_hospital tp on ts.hospital_id=tp.hospital_id
+            left join tyh_inpatient ti on tp.inp_id=ti.inp_id
+            left join tyh_patient te on tc.patient_id=te.patient_id
+            <if test="cha != null">
+                where tc.chunot_num like '%${cha}%'
+                or th.hosreg_num like '%${cha}%'
+                or te.patient_name like '%${cha}%'
+            </if>
+            order by chunot_date desc
+    </select>
+
+    <insert id="addchunot">
+        INSERT INTO tyh_chunot(chunot_num,chunot_type,chunot_yizhu,chunot_price,chunot_date,hosreg_num,patient_id)
+        VALUES(#{chunotNum},#{chunotType},#{chunotYizhu},#{chunotPrice},#{chunotDate},#{hosregNum},#{patientId})
+    </insert>
+
+    <update id="updatereg">
+        update tyh_hosreg set hosreg_zt = 3 where hosreg_num = #{hosregNum}
+    </update>
+
+    <delete id="delchunot">
+        delete from tyh_chunot where chunot_num = #{chuId}
+    </delete>
+
+    <update id="updatereg2">
+        update tyh_hosreg set hosreg_zt = 1 where hosreg_num = #{zhuId}
+    </update>
+</mapper>

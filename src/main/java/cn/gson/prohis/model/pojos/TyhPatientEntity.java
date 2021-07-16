@@ -50,6 +50,16 @@ public class TyhPatientEntity {
         this.tyhHosregEntity = tyhHosregEntity;
     }
 
+    public TyhHosnotEntity tyhHosnotEntity;
+
+    public TyhHosnotEntity getTyhHosnotEntity() {
+        return tyhHosnotEntity;
+    }
+
+    public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
+        this.tyhHosnotEntity = tyhHosnotEntity;
+    }
+
     @Override
     public String toString() {
         return "TyhPatientEntity{" +
@@ -61,4 +71,13 @@ public class TyhPatientEntity {
                 '}';
     }
 
+    public TyhChunotEntity tyhChunotEntity;
+
+    public TyhChunotEntity getTyhChunotEntity() {
+        return tyhChunotEntity;
+    }
+
+    public void setTyhChunotEntity(TyhChunotEntity tyhChunotEntity) {
+        this.tyhChunotEntity = tyhChunotEntity;
+    }
 }

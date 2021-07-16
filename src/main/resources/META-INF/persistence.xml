@@ -9,6 +9,8 @@
         <class>cn.gson.prohis.model.pojos.TyhPatientEntity</class>
         <class>cn.gson.prohis.model.pojos.TyhInpatientEntity</class>
         <class>cn.gson.prohis.model.pojos.TyhHospitalEntity</class>
+        <class>cn.gson.prohis.model.pojos.TyhChunotEntity</class>
+        <class>cn.gson.prohis.model.pojos.YxjDeskEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://rm-wz9e0163453eu84559o.mysql.rds.aliyuncs.com:3306/myhis"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
