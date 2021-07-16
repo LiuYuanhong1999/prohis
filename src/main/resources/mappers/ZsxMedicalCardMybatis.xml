@@ -50,8 +50,16 @@
     </insert>
 
 
-<!--修改诊疗卡-->
+<!--修改病人资料-->
     <update id="">
         update zsx_patient_data set
+        patient_data_name=#{patientDataName},
+        patient_data_phone=#{patientDataPhone},
+        patient_data_sex={patientDataSex},medical_card_number=#{medicalCardNumber} where patient_data_id=#{patientDataId}
+    </update>
+
+<!--    修改诊疗卡-->
+    <update id="">
+        update zsx_medical_card set medical_card_lock=#{medicalCardLock} where medical_card_id = #{medicalCardId}
     </update>
 </mapper>
