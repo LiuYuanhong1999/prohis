@@ -29,6 +29,11 @@
                     <result column="inp_name" property="inpName"></result>
                 </collection>
             </association>
+            <collection property="yxjDeskEntity" javaType="cn.gson.prohis.model.pojos.YxjDeskEntity">
+                <id column="desk_id" property="deskId"></id>
+                <result column="desk_name" property="deskName"></result>
+                <result column="desk_time" property="deskTime"></result>
+            </collection>
         </association>
 
 
@@ -42,6 +47,29 @@
             <result column="hosnot_war" property="hosnotWar"></result>
             <result column="hosnot_sm" property="hosnotSm"></result>
             <result column="hosnot_zt" property="hosnotZt"></result>
+
+            <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </association>
+
+            <association property="tyhHospitalEntity" javaType="cn.gson.prohis.model.pojos.TyhHospitalEntity">
+                <id column="hospital_id" property="hospitalId"></id>
+                <result column="hospital_name" property="hospitalName"></result>
+                <result column="hospital_price" property="hospitalPrice"></result>
+                <collection property="tyhInpatientEntity" javaType="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+                    <id column="inp_id" property="inpId"></id>
+                    <result column="inp_name" property="inpName"></result>
+                </collection>
+            </association>
+
+            <collection property="yxjDeskEntity" javaType="cn.gson.prohis.model.pojos.YxjDeskEntity">
+                <id column="desk_id" property="deskId"></id>
+                <result column="desk_name" property="deskName"></result>
+                <result column="desk_time" property="deskTime"></result>
+             </collection>
     </resultMap>
 
     <select id="findAll" resultMap="hosreg">
@@ -49,16 +77,19 @@
             left join tyh_patient tp on th.patient_id=tp.patient_id
             left join tyh_hospital ti on tn.hospital_id=ti.hospital_id
             left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+            left join yxj_desk yd on tn.desk_id=yd.desk_id
             <if test="cha != '' and cha2 != ''">
                 where (th.hosreg_num like '%${cha}%'
                 or tip.inp_name like '%${cha}%'
-                or ti.hospital_name like '%${cha}%')
+                or ti.hospital_name like '%${cha}%'
+                or yd.desk_name like '%${cha}%')
                 and th.hosreg_zt = #{cha2}
             </if>
             <if test="cha != '' and cha2 == ''">
                 where th.hosreg_num like '%${cha}%'
                 or tip.inp_name like '%${cha}%'
                 or ti.hospital_name like '%${cha}%'
+                or yd.desk_name like '%${cha}%'
             </if>
             <if test="cha == '' and cha2 != ''">
                 where th.hosreg_zt = #{cha2}
@@ -71,6 +102,43 @@
     </select>
 
     <select id="findreg" resultMap="hosnotreg">
-        select * from tyh_hosnot where hosnot_num = #{num}
+        select * from tyh_hosnot th left join tyh_patient tp on th.bingren=tp.patient_id
+            left join tyh_hospital ti on th.hospital_id=ti.hospital_id
+            left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+            left join yxj_desk yd on th.desk_id=yd.desk_id
+            where hosnot_num = #{num}
+    </select>
+
+    <insert id="addreg">
+        INSERT INTO tyh_hosreg(hosreg_num,hosreg_date,hosnot_num,patient_id)
+        VALUES(#{hosregNum},#{hosregDate},#{hosnotNum},#{patientId})
+    </insert>
+
+    <update id="updatenot">
+        update tyh_hosnot set hosnot_zt=1 where hosnot_num=#{hosnotNum}
+    </update>
+
+    <update id="suoding">
+        update tyh_hosreg set hosreg_zt=2 where hosreg_num=#{num}
+    </update>
+
+    <update id="jiesuo">
+        update tyh_hosreg set hosreg_zt=1 where hosreg_num=#{num}
+    </update>
+
+    <select id="findchureg" resultMap="hosreg">
+        select * from tyh_hosreg th left join tyh_hosnot tn on th.hosnot_num=tn.hosnot_num
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+        left join tyh_hospital ti on tn.hospital_id=ti.hospital_id
+        left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+        where th.hosreg_zt=1
+    </select>
+
+    <select id="findchureg2" resultMap="hosreg">
+        select * from tyh_hosreg th left join tyh_hosnot tn on th.hosnot_num=tn.hosnot_num
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+        left join tyh_hospital ti on tn.hospital_id=ti.hospital_id
+        left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+        where th.hosreg_zt=1 and th.hosreg_num = #{num}
     </select>
 </mapper>

@@ -32,8 +32,6 @@ public class TyhHosregEntity {
         this.hosregNum = hosregNum;
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd ss:mm:DD")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Timestamp getHosregDate() {
         return hosregDate;
     }
@@ -96,6 +94,15 @@ public class TyhHosregEntity {
         this.tyhHosnotEntity = tyhHosnotEntity;
     }
 
+    public TyhChunotEntity tyhChunotEntity;
+
+    public TyhChunotEntity getTyhChunotEntity() {
+        return tyhChunotEntity;
+    }
+
+    public void setTyhChunotEntity(TyhChunotEntity tyhChunotEntity) {
+        this.tyhChunotEntity = tyhChunotEntity;
+    }
 
     @Override
     public String toString() {
