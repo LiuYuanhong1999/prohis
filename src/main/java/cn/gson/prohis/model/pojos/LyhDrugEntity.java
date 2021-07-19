@@ -16,6 +16,33 @@ public class LyhDrugEntity {
     private Timestamp drugDate;
     private BigDecimal drugPrice;
     private Integer supplierId;
+    private Integer drugState;
+    private String drugJixin;
+    private String drugGuige;
+
+    public Integer getDrugState() {
+        return drugState;
+    }
+
+    public void setDrugState(Integer drugState) {
+        this.drugState = drugState;
+    }
+
+    public String getDrugJixin() {
+        return drugJixin;
+    }
+
+    public void setDrugJixin(String drugJixin) {
+        this.drugJixin = drugJixin;
+    }
+
+    public String getDrugGuige() {
+        return drugGuige;
+    }
+
+    public void setDrugGuige(String drugGuige) {
+        this.drugGuige = drugGuige;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getDrugId() {
@@ -127,4 +154,18 @@ public class LyhDrugEntity {
 //    public void setList(List<DrugStoreVo> list) {
 //        this.list = list;
 //    }
+
+
+
+    private List<LyhPharmacyEntity> lyhPharmacyEntities;
+
+    public List<LyhPharmacyEntity> getLyhPharmacyEntities() {
+        return lyhPharmacyEntities;
+    }
+
+    public void setLyhPharmacyEntities(List<LyhPharmacyEntity> lyhPharmacyEntities) {
+        this.lyhPharmacyEntities = lyhPharmacyEntities;
+    }
+
+
 }

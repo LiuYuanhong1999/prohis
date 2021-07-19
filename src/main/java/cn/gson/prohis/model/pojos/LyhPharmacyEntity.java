@@ -4,24 +4,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
 public class LyhPharmacyEntity {
     private int pharmacyId;
-    private String pharmacyName;
-    private String pharmacyState;
-    private String pharmacySpecifications;
-    private String pharmacyDosage;
+    private Integer drugId;
     private Timestamp pharmacyDate;
-    private String pharmacyManufacturer;
     private Integer pharmacyNumber;
-    private BigDecimal pharmacyPrice;
 
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPharmacyId() {
         return pharmacyId;
     }
@@ -31,41 +25,13 @@ public class LyhPharmacyEntity {
     }
 
 
-    public String getPharmacyName() {
-        return pharmacyName;
+    public Integer getDrugId() {
+        return drugId;
     }
 
-    public void setPharmacyName(String pharmacyName) {
-        this.pharmacyName = pharmacyName;
+    public void setDrugId(Integer drugId) {
+        this.drugId = drugId;
     }
-
-
-    public String getPharmacyState() {
-        return pharmacyState;
-    }
-
-    public void setPharmacyState(String pharmacyState) {
-        this.pharmacyState = pharmacyState;
-    }
-
-
-    public String getPharmacySpecifications() {
-        return pharmacySpecifications;
-    }
-
-    public void setPharmacySpecifications(String pharmacySpecifications) {
-        this.pharmacySpecifications = pharmacySpecifications;
-    }
-
-
-    public String getPharmacyDosage() {
-        return pharmacyDosage;
-    }
-
-    public void setPharmacyDosage(String pharmacyDosage) {
-        this.pharmacyDosage = pharmacyDosage;
-    }
-
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
@@ -78,15 +44,6 @@ public class LyhPharmacyEntity {
     }
 
 
-    public String getPharmacyManufacturer() {
-        return pharmacyManufacturer;
-    }
-
-    public void setPharmacyManufacturer(String pharmacyManufacturer) {
-        this.pharmacyManufacturer = pharmacyManufacturer;
-    }
-
-
     public Integer getPharmacyNumber() {
         return pharmacyNumber;
     }
@@ -95,14 +52,24 @@ public class LyhPharmacyEntity {
         this.pharmacyNumber = pharmacyNumber;
     }
 
+private LyhDrugEntity lyhDrugEntity;
 
-    public BigDecimal getPharmacyPrice() {
-        return pharmacyPrice;
+    public LyhDrugEntity getLyhDrugEntity() {
+        return lyhDrugEntity;
     }
 
-    public void setPharmacyPrice(BigDecimal pharmacyPrice) {
-        this.pharmacyPrice = pharmacyPrice;
+    public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
+        this.lyhDrugEntity = lyhDrugEntity;
     }
 
 
+  private List<LyhPharmacyDetailsEntity> lyhPharmacyDetailsEntities;
+
+    public List<LyhPharmacyDetailsEntity> getLyhPharmacyDetailsEntities() {
+        return lyhPharmacyDetailsEntities;
+    }
+
+    public void setLyhPharmacyDetailsEntities(List<LyhPharmacyDetailsEntity> lyhPharmacyDetailsEntities) {
+        this.lyhPharmacyDetailsEntities = lyhPharmacyDetailsEntities;
+    }
 }

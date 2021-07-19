@@ -21,7 +21,9 @@
         <result column="drug_date" property="drugDate"></result>
         <result column="drug_price" property="drugPrice"></result>
         <result column="supplier_id" property="supplierId"></result>
-
+        <result column="drug_jixin" property="drugJixin"></result>
+        <result column="drug_guige" property="drugGuige"></result>
+        <result column="drug_state" property="drugState"></result>
         <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
             <id column="supplier_id" property="supplierId"></id>
             <result column="supplier_name" property="supplierName"></result>
