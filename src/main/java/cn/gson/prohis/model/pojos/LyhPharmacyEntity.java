@@ -72,4 +72,30 @@ private LyhDrugEntity lyhDrugEntity;
     public void setLyhPharmacyDetailsEntities(List<LyhPharmacyDetailsEntity> lyhPharmacyDetailsEntities) {
         this.lyhPharmacyDetailsEntities = lyhPharmacyDetailsEntities;
     }
+
+
+
+    private List<LyhAllotEntity> lyhAllotEntities;
+
+    public List<LyhAllotEntity> getLyhAllotEntities() {
+        return lyhAllotEntities;
+    }
+
+    public void setLyhAllotEntities(List<LyhAllotEntity> lyhAllotEntities) {
+        this.lyhAllotEntities = lyhAllotEntities;
+    }
+
+
+    @Override
+    public String toString() {
+        return "LyhPharmacyEntity{" +
+                "pharmacyId=" + pharmacyId +
+                ", drugId=" + drugId +
+                ", pharmacyDate=" + pharmacyDate +
+                ", pharmacyNumber=" + pharmacyNumber +
+                ", lyhDrugEntity=" + lyhDrugEntity +
+                ", lyhPharmacyDetailsEntities=" + lyhPharmacyDetailsEntities +
+                ", lyhAllotEntities=" + lyhAllotEntities +
+                '}';
+    }
 }

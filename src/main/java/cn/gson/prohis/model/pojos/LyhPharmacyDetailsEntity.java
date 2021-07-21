@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -67,5 +68,16 @@ public class LyhPharmacyDetailsEntity {
 
     public void setNumbers(Integer numbers) {
         this.numbers = numbers;
+    }
+
+
+  private LyhAllotEntity lyhAllotEntity;
+
+    public LyhAllotEntity getLyhAllotEntity() {
+        return lyhAllotEntity;
+    }
+
+    public void setLyhAllotEntity(LyhAllotEntity lyhAllotEntity) {
+        this.lyhAllotEntity = lyhAllotEntity;
     }
 }

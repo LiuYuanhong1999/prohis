@@ -1,0 +1,67 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhAllotMapper">
+    <resultMap id="allot" type="cn.gson.prohis.model.pojos.LyhAllotEntity">
+        <id column="allot_id" property="allotId"></id>
+        <result column="allot_state" property="allotState"></result>
+        <result column="pharmacy_id" property="pharmacyId"></result>
+        <result column="allot_number" property="allotNumber"></result>
+        <result column="drug_id" property="drugId"></result>
+        <result column="allot_time" property="allotTime"></result>
+        <association property="pharmacyEntity" javaType="cn.gson.prohis.model.pojos.LyhPharmacyEntity">
+    <id column="pharmacy_id" property="pharmacyId"></id>
+    <result column="drug_id" property="drugId"></result>
+    <result column="pharmacy_date" property="pharmacyDate"></result>
+    <result column="pharmacy_number" property="pharmacyNumber"></result>
+    <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+        <id column="drug_id" property="drugId"></id>
+        <result column="drug_name" property="drugName"></result>
+        <result column="drug_date" property="drugDate"></result>
+        <result column="drug_price" property="drugPrice"></result>
+        <result column="supplier_id" property="supplierId"></result>
+        <result column="drug_jixin" property="drugJixin"></result>
+        <result column="drug_guige" property="drugGuige"></result>
+        <result column="drug_state" property="drugState"></result>
+
+        <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+            <id column="supplier_id" property="supplierId"></id>
+            <result column="supplier_name" property="supplierName"></result>
+        </association>
+    </association>
+</association>
+
+
+        <collection property="lyhAllotDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhAllotDetailsEntity">
+            <id column="allotdetails_id" property="allotdetailsId"></id>
+            <result column="allot_id" property="allotId"></result>
+            <result column="allotdetails_date" property="allotdetailsDate"></result>
+            <result column="pharmacy_id" property="pharmacyId"></result>
+            <result column="allotdetails_name" property="allotdetailsName"></result>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="findAll" resultMap="allot">
+
+        select * from lyhallot a
+        left join lyhallotdetails e on a.allot_id=e.allot_id
+        left join lyhpharmacy b on a.pharmacy_id=b.pharmacy_id
+        left join lyh_drug c on c.drug_id = b.drug_id
+        left join lyhsupplier d on c.supplier_id=d.supplier_id
+    </select>
+
+
+    <insert id="insertAllot">
+        insert into lyhallot(allot_id)
+        values (#{allotId})
+    </insert>
+
+
+    <update id="updateById" parameterType="LyhAllotEntity">
+        update lyhallot set allot_state=#{allotState,jdbcType=INTEGER}
+where allot_id in
+        <foreach collection="allotId" item="allotId" open="(" separator="," close=")">
+        #{allotId}
+        </foreach>
+    </update>
+</mapper>

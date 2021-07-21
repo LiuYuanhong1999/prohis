@@ -7,7 +7,6 @@
         <result column="audit_user" property="auditUser"></result>
         <result column="audit_state" property="auditState"></result>
         <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
-
             <id column="procurement_id"         property="procurementId"></id>
             <result column="procurement_price"  property="procurementPrice"></result>
             <result column="procurement_state"  property="procurementState"></result>
