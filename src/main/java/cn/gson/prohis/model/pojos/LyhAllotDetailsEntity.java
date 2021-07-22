@@ -1,5 +1,8 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -40,7 +43,8 @@ public class LyhAllotDetailsEntity {
         this.allotId = allotId;
     }
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Timestamp getAllotdetailsDate() {
         return allotdetailsDate;
     }
@@ -76,5 +80,17 @@ public class LyhAllotDetailsEntity {
 
     public void setAllotEntity(LyhAllotEntity allotEntity) {
         this.allotEntity = allotEntity;
+    }
+
+
+
+    private LyhPharmacyEntity lyhPharmacyEntity;
+
+    public LyhPharmacyEntity getLyhPharmacyEntity() {
+        return lyhPharmacyEntity;
+    }
+
+    public void setLyhPharmacyEntity(LyhPharmacyEntity lyhPharmacyEntity) {
+        this.lyhPharmacyEntity = lyhPharmacyEntity;
     }
 }

@@ -51,24 +51,6 @@ public class LyhAllotService {
 
             allotDetailsMapper.insertAllotDetails(allotDetailsEntity);
         }
-//        for (LyhPharmacyDetailsEntity entity : list) {
-//            System.out.println(entity.getNumbers());
-//            LyhAllotEntity allotEntity=new LyhAllotEntity();
-//            allotEntity.setPharmacyId(entity.getPharmacyId());
-//            allotEntity.setDrugId(entity.getDrugId());
-//            allotMapper.insertAllot(allotEntity);
-//
-//
-//            LyhPharmacyDetailsEntity detailsEntity=new LyhPharmacyDetailsEntity();
-//            System.out.println(detailsEntity.getNumbers());
-//            detailsEntity.setNumbers(detailsEntity.getNumbers());
-//            detailsEntity.setDrugId(entity.getDrugId());
-//            detailsEntity.setPharmacyId(entity.getPharmacyId());
-//            detailsMapper.insertDetails(detailsEntity);
-//        }
-//
-
-
     }
 
 public List<LyhAllotEntity> findAllot(){
@@ -82,6 +64,11 @@ public List<LyhPharmacyDetailsEntity> findPharmacy(){
         return detailsMapper.findAll();
 
 }
+
+        public List<LyhAllotDetailsEntity> findAll(String allotId){
+        return allotDetailsMapper.findAll(allotId);
+        }
+
 
     public int updateById(Map<String,Object> map){
 

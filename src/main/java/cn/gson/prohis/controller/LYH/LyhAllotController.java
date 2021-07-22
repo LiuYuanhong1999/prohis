@@ -1,6 +1,7 @@
 package cn.gson.prohis.controller.LYH;
 
 
+import cn.gson.prohis.model.pojos.LyhAllotDetailsEntity;
 import cn.gson.prohis.model.pojos.LyhAllotEntity;
 import cn.gson.prohis.model.pojos.LyhPharmacyDetailsEntity;
 import cn.gson.prohis.model.service.LYH.LyhAllotService;
@@ -44,7 +45,10 @@ public class LyhAllotController {
     }
 
 
-
+    @RequestMapping("/find-allotDetails")
+    public List<LyhAllotDetailsEntity> findAll3(String allotId){
+        return bs.findAll(allotId);
+    }
 
 
     @RequestMapping("/update-allot")

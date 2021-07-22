@@ -86,6 +86,17 @@ private LyhDrugEntity lyhDrugEntity;
     }
 
 
+
+    private List<LyhAllotDetailsEntity> lyhAllotDetailsEntities;
+
+    public List<LyhAllotDetailsEntity> getLyhAllotDetailsEntities() {
+        return lyhAllotDetailsEntities;
+    }
+
+    public void setLyhAllotDetailsEntities(List<LyhAllotDetailsEntity> lyhAllotDetailsEntities) {
+        this.lyhAllotDetailsEntities = lyhAllotDetailsEntities;
+    }
+
     @Override
     public String toString() {
         return "LyhPharmacyEntity{" +
