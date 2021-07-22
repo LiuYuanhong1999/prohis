@@ -15,8 +15,8 @@ public class LyhDrugStoreController {
 
 
     @RequestMapping("/find-drugstore")
-    public List<LyhDrugstoreEntity> findAll(){
-        return bs.findAll();
+    public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId){
+        return bs.findAll(drugId, procurementId);
     }
 
 @PostMapping(value = "/update-drugstore" , produces = "application/json")

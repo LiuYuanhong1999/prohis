@@ -7,7 +7,7 @@
         <result column="drugstore_date" property="drugstoreDate"></result>
         <result column="procurement_id" property="procurementId"></result>
         <result column="audit_id" property="auditId"></result>
-
+        <result column="pi_ci" property="piCi"></result>
         <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
             <id column="drug_id" property="drugId"></id>
             <result column="drug_name" property="drugName"></result>
@@ -50,8 +50,34 @@
             left join lyhprocurement c on a.procurement_id=c.procurement_id
             left join lyhaudit d on a.audit_id=d.audit_id
             left join lyhsupplier e on b.supplier_id=e.supplier_id
+        <where>
+            <if test="drugId !=null and drugId!=''">
+
+            a.drug_id=#{drugId}
+            </if>
+        <if test="procurementId !=null and procurementId !=''">
+            and a.procurement_id=#{procurementId}
+        </if>
+        </where>
+
+
+
         order by a.drugstore_date desc
     </select>
+
+
+    <select id="findByName" resultMap="drugstore">
+
+        select * from lyhdrugstore
+        where drug_id=#{drugId} and procurement_id=#{procurementId}
+    </select>
+
+<insert id="insertDrugStore">
+
+        insert into lyhdrugstore(drug_id,drugstore_number,procurement_id,audit_id,pi_ci)
+        values (#{drugId},#{drugstoreNumber},#{procurementId},#{auditId},#{piCi})
+
+</insert>
 
 <!--    <update id="updateById" parameterType="LyhDrugstoreEntity">-->
 <!--        UPDATE lyhdrugstore a-->

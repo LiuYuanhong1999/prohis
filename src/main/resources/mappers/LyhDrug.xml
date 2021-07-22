@@ -19,4 +19,9 @@
         select * from lyh_drug a left join lyhsupplier b on a.supplier_id=b.supplier_id
         where a.supplier_id=#{supplierId}
     </select>
+    <select id="findAll" resultMap="drug">
+        select * from lyh_drug a
+        left join lyhsupplier b on a.supplier_id=b.supplier_id
+        order by a.drug_date desc
+    </select>
 </mapper>

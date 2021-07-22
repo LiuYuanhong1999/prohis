@@ -15,7 +15,7 @@ public class LyhDrugstoreEntity {
     private Timestamp drugstoreDate;
     private String procurementId;
     private Integer auditId;
-
+private String piCi;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getDrugstoreId() {
@@ -26,6 +26,14 @@ public class LyhDrugstoreEntity {
         this.drugstoreId = drugstoreId;
     }
 
+
+    public String getPiCi() {
+        return piCi;
+    }
+
+    public void setPiCi(String piCi) {
+        this.piCi = piCi;
+    }
 
     public Integer getDrugId() {
         return drugId;

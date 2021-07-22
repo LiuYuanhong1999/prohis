@@ -18,5 +18,8 @@ public class LyhDrugService {
     }
 
 
+    public List<LyhDrugEntity> findAll(){
+        return bs.findAll();
+    }
 
 }

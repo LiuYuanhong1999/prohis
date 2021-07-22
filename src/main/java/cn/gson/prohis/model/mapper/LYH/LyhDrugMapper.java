@@ -9,4 +9,6 @@ import java.util.List;
 public interface LyhDrugMapper {
 
     public List<LyhDrugEntity> findById(int supplierId);
+
+    public List<LyhDrugEntity> findAll();
 }

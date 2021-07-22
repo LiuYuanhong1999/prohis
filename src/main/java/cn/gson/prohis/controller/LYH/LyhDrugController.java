@@ -20,4 +20,10 @@ public class LyhDrugController {
     public List<LyhDrugEntity> findById(int supplierId){
         return bs.findById(supplierId);
     }
+
+
+    @RequestMapping("/find-drugAll")
+    public List<LyhDrugEntity> findAll(){
+      return   bs.findAll();
+    }
 }

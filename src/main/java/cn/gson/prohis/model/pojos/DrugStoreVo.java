@@ -5,7 +5,16 @@ public class DrugStoreVo {
     private String procurementId;
     private int numbers;
     private int drugId;
+    private String piCi;
 
+
+    public String getPiCi() {
+        return piCi;
+    }
+
+    public void setPiCi(String piCi) {
+        this.piCi = piCi;
+    }
 
     public int getDrugId() {
         return drugId;
@@ -32,23 +41,4 @@ public class DrugStoreVo {
     }
 
 
-//    private LyhDrugEntity lyhDrugEntity;
-//
-//    public LyhDrugEntity getLyhDrugEntity() {
-//        return lyhDrugEntity;
-//    }
-//
-//    public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
-//        this.lyhDrugEntity = lyhDrugEntity;
-//    }
-
-
-//    @Override
-//    public String toString() {
-//        return "DrugStoreVo{" +
-//                "procurementId='" + procurementId + '\'' +
-//                ", numbers=" + numbers +
-//                ", lyhDrugEntity=" + lyhDrugEntity +
-//                '}';
-//    }
 }

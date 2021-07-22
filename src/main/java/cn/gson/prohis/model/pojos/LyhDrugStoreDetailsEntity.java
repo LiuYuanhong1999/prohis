@@ -15,7 +15,15 @@ public class LyhDrugStoreDetailsEntity {
     private Timestamp detailsDate;
     private int drugId;
     private int numbers;
+private String piCi;
 
+    public String getPiCi() {
+        return piCi;
+    }
+
+    public void setPiCi(String piCi) {
+        this.piCi = piCi;
+    }
 
     public int getNumbers() {
         return numbers;

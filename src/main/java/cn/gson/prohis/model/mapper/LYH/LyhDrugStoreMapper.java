@@ -11,9 +11,15 @@ import java.util.Map;
 public interface LyhDrugStoreMapper {
 
 
-    public List<LyhDrugstoreEntity> findAll();
+    public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId);
 
 //    public int updateById(Map<String,Object> map);
 
 public void updateById(int numbers,String procurementId,int drugId);
+
+
+public List<LyhDrugstoreEntity> findByName(int drugId,String procurementId);
+
+public void insertDrugStore(LyhDrugstoreEntity lyhDrugstoreEntity);
+
 }

@@ -7,6 +7,7 @@
                 <result column="procurement_id" property="procurementId"></result>
                 <result column="drug_id" property="drugId"></result>
                 <result column="numbers" property="numbers"></result>
+                <result column="pi_ci" property="piCi"></result>
                 <association property="lyhProcurementDetailsEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
                     <id column="pro_id" property="proId"></id>
                     <result column="drug_id" property="drugId"></result>
@@ -50,7 +51,7 @@
     <result column="drugstore_date" property="drugstoreDate"></result>
     <result column="procurement_id" property="procurementId"></result>
     <result column="audit_id" property="auditId"></result>
-
+    <result column="pi_ci" property="piCi"></result>
 </association>
             </resultMap>
 
@@ -82,7 +83,7 @@
 
 
     <insert id="insertDetails">
-        insert into lyhdrugstoredetails(drug_id,procurement_id,details_name,numbers)
-        values(#{drugId},#{procurementId},#{detailsName},#{numbers})
+        insert into lyhdrugstoredetails(drug_id,procurement_id,details_name,numbers,pi_ci)
+        values(#{drugId},#{procurementId},#{detailsName},#{numbers},#{piCi})
     </insert>
 </mapper>
