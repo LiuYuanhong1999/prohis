@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhAllotRecordMapper">
+    <resultMap id="allotRecord" type="cn.gson.prohis.model.pojos.LyhAllotRecordEntity">
+        <id column="record_id" property="recordId"></id>
+        <result column="allot_id" property="allotId"></result>
+        <result column="drug_id" property="drugId"></result>
+        <result column="record_date" property="recordDate"></result>
+        <result column="record_numbers" property="recordNumbers"></result>
+    </resultMap>
+
+
+
+
+    <insert id="insertAllotRecord">
+        insert into lyhallotrecord(allot_id,drug_id,record_numbers)
+        values (#{allotId},#{drugId},#{recordNumbers})
+    </insert>
+</mapper>

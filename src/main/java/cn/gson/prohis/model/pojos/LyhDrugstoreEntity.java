@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -113,5 +114,16 @@ private String piCi;
 
     public void setLyhAuditEntity(LyhAuditEntity lyhAuditEntity) {
         this.lyhAuditEntity = lyhAuditEntity;
+    }
+
+
+    private List<LyhPharmacyEntity> lyhPharmacyEntities;
+
+    public List<LyhPharmacyEntity> getLyhPharmacyEntities() {
+        return lyhPharmacyEntities;
+    }
+
+    public void setLyhPharmacyEntities(List<LyhPharmacyEntity> lyhPharmacyEntities) {
+        this.lyhPharmacyEntities = lyhPharmacyEntities;
     }
 }

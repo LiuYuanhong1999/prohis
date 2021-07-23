@@ -22,4 +22,6 @@ public List<LyhDrugstoreEntity> findByName(int drugId,String procurementId);
 
 public void insertDrugStore(LyhDrugstoreEntity lyhDrugstoreEntity);
 
+//根据调拨单批量修改数量
+public void updateById2(Integer numbers,Integer drugId,String procurementId);
 }

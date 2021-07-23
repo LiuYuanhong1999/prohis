@@ -79,36 +79,6 @@
 
 </insert>
 
-<!--    <update id="updateById" parameterType="LyhDrugstoreEntity">-->
-<!--        UPDATE lyhdrugstore a-->
-<!--            left join lyhaudit b on a.procurement_id=b.procurement_id-->
-<!--            LEFT JOIN lyhprocurementdetails c on b.procurement_id=c.procurement_id-->
-<!--            set  a.drugstore_number = a.drugstore_number+#{numbers,jdbcType=INTEGER}-->
-<!--        where  b.procurement_id in-->
-<!--<foreach collection="procurementId"  item="procurementId" open="(" separator="," close=")">-->
-<!--       #{procurementId}-->
-<!--</foreach>-->
-<!--and c.drug_id in-->
-<!--              <foreach collection="drugId" item="drugId" open="(" separator="," close=")">-->
-<!--                  #{drugId}-->
-<!--              </foreach>-->
-<!--    </update>-->
-
-
-
-<!--    <update id="updateById" parameterType="cn.gson.prohis.model.pojos.LyhDrugstoreEntity">-->
-<!--        <foreach collection="list"  item="item" index="index">-->
-<!--        UPDATE lyhdrugstore a-->
-<!--        left join lyhaudit b on a.procurement_id=b.procurement_id-->
-<!--        LEFT JOIN lyhprocurementdetails c on b.procurement_id=c.procurement_id-->
-<!--        set  a.drugstore_number = a.drugstore_number+#{item.numbers,jdbcType=INTEGER}-->
-<!--        where  b.procurement_id =  #{item.procurementId}-->
-<!--        and c.drug_id = #{item.drugId}-->
-<!--        </foreach>-->
-<!--    </update>-->
-
-
-
 
     <update id="updateById" >
             UPDATE lyhdrugstore a
@@ -119,6 +89,18 @@
           a.drug_id = #{drugId}
             and
                a.procurement_id =  #{procurementId}
+    </update>
+
+
+    <update id="updateById2">
+
+        update lyhdrugstore a
+            left join lyhpharmacy b on a.drug_id=b.drug_id
+            left join lyhallotdetails c on b.pharmacy_id=c.pharmacy_id
+        set a.drugstore_number = a.drugstore_number-#{numbers,jdbcType=INTEGER}
+        where
+     a.drug_id=#{drugId}
+            and a.procurement_id=#{procurementId}
     </update>
 
 

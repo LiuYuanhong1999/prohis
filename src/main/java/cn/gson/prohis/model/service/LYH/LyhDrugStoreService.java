@@ -1,8 +1,10 @@
 package cn.gson.prohis.model.service.LYH;
 
+import cn.gson.prohis.model.mapper.LYH.LyhAllotRecordMapper;
 import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreDetailsMapper;
 import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreMapper;
 import cn.gson.prohis.model.pojos.DrugStoreVo;
+import cn.gson.prohis.model.pojos.LyhAllotRecordEntity;
 import cn.gson.prohis.model.pojos.LyhDrugStoreDetailsEntity;
 import cn.gson.prohis.model.pojos.LyhDrugstoreEntity;
 import com.alibaba.fastjson.JSONObject;
@@ -20,6 +22,10 @@ public class LyhDrugStoreService {
 
     @Resource
     private LyhDrugStoreDetailsMapper ds;
+
+
+    @Resource
+    private LyhAllotRecordMapper allotRecordMapper;
 
     public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId){
         return bs.findAll(drugId, procurementId);
@@ -70,8 +76,20 @@ public void updateById(String json){
 
     }
 
+}
 
+//同时新增库存调拨记录和修改库存数量
+public void update(Integer numbers,Integer drugId,String procurementId,String allotId){
+
+    LyhAllotRecordEntity allotRecordEntity=new LyhAllotRecordEntity();
+        allotRecordEntity.setAllotId(allotId);
+        allotRecordEntity.setDrugId(drugId);
+        allotRecordEntity.setRecordNumbers(numbers);
+            allotRecordMapper.insertAllotRecord(allotRecordEntity);
+        bs.updateById2(numbers, drugId, procurementId);
 
 }
+
+
 
 }

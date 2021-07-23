@@ -16,7 +16,15 @@ public class LyhAllotDetailsEntity {
     private Integer pharmacyId;
     private String allotdetailsName;
     private int numbers;
+    private int drugId;
 
+    public int getDrugId() {
+        return drugId;
+    }
+
+    public void setDrugId(int drugId) {
+        this.drugId = drugId;
+    }
 
     public int getNumbers() {
         return numbers;

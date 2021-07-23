@@ -73,7 +73,15 @@ private LyhDrugEntity lyhDrugEntity;
         this.lyhPharmacyDetailsEntities = lyhPharmacyDetailsEntities;
     }
 
+        private LyhDrugstoreEntity lyhDrugstoreEntity;
 
+    public LyhDrugstoreEntity getLyhDrugstoreEntity() {
+        return lyhDrugstoreEntity;
+    }
+
+    public void setLyhDrugstoreEntity(LyhDrugstoreEntity lyhDrugstoreEntity) {
+        this.lyhDrugstoreEntity = lyhDrugstoreEntity;
+    }
 
     private List<LyhAllotEntity> lyhAllotEntities;
 

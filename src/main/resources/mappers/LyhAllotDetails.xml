@@ -7,7 +7,7 @@
         <result column="pharmacy_id" property="pharmacyId"></result>
         <result column="allotdetails_name" property="allotdetailsName"></result>
         <result column="numbers" property="numbers"></result>
-
+        <result column="drug_id" property="drugId"></result>
         <association property="allotEntity" javaType="cn.gson.prohis.model.pojos.LyhAllotEntity">
         <id column="allot_id" property="allotId"></id>
         <result column="allot_state" property="allotState"></result>
@@ -20,6 +20,17 @@
             <result column="drug_id" property="drugId"></result>
             <result column="pharmacy_date" property="pharmacyDate"></result>
             <result column="pharmacy_number" property="pharmacyNumber"></result>
+
+
+            <association property="lyhDrugstoreEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugstoreEntity">
+                <id column="drugstore_id" property="drugstoreId"></id>
+                <result column="drug_id" property="drugId"></result>
+                <result column="drugstore_number" property="drugstoreNumber"></result>
+                <result column="drugstore_date" property="drugstoreDate"></result>
+                <result column="procurement_id" property="procurementId"></result>
+                <result column="audit_id" property="auditId"></result>
+                <result column="pi_ci" property="piCi"></result>
+            </association>
             <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
                 <id column="drug_id" property="drugId"></id>
                 <result column="drug_name" property="drugName"></result>
@@ -45,7 +56,7 @@
                 left join  lyhpharmacy c on a.pharmacy_id=c.pharmacy_id
                 left join  lyh_drug d on c.drug_id=d.drug_id
                 left join  lyhsupplier e on e.supplier_id=d.supplier_id
-
+                LEFT JOIN 	lyhdrugstore f on c.drug_id=f.drug_id
             <where>
                 <if test="allotId !=null and allotId !=''">
                     a.allot_id=#{allotId}

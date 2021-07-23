@@ -48,16 +48,13 @@ public class LyhAllotService {
             allotDetailsEntity.setAllotId(allotEntity.getAllotId());
             allotDetailsEntity.setPharmacyId(entity.getPharmacyId());
             allotDetailsEntity.setNumbers(entity.getNumbers());
-
+            allotDetailsEntity.setDrugId(entity.getDrugId());
             allotDetailsMapper.insertAllotDetails(allotDetailsEntity);
         }
     }
 
 public List<LyhAllotEntity> findAllot(){
-
-
         return allotMapper.findAll();
-
 }
 public List<LyhPharmacyDetailsEntity> findPharmacy(){
 
@@ -74,6 +71,16 @@ public List<LyhPharmacyDetailsEntity> findPharmacy(){
 
         return allotMapper.updateById(map);
     }
+
+
+
+
+
+
+
+
+
+
 
 
 }

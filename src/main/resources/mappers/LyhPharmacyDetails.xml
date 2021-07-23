@@ -12,7 +12,15 @@
         <result column="drug_id" property="drugId"></result>
         <result column="pharmacy_date" property="pharmacyDate"></result>
         <result column="pharmacy_number" property="pharmacyNumber"></result>
-
+          <association property="lyhDrugstoreEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugstoreEntity">
+              <id column="drugstore_id" property="drugstoreId"></id>
+              <result column="drug_id" property="drugId"></result>
+              <result column="drugstore_number" property="drugstoreNumber"></result>
+              <result column="drugstore_date" property="drugstoreDate"></result>
+              <result column="procurement_id" property="procurementId"></result>
+              <result column="audit_id" property="auditId"></result>
+              <result column="pi_ci" property="piCi"></result>
+          </association>
 
         <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
             <id column="drug_id" property="drugId"></id>
