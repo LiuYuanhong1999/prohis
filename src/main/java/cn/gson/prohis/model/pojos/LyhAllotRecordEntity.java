@@ -2,12 +2,7 @@ package cn.gson.prohis.model.pojos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
-
-
 public class LyhAllotRecordEntity {
     private int recordId;
     private String allotId;
