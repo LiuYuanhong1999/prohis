@@ -15,8 +15,8 @@ public class LyhPharmacyController {
 
 
     @RequestMapping("find-pharmacy")
-    public List<LyhPharmacyEntity> findAll(){
-        return bs.findAll();
+    public List<LyhPharmacyEntity> findAll(String drugName,Integer drugState,String drugJixin,String supplierName){
+        return bs.findAll(drugName, drugState, drugJixin, supplierName);
     }
 
 

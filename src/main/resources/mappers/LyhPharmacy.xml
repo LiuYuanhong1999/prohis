@@ -36,7 +36,26 @@
         select  * from lyhpharmacy a
         left join lyh_drug b on a.drug_id=b.drug_id
         left join lyhsupplier c on b.supplier_id=c.supplier_id
-        order by a.pharmacy_number asc
+
+    <where>
+    <if test="drugName !=null and drugName !=''">
+        b.drug_name like '%${drugName}%'
+    </if>
+    <if test="drugState !=null and drugState !=''">
+        and  b.drug_state =#{drugState}
+    </if>
+    <if test="drugJixin !=null and drugJixin !=''">
+        and b.drug_jixin like '%${drugJixin}%'
+    </if>
+
+    <if test="supplierName !=null and supplierName !=''">
+        and c.supplier_name like '%${supplierName}%'
+    </if>
+
+
+</where>
+
+    order by a.pharmacy_number asc
 
 </select>
 

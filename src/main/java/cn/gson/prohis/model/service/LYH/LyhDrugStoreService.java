@@ -36,11 +36,10 @@ public class LyhDrugStoreService {
         return bs.findByName(drugId,procurementId);
     }
 
-
+//入库时进行药品的数量修改，（如果没有获取到药品表里的药品信息那么就会新增反之修改），新增药库药品详细记录信息并且新增入库记录
 public void updateById(String json){
     System.out.println(json);
     List<DrugStoreVo> p = JSONObject.parseArray(json, DrugStoreVo.class);
-
     for (DrugStoreVo vo : p) {
         List<LyhDrugstoreEntity> s=bs.findByName(vo.getDrugId(),vo.getProcurementId());
             if (s.isEmpty()){

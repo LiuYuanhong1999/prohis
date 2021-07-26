@@ -56,9 +56,11 @@ public class LyhAllotService {
 public List<LyhAllotEntity> findAllot(){
         return allotMapper.findAll();
 }
-public List<LyhPharmacyDetailsEntity> findPharmacy(){
 
-        return detailsMapper.findAll();
+//查询药房申请调拨药品记录
+public List<LyhPharmacyDetailsEntity> findPharmacy(String drugName,Integer drugState,String drugJixin,String supplierName){
+
+        return detailsMapper.findAll(drugName, drugState, drugJixin, supplierName);
 
 }
 

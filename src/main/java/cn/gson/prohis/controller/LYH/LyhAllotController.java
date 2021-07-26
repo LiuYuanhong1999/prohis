@@ -40,8 +40,8 @@ public class LyhAllotController {
 
 
     @RequestMapping("find-pharmacyDetails")
-    public List<LyhPharmacyDetailsEntity> findAll2(){
-        return bs.findPharmacy();
+    public List<LyhPharmacyDetailsEntity> findAll2(String drugName,Integer drugState,String drugJixin,String supplierName){
+        return bs.findPharmacy(drugName, drugState, drugJixin, supplierName);
     }
 
 
@@ -61,7 +61,7 @@ public class LyhAllotController {
         bs.updateById(map);
 
 
-        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
+        return AjaxResult.me().setSuccess(true).setMsg("修改成功").setObject("success");
     }
 
 }
