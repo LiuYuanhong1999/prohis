@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 
 public class ZsxPatientData {
 
-  private long patientDataId;
+  private Integer patientDataId;
   private String patientDataCard;
   private String patientDataName;
   private String patientDataPhone;
@@ -33,11 +33,11 @@ public class ZsxPatientData {
   }
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public long getPatientDataId() {
+  public Integer getPatientDataId() {
     return patientDataId;
   }
 
-  public void setPatientDataId(long patientDataId) {
+  public void setPatientDataId(Integer patientDataId) {
     this.patientDataId = patientDataId;
   }
 

@@ -16,11 +16,13 @@ public class ZsxRegistrationService {
         return registrationMapper.findByRegistration();
     }
 
-    public void addRegistration(ZsxRegistration registration){
-        registrationMapper.addRegistration(registration);
+
+    public void saveRegistration(ZsxRegistration registration){
+        if(registration.getRegistrationId()==null || registration.getRegistrationId().equals("")){
+            registrationMapper.addRegistration(registration);
+        }else {
+            registrationMapper.updateRegistration(registration);
+        }
     }
 
-    public void updateRegistration(ZsxRegistration registration){
-        registrationMapper.updateRegistration(registration);
-    }
 }

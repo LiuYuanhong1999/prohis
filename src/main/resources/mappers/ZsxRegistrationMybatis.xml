@@ -3,11 +3,13 @@
     <resultMap id="registration" type="cn.gson.prohis.model.pojos.ZsxRegistration">
 <!--        挂号-->
         <id column="registration_id" property="registrationId"></id>
+        <result column="registration_number" property="registrationNumber"></result>
         <result column="patient_data_id" property="patientDataId"></result>
         <result column="room" property="room"></result>
         <result column="doctot" property="doctot"></result>
         <result column="registration_time" property="registrationTime"></result>
         <result column="registration_fee" property="registrationFee"></result>
+        <result column="registration_state" property="registrationState"></result>
 <!--        病人-->
         <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
             <id column="patient_data_id" property="patientDataId"></id>
@@ -28,13 +30,13 @@
 <!--    新增挂号单-->
     <insert id="addRegistration">
         insert into zsx_registration values
-        (#{registrationId},#{room},#{doctot},#{registrationTime},#{registrationFee},#{patientDataId})
+        (#{registrationId},#{registrationNumber},#{room},#{doctot},#{registrationTime},#{registrationFee},#{patientDataId},#{registrationState})
     </insert>
 
 <!--    修改挂号单-->
     <update id="updateRegistration">
         update zsx_registration set
-        room=#{room},doctot#{doctot},registration_time=#{registrationTime},
+        room=#{room},doctot#{doctot},registration_time=#{registrationTime},registration_state=#{registrationState},
         registration_fee=#{registrationFee},patient_data_id=#{patientDataId} where #{registrationId}
     </update>
 </mapper>

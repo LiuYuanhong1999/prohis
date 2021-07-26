@@ -7,12 +7,30 @@ import java.sql.Timestamp;
 
 public class ZsxRegistration {
 
-  private long registrationId;
+  private Integer registrationId;
+  private String registrationNumber;
   private String patientDataId;
   private String room;
   private String doctot;
   private Timestamp registrationTime;
   private String registrationFee;
+  private Integer registrationState;
+
+  public Integer getRegistrationState() {
+    return registrationState;
+  }
+
+  public void setRegistrationState(Integer registrationState) {
+    this.registrationState = registrationState;
+  }
+
+  public String getRegistrationNumber() {
+    return registrationNumber;
+  }
+
+  public void setRegistrationNumber(String registrationNumber) {
+    this.registrationNumber = registrationNumber;
+  }
 
   private ZsxPatientData patient;
 
@@ -24,11 +42,11 @@ public class ZsxRegistration {
     this.patient = patient;
   }
 
-  public long getRegistrationId() {
+  public Integer getRegistrationId() {
     return registrationId;
   }
 
-  public void setRegistrationId(long registrationId) {
+  public void setRegistrationId(Integer registrationId) {
     this.registrationId = registrationId;
   }
 

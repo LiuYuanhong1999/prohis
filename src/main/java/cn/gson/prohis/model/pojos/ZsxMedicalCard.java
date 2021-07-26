@@ -66,4 +66,15 @@ public class ZsxMedicalCard {
     this.medicalCardLock = medicalCardLock;
   }
 
+  @Override
+  public String toString() {
+    return "ZsxMedicalCard{" +
+            "medicalCardId=" + medicalCardId +
+            ", medicalCardNumber='" + medicalCardNumber + '\'' +
+            ", medicalCardPassword='" + medicalCardPassword + '\'' +
+            ", medicalCardBalance='" + medicalCardBalance + '\'' +
+            ", medicalCardLock=" + medicalCardLock +
+            ", medicalCardRecords=" + medicalCardRecords +
+            '}';
+  }
 }

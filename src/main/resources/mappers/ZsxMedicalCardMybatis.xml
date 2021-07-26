@@ -16,7 +16,7 @@
             <result column="medical_card_lock" property="medicalCardLock"></result>
  <!--            诊疗卡记录-->
             <association property="medicalCardRecords" javaType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
-                <id column="medical_card_record_id" property="medicalCardRecordId"></id>
+                <id column="medical_card_record_number" property="medicalCardNumber"></id>
                 <result column="medical_card_time" property="medicalCardTime"></result>
             </association>
         </association>
@@ -25,10 +25,10 @@
     <!--查询挂号单，按照最新时间排序-->
     <select id="findByMedicalCard" resultMap="patientData">
         select * from zsx_medical_card
-            inner join  zsx_patient_data
+            left join  zsx_patient_data
                 on zsx_medical_card.medical_card_number=zsx_patient_data.medical_card_number
-            inner join zsx_medical_card_record
-                on zsx_medical_card.medical_card_id=zsx_medical_card_record.medical_card_id
+            left join zsx_medical_card_record
+                on zsx_medical_card.medical_card_number=zsx_medical_card_record.medical_card_number
     </select>
 
 
@@ -46,12 +46,23 @@
 
     <!--新增诊疗卡充值记录-->
     <insert id="addMedicalCardRecords">
-        insert into zsx_medical_card_record values (#{medicalCardRecordId}#{medicalCardId},#{medicalCardNumber})
+        insert into zsx_medical_card_record values (#{medicalCardRecordId},#{medicalCardNumber},#{medicalCardTime})
     </insert>
 
 
-<!--修改诊疗卡-->
-    <update id="">
+<!--修改病人资料-->
+    <update id="updatePatient">
         update zsx_patient_data set
+        patient_data_name=#{patientDataName},
+        patient_data_phone=#{patientDataPhone},
+        patient_data_sex=#{patientDataSex} where medical_card_number =#{medicalCardNumber}
+    </update>
+
+<!--    修改诊疗卡-->
+    <update id="updateMedicalCard">
+        update zsx_medical_card set
+        medical_card_password=#{medicalCardPassword},
+        medical_card_balance=#{medicalCardBalance},
+        medical_card_lock=#{medicalCardLock} where medical_card_number = #{medicalCardNumber}
     </update>
 </mapper>
