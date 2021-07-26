@@ -2,9 +2,7 @@ package cn.gson.prohis.controller.ZSX;
 
 import cn.gson.prohis.model.pojos.ZsxPatientData;
 import cn.gson.prohis.model.service.ZSX.ZsxMedicalCardService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -21,5 +19,13 @@ public class ZsxMedicalCardController {
     @ResponseBody
     public List<ZsxPatientData> findByMedicalCard(){
         return medicalCardService.findByMedicalCard();
+    }
+
+    /*
+    * 新增修改病人、诊疗卡、诊疗卡充值记录
+    * */
+    @PostMapping("/saveMedicalCard")
+    public void saveMedical(@RequestBody ZsxPatientData patientData){
+        medicalCardService.saveMedicalCard(patientData);
     }
 }

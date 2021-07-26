@@ -2,9 +2,7 @@ package cn.gson.prohis.controller.ZSX;
 
 import cn.gson.prohis.model.pojos.ZsxRegistration;
 import cn.gson.prohis.model.service.ZSX.ZsxRegistrationService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -20,15 +18,10 @@ public class ZsxRegistrationController {
         return registrationService.findByRegistration();
     }
 
-    @RequestMapping("/addRegistration")
-    @ResponseBody
-    public void addRegistration(ZsxRegistration registration){
-        registrationService.addRegistration(registration);
+
+    @PostMapping("/save-registration")
+    public void saveRegistration(@RequestBody ZsxRegistration registration){
+        registrationService.saveRegistration(registration);
     }
 
-    @RequestMapping("/updateRegistration")
-    @ResponseBody
-    public void updateRegistration(ZsxRegistration registration){
-        registrationService.updateRegistration(registration);
-    }
 }
