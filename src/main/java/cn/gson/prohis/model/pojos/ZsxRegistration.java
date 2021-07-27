@@ -9,12 +9,30 @@ public class ZsxRegistration {
 
   private Integer registrationId;
   private String registrationNumber;
-  private String patientDataId;
+  private Integer patientDataId;
   private String room;
-  private String doctot;
+  private int doctot;
   private Timestamp registrationTime;
   private String registrationFee;
   private Integer registrationState;
+  private String registrationType;
+  private String registrationName;
+
+  public String getRegistrationType() {
+    return registrationType;
+  }
+
+  public void setRegistrationType(String registrationType) {
+    this.registrationType = registrationType;
+  }
+
+  public String getRegistrationName() {
+    return registrationName;
+  }
+
+  public void setRegistrationName(String registrationName) {
+    this.registrationName = registrationName;
+  }
 
   public Integer getRegistrationState() {
     return registrationState;
@@ -42,6 +60,16 @@ public class ZsxRegistration {
     this.patient = patient;
   }
 
+  private YxjDesk desk;
+
+  public YxjDesk getDesk() {
+    return desk;
+  }
+
+  public void setDesk(YxjDesk desk) {
+    this.desk = desk;
+  }
+
   public Integer getRegistrationId() {
     return registrationId;
   }
@@ -51,11 +79,11 @@ public class ZsxRegistration {
   }
 
 
-  public String getPatientDataId() {
+  public Integer getPatientDataId() {
     return patientDataId;
   }
 
-  public void setPatientDataId(String patientDataId) {
+  public void setPatientDataId(Integer patientDataId) {
     this.patientDataId = patientDataId;
   }
 
@@ -69,11 +97,11 @@ public class ZsxRegistration {
   }
 
 
-  public String getDoctot() {
+  public int getDoctot() {
     return doctot;
   }
 
-  public void setDoctot(String doctot) {
+  public void setDoctot(int doctot) {
     this.doctot = doctot;
   }
 
@@ -95,4 +123,21 @@ public class ZsxRegistration {
     this.registrationFee = registrationFee;
   }
 
+  @Override
+  public String toString() {
+    return "ZsxRegistration{" +
+            "registrationId=" + registrationId +
+            ", registrationNumber='" + registrationNumber + '\'' +
+            ", patientDataId='" + patientDataId + '\'' +
+            ", room='" + room + '\'' +
+            ", doctot='" + doctot + '\'' +
+            ", registrationTime=" + registrationTime +
+            ", registrationFee='" + registrationFee + '\'' +
+            ", registrationState=" + registrationState +
+            ", registrationType='" + registrationType + '\'' +
+            ", registrationName='" + registrationName + '\'' +
+            ", patient=" + patient +
+            ", desk=" + desk +
+            '}';
+  }
 }
