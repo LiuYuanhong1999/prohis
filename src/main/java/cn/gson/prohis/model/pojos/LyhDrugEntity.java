@@ -107,4 +107,6 @@ public class LyhDrugEntity {
     public void setLyhProcurementDetailsEntities(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities) {
         this.lyhProcurementDetailsEntities = lyhProcurementDetailsEntities;
     }
+
+    public List<TyhRecipeEntity> tyhRecipeEntity;
 }

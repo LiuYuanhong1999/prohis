@@ -1,16 +1,26 @@
 package cn.gson.prohis.model.pojos;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
 
 public class ZsxRegistration {
 
-  private long registrationId;
+  private Integer registrationId;
   private String patientDataId;
   private String room;
   private String doctot;
   private Date registrationTime;
   private String registrationFee;
+  private Integer registrationState;
+
+  public Integer getRegistrationState() {
+    return registrationState;
+  }
+
+  public void setRegistrationState(Integer registrationState) {
+    this.registrationState = registrationState;
+  }
 
   private ZsxPatientData patient;
 
@@ -22,11 +32,11 @@ public class ZsxRegistration {
     this.patient = patient;
   }
 
-  public long getRegistrationId() {
+  public Integer getRegistrationId() {
     return registrationId;
   }
 
-  public void setRegistrationId(long registrationId) {
+  public void setRegistrationId(Integer registrationId) {
     this.registrationId = registrationId;
   }
 
@@ -74,4 +84,13 @@ public class ZsxRegistration {
     this.registrationFee = registrationFee;
   }
 
+  public TyhHosnotEntity tyhHosnotEntity;
+
+  public TyhHosnotEntity getTyhHosnotEntity() {
+    return tyhHosnotEntity;
+  }
+
+  public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
+    this.tyhHosnotEntity = tyhHosnotEntity;
+  }
 }

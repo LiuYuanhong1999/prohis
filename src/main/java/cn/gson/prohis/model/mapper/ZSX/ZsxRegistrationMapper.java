@@ -10,4 +10,7 @@ public interface ZsxRegistrationMapper {
 //查询全部的挂号单
     public List<ZsxRegistration> findByRegistration();
 
+    public List<ZsxRegistration> findRegei();
+
+    ZsxRegistration findRegei2(Integer num);
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.hosnotMapper">
+    <resultMap id="hosnot" type="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+        <id column="hosnot_num" property="hosnotNum"></id>
+        <result column="hosnot_date" property="hosnotDate"></result>
+        <result column="hosnot_price" property="hosnotPrice"></result>
+        <result column="hosnot_cash" property="hosnotCash"></result>
+        <result column="hosnot_war" property="hosnotWar"></result>
+        <result column="hosnot_sm" property="hosnotSm"></result>
+        <result column="hosnot_zt" property="hosnotZt"></result>
+
+        <association property="zsxRegistration" javaType="cn.gson.prohis.model.pojos.ZsxRegistration">
+            <id column="registration_id" property="registrationId"></id>
+            <result column="patient_data_id" property="patientDataId"></result>
+            <result column="room" property="room"></result>
+            <result column="doctot" property="doctot"></result>
+            <result column="registration_time" property="registrationTime"></result>
+            <result column="registration_fee" property="registrationFee"></result>
+            <result column="registration_state" property="registrationState"></result>
+        </association>
+
+        <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+            <id column="patient_id" property="patientId"></id>
+            <result column="patient_name" property="patientName"></result>
+            <result column="patient_sex" property="patientSex"></result>
+            <result column="patient_yue" property="patientYue"></result>
+        </association>
+        <association property="tyhHospitalEntity" javaType="cn.gson.prohis.model.pojos.TyhHospitalEntity">
+            <id column="hospital_id" property="hospitalId"></id>
+            <result column="hospital_name" property="hospitalName"></result>
+            <result column="hospital_price" property="hospitalPrice"></result>
+            <collection property="tyhInpatientEntity" javaType="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+                <id column="inp_id" property="inpId"></id>
+                <result column="inp_name" property="inpName"></result>
+            </collection>
+        </association>
+
+        <association property="yxjDeskEntity" javaType="cn.gson.prohis.model.pojos.YxjDeskEntity">
+            <id column="desk_id" property="deskId"></id>
+            <result column="desk_name" property="deskName"></result>
+            <result column="desk_time" property="deskTime"></result>
+        </association>
+    </resultMap>
+
+    <resultMap id="tyhdesk" type="cn.gson.prohis.model.pojos.YxjDeskEntity">
+            <id column="desk_id" property="deskId"></id>
+            <result column="desk_name" property="deskName"></result>
+            <result column="desk_time" property="deskTime"></result>
+    </resultMap>
+
+    <select id="findAllnot" resultMap="hosnot">
+        select * from tyh_hosnot th
+        left join zsx_registration zr on th.hosnot_mz=zr.registration_id
+        left join yxj_desk yd on th.desk_id=yd.desk_id
+        left join tyh_patient tp on th.bingren=tp.patient_id
+        left join tyh_hospital tl on th.hospital_id=tl.hospital_id
+        left join tyh_inpatient ti on tl.inp_id=ti.inp_id
+    </select>
+
+    <select id="finddesk" resultMap="tyhdesk">
+        select * from yxj_desk
+    </select>
+
+    <insert id="addbr" useGeneratedKeys="true" keyProperty="bingren" parameterType="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+        insert into tyh_patient(patient_name,patient_sex)
+        values (#{zsxRegistration.patient.patientDataName},#{zsxRegistration.patient.patientDataSex})
+    </insert>
+    
+    <insert id="addhosnot">
+        insert into tyh_hosnot(hosnot_num,hosnot_date,hosnot_mz,desk_id,bingren,hosnot_price,hosnot_cash)
+        values (#{hosnotNum},#{hosnotDate},#{zsxRegistration.registrationId},#{yxjDeskEntity.deskId},#{bingren},#{hosnotPrice},#{hosnotCash})
+    </insert>
+
+    <update id="updatemz">
+        update zsx_registration set registration_state=3 where registration_id=#{registrationId}
+    </update>
+</mapper>

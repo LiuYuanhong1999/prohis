@@ -25,4 +25,6 @@ public interface regMapper {
     public List<TyhHosregEntity> findchureg();
 
     TyhHosregEntity findchureg2(String num);
+
+    public List<TyhHosregEntity> chufangbr();
 }

@@ -144,4 +144,36 @@ public class TyhHosnotEntity {
     public void setYxjDeskEntity(YxjDeskEntity yxjDeskEntity) {
         this.yxjDeskEntity = yxjDeskEntity;
     }
+
+    public ZsxRegistration zsxRegistration;
+
+    public ZsxRegistration getZsxRegistration() {
+        return zsxRegistration;
+    }
+
+    public void setZsxRegistration(ZsxRegistration zsxRegistration) {
+        this.zsxRegistration = zsxRegistration;
+    }
+
+    @Override
+    public String toString() {
+        return "TyhHosnotEntity{" +
+                "hosnotNum='" + hosnotNum + '\'' +
+                ", hosnotDate=" + hosnotDate +
+                ", hosnotMz=" + hosnotMz +
+                ", deskId=" + deskId +
+                ", bingren=" + bingren +
+                ", hosnotPrice=" + hosnotPrice +
+                ", hosnotCash=" + hosnotCash +
+                ", hosnotWar=" + hosnotWar +
+                ", hosnotSm='" + hosnotSm + '\'' +
+                ", hospitalId=" + hospitalId +
+                ", hosnotZt=" + hosnotZt +
+                ", tyhHosregEntity=" + tyhHosregEntity +
+                ", tyhHospitalEntity=" + tyhHospitalEntity +
+                ", tyhPatientEntity=" + tyhPatientEntity +
+                ", yxjDeskEntity=" + yxjDeskEntity +
+                ", zsxRegistration=" + zsxRegistration +
+                '}';
+    }
 }

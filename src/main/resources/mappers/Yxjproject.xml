@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.projectMapper">
+    <resultMap id="project" type="cn.gson.prohis.model.pojos.YxjProjectEntity">
+            <id column="project_id" property="projectId"></id>
+            <result column="project_name" property="projectName"></result>
+            <result column="project_type" property="projectType"></result>
+            <result column="project_price" property="projectPrice"></result>
+    </resultMap>
+
+
+    <select id="findpro1" resultMap="project">
+        select * from yxj_project where project_type=1
+    </select>
+
+    <select id="findpro2" resultMap="project">
+        select * from yxj_project where project_type=2
+    </select>
+
+    <select id="findxm2" resultMap="project">
+        select * from yxj_project where project_type=2 and project_id=#{id}
+    </select>
+
+    <select id="findxm1" resultMap="project">
+        select * from yxj_project where project_type=1 and project_id=#{id}
+    </select>
+</mapper>

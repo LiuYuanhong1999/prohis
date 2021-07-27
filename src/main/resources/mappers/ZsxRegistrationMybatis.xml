@@ -7,6 +7,7 @@
         <result column="doctot" property="doctot"></result>
         <result column="registration_time" property="registrationTime"></result>
         <result column="registration_fee" property="registrationFee"></result>
+        <result column="registration_state" property="registrationState"></result>
         <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
             <id column="patient_data_id" property="patientDataId"></id>
             <result column="patient_data_card" property="patientDataCard"></result>
@@ -21,5 +22,15 @@
     <select id="findByRegistration" resultMap="registration">
         select * from zsx_registration , zsx_patient_data
         where zsx_registration.patient_data_id = zsx_patient_data.patient_data_id order by registration_time desc
+    </select>
+
+    <select id="findRegei" resultMap="registration">
+        select * from zsx_registration where registration_state=2
+    </select>
+
+    <select id="findRegei2" resultMap="registration">
+        select * from zsx_registration zr
+        left join zsx_patient_data zd on zr.patient_data_id=zd.patient_data_id
+        where registration_id=#{num}
     </select>
 </mapper>

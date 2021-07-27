@@ -141,4 +141,8 @@
         left join tyh_inpatient tip on ti.inp_id=tip.inp_id
         where th.hosreg_zt=1 and th.hosreg_num = #{num}
     </select>
+
+    <select id="chufangbr" resultMap="hosreg">
+        select * from tyh_hosreg th left join tyh_patient tp on th.patient_id=tp.patient_id where hosreg_zt=1
+    </select>
 </mapper>

@@ -9,13 +9,10 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-@Service
+ @Service
 public class regService {
     @Resource
     regMapper regMapper;
-    @Resource
-    cashService cashService;
 
     public List<TyhHosregEntity> findAll(String cha,String cha2){
         System.out.println("1"+cha);
@@ -43,7 +40,7 @@ public class regService {
     }
 
     public void suoding(String num) {
-        regMapper.suoding(num);
+         regMapper.suoding(num);
     }
 
     public void jiesuo(String num) {

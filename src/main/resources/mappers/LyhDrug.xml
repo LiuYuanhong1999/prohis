@@ -17,4 +17,12 @@
         select * from lyh_drug a left join lyhsupplier b on a.supplier_id=b.supplier_id
         where a.supplier_id=#{supplierId}
     </select>
+
+    <select id="findYp" resultMap="drug">
+        select * from lyh_drug
+    </select>
+
+    <select id="findyp2" resultMap="drug">
+        select * from lyh_drug where drug_id=#{id}
+    </select>
 </mapper>
