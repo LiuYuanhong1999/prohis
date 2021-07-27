@@ -24,4 +24,11 @@
         left join lyhsupplier b on a.supplier_id=b.supplier_id
         order by a.drug_date desc
     </select>
+
+
+
+    <insert id="insertByDrug">
+        insert into lyh_drug(drug_name,drug_date,drug_price,drug_state,drug_guige,drug_jixin,supplier_id)
+        values (#{drugName},{drugDate})
+    </insert>
 </mapper>
