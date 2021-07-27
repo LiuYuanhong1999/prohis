@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjStaffMapper">
+    <resultMap id="staff" type="cn.gson.prohis.model.pojos.YxjStaff">
+        <id column="staff_id" property="staffId"></id>
+        <result column="staff_name" property="staffName"></result>
+        <result column="staff_age" property="staffAge"></result>
+        <result column="staff_time" property="staffTime"></result>
+
+        <collection property="yxjDept" javaType="cn.gson.prohis.model.pojos.YxjDept">
+            <id column="dept_id" property="deptId"></id>
+            <result column="dept_name" property="deptName"></result>
+        </collection>
+
+    </resultMap>
+
+    <!--  查询所有员工  -->
+    <select id="allStaff" resultMap="staff">
+        SELECT * FROM yxj_staff s LEFT JOIN yxj_dept d ON s.dept_id = d.dept_id ORDER BY staff_time
+    </select>
+
+
+    <!--  新增员工  -->
+    <insert id="addStaff">
+        INSERT INTO yxj_staff(staff_id,staff_name,staff_age,staff_time,dept_id)
+        VALUES(#{staffId},#{staffName},#{staffAge},#{staffTime},#{deptId})
+    </insert>
+
+
+    <!--  修改员工  -->
+    <update id="updateStaff">
+        UPDATE yxj_staff SET staff_name = #{staffName},staff_age = #{staffAge},staff_time = #{staffTime}
+        WHERE staff_id = #{staffId}
+    </update>
+
+    <!-- 查询类别表   -->
+    <select id="allDept" resultMap="staff">
+        SELECT * FROM  yxj_dept
+    </select>
+
+</mapper>

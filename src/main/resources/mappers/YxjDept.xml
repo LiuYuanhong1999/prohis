@@ -1,0 +1,33 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjDeptMapper">
+    <resultMap id="dept" type="cn.gson.prohis.model.pojos.YxjDept">
+        <id column="dept_id" property="deptId"></id>
+        <result column="dept_name" property="deptName"></result>
+        <result column="dept_time" property="deptTime"></result>
+        <result column="dept_num" property="deptNum"></result>
+
+    </resultMap>
+
+    <!--  查询所有部门  -->
+    <select id="selDept" resultMap="dept">
+        SELECT * FROM yxj_dept
+    </select>
+
+
+    <!--  新增部门  -->
+    <insert id="addDept">
+        INSERT INTO yxj_dept(dept_id,dept_name,dept_time,dept_num)
+        VALUES(#{deptId},#{deptName},#{deptTime},#{deptNum})
+    </insert>
+
+    <!--  修改部门  -->
+    <update id="updateDept">
+        UPDATE yxj_dept SET dept_name = #{deptName},dept_num = #{deptNum} WHERE dept_id = #{deptId}
+    </update>
+
+    <!--  查询部门id  -->
+    <select id="selDeptId" resultMap="dept">
+        SELECT * FROM yxj_dept WHERE dept_id = #{deptId}
+    </select>
+
+</mapper>

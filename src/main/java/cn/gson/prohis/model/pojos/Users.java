@@ -3,7 +3,7 @@ package cn.gson.prohis.model.pojos;
 
 public class Users {
 
-  private long userId;
+  private Integer userId;
 
   private String userName;
   private String userPass;
@@ -17,11 +17,11 @@ public class Users {
     this.numbers = numbers;
   }
 
-  public long getUserId() {
+  public Integer getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(Integer userId) {
     this.userId = userId;
   }
 
