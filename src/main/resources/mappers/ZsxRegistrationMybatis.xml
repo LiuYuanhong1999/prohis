@@ -10,6 +10,8 @@
         <result column="registration_time" property="registrationTime"></result>
         <result column="registration_fee" property="registrationFee"></result>
         <result column="registration_state" property="registrationState"></result>
+        <result column="registration_type" property="registrationType"/>
+        <result column="registration_name" property="registrationName"/>
 <!--        病人-->
         <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
             <id column="patient_data_id" property="patientDataId"></id>
@@ -19,24 +21,64 @@
             <result column="patient_data_sex" property="patientDataSex"></result>
             <result column="medical_card_number" property="medicalCardNumber"></result>
         </association>
+        <association property="desk" javaType="cn.gson.prohis.model.pojos.YxjDesk">
+            <id column="desk_id" property="deskId"/>
+            <result column="desk_name" property="deskName"/>
+            <result column="desk_time" property="deskTime"/>
+        </association>
     </resultMap>
 
 <!--查询挂号单，按照最新时间排序-->
     <select id="findByRegistration" resultMap="registration">
-        select * from zsx_registration , zsx_patient_data
-        where zsx_registration.patient_data_id = zsx_patient_data.patient_data_id order by registration_time desc
+        select * from zsx_registration
+            inner join zsx_patient_data on zsx_registration.patient_data_id=zsx_patient_data.patient_data_id
+            inner join yxj_desk on zsx_registration.room=yxj_desk.desk_id order by registration_time desc
     </select>
 
 <!--    新增挂号单-->
     <insert id="addRegistration">
-        insert into zsx_registration values
-        (#{registrationId},#{registrationNumber},#{room},#{doctot},#{registrationTime},#{registrationFee},#{patientDataId},#{registrationState})
+        insert into zsx_registration
+        (registration_id,registration_number,room,doctot,
+         registration_time,registration_fee,patient_data_id,registration_state,
+         registration_type,registration_name)values
+        (#{registrationId},#{registrationNumber},#{room},#{doctot},
+         #{registrationTime},#{registrationFee},#{patientDataId},#{registrationState},
+         #{registrationType},#{registrationName})
     </insert>
 
 <!--    修改挂号单-->
     <update id="updateRegistration">
         update zsx_registration set
-        room=#{room},doctot#{doctot},registration_time=#{registrationTime},registration_state=#{registrationState},
-        registration_fee=#{registrationFee},patient_data_id=#{patientDataId} where #{registrationId}
+        room=#{room},doctot=#{doctot},registration_time=#{registrationTime},registration_state=#{registrationState},
+        registration_fee=#{registrationFee},patient_data_id=#{patientDataId} where registration_id=#{registrationId}
     </update>
+
+
+
+    <resultMap id="desk" type="cn.gson.prohis.model.pojos.YxjDesk">
+        <id column="desk_id" property="deskId"/>
+        <result column="desk_name" property="deskName"/>
+        <result column="desk_time" property="deskTime"/>
+    </resultMap>
+<!--查询科室-->
+    <select id="selectDesk" resultMap="desk">
+        select * from yxj_desk
+    </select>
+
+    <resultMap id="patient" type="cn.gson.prohis.model.pojos.ZsxPatientData">
+        <id column="patient_data_id" property="patientDataId"></id>
+        <result column="patient_data_card" property="patientDataCard"></result>
+        <result column="patient_data_name" property="patientDataName"></result>
+        <result column="patient_data_phone" property="patientDataPhone"></result>
+        <result column="patient_data_sex" property="patientDataSex"></result>
+        <result column="medical_card_number" property="medicalCardNumber"></result>
+    </resultMap>
+<!--    查询病人-->
+    <select id="selectPatient" resultMap="patient">
+        select * from zsx_patient_data
+    </select>
+
+    <select id="findByPatientId" resultMap="patient">
+        select * from zsx_patient_data where medical_card_number = #{medicalCardNumber}
+    </select>
 </mapper>

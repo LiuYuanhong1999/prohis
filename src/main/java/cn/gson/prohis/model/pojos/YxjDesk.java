@@ -41,4 +41,12 @@ public class YxjDesk {
     this.deskTime = deskTime;
   }
 
+  @Override
+  public String toString() {
+    return "YxjDesk{" +
+            "deskId=" + deskId +
+            ", deskName='" + deskName + '\'' +
+            ", deskTime=" + deskTime +
+            '}';
+  }
 }

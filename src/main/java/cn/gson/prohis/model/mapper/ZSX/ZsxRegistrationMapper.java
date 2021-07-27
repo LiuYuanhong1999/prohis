@@ -1,5 +1,7 @@
 package cn.gson.prohis.model.mapper.ZSX;
 
+import cn.gson.prohis.model.pojos.YxjDesk;
+import cn.gson.prohis.model.pojos.ZsxPatientData;
 import cn.gson.prohis.model.pojos.ZsxRegistration;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,4 +16,8 @@ public interface ZsxRegistrationMapper {
 
     void updateRegistration(ZsxRegistration registration);
 
+    List<YxjDesk> selectDesk();
+
+    List<ZsxPatientData> selectPatient();
+    List<ZsxPatientData> findByPatientId(String medicalCardNumber);
 }
