@@ -31,4 +31,12 @@
         insert into lyh_drug(drug_name,drug_date,drug_price,drug_state,drug_guige,drug_jixin,supplier_id)
         values (#{drugName},{drugDate})
     </insert>
+
+    <select id="findYp" resultMap="drug">
+        select * from lyh_drug
+    </select>
+
+    <select id="findyp2" resultMap="drug">
+        select * from lyh_drug where drug_id=#{id}
+    </select>
 </mapper>

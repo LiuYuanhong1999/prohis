@@ -1,6 +1,7 @@
 package cn.gson.prohis.model.pojos;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 public class TyhPatientEntity {
@@ -58,6 +59,16 @@ public class TyhPatientEntity {
 
     public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
         this.tyhHosnotEntity = tyhHosnotEntity;
+    }
+
+    public List<TyhRecipeEntity> tyhRecipeEntities;
+
+    public List<TyhRecipeEntity> getTyhRecipeEntities() {
+        return tyhRecipeEntities;
+    }
+
+    public void setTyhRecipeEntities(List<TyhRecipeEntity> tyhRecipeEntities) {
+        this.tyhRecipeEntities = tyhRecipeEntities;
     }
 
     @Override

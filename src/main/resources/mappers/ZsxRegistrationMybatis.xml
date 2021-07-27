@@ -81,4 +81,14 @@
     <select id="findByPatientId" resultMap="patient">
         select * from zsx_patient_data where medical_card_number = #{medicalCardNumber}
     </select>
+
+    <select id="findRegei" resultMap="registration">
+        select * from zsx_registration where registration_state=2
+    </select>
+
+    <select id="findRegei2" resultMap="registration">
+        select * from zsx_registration zr
+        left join zsx_patient_data zd on zr.patient_data_id=zd.patient_data_id
+        where registration_id=#{num}
+    </select>
 </mapper>

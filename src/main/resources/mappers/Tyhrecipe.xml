@@ -1,0 +1,55 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.recipeMapper">
+    <resultMap id="recipe" type="cn.gson.prohis.model.pojos.TyhRecipedetailEntity">
+        <id column="recipedetail_id" property="recipedetailId"></id>
+        <result column="recipedetail_price" property="recipedetailPrice"></result>
+        <result column="recipedetail_number" property="recipedetailNumber"></result>
+        <result column="recipedetail_explain" property="recipedetailExplain"></result>
+
+        <collection property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+        </collection>
+        <collection property="yxjProjectEntity" javaType="cn.gson.prohis.model.pojos.YxjProjectEntity">
+            <id column="project_id" property="projectId"></id>
+            <result column="project_name" property="projectName"></result>
+            <result column="project_type" property="projectType"></result>
+            <result column="project_price" property="projectPrice"></result>
+        </collection>
+
+        <collection property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+            <id column="recipe_id" property="recipeId"></id>
+            <result column="recipe_price" property="recipePrice"></result>
+            <result column="recipe_date" property="recipeDate"></result>
+            <result column="recipe_day" property="recipeDay"></result>
+            <result column="recipe_explain" property="recipeExplain"></result>
+            <result column="recipe_zt" property="recipeZt"></result>
+            <collection property="yxjStaffEntity" javaType="cn.gson.prohis.model.pojos.YxjStaffEntity">
+                <id column="staff_id" property="staffId"></id>
+                <result column="staff_name" property="staffName"></result>
+                <result column="staff_age" property="staffAge"></result>
+                <result column="staff_time" property="staffTime"></result>
+            </collection>
+            <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+
+    <select id="chufang" resultMap="recipe">
+        select * from tyh_recipedetail trd
+        left join tyh_recipe tr on trd.recipe_id=tr.recipe_id
+        left join lyh_drug ld on trd.recipedetail_durg=ld.drug_id
+        left join yxj_project yp on trd.recipedetail_project=yp.project_id
+        left join tyh_patient tp on tr.patient_id=tp.patient_id
+        left join yxj_staff ys on tr.staff_id=ys.staff_id
+        where tp.patient_id=#{id}
+    </select>
+</mapper>

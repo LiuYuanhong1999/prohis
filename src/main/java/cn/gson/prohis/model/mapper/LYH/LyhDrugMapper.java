@@ -11,4 +11,8 @@ public interface LyhDrugMapper {
     public List<LyhDrugEntity> findById(int supplierId);
 
     public List<LyhDrugEntity> findAll();
+
+    public List<LyhDrugEntity> findYp();
+
+    LyhDrugEntity findyp2(Integer id);
 }

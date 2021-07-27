@@ -15,6 +15,11 @@
         <class>cn.gson.prohis.model.pojos.LyhAllotEntity</class>
         <class>cn.gson.prohis.model.pojos.LyhallotdetailsEntity</class>
         <class>cn.gson.prohis.model.pojos.LyhAllotRecordEntity</class>
+        <class>cn.gson.prohis.model.pojos.ZsxRegistrationEntity</class>
+        <class>cn.gson.prohis.model.pojos.TyhRecipeEntity</class>
+        <class>cn.gson.prohis.model.pojos.TyhRecipedetailEntity</class>
+        <class>cn.gson.prohis.model.pojos.YxjProjectEntity</class>
+        <class>cn.gson.prohis.model.pojos.YxjStaffEntity</class>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://rm-wz9e0163453eu84559o.mysql.rds.aliyuncs.com:3306/myhis"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>

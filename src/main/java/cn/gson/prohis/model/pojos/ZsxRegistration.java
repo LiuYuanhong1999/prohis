@@ -123,21 +123,13 @@ public class ZsxRegistration {
     this.registrationFee = registrationFee;
   }
 
-  @Override
-  public String toString() {
-    return "ZsxRegistration{" +
-            "registrationId=" + registrationId +
-            ", registrationNumber='" + registrationNumber + '\'' +
-            ", patientDataId='" + patientDataId + '\'' +
-            ", room='" + room + '\'' +
-            ", doctot='" + doctot + '\'' +
-            ", registrationTime=" + registrationTime +
-            ", registrationFee='" + registrationFee + '\'' +
-            ", registrationState=" + registrationState +
-            ", registrationType='" + registrationType + '\'' +
-            ", registrationName='" + registrationName + '\'' +
-            ", patient=" + patient +
-            ", desk=" + desk +
-            '}';
+  public TyhHosnotEntity tyhHosnotEntity;
+
+  public TyhHosnotEntity getTyhHosnotEntity() {
+    return tyhHosnotEntity;
+  }
+
+  public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
+    this.tyhHosnotEntity = tyhHosnotEntity;
   }
 }

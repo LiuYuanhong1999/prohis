@@ -168,4 +168,6 @@ public class LyhDrugEntity {
     }
 
 
+
+    public List<TyhRecipeEntity> tyhRecipeEntity;
 }
