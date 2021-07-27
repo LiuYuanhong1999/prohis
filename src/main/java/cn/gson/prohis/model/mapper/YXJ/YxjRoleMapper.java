@@ -1,6 +1,7 @@
 package cn.gson.prohis.model.mapper.YXJ;
 
 
+import cn.gson.prohis.model.pojos.YxjRoleInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
