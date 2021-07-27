@@ -1,0 +1,69 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjFunctionMapper">
+    <resultMap id="role" type="cn.gson.prohis.model.pojos.YxjFunctionInfo">
+        <id column="role_id" property="roleId"></id>
+        <result column="role_name" property="roleName"></result>
+        <result column="role_time" property="roleTime"></result>
+
+    </resultMap>
+
+
+
+    <resultMap id="func" type="cn.gson.prohis.model.pojos.YxjFunctionInfo">
+        <id column="FUNC_ID" property="funcId"></id>
+        <result column="FUNC_NAME" property="funcName"></result>
+        <result column="FUNC_META" property="funcMeta"></result>
+        <result column="FUNC_CODE" property="funcCode"></result>
+        <result column="FUNC_PATH" property="funcPath"></result>
+        <result column="FUNC_ICON" property="funcIcon"></result>
+        <result column="FUNC_SHOW" property="funcShow"></result>
+    </resultMap>
+
+    <resultMap id="funs" type="cn.gson.prohis.model.pojos.YxjFunctionInfo">
+        <id column="Parent_ID" property="funcId"></id>
+        <result column="Parent_NAME" property="funcName"></result>
+        <result column="Parent_META" property="funcMeta"></result>
+        <result column="Parent_CODE" property="funcCode"></result>
+        <result column="Parent_PATH" property="funcPath"></result>
+        <result column="Parent_ICON" property="funcIcon"></result>
+        <result column="Parent_SHOW" property="funcShow"></result>
+
+        <collection property="children" ofType="YxjFunctionInfo" resultMap="func">
+        </collection>
+    </resultMap>
+
+    <!--  查询权限组  -->
+    <select id="allFunc" resultMap="funs">
+        SELECT p.func_id Parent_ID,
+               p.FUNC_NAME Parent_NAME,
+               p.FUNC_META Parent_META,
+               p.FUNC_CODE Parent_CODE,
+               p.FUNC_PATH Parent_PATH,
+               p.FUNC_ICON Parent_ICON,
+               p.FUNC_SHOW Parent_SHOW,
+               f.* FROM yxj_function_info p INNER JOIN yxj_function_info f
+        ON p.func_id = f.parent_id WHERE p.PARENT_ID IS NULL
+    </select>
+
+    <resultMap id="YxjRoleFunction" type="cn.gson.prohis.model.pojos.YxjRoleFunction">
+        <id column="role_id" property="roleId"/>
+        <id column="func_id" property="funcId"></id>
+    </resultMap>
+
+
+    <!-- 新增权限   -->
+    <insert id="saveGrant">
+        insert into yxj_role_function values
+        <foreach collection="checkedKeys" item="i" separator=", ">
+            (#{roleId},#{i})
+        </foreach>
+    </insert>
+
+    <!--  根据id查询已授权权限  -->
+    <select id="roleFun" resultType="_int">
+        SELECT f.func_id FROM yxj_function_info f
+        INNER JOIN yxj_role_function rf ON f.func_id = rf.func_id
+        INNER JOIN yxj_user_role ur ON rf.ROLE_ID = ur.role_id
+        WHERE ur.user_id = #{userId} AND f.parent_id IS NOT NULL
+    </select>
+</mapper>

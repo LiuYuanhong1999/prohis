@@ -1,0 +1,22 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjRoleMapper">
+    <resultMap id="role" type="cn.gson.prohis.model.pojos.YxjRoleInfo">
+        <id column="role_id" property="roleId"></id>
+        <result column="role_name" property="roleName"></result>
+        <result column="role_time" property="roleTime"></result>
+
+    </resultMap>
+
+    <!--  查询所有角色  -->
+    <select id="allRole" resultMap="role">
+        SELECT *  FROM yxj_role_info
+    </select>
+
+
+    <!--  新增角色  -->
+    <insert id="addRole">
+        INSERT INTO yxj_role_info(role_id,role_name,role_time)
+        VALUES(#{roleId},#{roleName},#{roleTime})
+    </insert>
+
+</mapper>
