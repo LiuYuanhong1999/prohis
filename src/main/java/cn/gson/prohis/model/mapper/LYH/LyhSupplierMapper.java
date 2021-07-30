@@ -9,5 +9,10 @@ import java.util.List;
 @Mapper
 public interface LyhSupplierMapper {
 
-    public List<LyhSupplierEntity> findAll();
+    public List<LyhSupplierEntity> findAll(LyhSupplierEntity supplierEntity);
+
+
+    public void insertSupplier(LyhSupplierEntity supplierEntity);
+    public void updateById(Integer supplierId);
+        public void updateSupplier(LyhSupplierEntity supplierEntity);
 }

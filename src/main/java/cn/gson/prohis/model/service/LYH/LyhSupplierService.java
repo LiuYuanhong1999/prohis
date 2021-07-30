@@ -14,7 +14,24 @@ public class LyhSupplierService {
     LyhSupplierMapper bs;
 
 
-    public List<LyhSupplierEntity> findAll(){
-        return bs.findAll();
+    public List<LyhSupplierEntity> findAll(LyhSupplierEntity supplierEntity){
+        return bs.findAll(supplierEntity);
+    }
+
+
+
+    public void insertSupplier(LyhSupplierEntity supplierEntity){
+        if (supplierEntity.getSupplierId()==null){
+            bs.insertSupplier(supplierEntity);
+        }if (supplierEntity.getSupplierId() !=null){
+            bs.updateSupplier(supplierEntity);
+        }else {
+            System.out.println("错误");
+        }
+    }
+
+
+    public void updateById(Integer supplierId){
+        bs.updateById(supplierId);
     }
 }

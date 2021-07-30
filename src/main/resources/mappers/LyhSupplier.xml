@@ -3,6 +3,10 @@
     <resultMap id="supplier" type="cn.gson.prohis.model.pojos.LyhSupplierEntity">
         <id column="supplier_id" property="supplierId"></id>
         <result column="supplier_name" property="supplierName"></result>
+        <result column="supplier_state" property="supplierState"></result>
+        <result column="supplier_adress" property="supplierAdress"></result>
+        <result column="supplier_user" property="supplierUser"></result>
+        <result column="supplier_phone" property="supplierPhone"></result>
         <collection property="lyhDrugEntities" ofType="cn.gson.prohis.model.pojos.LyhDrugEntity">
             <id column="drug_id" property="drugId"></id>
             <result column="drug_name" property="drugName"></result>
@@ -18,7 +22,60 @@
     <select id="findAll" resultMap="supplier">
         select * from lyhsupplier a
         left join lyh_drug b on a.supplier_id=b.supplier_id
+        <where>
+         <if test="supplierName !=null and supplierName!=''">
+             a.supplier_name like '%${supplierName}%'
+         </if>
+         <if test="supplierAdress !=null and supplierAdress !=''">
+            and a.supplier_adress like '%${supplierAdress}%'
+         </if>
+         <if test="supplierUser !=null and supplierUser !=''">
+             and a.supplier_user like '%${supplierUser}%'
+         </if>
+         <if test="supplierPhone !=null and supplierPhone !=''">
+             and a.supplier_phone like '%${supplierPhone}%'
+         </if>
+
+         <if test="supplierState !=null and supplierState !=''">
+             and  a.supplier_state=#{supplierState}
+         </if>
+
+        </where>
+
     </select>
+
+
+    <insert id="insertSupplier">
+        insert into lyhsupplier(supplier_name,supplier_adress,supplier_phone,supplier_user)
+        values(#{supplierName},#{supplierAdress},#{supplierPhone},#{supplierUser})
+    </insert>
+
+    <update id="updateSupplier">
+        update lyhsupplier set
+<if test="supplierName !=null and supplierName !=''">
+            supplier_name=#{supplierName}
+</if>
+<if test="supplierAdress !=null and supplierAdress !=''">
+    and supplier_adress=#{supplierAdress}
+</if>
+<if test="supplierPhone !=null and supplierPhone !=''">
+    and supplier_phone =#{supplierPhone}
+</if>
+<if test="supplierUser !=null and supplierUser !=''">
+    and supplier_user=#{supplierUser}
+</if>
+
+        where supplier_id=#{supplierId}
+
+    </update>
+
+
+<update id="updateById">
+
+        update  lyhsupplier set supplier_state=#{supplierState} where supplier_id={supplierIO}
+
+</update>
+
 
 
 

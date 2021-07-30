@@ -6,15 +6,52 @@ import java.util.Objects;
 
 
 public class LyhSupplierEntity {
-    private int supplierId;
+    private Integer supplierId;
     private String supplierName;
+    private Integer supplierState;
+    private String supplierUser;
+    private String supplierPhone;
+    private String supplierAdress;
+
+
+    public String getSupplierPhone() {
+        return supplierPhone;
+    }
+
+    public void setSupplierPhone(String supplierPhone) {
+        this.supplierPhone = supplierPhone;
+    }
+
+    public String getSupplierAdress() {
+        return supplierAdress;
+    }
+
+    public void setSupplierAdress(String supplierAdress) {
+        this.supplierAdress = supplierAdress;
+    }
+
+    public String getSupplierUser() {
+        return supplierUser;
+    }
+
+    public void setSupplierUser(String supplierUser) {
+        this.supplierUser = supplierUser;
+    }
+
+    public Integer getSupplierState() {
+        return supplierState;
+    }
+
+    public void setSupplierState(Integer supplierState) {
+        this.supplierState = supplierState;
+    }
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getSupplierId() {
+    public Integer getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(Integer supplierId) {
         this.supplierId = supplierId;
     }
 

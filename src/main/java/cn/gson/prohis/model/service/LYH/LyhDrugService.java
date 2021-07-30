@@ -18,8 +18,12 @@ public class LyhDrugService {
     }
 
 
-    public List<LyhDrugEntity> findAll(){
-        return bs.findAll();
+    public List<LyhDrugEntity> findAll(Integer drugJia){
+        return bs.findAll(drugJia);
     }
 
+
+    public void insertByDrug(LyhDrugEntity lyhDrugEntity){
+        bs.insertByDrug(lyhDrugEntity);
+    }
 }

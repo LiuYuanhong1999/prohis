@@ -19,6 +19,16 @@ public class LyhDrugEntity {
     private Integer drugState;
     private String drugJixin;
     private String drugGuige;
+    private Integer drugJia;
+
+
+    public Integer getDrugJia() {
+        return drugJia;
+    }
+
+    public void setDrugJia(Integer drugJia) {
+        this.drugJia = drugJia;
+    }
 
     public Integer getDrugState() {
         return drugState;

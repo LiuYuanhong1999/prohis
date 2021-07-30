@@ -10,9 +10,12 @@ public interface LyhDrugMapper {
 
     public List<LyhDrugEntity> findById(int supplierId);
 
-    public List<LyhDrugEntity> findAll();
+    public List<LyhDrugEntity> findAll(Integer drugJia);
 
     public List<LyhDrugEntity> findYp();
 
     LyhDrugEntity findyp2(Integer id);
+
+
+    public void insertByDrug(LyhDrugEntity lyhDrugEntity);
 }
