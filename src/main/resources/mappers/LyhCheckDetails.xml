@@ -1,0 +1,49 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhCheckDetailsMapper">
+    <resultMap id="details" type="cn.gson.prohis.model.pojos.LyhCheckDetailsEntity">
+        <id column="details_id" property="detailsId"></id>
+        <result column="drug_id" property="drugId"></result>
+        <result column="check_id" property="checkId"></result>
+        <result column="details_number" property="detailsNumber"></result>
+        <association property="checkEntity" javaType="cn.gson.prohis.model.pojos.LyhCheckEntity">
+            <id column="check_id" property="checkId"></id>
+            <result column="check_user" property="checkUser"></result>
+            <result column="check_state" property="checkState"></result>
+            <result column="check_price" property="checkPrice"></result>
+            <result column="check_date" property="checkDate"></result>
+        </association>
+
+        <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+            <result column="drug_jixin" property="drugJixin"></result>
+            <result column="drug_guige" property="drugGuige"></result>
+            <result column="drug_state" property="drugState"></result>
+            <result column="drug_jia" property="drugJia"></result>
+            <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+                <id column="supplier_id" property="supplierId"></id>
+                <result column="supplier_name" property="supplierName"></result>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <select id="findAll" resultMap="details">
+
+    select * from lyhcheckdetails a
+    left join lyhcheck b on a.check_id=b.check_id
+    left join lyh_drug c on a.drug_id=c.drug_id
+    left join lyhsupplier d on c.supplier_id =d.supplier_id
+
+    </select>
+
+<insert id="insertCheckDetails">
+
+        insert into lyhcheckdetails(drug_id,check_id,details_number)
+            values (#{drugId},#{checkId},#{detailsNumber})
+</insert>
+
+</mapper>

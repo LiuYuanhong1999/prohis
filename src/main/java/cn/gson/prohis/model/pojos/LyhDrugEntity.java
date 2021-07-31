@@ -180,4 +180,23 @@ public class LyhDrugEntity {
 
 
     public List<TyhRecipeEntity> tyhRecipeEntity;
+
+    public List<TyhRecipeEntity> getTyhRecipeEntity() {
+        return tyhRecipeEntity;
+    }
+
+    public void setTyhRecipeEntity(List<TyhRecipeEntity> tyhRecipeEntity) {
+        this.tyhRecipeEntity = tyhRecipeEntity;
+    }
+
+
+    private List<LyhCheckDetailsEntity> lyhCheckDetailsEntities;
+
+    public List<LyhCheckDetailsEntity> getLyhCheckDetailsEntities() {
+        return lyhCheckDetailsEntities;
+    }
+
+    public void setLyhCheckDetailsEntities(List<LyhCheckDetailsEntity> lyhCheckDetailsEntities) {
+        this.lyhCheckDetailsEntities = lyhCheckDetailsEntities;
+    }
 }

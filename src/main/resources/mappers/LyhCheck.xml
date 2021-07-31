@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhCheckMapper">
+        <resultMap id="check" type="cn.gson.prohis.model.pojos.LyhCheckEntity">
+            <id column="check_id" property="checkId"></id>
+            <result column="check_user" property="checkUser"></result>
+            <result column="check_state" property="checkState"></result>
+            <result column="check_price" property="checkPrice"></result>
+            <result column="check_date" property="checkDate"></result>
+
+
+            <collection property="lyhCheckDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhCheckDetailsEntity">
+                <id column="details_id" property="detailsId"></id>
+                <result column="drug_id" property="drugId"></result>
+                <result column="check_id" property="checkId"></result>
+            </collection>
+        </resultMap>
+
+<select id="findAll" resultMap="check">
+        select * from lyhcheck
+</select>
+
+
+    <insert id="insertCheck">
+
+        insert into lyhcheck(check_id,check_user,check_price)
+            values (#{checkId},#{checkUser},#{checkPrice})
+    </insert>
+
+
+</mapper>
