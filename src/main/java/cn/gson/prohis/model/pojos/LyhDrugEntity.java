@@ -103,6 +103,26 @@ public class LyhDrugEntity {
     }
 
 
+    @Override
+    public String toString() {
+        return "LyhDrugEntity{" +
+                "drugId=" + drugId +
+                ", drugName='" + drugName + '\'' +
+                ", drugDate=" + drugDate +
+                ", drugPrice=" + drugPrice +
+                ", supplierId=" + supplierId +
+                ", drugState=" + drugState +
+                ", drugJixin='" + drugJixin + '\'' +
+                ", drugGuige='" + drugGuige + '\'' +
+                ", lyhDrugstoreEntities=" + lyhDrugstoreEntities +
+                ", lyhProcurementEntities=" + lyhProcurementEntities +
+                ", lyhSupplierEntity=" + lyhSupplierEntity +
+                ", lyhProcurementDetailsEntities=" + lyhProcurementDetailsEntities +
+                ", list=" + list +
+                ", lyhPharmacyEntities=" + lyhPharmacyEntities +
+                '}';
+    }
+
     private List<LyhProcurementEntity> lyhProcurementEntities;
 
     public List<LyhProcurementEntity> getLyhProcurementEntities() {
@@ -167,7 +187,23 @@ public class LyhDrugEntity {
         this.lyhPharmacyEntities = lyhPharmacyEntities;
     }
 
+    public List<TyhRecipedetailEntity> tyhRecipedetailEntities;
 
+    public List<TyhRecipedetailEntity> getTyhRecipedetailEntities() {
+        return tyhRecipedetailEntities;
+    }
 
-    public List<TyhRecipeEntity> tyhRecipeEntity;
+    public void setTyhRecipedetailEntities(List<TyhRecipedetailEntity> tyhRecipedetailEntities) {
+        this.tyhRecipedetailEntities = tyhRecipedetailEntities;
+    }
+
+    public List<TyhExecutedelEntity> tyhExecutedelEntities;
+
+    public List<TyhExecutedelEntity> getTyhExecutedelEntities() {
+        return tyhExecutedelEntities;
+    }
+
+    public void setTyhExecutedelEntities(List<TyhExecutedelEntity> tyhExecutedelEntities) {
+        this.tyhExecutedelEntities = tyhExecutedelEntities;
+    }
 }

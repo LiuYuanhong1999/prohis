@@ -128,4 +128,31 @@ public class TyhRecipeEntity {
     public int hashCode() {
         return Objects.hash(recipeId, recipePrice, recipeDate, recipeDay, patientId, staffId, recipeExplain, recipeZt);
     }
+
+    @Override
+    public String toString() {
+        return "TyhRecipeEntity{" +
+                "recipeId='" + recipeId + '\'' +
+                ", recipePrice=" + recipePrice +
+                ", recipeDate=" + recipeDate +
+                ", recipeDay=" + recipeDay +
+                ", patientId=" + patientId +
+                ", staffId=" + staffId +
+                ", recipeExplain='" + recipeExplain + '\'' +
+                ", recipeZt=" + recipeZt +
+                ", tyhRecipedetailEntities=" + tyhRecipedetailEntities +
+                ", tyhPatientEntity=" + tyhPatientEntity +
+                ", yxjStaffEntity=" + yxjStaffEntity +
+                '}';
+    }
+
+    public TyhExecuteEntity tyhExecuteEntity;
+
+    public TyhExecuteEntity getTyhExecuteEntity() {
+        return tyhExecuteEntity;
+    }
+
+    public void setTyhExecuteEntity(TyhExecuteEntity tyhExecuteEntity) {
+        this.tyhExecuteEntity = tyhExecuteEntity;
+    }
 }

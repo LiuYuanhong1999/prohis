@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class TyhPatientEntity {
-    public TyhHosregEntity tyhHosregEntity;
+
     private int patientId;
     private String patientName;
     private String patientSex;
@@ -90,5 +90,17 @@ public class TyhPatientEntity {
 
     public void setTyhChunotEntity(TyhChunotEntity tyhChunotEntity) {
         this.tyhChunotEntity = tyhChunotEntity;
+    }
+
+    public TyhHosregEntity tyhHosregEntity;
+
+    public List<TyhExecuteEntity> tyhExecuteEntities;
+
+    public List<TyhExecuteEntity> getTyhExecuteEntities() {
+        return tyhExecuteEntities;
+    }
+
+    public void setTyhExecuteEntities(List<TyhExecuteEntity> tyhExecuteEntities) {
+        this.tyhExecuteEntities = tyhExecuteEntities;
     }
 }

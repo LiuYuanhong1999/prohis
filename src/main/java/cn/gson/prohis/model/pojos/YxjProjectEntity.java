@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class YxjProjectEntity {
+
     private int projectId;
     private String projectName;
     private Integer projectType;
@@ -43,6 +44,14 @@ public class YxjProjectEntity {
     }
 
     public List<TyhRecipedetailEntity> tyhRecipedetailEntities;
+
+    public List<TyhRecipedetailEntity> getTyhRecipedetailEntities() {
+        return tyhRecipedetailEntities;
+    }
+
+    public void setTyhRecipedetailEntities(List<TyhRecipedetailEntity> tyhRecipedetailEntities) {
+        this.tyhRecipedetailEntities = tyhRecipedetailEntities;
+    }
 
     @Override
     public boolean equals(Object o) {
