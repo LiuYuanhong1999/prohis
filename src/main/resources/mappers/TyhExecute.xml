@@ -1,0 +1,102 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.exeMapper">
+    <resultMap id="executedel" type="cn.gson.prohis.model.pojos.TyhExecutedelEntity">
+        <id column="executedel_id" property="executedelId"></id>
+        <result column="execute_id" property="executeId"></result>
+        <result column="drug_id" property="drugId"></result>
+        <result column="executedel_exp" property="executedelExp"></result>
+        <result column="executedel_number" property="executedelNumber"></result>
+        <result column="executedel_price" property="executedelPrice"></result>
+        <collection property="tyhExecuteEntity" javaType="cn.gson.prohis.model.pojos.TyhExecuteEntity">
+            <id column="execute_id" property="executeId"></id>
+            <result column="recipe_id" property="recipeId"></result>
+            <result column="execute_exp" property="executeExp"></result>
+            <result column="execute_day" property="executeDay"></result>
+            <result column="execute_price" property="executePrice"></result>
+            <result column="patient_id" property="patientId"></result>
+            <result column="execute_data" property="executeData"></result>
+            <result column="execute_zt" property="executeZt"></result>
+            <association property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+                <id column="recipe_id" property="recipeId"></id>
+                <result column="recipe_price" property="recipePrice"></result>
+                <result column="recipe_date" property="recipeDate"></result>
+                <result column="recipe_day" property="recipeDay"></result>
+                <result column="recipe_explain" property="recipeExplain"></result>
+                <result column="recipe_zt" property="recipeZt"></result>
+            </association>
+            <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+                <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+                    <id column="hosreg_num" property="hosregNum"></id>
+                    <result column="hosreg_date" property="hosregDate"></result>
+                    <result column="hosreg_zt" property="hosregZt"></result>
+                </association>
+            </collection>
+        </collection>
+        <collection property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+        </collection>
+    </resultMap>
+
+    <resultMap id="execute" type="cn.gson.prohis.model.pojos.TyhExecuteEntity">
+        <id column="execute_id" property="executeId"></id>
+        <result column="recipe_id" property="recipeId"></result>
+        <result column="execute_exp" property="executeExp"></result>
+        <result column="execute_day" property="executeDay"></result>
+        <result column="execute_price" property="executePrice"></result>
+        <result column="patient_id" property="patientId"></result>
+        <result column="execute_data" property="executeData"></result>
+        <result column="execute_zt" property="executeZt"></result>
+        <association property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+            <id column="recipe_id" property="recipeId"></id>
+            <result column="recipe_price" property="recipePrice"></result>
+            <result column="recipe_date" property="recipeDate"></result>
+            <result column="recipe_day" property="recipeDay"></result>
+            <result column="recipe_explain" property="recipeExplain"></result>
+            <result column="recipe_zt" property="recipeZt"></result>
+        </association>
+        <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+            <id column="patient_id" property="patientId"></id>
+            <result column="patient_name" property="patientName"></result>
+            <result column="patient_sex" property="patientSex"></result>
+            <result column="patient_yue" property="patientYue"></result>
+            <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+                <id column="hosreg_num" property="hosregNum"></id>
+                <result column="hosreg_date" property="hosregDate"></result>
+                <result column="hosreg_zt" property="hosregZt"></result>
+            </association>
+        </collection>
+    </resultMap>
+
+
+    <select id="findExecute" resultMap="execute">
+        select * from tyh_execute te
+        left join tyh_recipe tr on te.recipe_id=tr.recipe_id
+        left join tyh_patient tp on te.patient_id=tp.patient_id
+        left join tyh_hosreg th on th.patient_id=tp.patient_id
+        where to_days(te.execute_data) = to_days(now()) and tr.recipe_zt=1
+    </select>
+
+    <select id="findExecutedel" resultMap="executedel">
+        select * from tyh_executedel  ted
+        left join tyh_execute te on ted.execute_id=te.execute_id
+        left join tyh_patient tp on te.patient_id=tp.patient_id
+        left join lyh_drug ld on ted.drug_id=ld.drug_id
+        where ted.execute_id=#{id}
+    </select>
+
+    <update id="updata1">
+        update tyh_execute set execute_zt=1 where execute_id=#{id}
+    </update>
+
+    <update id="updata2">
+        update tyh_execute set execute_zt=3 where execute_id=#{id}
+    </update>
+</mapper>

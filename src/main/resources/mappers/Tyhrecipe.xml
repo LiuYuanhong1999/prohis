@@ -4,8 +4,9 @@
         <id column="recipedetail_id" property="recipedetailId"></id>
         <result column="recipedetail_price" property="recipedetailPrice"></result>
         <result column="recipedetail_number" property="recipedetailNumber"></result>
+        <result column="recipedetail_durg" property="recipedetailDurg"></result>
+        <result column="recipedetail_project" property="recipedetailProject"></result>
         <result column="recipedetail_explain" property="recipedetailExplain"></result>
-
         <collection property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
             <id column="drug_id" property="drugId"></id>
             <result column="drug_name" property="drugName"></result>
@@ -21,12 +22,14 @@
         </collection>
 
         <collection property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+
             <id column="recipe_id" property="recipeId"></id>
             <result column="recipe_price" property="recipePrice"></result>
             <result column="recipe_date" property="recipeDate"></result>
             <result column="recipe_day" property="recipeDay"></result>
             <result column="recipe_explain" property="recipeExplain"></result>
             <result column="recipe_zt" property="recipeZt"></result>
+
             <collection property="yxjStaffEntity" javaType="cn.gson.prohis.model.pojos.YxjStaffEntity">
                 <id column="staff_id" property="staffId"></id>
                 <result column="staff_name" property="staffName"></result>
@@ -40,8 +43,31 @@
                 <result column="patient_yue" property="patientYue"></result>
             </collection>
         </collection>
+
+
     </resultMap>
 
+    <resultMap id="recipe1" type="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+        <id column="recipe_id" property="recipeId"></id>
+        <result column="recipe_price" property="recipePrice"></result>
+        <result column="recipe_date" property="recipeDate"></result>
+        <result column="recipe_day" property="recipeDay"></result>
+        <result column="recipe_explain" property="recipeExplain"></result>
+        <result column="recipe_zt" property="recipeZt"></result>
+
+        <collection property="yxjStaffEntity" javaType="cn.gson.prohis.model.pojos.YxjStaffEntity">
+            <id column="staff_id" property="staffId"></id>
+            <result column="staff_name" property="staffName"></result>
+            <result column="staff_age" property="staffAge"></result>
+            <result column="staff_time" property="staffTime"></result>
+        </collection>
+        <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+            <id column="patient_id" property="patientId"></id>
+            <result column="patient_name" property="patientName"></result>
+            <result column="patient_sex" property="patientSex"></result>
+            <result column="patient_yue" property="patientYue"></result>
+        </collection>
+    </resultMap>
 
     <select id="chufang" resultMap="recipe">
         select * from tyh_recipedetail trd
@@ -50,6 +76,52 @@
         left join yxj_project yp on trd.recipedetail_project=yp.project_id
         left join tyh_patient tp on tr.patient_id=tp.patient_id
         left join yxj_staff ys on tr.staff_id=ys.staff_id
-        where tp.patient_id=#{id}
+        where tr.recipe_id=#{patientId} and ISNULL(trd.recipedetail_project)
     </select>
+
+    <select id="chufang2" resultMap="recipe">
+        select * from tyh_recipedetail trd
+        left join tyh_recipe tr on trd.recipe_id=tr.recipe_id
+        left join lyh_drug ld on trd.recipedetail_durg=ld.drug_id
+        left join yxj_project yp on trd.recipedetail_project=yp.project_id
+        left join tyh_patient tp on tr.patient_id=tp.patient_id
+        left join yxj_staff ys on tr.staff_id=ys.staff_id
+        where tr.recipe_id=#{patientId} and ISNULL(trd.recipedetail_durg)
+    </select>
+
+    <select id="chufang1" resultMap="recipe1">
+        select * from tyh_recipe tr
+        left join tyh_patient tp on tr.patient_id=tp.patient_id
+        left join yxj_staff ys on tr.staff_id=ys.staff_id
+        where tp.patient_id=#{patientId}
+    </select>
+
+    <insert id="addchufang">
+        insert into tyh_recipe(recipe_id,recipe_price,recipe_date,recipe_day,patient_id,recipe_explain)
+        values(#{recipeId},#{recipePrice},#{recipeDate},#{recipeDay},#{patientId},#{recipeExplain})
+    </insert>
+
+    <insert id="addchufangdel">
+        insert into tyh_recipedetail(recipe_id,recipedetail_durg,recipedetail_price,recipedetail_number,recipedetail_explain)
+        values(#{recipeId},#{v.drugId},#{v.drugPrice},#{v.numbers},#{v.recipedetailExplain})
+    </insert>
+
+    <insert id="addchufangdel2">
+        insert into tyh_recipedetail(recipe_id,recipedetail_project,recipedetail_price,recipedetail_explain)
+        values(#{recipeId},#{v.projectId},#{v.projectPrice},#{v.recipedetailExplain})
+    </insert>
+
+    <insert id="addexe">
+        insert into tyh_execute(execute_id,recipe_id,execute_exp,execute_day,patient_id,execute_data)
+        value(#{v.executeId},#{v.recipeId},#{v.recipeExplain},#{i},#{v.patientId},#{v.recipeDate})
+    </insert>
+
+    <insert id="addexedel">
+        insert into tyh_executedel(execute_id,drug_id,executedel_exp,executedel_number,executedel_price)
+        value(#{id},#{v.drugId},#{v.recipedetailExplain},#{v.numbers},#{v.drugPrice})
+    </insert>
+
+    <update id="updatadata">
+        update tyh_execute set execute_data = (select date_add(execute_data, interval #{i} day)) where execute_id=#{id}
+    </update>
 </mapper>

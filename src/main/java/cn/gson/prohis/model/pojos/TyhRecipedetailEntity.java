@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class TyhRecipedetailEntity {
     private int recipedetailId;
-    private Integer recipeId;
+    private String recipeId;
     private Integer recipedetailProject;
     private Integer recipedetailDurg;
-    private Integer recipedetailPrice;
+    private Double recipedetailPrice;
     private Integer recipedetailNumber;
     private String recipedetailExplain;
 
@@ -20,11 +20,11 @@ public class TyhRecipedetailEntity {
         this.recipedetailId = recipedetailId;
     }
 
-    public Integer getRecipeId() {
+    public String getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(Integer recipeId) {
+    public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
     }
 
@@ -44,11 +44,11 @@ public class TyhRecipedetailEntity {
         this.recipedetailDurg = recipedetailDurg;
     }
 
-    public Integer getRecipedetailPrice() {
+    public Double getRecipedetailPrice() {
         return recipedetailPrice;
     }
 
-    public void setRecipedetailPrice(Integer recipedetailPrice) {
+    public void setRecipedetailPrice(Double recipedetailPrice) {
         this.recipedetailPrice = recipedetailPrice;
     }
 
@@ -86,6 +86,22 @@ public class TyhRecipedetailEntity {
 
     public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
         this.lyhDrugEntity = lyhDrugEntity;
+    }
+
+    @Override
+    public String toString() {
+        return "TyhRecipedetailEntity{" +
+                "recipedetailId=" + recipedetailId +
+                ", recipeId=" + recipeId +
+                ", recipedetailProject=" + recipedetailProject +
+                ", recipedetailDurg=" + recipedetailDurg +
+                ", recipedetailPrice=" + recipedetailPrice +
+                ", recipedetailNumber=" + recipedetailNumber +
+                ", recipedetailExplain='" + recipedetailExplain + '\'' +
+                ", tyhRecipeEntity=" + tyhRecipeEntity +
+                ", lyhDrugEntity=" + lyhDrugEntity +
+                ", yxjProjectEntity=" + yxjProjectEntity +
+                '}';
     }
 
     public YxjProjectEntity yxjProjectEntity;

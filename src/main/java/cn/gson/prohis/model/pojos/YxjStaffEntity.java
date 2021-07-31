@@ -52,16 +52,6 @@ public class YxjStaffEntity {
         this.deptId = deptId;
     }
 
-    public List<TyhRecipeEntity> tyhRecipeEntities;
-
-    public List<TyhRecipeEntity> getTyhRecipeEntities() {
-        return tyhRecipeEntities;
-    }
-
-    public void setTyhRecipeEntities(List<TyhRecipeEntity> tyhRecipeEntities) {
-        this.tyhRecipeEntities = tyhRecipeEntities;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,5 +67,15 @@ public class YxjStaffEntity {
     @Override
     public int hashCode() {
         return Objects.hash(staffId, staffName, staffAge, staffTime, deptId);
+    }
+
+    public List<TyhRecipeEntity> tyhRecipeEntities;
+
+    public List<TyhRecipeEntity> getTyhRecipeEntities() {
+        return tyhRecipeEntities;
+    }
+
+    public void setTyhRecipeEntities(List<TyhRecipeEntity> tyhRecipeEntities) {
+        this.tyhRecipeEntities = tyhRecipeEntities;
     }
 }

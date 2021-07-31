@@ -2,10 +2,13 @@ package cn.gson.prohis.controller.TYH;
 
 import cn.gson.prohis.model.pojos.*;
 import cn.gson.prohis.model.service.TYH.recipeService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -18,9 +21,19 @@ public class recipeController {
         return recipeService.chufangbr();
     }
 
+    @RequestMapping("/find-chufang1")
+    public List<TyhRecipeEntity> chufang1(Integer patientId){
+        return recipeService.chufang1(patientId);
+    }
+
+    @RequestMapping("/find-chufang2")
+    public List<TyhRecipeEntity> chufang2(String patientId){
+        return recipeService.chufang2(patientId);
+    }
+
     @RequestMapping("/find-chufang")
-    public List<TyhRecipedetailEntity> chufang(Integer id){
-        return recipeService.chufang(id);
+    public List<TyhRecipeEntity> chufang(String patientId){
+        return recipeService.chufang(patientId);
     }
 
     @RequestMapping("/find-yp")
@@ -51,5 +64,15 @@ public class recipeController {
     @RequestMapping("find-yp2")
     public LyhDrugEntity findyp2(Integer id){
         return recipeService.findyp2(id);
+    }
+
+    @PostMapping("add-chufang")
+    public void addchufang(@RequestBody tyhRecipeVo tyhRecipeEntity){
+        recipeService.addchufang(tyhRecipeEntity);
+    }
+
+    @RequestMapping("/find-brname")
+    public TyhPatientEntity findbrname(Integer id){
+        return recipeService.findbrname(id);
     }
 }

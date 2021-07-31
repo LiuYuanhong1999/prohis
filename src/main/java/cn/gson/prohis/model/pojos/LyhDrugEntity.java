@@ -177,26 +177,23 @@ public class LyhDrugEntity {
         this.lyhPharmacyEntities = lyhPharmacyEntities;
     }
 
+    public List<TyhRecipedetailEntity> tyhRecipedetailEntities;
 
-
-    public List<TyhRecipeEntity> tyhRecipeEntity;
-
-    public List<TyhRecipeEntity> getTyhRecipeEntity() {
-        return tyhRecipeEntity;
+    public List<TyhRecipedetailEntity> getTyhRecipedetailEntities() {
+        return tyhRecipedetailEntities;
     }
 
-    public void setTyhRecipeEntity(List<TyhRecipeEntity> tyhRecipeEntity) {
-        this.tyhRecipeEntity = tyhRecipeEntity;
+    public void setTyhRecipedetailEntities(List<TyhRecipedetailEntity> tyhRecipedetailEntities) {
+        this.tyhRecipedetailEntities = tyhRecipedetailEntities;
     }
 
+    public List<TyhExecutedelEntity> tyhExecutedelEntities;
 
-    private List<LyhCheckDetailsEntity> lyhCheckDetailsEntities;
-
-    public List<LyhCheckDetailsEntity> getLyhCheckDetailsEntities() {
-        return lyhCheckDetailsEntities;
+    public List<TyhExecutedelEntity> getTyhExecutedelEntities() {
+        return tyhExecutedelEntities;
     }
 
-    public void setLyhCheckDetailsEntities(List<LyhCheckDetailsEntity> lyhCheckDetailsEntities) {
-        this.lyhCheckDetailsEntities = lyhCheckDetailsEntities;
+    public void setTyhExecutedelEntities(List<TyhExecutedelEntity> tyhExecutedelEntities) {
+        this.tyhExecutedelEntities = tyhExecutedelEntities;
     }
 }
