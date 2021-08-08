@@ -15,10 +15,13 @@
             <result column="medical_card_balance" property="medicalCardBalance"></result>
             <result column="medical_card_lock" property="medicalCardLock"></result>
  <!--            诊疗卡记录-->
-            <association property="medicalCardRecords" javaType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
-                <id column="medical_card_record_number" property="medicalCardNumber"></id>
+            <collection property="medicalCardRecord" ofType="cn.gson.prohis.model.pojos.ZsxMedicalCardRecord">
+                <id column="medical_card_record_id" property="medicalCardRecordId"></id>
+                <result column="medical_card_number" property="medicalCardNumber"></result>
                 <result column="medical_card_time" property="medicalCardTime"></result>
-            </association>
+                <result column="medical_card_person" property="medicalCardPerson"/>
+                <result column="medical_card_money" property="medicalCardMoney"/>
+            </collection>
         </association>
     </resultMap>
 
@@ -34,19 +37,21 @@
 
     <!--新增病人-->
     <insert id="addPatient">
-        insert into zsx_patient_data values
+        insert into zsx_patient_data
+        (patient_data_id,patient_data_card,patient_data_name,patient_data_phone,patient_data_sex,medical_card_number) values
         (#{patientDataId},#{patientDataCard},#{patientDataName},#{patientDataPhone},#{patientDataSex},#{medicalCardNumber})
     </insert>
 
     <!--新增诊疗卡-->
     <insert id="addMedicalCard">
-        insert into zsx_medical_card values
-        (#{medicalCardId},#{medicalCardNumber},#{medicalCardPassword},#{medicalCardBalance},#{medicalCardLock})
+        insert into zsx_medical_card (medical_card_id,medical_card_number,medical_card_password,medical_card_lock) values
+        (#{medicalCard.medicalCardId},#{medicalCard.medicalCardNumber},#{medicalCard.medicalCardPassword},#{medicalCard.medicalCardLock})
     </insert>
 
     <!--新增诊疗卡充值记录-->
-    <insert id="addMedicalCardRecords">
-        insert into zsx_medical_card_record values (#{medicalCardRecordId},#{medicalCardNumber},#{medicalCardTime})
+    <insert id="addMedicalCardRecord">
+        insert into zsx_medical_card_record (medical_card_number,medical_card_time,medical_card_person,medical_card_money) values
+             (#{medicalCardNumber},#{medicalCardTime},#{medicalCardPerson},#{medicalCardMoney})
     </insert>
 
 
@@ -64,5 +69,11 @@
         medical_card_password=#{medicalCardPassword},
         medical_card_balance=#{medicalCardBalance},
         medical_card_lock=#{medicalCardLock} where medical_card_number = #{medicalCardNumber}
+    </update>
+
+<!--    修改诊疗卡余额-->
+    <update id="updateBalance">
+        update zsx_medical_card set medical_card_balance=medical_card_balance+#{medicalCardMoney}
+        where medical_card_number=#{medicalCardNumber}
     </update>
 </mapper>

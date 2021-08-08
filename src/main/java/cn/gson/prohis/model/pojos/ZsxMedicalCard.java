@@ -2,23 +2,37 @@ package cn.gson.prohis.model.pojos;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import java.util.List;
 
 public class ZsxMedicalCard {
 
   private long medicalCardId;
   private String medicalCardNumber;
   private String medicalCardPassword;
-  private String medicalCardBalance;
+  private Double medicalCardBalance;
   private long medicalCardLock;
+  private Double nmsl;
 
-  private ZsxMedicalCardRecord medicalCardRecords;
-
-  public ZsxMedicalCardRecord getMedicalCardRecords() {
-    return medicalCardRecords;
+  public Double getNmsl() {
+    return nmsl;
   }
 
-  public void setMedicalCardRecords(ZsxMedicalCardRecord medicalCardRecords) {
-    this.medicalCardRecords = medicalCardRecords;
+  public void setNmsl(Double nmsl) {
+    this.nmsl = nmsl;
+  }
+
+  public void setMedicalCardRecord(List<ZsxMedicalCardRecord> medicalCardRecord) {
+    this.medicalCardRecord = medicalCardRecord;
+  }
+
+  private List<ZsxMedicalCardRecord> medicalCardRecord;
+
+  public List<ZsxMedicalCardRecord> getMedicalCardRecord() {
+    return medicalCardRecord;
+  }
+
+  public void setMedicalCardRecords(List<ZsxMedicalCardRecord> medicalCardRecord) {
+    this.medicalCardRecord = medicalCardRecord;
   }
 
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,14 +63,13 @@ public class ZsxMedicalCard {
   }
 
 
-  public String getMedicalCardBalance() {
+  public Double getMedicalCardBalance() {
     return medicalCardBalance;
   }
 
-  public void setMedicalCardBalance(String medicalCardBalance) {
+  public void setMedicalCardBalance(Double medicalCardBalance) {
     this.medicalCardBalance = medicalCardBalance;
   }
-
 
   public long getMedicalCardLock() {
     return medicalCardLock;
@@ -72,9 +85,10 @@ public class ZsxMedicalCard {
             "medicalCardId=" + medicalCardId +
             ", medicalCardNumber='" + medicalCardNumber + '\'' +
             ", medicalCardPassword='" + medicalCardPassword + '\'' +
-            ", medicalCardBalance='" + medicalCardBalance + '\'' +
+            ", medicalCardBalance=" + medicalCardBalance +
             ", medicalCardLock=" + medicalCardLock +
-            ", medicalCardRecords=" + medicalCardRecords +
+            ", nmsl=" + nmsl +
+            ", medicalCardRecord=" + medicalCardRecord +
             '}';
   }
 }

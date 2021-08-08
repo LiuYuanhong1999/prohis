@@ -1,5 +1,6 @@
 package cn.gson.prohis.controller.ZSX;
 
+import cn.gson.prohis.model.pojos.ZsxMedicalCardRecord;
 import cn.gson.prohis.model.pojos.ZsxPatientData;
 import cn.gson.prohis.model.service.ZSX.ZsxMedicalCardService;
 import org.springframework.web.bind.annotation.*;
@@ -22,10 +23,17 @@ public class ZsxMedicalCardController {
     }
 
     /*
-    * 新增修改病人、诊疗卡、诊疗卡充值记录
+    * 新增修改病人、诊疗卡
     * */
     @PostMapping("/saveMedicalCard")
     public void saveMedical(@RequestBody ZsxPatientData patientData){
         medicalCardService.saveMedicalCard(patientData);
+    }
+    /*
+    * 新增充值记录
+    * */
+    @PostMapping("/add-record")
+    public void addMedicalCardRecord(@RequestBody ZsxMedicalCardRecord medicalCardRecord){
+        medicalCardService.addMedicalCardRecord(medicalCardRecord);
     }
 }

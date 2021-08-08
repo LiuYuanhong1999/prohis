@@ -14,7 +14,24 @@ public class ZsxMedicalCardRecord {
   private long medicalCardRecordId;
   private String medicalCardNumber;
   private Timestamp medicalCardTime;
+  private String medicalCardPerson;
+  private Double medicalCardMoney;
 
+  public String getMedicalCardPerson() {
+    return medicalCardPerson;
+  }
+
+  public void setMedicalCardPerson(String medicalCardPerson) {
+    this.medicalCardPerson = medicalCardPerson;
+  }
+
+  public Double getMedicalCardMoney() {
+    return medicalCardMoney;
+  }
+
+  public void setMedicalCardMoney(Double medicalCardMoney) {
+    this.medicalCardMoney = medicalCardMoney;
+  }
 
   public String getMedicalCardNumber() {
     return medicalCardNumber;
@@ -47,8 +64,10 @@ public class ZsxMedicalCardRecord {
   public String toString() {
     return "ZsxMedicalCardRecord{" +
             "medicalCardRecordId=" + medicalCardRecordId +
-            ", medicalCardNumber=" + medicalCardNumber +
+            ", medicalCardNumber='" + medicalCardNumber + '\'' +
             ", medicalCardTime=" + medicalCardTime +
+            ", medicalCardPerson='" + medicalCardPerson + '\'' +
+            ", medicalCardMoney='" + medicalCardMoney + '\'' +
             '}';
   }
 }
