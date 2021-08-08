@@ -13,6 +13,13 @@
             <result column="drug_date" property="drugDate"></result>
             <result column="drug_price" property="drugPrice"></result>
             <result column="supplier_id" property="supplierId"></result>
+            <association property="lyhPharmacyEntity" javaType="cn.gson.prohis.model.pojos.LyhPharmacyEntity">
+                <id column="pharmacy_id" property="pharmacyId"></id>
+                <result column="drug_id" property="drugId"></result>
+                <result column="pharmacy_date" property="pharmacyDate"></result>
+                <result column="pharmacy_number" property="pharmacyNumber"></result>
+                <result column="pharmacy_yj" property="pharmacyYj"></result>
+            </association>
         </collection>
         <collection property="yxjProjectEntity" javaType="cn.gson.prohis.model.pojos.YxjProjectEntity">
             <id column="project_id" property="projectId"></id>
@@ -83,6 +90,7 @@
         select * from tyh_recipedetail trd
         left join tyh_recipe tr on trd.recipe_id=tr.recipe_id
         left join lyh_drug ld on trd.recipedetail_durg=ld.drug_id
+        left join lyhpharmacy lp on lp.drug_id=ld.drug_id
         left join yxj_project yp on trd.recipedetail_project=yp.project_id
         left join tyh_patient tp on tr.patient_id=tp.patient_id
         left join yxj_staff ys on tr.staff_id=ys.staff_id

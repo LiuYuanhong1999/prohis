@@ -25,6 +25,10 @@ public class regService {
         return regMapper.findnot();
     }
 
+     public List<TyhHosnotEntity> findnot2(){
+         return regMapper.findnot2();
+     }
+
     public TyhHosnotEntity findreg(String num) {
         return regMapper.findreg(num);
     }

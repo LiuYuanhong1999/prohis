@@ -8,6 +8,15 @@ public class TyhHospitalEntity {
     private Integer inpId;
     private String hospitalName;
     private Double hospitalPrice;
+    private Integer hospitalZt;
+
+    public Integer getHospitalZt() {
+        return hospitalZt;
+    }
+
+    public void setHospitalZt(Integer hospitalZt) {
+        this.hospitalZt = hospitalZt;
+    }
 
     public int getHospitalId() {
         return hospitalId;
@@ -68,6 +77,9 @@ public class TyhHospitalEntity {
                 ", inpId=" + inpId +
                 ", hospitalName='" + hospitalName + '\'' +
                 ", hospitalPrice=" + hospitalPrice +
+                ", hospitalZt=" + hospitalZt +
+                ", tyhInpatientEntity=" + tyhInpatientEntity +
+                ", tyhHosnotEntity=" + tyhHosnotEntity +
                 '}';
     }
 }

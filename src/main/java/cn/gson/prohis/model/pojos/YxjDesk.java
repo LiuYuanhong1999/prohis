@@ -3,6 +3,7 @@ package cn.gson.prohis.model.pojos;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 科室实体类
@@ -39,6 +40,16 @@ public class YxjDesk {
 
   public void setDeskTime(Date deskTime) {
     this.deskTime = deskTime;
+  }
+
+  public List<TyhInpatientEntity> tyhInpatientEntities;
+
+  public List<TyhInpatientEntity> getTyhInpatientEntities() {
+    return tyhInpatientEntities;
+  }
+
+  public void setTyhInpatientEntities(List<TyhInpatientEntity> tyhInpatientEntities) {
+    this.tyhInpatientEntities = tyhInpatientEntities;
   }
 
   @Override

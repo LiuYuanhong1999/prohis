@@ -14,7 +14,15 @@ public class LyhPharmacyEntity {
     private Integer drugId;
     private Timestamp pharmacyDate;
     private Integer pharmacyNumber;
+    private Integer pharmacyYj;
 
+    public Integer getPharmacyYj() {
+        return pharmacyYj;
+    }
+
+    public void setPharmacyYj(Integer pharmacyYj) {
+        this.pharmacyYj = pharmacyYj;
+    }
 
     public int getPharmacyId() {
         return pharmacyId;

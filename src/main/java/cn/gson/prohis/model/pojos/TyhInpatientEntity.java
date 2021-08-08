@@ -1,6 +1,7 @@
 package cn.gson.prohis.model.pojos;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,6 +9,24 @@ public class TyhInpatientEntity {
     private int inpId;
     private String inpName;
     private Integer deskId;
+    private Integer inpYu;
+    private Integer inpNumber;
+
+    public Integer getInpYu() {
+        return inpYu;
+    }
+
+    public void setInpYu(Integer inpYu) {
+        this.inpYu = inpYu;
+    }
+
+    public Integer getInpNumber() {
+        return inpNumber;
+    }
+
+    public void setInpNumber(Integer inpNumber) {
+        this.inpNumber = inpNumber;
+    }
 
     public int getInpId() {
         return inpId;
@@ -41,6 +60,16 @@ public class TyhInpatientEntity {
 
     public void setTyhHospitalEntities(List<TyhHospitalEntity> tyhHospitalEntities) {
         this.tyhHospitalEntities = tyhHospitalEntities;
+    }
+
+    public YxjDesk yxjDesks;
+
+    public YxjDesk getYxjDesks() {
+        return yxjDesks;
+    }
+
+    public void setYxjDesks(YxjDesk yxjDesks) {
+        this.yxjDesks = yxjDesks;
     }
 
     @Override
