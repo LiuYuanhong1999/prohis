@@ -14,4 +14,6 @@ public interface LyhPharmacyMapper {
     public List<LyhPharmacyEntity> findByName(String pharmacyName);
 
 
+    void updateById(Integer numbers,Integer drugId);
+    void updateById2(Integer numbers,Integer drugId);
 }

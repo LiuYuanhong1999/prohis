@@ -21,11 +21,22 @@ public class exeService {
         return exeMapper.findExecutedel(id);
     }
 
+    //查询发药药品
+
+    public List<TyhExecuteEntity> findAll(){
+        return exeMapper.findExecute2();
+    }
+
+
     public void updata1(String id) {
         exeMapper.updata1(id);
     }
 
     public void updata2(String id) {
         exeMapper.updata2(id);
+    }
+
+    public void update3(String id) {
+        exeMapper.update3(id);
     }
 }

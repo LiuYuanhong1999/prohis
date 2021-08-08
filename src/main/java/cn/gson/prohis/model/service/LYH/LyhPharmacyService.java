@@ -24,4 +24,11 @@ public class LyhPharmacyService {
     }
 
 
+    public void update(Integer number,Integer drugId){
+        bs.updateById(number, drugId);
+    }
+
+    public void update2(Integer number,Integer drugId){
+        bs.updateById2(number, drugId);
+    }
 }

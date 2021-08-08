@@ -84,6 +84,15 @@
         where to_days(te.execute_data) = to_days(now()) and tr.recipe_zt=1
     </select>
 
+    <select id="findExecute2" resultMap="execute">
+        select * from tyh_execute te
+                          left join tyh_recipe tr on te.recipe_id=tr.recipe_id
+                          left join tyh_patient tp on te.patient_id=tp.patient_id
+                          left join tyh_hosreg th on th.patient_id=tp.patient_id
+        where  te.execute_zt=1
+    </select>
+
+
     <select id="findExecutedel" resultMap="executedel">
         select * from tyh_executedel  ted
         left join tyh_execute te on ted.execute_id=te.execute_id
@@ -99,4 +108,10 @@
     <update id="updata2">
         update tyh_execute set execute_zt=3 where execute_id=#{id}
     </update>
+
+
+    <update id="update3">
+        update tyh_execute set execute_zt=2 where execute_id=#{id}
+    </update>
+
 </mapper>

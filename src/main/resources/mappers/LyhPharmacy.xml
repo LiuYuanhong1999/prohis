@@ -63,4 +63,25 @@
     <select id="findByName" resultMap="pharmacy">
         select * from lyhpharmacy where pharmacy_name like  '%${pharmacyName}%'
     </select>
+
+
+    <update id="updateById">
+
+        update lyhpharmacy a
+
+            set a.pharmacy_number = a.pharmacy_number-#{numbers,jdbcType=INTEGER}
+        where
+            a.drug_id=#{drugId}
+
+    </update>
+
+    <update id="updateById2">
+
+        update lyhpharmacy a
+
+        set a.pharmacy_yj = a.pharmacy_yj-#{numbers,jdbcType=INTEGER}
+        where
+            a.drug_id=#{drugId}
+
+    </update>
 </mapper>

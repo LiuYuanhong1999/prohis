@@ -24,4 +24,22 @@ public class LyhPharmacyController {
     public List<LyhPharmacyEntity> findByName(String pharmacyName){
         return bs.findByName(pharmacyName);
     }
+
+
+    @RequestMapping("update-pharmacy")
+    public AjaxResult updateById2(Integer numbers,Integer drugId){
+        System.out.println(numbers+"--------------------------------数量");
+        System.out.println(drugId+"---------------------------------药品Id");
+        bs.update(numbers, drugId);
+        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("success");
+    }
+
+
+    @RequestMapping("update-pharmacy2")
+    public AjaxResult updateById(Integer numbers,Integer drugId){
+        System.out.println(numbers+"--------------------------------数量");
+        System.out.println(drugId+"---------------------------------药品Id");
+        bs.update2(numbers, drugId);
+        return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("success");
+    }
 }
