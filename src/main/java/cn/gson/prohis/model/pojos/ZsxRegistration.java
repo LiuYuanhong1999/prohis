@@ -13,7 +13,7 @@ public class ZsxRegistration {
   private String room;
   private int doctot;
   private Timestamp registrationTime;
-  private String registrationFee;
+  private Double registrationFee;
   private Integer registrationState;
   private String registrationType;
   private String registrationName;
@@ -115,11 +115,11 @@ public class ZsxRegistration {
     this.registrationTime = registrationTime;
   }
 
-  public String getRegistrationFee() {
+  public Double getRegistrationFee() {
     return registrationFee;
   }
 
-  public void setRegistrationFee(String registrationFee) {
+  public void setRegistrationFee(Double registrationFee) {
     this.registrationFee = registrationFee;
   }
 

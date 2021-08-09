@@ -16,11 +16,14 @@ public interface ZsxMedicalCardMapper {
 //新增病人
     void addPatient(ZsxPatientData patientData);
 //新增诊疗卡
-    void addMedicalCard(ZsxMedicalCard medicalCard);
+    void addMedicalCard(ZsxPatientData medicalCard);
 //新增诊疗卡充值记录
-    void addMedicalCardRecords(ZsxMedicalCardRecord medicalCardRecord);
+    void addMedicalCardRecord(ZsxMedicalCardRecord medicalCardRecord);
 //修改病人
     void updatePatient(ZsxPatientData patientData);
 //修改诊疗卡
-    void updateMedicalCard(ZsxMedicalCard medicalCard);
+    void updateMedicalCard(ZsxPatientData medicalCard);
+//修改余额
+    void updateBalance(ZsxMedicalCardRecord medicalCardRecord);
+
 }
