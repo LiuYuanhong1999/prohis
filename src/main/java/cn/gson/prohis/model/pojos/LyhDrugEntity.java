@@ -165,7 +165,15 @@ public class LyhDrugEntity {
 //        this.list = list;
 //    }
 
+    private LyhPharmacyEntity lyhPharmacyEntity;
 
+    public LyhPharmacyEntity getLyhPharmacyEntity() {
+        return lyhPharmacyEntity;
+    }
+
+    public void setLyhPharmacyEntity(LyhPharmacyEntity lyhPharmacyEntity) {
+        this.lyhPharmacyEntity = lyhPharmacyEntity;
+    }
 
     private List<LyhPharmacyEntity> lyhPharmacyEntities;
 

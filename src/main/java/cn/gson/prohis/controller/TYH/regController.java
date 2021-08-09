@@ -26,6 +26,11 @@ public class regController {
         return regService.findnot();
     }
 
+    @RequestMapping("/find-not2")
+    public List<TyhHosnotEntity> findnot2(){
+        return regService.findnot2();
+    }
+
     @RequestMapping("/find-reg")
     public TyhHosnotEntity findreg(String num){
         return regService.findreg(num);

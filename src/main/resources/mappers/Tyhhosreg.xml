@@ -101,6 +101,10 @@
         select * from tyh_hosnot where hosnot_zt = 0
     </select>
 
+    <select id="findnot2" resultMap="hosnotreg">
+        select * from tyh_hosnot where hosnot_zt = 2
+    </select>
+
     <select id="findreg" resultMap="hosnotreg">
         select * from tyh_hosnot th left join tyh_patient tp on th.bingren=tp.patient_id
             left join tyh_hospital ti on th.hospital_id=ti.hospital_id

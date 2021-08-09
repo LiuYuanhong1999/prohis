@@ -1,9 +1,7 @@
 package cn.gson.prohis.model.pojos;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
-import java.util.Objects;
 
 
 public class YxjDeskEntity {

@@ -1,0 +1,102 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.hospitalMapper">
+    <resultMap id="hospital" type="cn.gson.prohis.model.pojos.TyhHospitalEntity">
+        <id column="hospital_id" property="hospitalId"></id>
+        <result column="hospital_name" property="hospitalName"></result>
+        <result column="hospital_price" property="hospitalPrice"></result>
+        <result column="hospital_zt" property="hospitalZt"></result>
+        <collection property="tyhInpatientEntity" javaType="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+            <id column="inp_id" property="inpId"></id>
+            <result column="inp_name" property="inpName"></result>
+            <result column="inp_yu" property="inpYu"></result>
+            <result column="inp_number" property="inpNumber"></result>
+            <collection property="yxjDesks" javaType="cn.gson.prohis.model.pojos.YxjDesk">
+                <id column="desk_id" property="deskId"></id>
+                <result column="desk_name" property="deskName"></result>
+                <result column="desk_time" property="deskTime"></result>
+            </collection>
+        </collection>
+        <collection property="tyhHosnotEntity" javaType="cn.gson.prohis.model.pojos.TyhHosnotEntity">
+            <id column="hosnot_num" property="hosnotNum"></id>
+            <result column="hosnot_date" property="hosnotDate"></result>
+            <result column="hosnot_price" property="hosnotPrice"></result>
+            <result column="hosnot_cash" property="hosnotCash"></result>
+            <result column="hosnot_war" property="hosnotWar"></result>
+            <result column="hosnot_sm" property="hosnotSm"></result>
+            <result column="hosnot_zt" property="hosnotZt"></result>
+            <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </association>
+        </collection>
+    </resultMap>
+
+
+    <resultMap id="hospital1" type="cn.gson.prohis.model.pojos.TyhInpatientEntity">
+            <id column="inp_id" property="inpId"></id>
+            <result column="inp_name" property="inpName"></result>
+            <result column="inp_yu" property="inpYu"></result>
+            <result column="inp_number" property="inpNumber"></result>
+            <collection property="yxjDesks" javaType="cn.gson.prohis.model.pojos.YxjDesk">
+                <id column="desk_id" property="deskId"></id>
+                <result column="desk_name" property="deskName"></result>
+                <result column="desk_time" property="deskTime"></result>
+            </collection>
+    </resultMap>
+
+    <select id="findHospital" resultMap="hospital">
+        select * from tyh_hospital th
+        left join tyh_inpatient ti on th.inp_id=ti.inp_id
+        left join yxj_desk yd on ti.desk_id=yd.desk_id
+		left join tyh_hosnot thn on thn.hospital_id=th.hospital_id
+		left join tyh_patient tp on tp.patient_id=thn.bingren
+        where ti.inp_id=#{id}
+    </select>
+
+    <select id="findHospital1" resultMap="hospital1">
+        select * from tyh_inpatient ti
+        left join yxj_desk yd on ti.desk_id=yd.desk_id
+    </select>
+
+    <insert id="addcw" useGeneratedKeys="true" keyProperty="inpId" parameterType="cn.gson.prohis.model.pojos.cwglVo">
+        insert into tyh_inpatient(inp_name,inp_yu,desk_id,inp_number)
+        values (#{inpName},#{inpYu},#{deskId},#{inpNumber})
+    </insert>
+
+    <insert id="addcwx">
+        insert into tyh_hospital(inp_id,hospital_name,hospital_price)
+        values (#{inpId},#{hospitalName},#{hospitalPrice})
+    </insert>
+
+    <update id="updatecw">
+        update tyh_hospital set hospital_name=#{hospitalName},hospital_price=#{hospitalPrice}
+        where hospital_id=#{hospitalId}
+    </update>
+
+    <update id="updatecw1">
+        update tyh_inpatient set inp_name=#{inpName},desk_id=#{deskId}
+        where inp_id=#{inpId}
+    </update>
+
+    <update id="updaterz1">
+        update tyh_hospital set hospital_zt=1
+        where hospital_id=#{hospitalId}
+    </update>
+
+    <update id="updaterz2">
+        update tyh_inpatient set inp_yu=inp_yu-1
+        where inp_id=#{inpId}
+    </update>
+
+    <update id="updaterz3">
+        update tyh_hosnot set hospital_id=#{hospitalId},hosnot_zt=0
+        where hosnot_num=#{hosnotNum}
+    </update>
+
+    <update id="updatacwx">
+        update tyh_inpatient set inp_yu=inp_yu+1,inp_number=inp_number+1
+        where inp_id=#{inpId}
+    </update>
+</mapper>

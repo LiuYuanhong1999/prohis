@@ -14,6 +14,13 @@
             <id column="supplier_id" property="supplierId"></id>
             <result column="supplier_name" property="supplierName"></result>
         </association>
+        <association property="lyhPharmacyEntity" javaType="cn.gson.prohis.model.pojos.LyhPharmacyEntity">
+            <id column="pharmacy_id" property="pharmacyId"></id>
+            <result column="drug_id" property="drugId"></result>
+            <result column="pharmacy_date" property="pharmacyDate"></result>
+            <result column="pharmacy_number" property="pharmacyNumber"></result>
+            <result column="pharmacy_yj" property="pharmacyYj"></result>
+        </association>
 
     </resultMap>
     <select id="findById" resultMap="drug">
@@ -35,7 +42,9 @@
     </insert>
 
     <select id="findYp" resultMap="drug">
-        select * from lyh_drug
+        select * from lyh_drug ld
+        left join lyhpharmacy lp on ld.drug_id=lp.drug_id
+        where lp.pharmacy_yj>0
     </select>
 
     <select id="findyp2" resultMap="drug">
