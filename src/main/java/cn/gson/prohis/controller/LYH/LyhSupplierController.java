@@ -17,12 +17,16 @@ public class LyhSupplierController {
 
 
 
-    @PostMapping("/find-supplier")
-    public List<LyhSupplierEntity> findAll(@RequestBody LyhSupplierEntity supplierEntity){
+    @RequestMapping("/find-supplier")
+    public List<LyhSupplierEntity> findAll( LyhSupplierEntity supplierEntity){
         System.out.println(supplierEntity.getSupplierState()+"-------------------");
         return bs.findAll(supplierEntity);
     }
 
+
+    @RequestMapping("/find-supplierName")
+    public List<LyhSupplierEntity> findByName(){return bs.findByName();
+    }
 
 
     @PostMapping("/add-supplier")

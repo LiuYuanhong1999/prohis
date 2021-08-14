@@ -34,4 +34,10 @@ public class LyhSupplierService {
     public void updateById(Integer supplierId){
         bs.updateById(supplierId);
     }
+
+
+
+    public List<LyhSupplierEntity> findByName(){
+        return bs.findByName();
+    }
 }

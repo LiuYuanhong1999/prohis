@@ -204,4 +204,18 @@ public class LyhDrugEntity {
     public void setTyhExecutedelEntities(List<TyhExecutedelEntity> tyhExecutedelEntities) {
         this.tyhExecutedelEntities = tyhExecutedelEntities;
     }
+
+
+
+    private List<LyhReportDetailsEntity> list2;
+
+    public List<LyhReportDetailsEntity> getList2() {
+        return list2;
+    }
+
+    public void setList2(List<LyhReportDetailsEntity> list2) {
+        this.list2 = list2;
+    }
+
+
 }

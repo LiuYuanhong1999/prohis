@@ -148,21 +148,13 @@ private LyhDrugEntity lyhDrugEntity;
         this.lyhProcurementDetailsEntities = lyhProcurementDetailsEntities;
     }
 
-    @Override
-    public String toString() {
-        return "LyhProcurementEntity{" +
-                "procurementId=" + procurementId +
-                ", drugId=" + drugId +
-                ", procurementPrice=" + procurementPrice +
-                ", procurementState='" + procurementState + '\'' +
-                ", userName='" + userName + '\'' +
-                ", procurementName='" + procurementName + '\'' +
-                ", procurementDate=" + procurementDate +
-                ", procurementFirstdate=" + procurementFirstdate +
-                ", lyhDrugEntity=" + lyhDrugEntity +
-                ", lyhAuditEntities=" + lyhAuditEntities +
-                ", lyhDrugstoreEntities=" + lyhDrugstoreEntities +
-                ", lyhProcurementDetailsEntities=" + lyhProcurementDetailsEntities +
-                '}';
+ private List<LyhReportEntity> reportEntities;
+
+    public List<LyhReportEntity> getReportEntities() {
+        return reportEntities;
+    }
+
+    public void setReportEntities(List<LyhReportEntity> reportEntities) {
+        this.reportEntities = reportEntities;
     }
 }

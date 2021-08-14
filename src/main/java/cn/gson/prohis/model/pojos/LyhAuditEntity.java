@@ -81,4 +81,15 @@ public class LyhAuditEntity {
     public void setLyhProcurementEntity(LyhProcurementEntity lyhProcurementEntity) {
         this.lyhProcurementEntity = lyhProcurementEntity;
     }
+
+
+    private List<LyhReportEntity> reportEntities;
+
+    public List<LyhReportEntity> getReportEntities() {
+        return reportEntities;
+    }
+
+    public void setReportEntities(List<LyhReportEntity> reportEntities) {
+        this.reportEntities = reportEntities;
+    }
 }

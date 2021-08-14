@@ -13,6 +13,10 @@ public interface LyhSupplierMapper {
 
 
     public void insertSupplier(LyhSupplierEntity supplierEntity);
+
     public void updateById(Integer supplierId);
-        public void updateSupplier(LyhSupplierEntity supplierEntity);
+
+    public void updateSupplier(LyhSupplierEntity supplierEntity);
+
+    public List<LyhSupplierEntity> findByName();
 }

@@ -45,6 +45,13 @@
     </select>
 
 
+    <select id="findByName" resultMap="supplier">
+        select * from lyhsupplier a
+                          left join lyh_drug b on a.supplier_id=b.supplier_id
+        where a.supplier_state=0
+    </select>
+
+
     <insert id="insertSupplier">
         insert into lyhsupplier(supplier_name,supplier_adress,supplier_phone,supplier_user)
         values(#{supplierName},#{supplierAdress},#{supplierPhone},#{supplierUser})
