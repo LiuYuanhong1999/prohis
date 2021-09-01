@@ -29,7 +29,12 @@
         left join lyhsupplier c on b.supplier_id = c.supplier_id
 
         where b.drug_jia=0
-
     </select>
+
+    <insert id="insertByReport">
+        insert into lyh_reportDrtails(report_id,procurement_id,drug_id,numbers)
+            values(reportId,procurementId,drugId,numbers)
+    </insert>
+
 
 </mapper>

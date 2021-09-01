@@ -3,6 +3,8 @@
 
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>cn.gson.prohis.model.pojos.LyhRepicEntity</class>
+        <class>cn.gson.prohis.model.pojos.LyhRecipeEntity</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://rm-wz9e0163453eu84559o.mysql.rds.aliyuncs.com:3306/myhis"/>

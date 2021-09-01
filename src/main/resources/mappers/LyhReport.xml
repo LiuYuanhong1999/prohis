@@ -52,7 +52,15 @@
 
     </resultMap>
 
+<select id="selectAll" resultMap="report">
 
+        select * form lyh_report a
+            left join  lyh_reportDetails b on a.report_id=b.report_id
+            left join  lyhprocurement c on a.procurement_id=b.procurement_id
+            left join  lyh_drug d on b.drug_id=d.drug_id
+            left join  lyhsupplier e on d.supplier_id=e.supplier_id
+
+</select>
 
 
 </mapper>

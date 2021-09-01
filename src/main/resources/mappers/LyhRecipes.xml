@@ -1,0 +1,49 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhRecipesMapper">
+    <resultMap id="recipes" type="cn.gson.prohis.model.pojos.LyhRecipeEntity">
+
+        <result column="recipes_id" property="recipesId"></result>
+        <result column="execute_id" property="executeId"></result>
+        <result column="recipes_state" property="recipesState"></result>
+        <result column="recipes_date" property="recipesDate"></result>
+        <result column="recipes_name" property="recipesName"></result>
+
+        <association property="executeEntity" javaType="cn.gson.prohis.model.pojos.TyhExecuteEntity">
+            <id column="execute_id" property="executeId"></id>
+            <result column="recipe_id" property="recipeId"></result>
+            <result column="execute_exp" property="executeExp"></result>
+            <result column="execute_day" property="executeDay"></result>
+            <result column="execute_price" property="executePrice"></result>
+            <result column="patient_id" property="patientId"></result>
+            <result column="execute_data" property="executeData"></result>
+            <result column="execute_zt" property="executeZt"></result>
+            <association property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
+                <id column="recipe_id" property="recipeId"></id>
+                <result column="recipe_price" property="recipePrice"></result>
+                <result column="recipe_date" property="recipeDate"></result>
+                <result column="recipe_day" property="recipeDay"></result>
+                <result column="recipe_explain" property="recipeExplain"></result>
+                <result column="recipe_zt" property="recipeZt"></result>
+            </association>
+            <collection property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+                <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+                    <id column="hosreg_num" property="hosregNum"></id>
+                    <result column="hosreg_date" property="hosregDate"></result>
+                    <result column="hosreg_zt" property="hosregZt"></result>
+                </association>
+            </collection>
+        </association>
+    </resultMap>
+
+
+    <insert id="insertByName">
+
+        insert into lyh_recipe(execute_id,recipes_name)
+            values (#{executeId},#{recipesName})
+    </insert>
+
+</mapper>
