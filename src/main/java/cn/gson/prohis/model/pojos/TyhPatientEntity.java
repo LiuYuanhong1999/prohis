@@ -103,4 +103,15 @@ public class TyhPatientEntity {
     public void setTyhExecuteEntities(List<TyhExecuteEntity> tyhExecuteEntities) {
         this.tyhExecuteEntities = tyhExecuteEntities;
     }
+
+
+    public List<LyhRecipeEntity> recipeEntities;
+
+    public List<LyhRecipeEntity> getRecipeEntities() {
+        return recipeEntities;
+    }
+
+    public void setRecipeEntities(List<LyhRecipeEntity> recipeEntities) {
+        this.recipeEntities = recipeEntities;
+    }
 }

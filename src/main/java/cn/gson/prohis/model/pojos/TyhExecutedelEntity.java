@@ -2,6 +2,7 @@ package cn.gson.prohis.model.pojos;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 public class TyhExecutedelEntity {
@@ -96,5 +97,16 @@ public class TyhExecutedelEntity {
 
     public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
         this.lyhDrugEntity = lyhDrugEntity;
+    }
+
+
+   public LyhRecipeEntity lyhRecipeEntity;
+
+    public LyhRecipeEntity getLyhRecipeEntity() {
+        return lyhRecipeEntity;
+    }
+
+    public void setLyhRecipeEntity(LyhRecipeEntity lyhRecipeEntity) {
+        this.lyhRecipeEntity = lyhRecipeEntity;
     }
 }

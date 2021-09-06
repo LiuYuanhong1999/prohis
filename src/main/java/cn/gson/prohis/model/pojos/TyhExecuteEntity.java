@@ -111,13 +111,5 @@ public class TyhExecuteEntity {
 
 
 
-    private List<LyhRecipeEntity> recipeEntities;
 
-    public List<LyhRecipeEntity> getRecipeEntities() {
-        return recipeEntities;
-    }
-
-    public void setRecipeEntities(List<LyhRecipeEntity> recipeEntities) {
-        this.recipeEntities = recipeEntities;
-    }
 }

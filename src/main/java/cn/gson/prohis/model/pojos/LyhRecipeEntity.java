@@ -1,7 +1,11 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -11,7 +15,15 @@ public class LyhRecipeEntity {
     private Integer recipesState;
     private Timestamp recipesDate;
     private String recipesName;
+    private int patientId;
 
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
 
     public int getRecipesId() {
         return recipesId;
@@ -39,7 +51,8 @@ public class LyhRecipeEntity {
         this.recipesState = recipesState;
     }
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Timestamp getRecipesDate() {
         return recipesDate;
     }
@@ -59,13 +72,24 @@ public class LyhRecipeEntity {
 
 
 
-    private TyhExecuteEntity executeEntity;
+   public List<TyhExecutedelEntity> executedelEntity;
 
-    public TyhExecuteEntity getExecuteEntity() {
-        return executeEntity;
+    public List<TyhExecutedelEntity> getExecutedelEntity() {
+        return executedelEntity;
     }
 
-    public void setExecuteEntity(TyhExecuteEntity executeEntity) {
-        this.executeEntity = executeEntity;
+    public void setExecutedelEntity(List<TyhExecutedelEntity> executedelEntity) {
+        this.executedelEntity = executedelEntity;
+    }
+
+
+    public TyhPatientEntity patientEntity;
+
+    public TyhPatientEntity getPatientEntity() {
+        return patientEntity;
+    }
+
+    public void setPatientEntity(TyhPatientEntity patientEntity) {
+        this.patientEntity = patientEntity;
     }
 }
