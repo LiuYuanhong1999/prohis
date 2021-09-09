@@ -218,4 +218,15 @@ public class LyhDrugEntity {
     }
 
 
+
+    public LyhAllotRecordEntity allotRecordEntity;
+
+
+    public LyhAllotRecordEntity getAllotRecordEntity() {
+        return allotRecordEntity;
+    }
+
+    public void setAllotRecordEntity(LyhAllotRecordEntity allotRecordEntity) {
+        this.allotRecordEntity = allotRecordEntity;
+    }
 }

@@ -4,7 +4,9 @@ package cn.gson.prohis.controller.LYH;
 import cn.gson.prohis.model.pojos.LyhAllotDetailsEntity;
 import cn.gson.prohis.model.pojos.LyhAllotEntity;
 import cn.gson.prohis.model.pojos.LyhPharmacyDetailsEntity;
+import cn.gson.prohis.model.pojos.LyhRecordsEntity;
 import cn.gson.prohis.model.service.LYH.LyhAllotService;
+import cn.gson.prohis.model.service.LYH.LyhRecordsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,7 +21,8 @@ public class LyhAllotController {
     LyhAllotService bs;
 
 
-
+    @Resource
+    LyhRecordsService ds;
 
 
     @PostMapping("add-allot")
@@ -61,7 +64,19 @@ public class LyhAllotController {
         bs.updateById(map);
 
 
+
+        //String 强转  int  增加调拨记录单
+        int recordsState=Integer.parseInt(allotState);
+        ds.insertById(recordsState,allotId);
+
+
         return AjaxResult.me().setSuccess(true).setMsg("修改成功").setObject("success");
     }
 
+
+
+    @RequestMapping("/find-records")
+    public List<LyhRecordsEntity> findAll3(){
+        return ds.findAll();
+    }
 }

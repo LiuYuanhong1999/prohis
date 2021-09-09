@@ -3,6 +3,8 @@ package cn.gson.prohis.model.pojos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.sql.Timestamp;
+import java.util.List;
+
 public class LyhAllotRecordEntity {
     private int recordId;
     private String allotId;
@@ -56,4 +58,24 @@ public class LyhAllotRecordEntity {
     }
 
 
+    public LyhDrugEntity drugEntity;
+
+    public LyhDrugEntity getDrugEntity() {
+        return drugEntity;
+    }
+
+    public void setDrugEntity(LyhDrugEntity drugEntity) {
+        this.drugEntity = drugEntity;
+    }
+
+
+    private List<LyhRecordsEntity> recordsEntities;
+
+    public List<LyhRecordsEntity> getRecordsEntities() {
+        return recordsEntities;
+    }
+
+    public void setRecordsEntities(List<LyhRecordsEntity> recordsEntities) {
+        this.recordsEntities = recordsEntities;
+    }
 }

@@ -102,4 +102,15 @@ public class LyhAllotEntity {
     public void setLyhAllotDetailsEntities(List<LyhAllotDetailsEntity> lyhAllotDetailsEntities) {
         this.lyhAllotDetailsEntities = lyhAllotDetailsEntities;
     }
+
+
+    public List<LyhRecordsEntity> recordsEntities;
+
+    public List<LyhRecordsEntity> getRecordsEntities() {
+        return recordsEntities;
+    }
+
+    public void setRecordsEntities(List<LyhRecordsEntity> recordsEntities) {
+        this.recordsEntities = recordsEntities;
+    }
 }

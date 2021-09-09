@@ -48,7 +48,29 @@
         left join lyhpharmacy b on a.pharmacy_id=b.pharmacy_id
         left join lyh_drug c on c.drug_id = b.drug_id
         left join lyhsupplier d on c.supplier_id=d.supplier_id
+
+        where a.allot_state=0
+
+
     </select>
+
+
+
+
+    <select id="findAll2" resultMap="allot">
+
+        select * from lyhallot a
+                          left join lyhallotdetails e on a.allot_id=e.allot_id
+                          left join lyhpharmacy b on a.pharmacy_id=b.pharmacy_id
+                          left join lyh_drug c on c.drug_id = b.drug_id
+                          left join lyhsupplier d on c.supplier_id=d.supplier_id
+
+        where a.allot_state is not 1
+
+
+    </select>
+
+
 
 
     <insert id="insertAllot">

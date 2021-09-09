@@ -1,0 +1,76 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhRecordsMapper">
+    <resultMap id="records" type="cn.gson.prohis.model.pojos.LyhRecordsEntity">
+        <id column="records_id" property=""></id>
+        <result column="records_date" property=""></result>
+        <result column="allot_id" property=""></result>
+        <result column="records_state" property=""></result>
+
+        <association property="allotEntity" javaType="cn.gson.prohis.model.pojos.LyhAllotEntity">
+
+            <id column="allot_id" property="allotId"></id>
+            <result column="allot_state" property="allotState"></result>
+            <result column="pharmacy_id" property="pharmacyId"></result>
+            <result column="allot_number" property="allotNumber"></result>
+            <result column="drug_id" property="drugId"></result>
+            <result column="allot_time" property="allotTime"></result>
+
+        </association>
+
+<association property="allotRecordEntity" javaType="cn.gson.prohis.model.pojos.LyhAllotRecordEntity">
+
+    <id column="record_id" property="recordId"></id>
+    <result column="allot_id" property="allotId"></result>
+    <result column="drug_id" property="drugId"></result>
+    <result column="record_date" property="recordDate"></result>
+    <result column="record_numbers" property="recordNumbers"></result>
+
+
+
+    <association property="drugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+
+        <id column="drug_id" property="drugId"></id>
+        <result column="drug_name" property="drugName"></result>
+        <result column="drug_date" property="drugDate"></result>
+        <result column="drug_price" property="drugPrice"></result>
+        <result column="supplier_id" property="supplierId"></result>
+        <result column="drug_jixin" property="drugJixin"></result>
+        <result column="drug_guige" property="drugGuige"></result>
+        <result column="drug_state" property="drugState"></result>
+        <result column="drug_jia" property="drugJia"></result>
+        <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+            <id column="supplier_id" property="supplierId"></id>
+            <result column="supplier_name" property="supplierName"></result>
+        </association>
+
+
+    </association>
+
+</association>
+    </resultMap>
+
+
+    <select id="findAll" resultMap="records">
+
+        select * from lyh_records a
+        left join lyhallotrecord b on a.allot_id=b.allot_id
+        left join lyh_drug c on b.drug_id=b.drug_id
+        left join lyhsupplier d on c.supplier_id=d.supplier_id
+
+
+            where a.records_state !=0
+
+    </select>
+
+
+
+    <insert id="insertById">
+
+        insert into lyh_records(records_state,allot_id)
+            values (#{recordsState},#{allotId})
+
+    </insert>
+
+
+
+</mapper>
