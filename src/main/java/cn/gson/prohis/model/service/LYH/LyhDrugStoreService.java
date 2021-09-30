@@ -32,8 +32,11 @@ public class LyhDrugStoreService {
     }
 
 
-    public List<LyhDrugstoreEntity> findByName(int drugId,String procurementId){
-        return bs.findByName(drugId,procurementId);
+
+
+
+    public List<LyhDrugstoreEntity> findByName(int drugId){
+        return bs.findByName(drugId);
     }
 
 //入库时进行药品的数量修改，（如果没有获取到药品表里的药品信息那么就会新增反之修改），新增药库药品详细记录信息并且新增入库记录
@@ -41,7 +44,7 @@ public void updateById(String json){
     System.out.println(json);
     List<DrugStoreVo> p = JSONObject.parseArray(json, DrugStoreVo.class);
     for (DrugStoreVo vo : p) {
-        List<LyhDrugstoreEntity> s=bs.findByName(vo.getDrugId(),vo.getProcurementId());
+        List<LyhDrugstoreEntity> s=bs.findByName(vo.getDrugId());
             if (s.isEmpty()){
                 System.out.println(vo.getPiCi()+"批次");
                 System.out.println(vo.getNumbers()+vo.getDrugId()+"-------qwqwwwwwwwwwwwwwwwwwwwwwwwww");
@@ -62,8 +65,10 @@ public void updateById(String json){
 
             }else {
                 System.out.println("2----------------------------===============================================================");
-                bs.updateById(vo.getNumbers(),vo.getProcurementId(),vo.getDrugId());
-
+                System.out.println(vo.getPiCi()+"批次");
+                bs.updateById(vo.getNumbers(),vo.getDrugId());
+                System.out.printf("----shu"+vo.getNumbers()+"id" +vo.getDrugId()) ;
+                System.out.println("----11223------");
                 LyhDrugStoreDetailsEntity detailsEntity=new LyhDrugStoreDetailsEntity();
 
                 detailsEntity.setDrugId(vo.getDrugId());

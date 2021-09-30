@@ -5,14 +5,14 @@ public class DrugStoreVo {
     private String procurementId;
     private int numbers;
     private int drugId;
-    private String piCi;
+    private int piCi;
 
 
-    public String getPiCi() {
+    public int getPiCi() {
         return piCi;
     }
 
-    public void setPiCi(String piCi) {
+    public void setPiCi(int piCi) {
         this.piCi = piCi;
     }
 

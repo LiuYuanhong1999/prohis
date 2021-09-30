@@ -46,7 +46,6 @@
                                  left join lyh_drug d on c.drug_id=d.drug_id
                                  left join lyhsupplier e on d.supplier_id=e.supplier_id
 
-
         order by a.audit_date desc
     </select>
 

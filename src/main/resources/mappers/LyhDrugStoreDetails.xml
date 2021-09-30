@@ -72,13 +72,8 @@
             <if test="procurementId !=null and procurementId !=''">
                 and a.procurement_id =#{procurementId}
             </if>
-
-
            </where>
-
-
-
-
+            order by a.details_date desc
     </select>
 
 

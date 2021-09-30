@@ -67,9 +67,8 @@
 
 
     <select id="findByName" resultMap="drugstore">
-
         select * from lyhdrugstore
-        where drug_id=#{drugId} and procurement_id=#{procurementId}
+        where drug_id=#{drugId}
     </select>
 
 <insert id="insertDrugStore">
@@ -87,8 +86,7 @@
             set  a.drugstore_number = a.drugstore_number+#{numbers,jdbcType=INTEGER}
             where
           a.drug_id = #{drugId}
-            and
-               a.procurement_id =  #{procurementId}
+
     </update>
 
 

@@ -15,10 +15,10 @@ public interface LyhDrugStoreMapper {
 
 //    public int updateById(Map<String,Object> map);
 
-public void updateById(int numbers,String procurementId,int drugId);
+public void updateById(int numbers,int drugId);
 
 
-public List<LyhDrugstoreEntity> findByName(int drugId,String procurementId);
+public List<LyhDrugstoreEntity> findByName(int drugId);
 
 public void insertDrugStore(LyhDrugstoreEntity lyhDrugstoreEntity);
 
