@@ -18,4 +18,6 @@ public interface LyhDrugMapper {
 
 
     public void insertByDrug(LyhDrugEntity lyhDrugEntity);
+
+
 }

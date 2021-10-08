@@ -16,4 +16,8 @@ public interface LyhPharmacyMapper {
 
     void updateById(Integer numbers,Integer drugId);
     void updateById2(Integer numbers,Integer drugId);
+
+
+    void insertDrug(int drugId);
+    List<LyhPharmacyEntity> findByName2(int drugId);
 }

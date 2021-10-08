@@ -37,8 +37,8 @@
 
 
     <insert id="insertByDrug">
-        insert into lyh_drug(drug_name,drug_date,drug_price,drug_state,drug_guige,drug_jixin,supplier_id)
-        values (#{drugName},{drugDate},#{drugPrice},#{drugState},#{drugGuige},#{drugJixin},#{supplierId})
+        insert into lyh_drug(drug_id,drug_name,drug_price,drug_state,drug_guige,drug_jixin,supplier_id)
+        values (#{drugId},#{drugName},#{drugPrice},#{drugState},#{drugGuige},#{drugJixin},#{supplierId})
     </insert>
 
     <select id="findYp" resultMap="drug">
@@ -50,4 +50,6 @@
     <select id="findyp2" resultMap="drug">
         select * from lyh_drug where drug_id=#{id}
     </select>
+
+
 </mapper>

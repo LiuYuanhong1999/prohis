@@ -84,4 +84,17 @@
             a.drug_id=#{drugId}
 
     </update>
+
+
+
+    <insert id="insertDrug">
+        insert into lyhpharmacy(drug_id) values (#{drugId})
+    </insert>
+
+
+    <select id="findByName2" resultMap="pharmacy">
+
+        select * from lyh_drug where drug_id =#{drugId}
+
+    </select>
 </mapper>
