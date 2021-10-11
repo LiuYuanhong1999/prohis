@@ -17,7 +17,6 @@ public class ZsxMedicalCardController {
     * 根据病人查询出诊疗卡和诊疗卡充值记录
     * */
     @RequestMapping("/medicalCard")
-    @ResponseBody
     public List<ZsxPatientData> findByMedicalCard(){
         return medicalCardService.findByMedicalCard();
     }
