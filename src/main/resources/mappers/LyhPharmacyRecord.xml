@@ -1,0 +1,18 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhPharmacyRecordMapper">
+    <resultMap id="record" type="cn.gson.prohis.model.pojos.LyhPharmacyRecord">
+        <id column="record_id" property="recordId"></id>
+        <result column="drug_id" property="drugId"></result>
+        <result column="pi_ci" property="piCi"></result>
+        <result column="numbers" property="numbers"></result>
+        <result column="record_date" property="recordDate"></result>
+    </resultMap>
+
+
+    <insert id="insertPharmacyRecord">
+
+        insert into lyhpharmacyrecord(drug_id,pi_ci,numbers) values (#{drugId},#{piCi},#{numbers})
+
+
+    </insert>
+</mapper>

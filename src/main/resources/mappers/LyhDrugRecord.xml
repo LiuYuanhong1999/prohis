@@ -1,0 +1,40 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.LYH.LyhDrugRecordMapper">
+    <resultMap id="recodes" type="cn.gson.prohis.model.pojos.LyhDrugRecord">
+        <id column="recode_id" property="recodeId"></id>
+       <result column="drug_id" property="drugId"></result>
+        <result column="pi_ci" property="piCi"></result>
+        <result column="numbers" property="numbers"></result>
+        <result column="recode_date" property="recodeDate"></result>
+
+    </resultMap>
+
+
+
+    <insert id="insertDrugRecord">
+
+    insert into lyhdrugrecord(drug_id,pi_ci,numbers) values (#{drugId},#{piCi},#{numbers})
+
+    </insert>
+
+
+
+    <update id="updateByPiCi">
+        update lyhdrugrecord
+        set numbers=numbers-#{numbers,jdbcType=INTEGER}
+
+        where drug_id=#{drugId}
+          and recode_date in (
+
+            select  details_date from lyhdrugstoredetails ORDER BY details_date asc
+        )
+    </update>
+
+
+ <select id="findByName" resultMap="recodes">
+
+        select * from lyhdrugrecord where drug_id=#{drugId} order by recode_date asc
+
+ </select>
+
+</mapper>
