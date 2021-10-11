@@ -71,6 +71,8 @@
         where drug_id=#{drugId}
     </select>
 
+
+
 <insert id="insertDrugStore">
 
         insert into lyhdrugstore(drug_id,drugstore_number,procurement_id,audit_id,pi_ci)
@@ -90,15 +92,16 @@
     </update>
 
 
+
     <update id="updateById2">
 
         update lyhdrugstore a
             left join lyhpharmacy b on a.drug_id=b.drug_id
             left join lyhallotdetails c on b.pharmacy_id=c.pharmacy_id
+            left join lyhdrugstoredetails d on a.drug_id=d.drug_id
         set a.drugstore_number = a.drugstore_number-#{numbers,jdbcType=INTEGER}
         where
      a.drug_id=#{drugId}
-            and a.procurement_id=#{procurementId}
     </update>
 
 

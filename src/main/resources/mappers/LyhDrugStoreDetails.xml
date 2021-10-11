@@ -81,4 +81,8 @@
         insert into lyhdrugstoredetails(drug_id,procurement_id,details_name,numbers,pi_ci)
         values(#{drugId},#{procurementId},#{detailsName},#{numbers},#{piCi})
     </insert>
+
+
+
+
 </mapper>

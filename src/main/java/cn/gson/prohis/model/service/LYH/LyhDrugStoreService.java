@@ -1,16 +1,12 @@
 package cn.gson.prohis.model.service.LYH;
 
-import cn.gson.prohis.model.mapper.LYH.LyhAllotRecordMapper;
-import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreDetailsMapper;
-import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreMapper;
-import cn.gson.prohis.model.pojos.DrugStoreVo;
-import cn.gson.prohis.model.pojos.LyhAllotRecordEntity;
-import cn.gson.prohis.model.pojos.LyhDrugStoreDetailsEntity;
-import cn.gson.prohis.model.pojos.LyhDrugstoreEntity;
+import cn.gson.prohis.model.mapper.LYH.*;
+import cn.gson.prohis.model.pojos.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +22,14 @@ public class LyhDrugStoreService {
 
     @Resource
     private LyhAllotRecordMapper allotRecordMapper;
+
+    @Resource
+    private LyhDrugRecordMapper recordMapper;
+
+    @Resource
+    LyhPharmacyRecordMapper pharmacyRecordMapper;
+
+
 
     public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId){
         return bs.findAll(drugId, procurementId);
@@ -63,6 +67,15 @@ public void updateById(String json){
                 detailsEntity.setPiCi(vo.getPiCi());
                 ds.insertDetails(detailsEntity);
 
+
+                LyhDrugRecord record=new LyhDrugRecord();
+                record.setDrugId(vo.getDrugId());
+                record.setNumbers(vo.getNumbers());
+                record.setPiCi(vo.getPiCi());
+
+                recordMapper.insertDrugRecord(record);
+
+
             }else {
                 System.out.println("2----------------------------===============================================================");
                 System.out.println(vo.getPiCi()+"批次");
@@ -76,6 +89,14 @@ public void updateById(String json){
                 detailsEntity.setProcurementId(vo.getProcurementId());
                 detailsEntity.setPiCi(vo.getPiCi());
                 ds.insertDetails(detailsEntity);
+
+                LyhDrugRecord record=new LyhDrugRecord();
+                record.setDrugId(vo.getDrugId());
+                record.setNumbers(vo.getNumbers());
+                record.setPiCi(vo.getPiCi());
+
+                recordMapper.insertDrugRecord(record);
+
             }
 
     }
@@ -90,7 +111,32 @@ public void update(Integer numbers,Integer drugId,String procurementId,String al
         allotRecordEntity.setDrugId(drugId);
         allotRecordEntity.setRecordNumbers(numbers);
             allotRecordMapper.insertAllotRecord(allotRecordEntity);
+
+
+    System.out.println(numbers+"-----------------------"+procurementId+"--------------------"+drugId+"---------------------"+allotId);
         bs.updateById2(numbers, drugId, procurementId);
+
+        List<LyhDrugRecord> drugRecords=recordMapper.findByName(drugId);
+
+        for (LyhDrugRecord record : drugRecords) {
+        if (record.getNumbers()>numbers){
+            recordMapper.updateByPiCi(drugId, numbers);
+
+            Timestamp d = new Timestamp(System.currentTimeMillis());
+            LyhPharmacyRecord records=new LyhPharmacyRecord();
+                    records.setDrugId(drugId);
+                    records.setRecordDate(d);
+                    records.setNumbers(numbers);
+                    records.setPiCi(record.getPiCi());
+
+                    pharmacyRecordMapper.insertPharmacyRecord(records);
+        }else {
+            System.out.println(1);
+        }
+    }
+
+
+
 
 }
 

@@ -40,7 +40,7 @@ public class LyhAllotService {
             detailsEntity.setNumbers(entity.getNumbers());
             detailsEntity.setDrugId(entity.getDrugId());
             detailsEntity.setPharmacyId(entity.getPharmacyId());
-
+            System.out.println(  entity.getDrugId()+"--------------");
             detailsMapper.insertDetails(detailsEntity);
 
 

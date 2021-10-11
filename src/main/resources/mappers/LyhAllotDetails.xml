@@ -7,24 +7,18 @@
         <result column="pharmacy_id" property="pharmacyId"></result>
         <result column="allotdetails_name" property="allotdetailsName"></result>
         <result column="numbers" property="numbers"></result>
-        <result column="drug_id" property="drugId"></result>
         <association property="allotEntity" javaType="cn.gson.prohis.model.pojos.LyhAllotEntity">
         <id column="allot_id" property="allotId"></id>
         <result column="allot_state" property="allotState"></result>
         <result column="pharmacy_id" property="pharmacyId"></result>
         <result column="allot_number" property="allotNumber"></result>
-        <result column="drug_id" property="drugId"></result>
         <result column="allot_time" property="allotTime"></result>
         <association property="pharmacyEntity" javaType="cn.gson.prohis.model.pojos.LyhPharmacyEntity">
             <id column="pharmacy_id" property="pharmacyId"></id>
-            <result column="drug_id" property="drugId"></result>
             <result column="pharmacy_date" property="pharmacyDate"></result>
             <result column="pharmacy_number" property="pharmacyNumber"></result>
-
-
             <association property="lyhDrugstoreEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugstoreEntity">
                 <id column="drugstore_id" property="drugstoreId"></id>
-                <result column="drug_id" property="drugId"></result>
                 <result column="drugstore_number" property="drugstoreNumber"></result>
                 <result column="drugstore_date" property="drugstoreDate"></result>
                 <result column="procurement_id" property="procurementId"></result>
@@ -32,7 +26,7 @@
                 <result column="pi_ci" property="piCi"></result>
             </association>
             <association property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
-                <id column="drug_id" property="drugId"></id>
+                <id  column="drug_id" property="drugId"></id>
                 <result column="drug_name" property="drugName"></result>
                 <result column="drug_date" property="drugDate"></result>
                 <result column="drug_price" property="drugPrice"></result>
@@ -46,7 +40,8 @@
                     <result column="supplier_name" property="supplierName"></result>
                 </association>
             </association>
-        </association></association>
+        </association>
+        </association>
     </resultMap>
 
 
@@ -68,6 +63,6 @@
 
 
     <insert id="insertAllotDetails">
-        insert into lyhallotdetails(allot_id,pharmacy_id,numbers) values (#{allotId},#{pharmacyId},#{numbers})
+        insert into lyhallotdetails(allot_id,pharmacy_id,numbers,drug_id) values (#{allotId},#{pharmacyId},#{numbers},#{drugId})
     </insert>
 </mapper>

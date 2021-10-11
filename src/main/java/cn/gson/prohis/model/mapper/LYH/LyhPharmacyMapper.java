@@ -20,4 +20,9 @@ public interface LyhPharmacyMapper {
 
     void insertDrug(int drugId);
     List<LyhPharmacyEntity> findByName2(int drugId);
+
+
+    void updateById3(Integer numbers,Integer drugId);
+    void updateById4(Integer numbers,Integer drugId);
+
 }
