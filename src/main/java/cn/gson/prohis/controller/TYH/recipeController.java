@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -17,8 +16,8 @@ public class recipeController {
     recipeService recipeService;
 
     @RequestMapping("/find-chub")
-    public List<TyhHosregEntity> chufangbr(){
-        return recipeService.chufangbr();
+    public List<TyhHosregEntity> chufangbr(String cha){
+        return recipeService.chufangbr(cha);
     }
 
     @RequestMapping("/find-chufang1")
@@ -67,8 +66,8 @@ public class recipeController {
     }
 
     @PostMapping("add-chufang")
-    public void addchufang(@RequestBody tyhRecipeVo tyhRecipeEntity){
-        recipeService.addchufang(tyhRecipeEntity);
+    public int addchufang(@RequestBody tyhRecipeVo tyhRecipeEntity){
+        return recipeService.addchufang(tyhRecipeEntity);
     }
 
     @RequestMapping("/find-brname")

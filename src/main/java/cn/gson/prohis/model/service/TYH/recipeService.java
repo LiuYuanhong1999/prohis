@@ -9,7 +9,6 @@ import cn.gson.prohis.model.pojos.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +30,8 @@ public class recipeService {
     @Resource
     patMapper patMapper;
 
-    public List<TyhHosregEntity> chufangbr() {
-        return regMapper.chufangbr();
+    public List<TyhHosregEntity> chufangbr(String cha) {
+        return regMapper.chufangbr(cha);
     }
 
     public List<TyhRecipeEntity> chufang1(Integer patientId) {
@@ -67,50 +66,58 @@ public class recipeService {
         return patMapper.findbrname(id);
     }
 
-    public void addchufang(tyhRecipeVo tyhRecipeEntity) {
-        SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
-        Date date = new Date();
-        String a = myFmt.format(date);
-        String b = "cf";
-        tyhRecipeEntity.setRecipeId(b + a);
-        recipeMapper.addchufang(tyhRecipeEntity);
+    public int addchufang(tyhRecipeVo tyhRecipeEntity) {
+        TyhHosregEntity selchuf = regMapper.selchuf(tyhRecipeEntity.getPatientId());
+
+        if (selchuf.getHosregZt()==1){
+            SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
+            Date date = new Date();
+            String a = myFmt.format(date);
+            String b = "cf";
+            tyhRecipeEntity.setRecipeId(b + a);
+            recipeMapper.addchufang(tyhRecipeEntity);
 
 
-        //药品
-        if (tyhRecipeEntity.getDurg().size() != 0) {
+            //药品
+            if (tyhRecipeEntity.getDurg().size() != 0) {
 
-            //处方
-            tyhRecipeEntity.getDurg().forEach(v -> {
-                v.drugPrice = v.drugPrice * v.numbers;
-                recipeMapper.addchufangdel(v, tyhRecipeEntity.getRecipeId());
-            });
-
-
-            //护士
-            int data = 0;
-            for (int i = 1;i<=tyhRecipeEntity.getRecipeDay();i++){
-                SimpleDateFormat myFmt1 = new SimpleDateFormat("yyMMddHHmmssSSS");
-                Date date1 = new Date();
-                String c = myFmt1.format(date1);
-                String d = "hs";
-                tyhRecipeEntity.setExecuteId(d+c);
-                recipeMapper.addexe(tyhRecipeEntity,i);
-                recipeMapper.updatadata(tyhRecipeEntity.getExecuteId(),data);
-                data++;
+                //处方
                 tyhRecipeEntity.getDurg().forEach(v -> {
                     v.drugPrice = v.drugPrice * v.numbers;
-                    recipeMapper.addexedel(v,tyhRecipeEntity.getExecuteId());
+                    recipeMapper.addchufangdel(v, tyhRecipeEntity.getRecipeId());
+                });
+
+
+                //护士
+                int data = 0;
+                for (int i = 1;i<=tyhRecipeEntity.getRecipeDay();i++){
+                    SimpleDateFormat myFmt1 = new SimpleDateFormat("yyMMddHHmmssSSS");
+                    Date date1 = new Date();
+                    String c = myFmt1.format(date1);
+                    String d = "hs";
+                    tyhRecipeEntity.setExecuteId(d+c);
+                    recipeMapper.addexe(tyhRecipeEntity,i);
+                    recipeMapper.updatadata(tyhRecipeEntity.getExecuteId(),data);
+                    data++;
+                    tyhRecipeEntity.getDurg().forEach(v -> {
+                        v.drugPrice = v.drugPrice * v.numbers;
+                        recipeMapper.addexedel(v,tyhRecipeEntity.getExecuteId());
+                    });
+                }
+            }
+
+
+            //项目
+            if (tyhRecipeEntity.getProject().size() != 0) {
+                tyhRecipeEntity.getProject().forEach(v -> {
+                    recipeMapper.addchufangdel2(v, tyhRecipeEntity.getRecipeId());
                 });
             }
+        }else if (selchuf.getHosregZt()==2){
+            return 2;
         }
 
-
-        //项目
-        if (tyhRecipeEntity.getProject().size() != 0) {
-            tyhRecipeEntity.getProject().forEach(v -> {
-                recipeMapper.addchufangdel2(v, tyhRecipeEntity.getRecipeId());
-            });
-        }
+        return 1;
     }
 
     public List<TyhRecipeEntity> chufang(String patientId) {

@@ -22,6 +22,11 @@ public class CashController {
         return cashService.findAll(cha);
     }
 
+    @RequestMapping("/findAll-cash1")
+    public List<TyhCashEntity> findAllcash(String cha){
+        return cashService.findAllcash(cha);
+    }
+
     @PostMapping("/add-cash")
     public void addcash(@RequestBody TyhCashEntity tyhCashEntity){
         cashService.addcash(tyhCashEntity);

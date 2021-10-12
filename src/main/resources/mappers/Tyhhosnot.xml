@@ -74,4 +74,10 @@
     <update id="updatemz">
         update zsx_registration set registration_state=3 where registration_id=#{registrationId}
     </update>
+
+    <select id="findbrhos" resultMap="hosnot">
+        select * from tyh_hosnot tn
+        left join tyh_patient tp on tn.bingren=tp.patient_id
+        where tn.hosnot_zt=2
+    </select>
 </mapper>

@@ -113,6 +113,14 @@
             where hosnot_num = #{num}
     </select>
 
+    <select id="findregx" resultMap="hosnotreg">
+        select * from tyh_hosnot th left join tyh_patient tp on th.bingren=tp.patient_id
+            left join tyh_hospital ti on th.hospital_id=ti.hospital_id
+            left join tyh_inpatient tip on ti.inp_id=tip.inp_id
+            left join yxj_desk yd on th.desk_id=yd.desk_id
+            where tp.patient_id = #{num}
+    </select>
+
     <insert id="addreg">
         INSERT INTO tyh_hosreg(hosreg_num,hosreg_date,hosnot_num,patient_id)
         VALUES(#{hosregNum},#{hosregDate},#{hosnotNum},#{patientId})
@@ -148,5 +156,12 @@
 
     <select id="chufangbr" resultMap="hosreg">
         select * from tyh_hosreg th left join tyh_patient tp on th.patient_id=tp.patient_id where hosreg_zt=1
+        <if test="cha != ''">
+            and tp.patient_name like '%${cha}%'
+        </if>
+    </select>
+
+    <select id="selchuf" resultMap="hosreg">
+        select * from tyh_hosreg where patient_id=#{patientId}
     </select>
 </mapper>

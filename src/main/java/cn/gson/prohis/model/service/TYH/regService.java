@@ -33,6 +33,10 @@ public class regService {
         return regMapper.findreg(num);
     }
 
+     public TyhHosnotEntity findregx(String num) {
+         return regMapper.findregx(num);
+     }
+
     public void addreg(TyhHosregEntity tyhHosregEntity) {
         SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
         Date date = new Date();

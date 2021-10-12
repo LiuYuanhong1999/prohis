@@ -36,6 +36,11 @@ public class regController {
         return regService.findreg(num);
     }
 
+    @RequestMapping("/find-regx")
+    public TyhHosnotEntity findregx(String num){
+        return regService.findregx(num);
+    }
+
     @PostMapping("add-reg")
     public void addreg(@RequestBody TyhHosregEntity tyhHosregEntity){
         regService.addreg(tyhHosregEntity);

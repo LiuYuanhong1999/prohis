@@ -31,16 +31,20 @@
     </resultMap>
 
     <select id="findAll" resultMap="cash">
-        select * from tyh_cash tc left join tyh_hosreg th on tc.hosreg_num=th.hosreg_num
-        left join tyh_patient tp on th.patient_id=tp.patient_id
+        select * from tyh_hosreg th left join
+        tyh_patient tp on th.patient_id=tp.patient_id
         <if test="cha != null">
-            where tc.cash_num like '%${cha}%'
-            or th.hosreg_num like '%${cha}%'
+            where th.hosreg_num like '%${cha}%'
             or tp.patient_name like '%${cha}%'
         </if>
-        order by cash_date desc;
     </select>
 
+
+    <select id="findAllcash" resultMap="cash">
+        select * from tyh_cash
+        where hosreg_num=#{cha}
+        order by cash_date desc;
+    </select>
 
     <select id="findnum" resultMap="cash2">
         select * from tyh_hosreg th
