@@ -17,4 +17,6 @@ public interface hosnotMapper {
     void addhosnot(TyhHosnotEntity tyhHosnotEntity);
 
     void updatemz(Integer registrationId);
+
+    List<TyhHosnotEntity> findbrhos();
 }

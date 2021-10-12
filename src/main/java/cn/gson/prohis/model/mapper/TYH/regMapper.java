@@ -4,6 +4,7 @@ import cn.gson.prohis.model.pojos.TyhHosnotEntity;
 import cn.gson.prohis.model.pojos.TyhHosregEntity;
 import org.apache.ibatis.annotations.Mapper;
 
+
 import java.util.List;
 
 @Mapper
@@ -16,8 +17,10 @@ public interface regMapper {
 
     TyhHosnotEntity findreg(String num);
 
-    void addreg(TyhHosregEntity tyhHosregEntity);
+    TyhHosnotEntity findregx(String num);
 
+    void addreg(TyhHosregEntity tyhHosregEntity);
+        
     void updatenot(String hosnotNum);
 
     void suoding(String num);
@@ -28,5 +31,7 @@ public interface regMapper {
 
     TyhHosregEntity findchureg2(String num);
 
-    public List<TyhHosregEntity> chufangbr();
+    public List<TyhHosregEntity> chufangbr(String cha);
+
+    TyhHosregEntity selchuf(Integer patientId);
 }

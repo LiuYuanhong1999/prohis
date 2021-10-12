@@ -6,15 +6,6 @@ import java.util.List;
 public class tyhRecipeVo {
     private String recipeId;
     private String executeId;
-
-    public String getExecuteId() {
-        return executeId;
-    }
-
-    public void setExecuteId(String executeId) {
-        this.executeId = executeId;
-    }
-
     private Double recipePrice;
     private Timestamp recipeDate;
     private Integer recipeDay;
@@ -26,6 +17,16 @@ public class tyhRecipeVo {
 
     public List<tyhDrugVo> durg;
     public List<tyhProjectVo> project;
+
+
+
+    public String getExecuteId() {
+        return executeId;
+    }
+
+    public void setExecuteId(String executeId) {
+        this.executeId = executeId;
+    }
 
     public String getRecipeId() {
         return recipeId;

@@ -1,5 +1,6 @@
 package cn.gson.prohis.controller.TYH;
 
+import cn.gson.prohis.model.pojos.TyhHosnotEntity;
 import cn.gson.prohis.model.pojos.TyhHospitalEntity;
 import cn.gson.prohis.model.pojos.cwglVo;
 import cn.gson.prohis.model.pojos.rzVo;
@@ -40,5 +41,10 @@ public class hospitalController {
     @PostMapping("update-rz")
     public void updateRz(@RequestBody rzVo rzVo){
         hospitalService.updateRz(rzVo);
+    }
+
+    @RequestMapping("find-brn")
+    public List<TyhHosnotEntity> findbrhos(){
+        return hospitalService.findbrhos();
     }
 }

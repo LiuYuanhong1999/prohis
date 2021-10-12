@@ -1,6 +1,8 @@
 package cn.gson.prohis.model.service.TYH;
 
+import cn.gson.prohis.model.mapper.TYH.hosnotMapper;
 import cn.gson.prohis.model.mapper.TYH.hospitalMapper;
+import cn.gson.prohis.model.pojos.TyhHosnotEntity;
 import cn.gson.prohis.model.pojos.TyhHospitalEntity;
 import cn.gson.prohis.model.pojos.cwglVo;
 import cn.gson.prohis.model.pojos.rzVo;
@@ -13,6 +15,9 @@ import java.util.List;
 public class hospitalService {
     @Resource
     hospitalMapper hospitalMapper;
+
+    @Resource
+    hosnotMapper hosnotMapper;
 
     public List<TyhHospitalEntity> findHospital(Integer id){
         return hospitalMapper.findHospital(id);
@@ -57,5 +62,9 @@ public class hospitalService {
         hospitalMapper.updaterz1(rzVo.getHospitalId());
         hospitalMapper.updaterz2(rzVo.getInpId());
         hospitalMapper.updaterz3(rzVo);
+    }
+
+    public List<TyhHosnotEntity> findbrhos() {
+        return hosnotMapper.findbrhos();
     }
 }

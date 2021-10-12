@@ -19,6 +19,10 @@ public class cashService {
         return cashMapper.findAll(cha);
     }
 
+    public List<TyhCashEntity> findAllcash(String cha){
+        return cashMapper.findAllcash(cha);
+    }
+
     public void addcash(TyhCashEntity tyhCashEntity) {
         SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
         Date date = new Date();

@@ -21,4 +21,6 @@ public interface cashMapper {
     void delcash(String cid);
 
     void updateyue2(Double price, Integer pid);
+
+    public List<TyhCashEntity> findAllcash(String cha);
 }
