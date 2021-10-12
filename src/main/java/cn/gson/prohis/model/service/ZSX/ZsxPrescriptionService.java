@@ -37,13 +37,13 @@ public class ZsxPrescriptionService {
 //        prescriptionMapper.addPrescription(prescription);
 
 
-
+        System.err.println(prescription);
         prescription.getPrescriptionDetails().forEach(drug->{
             System.out.println(drug);
             //药品新增
                 if (drug.drug.size()!=0){
                     drug.getDrug().forEach(v->{
-                        v.drugPrice = v.drugPrice * v.numbers;
+//                        v.drugPrice = v.drugPrice * v.numbers;
                         System.err.println(v);
                         prescriptionMapper.addPrescriptionDetails(v,prescription.getPrescriptionId());
                     });

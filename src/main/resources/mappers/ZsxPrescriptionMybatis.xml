@@ -90,13 +90,13 @@
     <insert id="addPrescriptionDetails">
         insert into zsx_prescription_details
         (medicine_no,medicine_count,
---          prescription_details_attention,
---          presciption_datails_explain,
+         prescription_details_attention,
+         presciption_datails_explain,
          medicini_subtotal)
         values
         (#{v.drugId},#{v.numbers},
---          #{prescriptionDetailsAttention},
---          #{v.presciptionDatailsExplain},
+         #{prescriptionDetailsAttention},
+         #{v.presciptionDatailsExplain},
          #{v.projectPrice})
     </insert>
 
@@ -104,13 +104,13 @@
     <insert id="addPrescriptionDetailsProject">
         insert into zsx_prescription_details
         (prescription_project,
---          prescription_details_attention,
---          presciption_datails_explain
+         prescription_details_attention,
+         presciption_datails_explain
          )
         values
         (#{v.projectId},
---          #{prescriptionDetailsAttention},
---          #{v.presciptionDatailsExplain})
+         #{prescriptionDetailsAttention},
+         #{v.presciptionDatailsExplain})
     </insert>
 
 

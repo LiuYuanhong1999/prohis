@@ -1,0 +1,81 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.ZSX.ZsxOperatingRoomMapper">
+<!--    手术室-->
+    <resultMap id="operating" type="cn.gson.prohis.model.pojos.ZsxOperatingRoom">
+        <id column="operating_room_id" property="operatingRoomId"/>
+        <result column="operating_room_name" property="operatingRoomName"/>
+        <result column="operating_room_type" property="operatingRoomType"/>
+        <result column="operating_room_place" property="operatingRoomPlace"/>
+        <result column="operating_room_charge" property="operatingRoomCharge"/>
+        <result column="operating_room_maintain" property="operatingRoomMaintain"/>
+        <result column="operating_room_employ" property="operatingRoomEmploy"/>
+        <result column="operating_room_type_id" property="operatingRoomTypeId"/>
+        <result column="desk_id" property="deskId"/>
+<!--手术室类别-->
+        <association property="operatingRoom" javaType="cn.gson.prohis.model.pojos.ZsxOperatingRoomType">
+            <id column="operating_room_type_id" property="operatingRoomTypeId"/>
+            <result column="operating_room_type_name" property="operatingRoomTypeName"/>
+        </association>
+        <!--            科室-->
+        <association property="desk" javaType="cn.gson.prohis.model.pojos.YxjDesk">
+            <id column="desk_id" property="deskId"/>
+            <result column="desk_name" property="deskName"/>
+            <result column="desk_time" property="deskTime"/>
+        </association>
+    </resultMap>
+<!--查询手术室-->
+    <select id="findOperating" resultMap="operating">
+        select * from zsx_operating_room
+            inner join zsx_operating_room_type
+                on zsx_operating_room_type.operating_room_type_id = zsx_operating_room.operating_room_type_id
+            inner join yxj_desk
+                on zsx_operating_room.desk_id = yxj_desk.desk_id
+    </select>
+
+
+<!--    手术室类别映射-->
+    <resultMap id="operatingRoomType" type="cn.gson.prohis.model.pojos.ZsxOperatingRoomType">
+        <id column="operating_room_type_id" property="operatingRoomTypeId"/>
+        <result column="operating_room_type_name" property="operatingRoomTypeName"/>
+    </resultMap>
+<!--查询手术室类别-->
+    <select id="findOperatingRoomType" resultMap="operatingRoomType">
+        select * from zsx_operating_room_type
+    </select>
+
+
+<!--    科室映射-->
+    <resultMap id="desk" type="cn.gson.prohis.model.pojos.YxjDesk">
+        <id column="desk_id" property="deskId"/>
+        <result column="desk_name" property="deskName"/>
+        <result column="desk_time" property="deskTime"/>
+    </resultMap>
+<!--查询科室-->
+    <select id="findDesk" resultMap="desk">
+        select * from yxj_desk
+    </select>
+<!--修改手术室-->
+    <update id="updateOperating">
+        update zsx_operating_room set
+                                      operating_room_name = #{operatingRoomName},
+                                      operating_room_type = #{operatingRoomType},
+                                      operating_room_place = #{operatingRoomPlace},
+                                      operating_room_charge = #{operatingRoomCharge},
+                                      operating_room_maintain = #{operatingRoomMaintain},
+                                      operating_room_employ = #{operatingRoomEmploy},
+                                      operating_room_type_id = #{operatingRoomTypeId},
+                                      desk_id = #{deskId}
+        where operating_room_id =#{operatingRoomId}
+    </update>
+<!--新增手术室-->
+    <insert id="insertOperatingRoom">
+        insert into zsx_operating_room
+                    (operating_room_id,operating_room_name,operating_room_type,
+                    operating_room_place,operating_room_charge,operating_room_employ,
+                    operating_room_maintain,operating_room_type_id,desk_id)
+             values
+                    (#{operatingRoomId},#{operatingRoomName},#{operatingRoomType},
+                     #{operatingRoomPlace},#{operatingRoomCharge},#{operatingRoomEmploy},
+                     #{operatingRoomMaintain},#{operatingRoomTypeId},#{deskId})
+    </insert>
+</mapper>

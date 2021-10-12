@@ -33,8 +33,8 @@ public class ZsxCharge {
     this.chargeId = chargeId;
   }
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+  @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:SS")
+  @JsonFormat(pattern = "yyyy-MM-dd  HH:mm:SS", timezone = "GMT+8")
   public Timestamp getChargeTime() {
     return chargeTime;
   }
