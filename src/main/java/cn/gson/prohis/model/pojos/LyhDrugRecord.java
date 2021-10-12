@@ -11,7 +11,15 @@ public class LyhDrugRecord {
     private Integer piCi;
     private Timestamp recodeDate;
     private Integer numbers;
+    private String procurementId;
 
+    public String getProcurementId() {
+        return procurementId;
+    }
+
+    public void setProcurementId(String procurementId) {
+        this.procurementId = procurementId;
+    }
 
     public int getRecodeId() {
         return recodeId;

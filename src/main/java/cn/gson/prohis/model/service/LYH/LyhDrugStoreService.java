@@ -131,7 +131,7 @@ public void update(Integer numbers,Integer drugId,String procurementId,String al
 
                     pharmacyRecordMapper.insertPharmacyRecord(records);
         }else {
-            System.out.println(1);
+            System.out.println("--------------------------------------------------wwwwww-11111111111111111111111111111111111111");
         }
     }
 
