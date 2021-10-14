@@ -10,7 +10,7 @@ public class ZsxRegistration {
   private Integer registrationId;
   private String registrationNumber;
   private Integer patientDataId;
-  private String room;
+  private Integer room;
   private int doctot;
   private Timestamp registrationTime;
   private Double registrationFee;
@@ -88,11 +88,11 @@ public class ZsxRegistration {
   }
 
 
-  public String getRoom() {
+  public Integer getRoom() {
     return room;
   }
 
-  public void setRoom(String room) {
+  public void setRoom(Integer room) {
     this.room = room;
   }
 
@@ -105,8 +105,7 @@ public class ZsxRegistration {
     this.doctot = doctot;
   }
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:SS")
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS", timezone = "GMT+8")
+
   public Timestamp getRegistrationTime() {
     return registrationTime;
   }
@@ -131,5 +130,24 @@ public class ZsxRegistration {
 
   public void setTyhHosnotEntity(TyhHosnotEntity tyhHosnotEntity) {
     this.tyhHosnotEntity = tyhHosnotEntity;
+  }
+
+  @Override
+  public String toString() {
+    return "ZsxRegistration{" +
+            "registrationId=" + registrationId +
+            ", registrationNumber='" + registrationNumber + '\'' +
+            ", patientDataId=" + patientDataId +
+            ", room='" + room + '\'' +
+            ", doctot=" + doctot +
+            ", registrationTime=" + registrationTime +
+            ", registrationFee=" + registrationFee +
+            ", registrationState=" + registrationState +
+            ", registrationType='" + registrationType + '\'' +
+            ", registrationName='" + registrationName + '\'' +
+            ", patient=" + patient +
+            ", desk=" + desk +
+            ", tyhHosnotEntity=" + tyhHosnotEntity +
+            '}';
   }
 }

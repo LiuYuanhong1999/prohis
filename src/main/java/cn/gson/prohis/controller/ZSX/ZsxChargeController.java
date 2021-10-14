@@ -19,9 +19,9 @@ public class ZsxChargeController {
     }
 
 
-    @PostMapping("/saveCharge")
-    public void saveCharge(@RequestBody ZsxCharge charge){
-        chargeService.saveCharge(charge);
-    }
+//    @PostMapping("/saveCharge")
+//    public void saveCharge(@RequestBody ZsxCharge charge){
+//        chargeService.saveCharge(charge);
+//    }
 
 }

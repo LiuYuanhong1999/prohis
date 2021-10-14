@@ -7,29 +7,61 @@
         <result column="charge_operator_id" property="chargeOperatorId"></result>
         <result column="dotor" property="dotor"></result>
         <result column="charge_money" property="chargeMoney"></result>
-        <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
-            <id column="patient_data_id" property="patientDataId"></id>
-            <result column="patient_data_card" property="patientDataCard"></result>
-            <result column="patient_data_name" property="patientDataName"></result>
-            <result column="patient_data_phone" property="patientDataPhone"></result>
-            <result column="patient_data_sex" property="patientDataSex"></result>
-            <result column="medical_card_number" property="medicalCardNumber"></result>
+        <association property="registration" javaType="cn.gson.prohis.model.pojos.ZsxRegistration">
+            <id column="registration_id" property="registrationId"></id>
+            <result column="registration_number" property="registrationNumber"></result>
+            <result column="patient_data_id" property="patientDataId"></result>
+            <result column="room" property="room"></result>
+            <result column="doctot" property="doctot"></result>
+            <result column="registration_time" property="registrationTime"></result>
+            <result column="registration_fee" property="registrationFee"></result>
+            <result column="registration_state" property="registrationState"></result>
+            <result column="registration_type" property="registrationType"/>
+            <result column="registration_name" property="registrationName"/>
+            <!--        病人-->
+            <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
+                <id column="patient_data_id" property="patientDataId"></id>
+                <result column="patient_data_card" property="patientDataCard"></result>
+                <result column="patient_data_name" property="patientDataName"></result>
+                <result column="patient_data_phone" property="patientDataPhone"></result>
+                <result column="patient_data_sex" property="patientDataSex"></result>
+                <result column="medical_card_number" property="medicalCardNumber"></result>
+            </association>
+        </association>
+        <association property="prescription" javaType="cn.gson.prohis.model.pojos.ZsxPrescription">
+            <id column="prescription_id" property="prescriptionId"/>
+            <result column="doctor" property="doctor"/>
+            <result column="prescription_time" property="prescriptionTime"/>
+            <result column="prescription_money" property="prescriptionMoney"/>
         </association>
     </resultMap>
 
 
     <select id="findByCharge" resultMap="charge">
-        select * from zsx_charge left join zsx_patient_data on zsx_charge.patient_data_id = zsx_patient_data.patient_data_id
+        select * from zsx_charge
+            inner join zsx_registration on zsx_charge.registration_number = zsx_registration.registration_number
+            inner join zsx_patient_data on zsx_registration.patient_data_id=zsx_patient_data.patient_data_id
+            inner join zsx_prescription on zsx_charge.prescription_id = zsx_prescription.prescription_id
     </select>
 
-    <insert id="addCharge">
-        insert into zsx_charge(charge_id,charge_time,charge_operator_id,dotor,charge_money) values
-        (#{chargeId},#{chargeTime},#{chargeOperatorId},#{dotor},#{chargeMoney})
+    <insert id="addChargeRegistration">
+        insert into zsx_charge(charge_id,charge_time,registration_id,charge_operator_id,dotor,charge_money)
+         values
+                (#{chargeId},#{chargeTime},#{registrationId},#{chargeOperatorId},#{dotor},#{chargeMoney})
+    </insert>
+    <insert id="addChargePrescription">
+        insert into zsx_charge(charge_id,charge_time,perscription_id,charge_operator_id,dotor,charge_money)
+        values (#{chargeId},#{chargeTime},#{perscriptionId},#{chargeOperator},#{dotor},#{chargeMonry})
     </insert>
 
-    <update id="updateCharge">
-        update zsx_charge set charge_time=#{chargeTime},
-                              charge_operator_id=#{chargeOperatorId},
-                              dotor=#{dotor},charge_money=#{chargeMoney} where charge_id = #{chargeId}
-    </update>
+<!--    <insert id="addCharge">-->
+<!--        insert into zsx_charge(charge_id,charge_time,charge_operator_id,dotor,charge_money) values-->
+<!--        (#{chargeId},#{chargeTime},#{chargeOperatorId},#{dotor},#{chargeMoney})-->
+<!--    </insert>-->
+
+<!--    <update id="updateCharge">-->
+<!--        update zsx_charge set charge_time=#{chargeTime},-->
+<!--                              charge_operator_id=#{chargeOperatorId},-->
+<!--                              dotor=#{dotor},charge_money=#{chargeMoney} where charge_id = #{chargeId}-->
+<!--    </update>-->
 </mapper>

@@ -15,6 +15,7 @@ public interface ZsxRegistrationMapper {
     public List<ZsxRegistration> findRegei();
 
     ZsxRegistration findRegei2(Integer num);
+
     void addRegistration(ZsxRegistration registration);
 
     void updateRegistration(ZsxRegistration registration);

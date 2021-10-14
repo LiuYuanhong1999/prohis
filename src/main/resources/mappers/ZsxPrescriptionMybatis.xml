@@ -89,28 +89,33 @@
 <!--    新增处方详情 yp-->
     <insert id="addPrescriptionDetails">
         insert into zsx_prescription_details
-        (medicine_no,medicine_count,
+        (medicine_no,
+         prescription_id,
+         medicine_count,
          prescription_details_attention,
-         presciption_datails_explain,
-         medicini_subtotal)
+         medicine_subtotal
+         )
         values
-        (#{v.drugId},#{v.numbers},
-         #{prescriptionDetailsAttention},
-         #{v.presciptionDatailsExplain},
-         #{v.projectPrice})
+        (#{v.drugId},
+         #{prescriptionId},
+         #{v.numbers},
+         #{v.prescriptionDetailsAttention},
+         #{v.projectPrice}
+         )
     </insert>
 
 <!--新增处方详情 xm-->
     <insert id="addPrescriptionDetailsProject">
         insert into zsx_prescription_details
         (prescription_project,
+         prescription_id,
          prescription_details_attention,
-         presciption_datails_explain
-         )
+         prescription_project_subtotal)
         values
         (#{v.projectId},
-         #{prescriptionDetailsAttention},
-         #{v.presciptionDatailsExplain})
+         #{prescriptionId},
+         #{v.prescriptionDetailsAttention},
+         #{v.projectPrice})
     </insert>
 
 
@@ -141,5 +146,44 @@
         select * from zsx_registration
             inner join zsx_patient_data on zsx_registration.patient_data_id =zsx_patient_data.patient_data_id
         where zsx_registration.registration_state = 1
+    </select>
+
+
+    <!--        处方详情表-->
+    <resultMap id="details" type="cn.gson.prohis.model.pojos.ZsxPrescriptionDetails">
+        <id column="prescription_details_id" property="prescriptionDetailsId"/>
+        <result column="medicine_count" property="medicineCount"/>
+        <result column="medicine_subtotal" property="medicineSubtotal"/>
+        <result column="prescription_details_attention" property="prescriptionDetailsAttention"/>
+        <result column="prescription_details_explain" property="prescriptionDetailsExplain"/>
+        <!--            药品-->
+        <collection property="drugEntity" ofType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+            <result column="drug_jixin" property="drugJixin"></result>
+            <result column="drug_guige" property="drugGuige"></result>
+            <result column="drug_state" property="drugState"></result>
+        </collection>
+        <!--            项目-->
+        <collection property="project" ofType="cn.gson.prohis.model.pojos.YxjProjectEntity">
+            <id column="project_id" property="projectId"></id>
+            <result column="project_name" property="projectName"></result>
+            <result column="project_type" property="projectType"></result>
+            <result column="project_price" property="projectPrice"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findPrescriptionDetailsDrug" resultMap="details">
+        select * from zsx_prescription_details
+                          inner join lyh_drug on zsx_prescription_details.medicine_no=lyh_drug.drug_id
+        where zsx_prescription_details.prescription_id=#{prescriptionId}
+    </select>
+    <select id="findPrescriptionDetailsProject" resultMap="details">
+        select * from zsx_prescription_details
+                          inner join yxj_project on zsx_prescription_details.prescription_project = yxj_project.project_id
+        where zsx_prescription_details.prescription_id=#{prescriptionId}
     </select>
 </mapper>

@@ -28,44 +28,41 @@ public class ZsxRegistrationService {
 
 
     public void saveRegistration(ZsxRegistration registration){
-        System.out.println(registration);
-        if(registration.getRegistrationId()==null || registration.getRegistrationId().equals("")){
-            registration.setPatientDataId(registration.getPatient().getPatientDataId());
-            if(registration.getRegistrationType() == "普通"){
+            if(registration.getRegistrationId()==null || registration.getRegistrationId().equals("")){
+                registration.setPatientDataId(registration.getPatient().getPatientDataId());
                 registration.setDoctot(1);
+                registration.setRegistrationState(0);
                 registration.setRegistrationFee(5.00);
-                registration.setRegistrationState(0);
                 registrationMapper.addRegistration(registration);
-            }else if(registration.getRegistrationType() =="急诊"){
-                registration.setDoctot(1);
-                registration.setRegistrationFee(10.00);
-                registration.setRegistrationState(0);
-                registrationMapper.addRegistration(registration);
-            }else if(registration.getRegistrationType() == "专家门诊"){
-                registration.setDoctot(1);
-                registration.setRegistrationFee(15.00);
-                registration.setRegistrationState(0);
-                registrationMapper.addRegistration(registration);
-            }
+//                if(registration.getRegistrationType() == "普通"){
+//                    registration.setRegistrationFee(5.00);
+//                    registrationMapper.addRegistration(registration);
+//                }else if(registration.getRegistrationType() == "急诊"){
+//                    registration.setRegistrationFee(10.00);
+//                    registrationMapper.addRegistration(registration);
+//                }else if(registration.getRegistrationType() == "专家门诊"){
+//                    registration.setRegistrationFee(15.00);
+//                    registrationMapper.addRegistration(registration);
+//                }
 
-            ZsxCallNumber callNumber = new ZsxCallNumber();
-            Timestamp time = new Timestamp(System.currentTimeMillis());
-            callNumber.setRegistrationNumber(registration.getRegistrationNumber());
-            callNumber.setCallNumberTime(time);
-            callNumberMapper.addCallNumber(callNumber);
+                ZsxCallNumber callNumber = new ZsxCallNumber();
+                Timestamp time = new Timestamp(System.currentTimeMillis());
+                callNumber.setRegistrationNumber(registration.getRegistrationNumber());
+                callNumber.setCallNumberTime(time);
+                callNumberMapper.addCallNumber(callNumber);
 
-            if(registration.getPatient().getMedicalCardNumber() == null){
-                ZsxPatientData patientData = new ZsxPatientData();
-                patientData.setPatientDataCard(registration.getPatient().getPatientDataCard());
-                patientData.setPatientDataName(registration.getPatient().getPatientDataName());
-                patientData.setPatientDataPhone(registration.getPatient().getPatientDataPhone());
-                patientData.setPatientDataSex(registration.getPatient().getPatientDataSex());
-                patientData.setMedicalCardNumber("0");
-                medicalCardMapper.addPatient(patientData);
+                if(registration.getPatient().getMedicalCardNumber() == null){
+                    ZsxPatientData patientData = new ZsxPatientData();
+                    patientData.setPatientDataCard(registration.getPatient().getPatientDataCard());
+                    patientData.setPatientDataName(registration.getPatient().getPatientDataName());
+                    patientData.setPatientDataPhone(registration.getPatient().getPatientDataPhone());
+                    patientData.setPatientDataSex(registration.getPatient().getPatientDataSex());
+                    patientData.setMedicalCardNumber("0");
+                    medicalCardMapper.addPatient(patientData);
+                }
+            }else {
+                registrationMapper.updateRegistration(registration);
             }
-        }else {
-            registrationMapper.updateRegistration(registration);
-        }
     }
 
 
