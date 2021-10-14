@@ -6,41 +6,8 @@
         <result column="procurement_id" property="procurementId"></result>
         <result column="report_name" property="reportName"></result>
         <result column="report_reason" property="reportReason"></result>
-
-        <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
-            <id column="procurement_id"         property="procurementId"></id>
-            <result column="procurement_price"  property="procurementPrice"></result>
-            <result column="procurement_state"  property="procurementState"></result>
-            <result column="user_name"          property="userName"></result>
-            <result column="procurement_name"   property="procurementName"></result>
-            <result column="procurement_date"   property="procurementDate"></result>
-            <result column="procurement_firstdate"      property="procurementFirstdate"></result>
-
-            <collection property="lyhProcurementDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
-                <id column="pro_id" property="proId"></id>
-                <result column="drug_id" property="drugId"></result>
-                <result column="numbers" property="numbers"></result>
-                <result column="procurement_id" property="procurementId"></result>
-
-                <association property="drugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
-                    <id column="drug_id" property="drugId"></id>
-                    <result column="drug_name" property="drugName"></result>
-                    <result column="drug_date" property="drugDate"></result>
-                    <result column="drug_price" property="drugPrice"></result>
-                    <result column="supplier_id" property="supplierId"></result>
-                    <result column="drug_jixin" property="drugJixin"></result>
-                    <result column="drug_guige" property="drugGuige"></result>
-                    <result column="drug_state" property="drugState"></result>
-                    <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
-                        <id column="supplier_id" property="supplierId"></id>
-                        <result column="supplier_name" property="supplierName"></result>
-                    </association>
-                </association>
-            </collection>
-
-
-        </association>
-
+        <result column="report_time" property="reportTime"></result>
+<result property="reportState" column="report_state"></result>
 
         <collection property="reportDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhReportDetailsEntity">
             <id column="details_id" property="detailsId"></id>
@@ -48,19 +15,73 @@
             <result column="procurement_id" property="procurementId"></result>
             <result column="drug_id" property="drugId"></result>
             <result column="numbers" property="numbers"></result>
+
+
+
+            <association property="drugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+            <result column="drug_jixin" property="drugJixin"></result>
+            <result column="drug_guige" property="drugGuige"></result>
+            <result column="drug_state" property="drugState"></result>
+            <result column="drug_jia" property="drugJia"></result>
+            <association property="lyhSupplierEntity" javaType="cn.gson.prohis.model.pojos.LyhSupplierEntity">
+                <id column="supplier_id" property="supplierId"></id>
+                <result column="supplier_name" property="supplierName"></result>
+            </association>
+            </association>
         </collection>
 
     </resultMap>
 
 <select id="selectAll" resultMap="report">
 
-        select * form lyh_report a
-            left join  lyh_reportDetails b on a.report_id=b.report_id
-            left join  lyhprocurement c on a.procurement_id=b.procurement_id
-            left join  lyh_drug d on b.drug_id=d.drug_id
-            left join  lyhsupplier e on d.supplier_id=e.supplier_id
+    select * FROM lyh_report a
+                      left join  lyh_reportDetails b on a.report_id=b.report_id
+                      left join  lyhprocurement c on c.procurement_id=b.procurement_id
+                      left join  lyh_drug d on b.drug_id=d.drug_id
+                      left join  lyhsupplier e on d.supplier_id=e.supplier_id
+        <where>
+            <if test="reportState !=null and reportState !=''">
+
+                a.report_state =#{reportState}
+
+            </if>
+
+
+        </where>
+
 
 </select>
+
+
+    <select id="selectAll2" resultMap="report">
+
+        select * FROM lyh_report a
+                          left join  lyh_reportDetails b on a.report_id=b.report_id
+                          left join  lyhprocurement c on c.procurement_id=b.procurement_id
+                          left join  lyh_drug d on b.drug_id=d.drug_id
+                          left join  lyhsupplier e on d.supplier_id=e.supplier_id
+
+        where a.report_state  != 0
+    </select>
+
+
+    <insert id="insertAll">
+
+        insert into lyh_report(report_id,procurement_id,report_name) values (#{reportId},#{procurementId},#{reportName})
+    </insert>
+
+
+    <update id="updateById">
+
+    update lyh_repoty set report_state=#{report_state} where report_id=#{reportId}
+    </update>
+
+
 
 
 </mapper>

@@ -16,6 +16,17 @@ public class LyhAuditEntity {
     private String auditUser;
     private Integer auditState;
 
+    private Integer meiYon;
+
+
+    public Integer getMeiYon() {
+        return meiYon;
+    }
+
+    public void setMeiYon(Integer meiYon) {
+        this.meiYon = meiYon;
+    }
+
     public Integer getAuditState() {
         return auditState;
     }

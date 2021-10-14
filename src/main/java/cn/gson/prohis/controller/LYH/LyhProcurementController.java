@@ -23,10 +23,14 @@ public class LyhProcurementController {
 
 
     @RequestMapping("find-procurement")
-    public List<LyhProcurementEntity> findAll(){
-        return bs.findAll();
+    public List<LyhProcurementEntity> findAll(String procurementState){
+        return bs.findAll(procurementState);
     }
 
+    @RequestMapping("find-procurement2")
+    public List<LyhProcurementEntity> findAll2(String procurementId){
+        return bs.findAll2();
+    }
 
     @RequestMapping("/update-procurement")
     public AjaxResult   updateState(String procurementState,String procurementId){

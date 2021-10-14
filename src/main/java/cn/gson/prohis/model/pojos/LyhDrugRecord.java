@@ -1,6 +1,9 @@
 package cn.gson.prohis.model.pojos;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
 
 
@@ -47,7 +50,8 @@ public class LyhDrugRecord {
         this.piCi = piCi;
     }
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Timestamp getRecodeDate() {
         return recodeDate;
     }
@@ -66,4 +70,14 @@ public class LyhDrugRecord {
     }
 
 
+
+    private LyhDrugEntity drugEntity;
+
+    public LyhDrugEntity getDrugEntity() {
+        return drugEntity;
+    }
+
+    public void setDrugEntity(LyhDrugEntity drugEntity) {
+        this.drugEntity = drugEntity;
+    }
 }

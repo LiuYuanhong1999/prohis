@@ -6,8 +6,6 @@ public class DrugStoreVo {
     private int numbers;
     private int drugId;
     private int piCi;
-
-
     public int getPiCi() {
         return piCi;
     }

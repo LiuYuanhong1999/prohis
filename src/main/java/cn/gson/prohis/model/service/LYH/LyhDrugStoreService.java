@@ -72,7 +72,7 @@ public void updateById(String json){
                 record.setDrugId(vo.getDrugId());
                 record.setNumbers(vo.getNumbers());
                 record.setPiCi(vo.getPiCi());
-
+                record.setProcurementId(vo.getProcurementId());
                 recordMapper.insertDrugRecord(record);
 
 
@@ -81,7 +81,6 @@ public void updateById(String json){
                 System.out.println(vo.getPiCi()+"批次");
                 bs.updateById(vo.getNumbers(),vo.getDrugId());
                 System.out.printf("----shu"+vo.getNumbers()+"id" +vo.getDrugId()) ;
-                System.out.println("----11223------");
                 LyhDrugStoreDetailsEntity detailsEntity=new LyhDrugStoreDetailsEntity();
 
                 detailsEntity.setDrugId(vo.getDrugId());
@@ -94,7 +93,7 @@ public void updateById(String json){
                 record.setDrugId(vo.getDrugId());
                 record.setNumbers(vo.getNumbers());
                 record.setPiCi(vo.getPiCi());
-
+                record.setProcurementId(vo.getProcurementId());
                 recordMapper.insertDrugRecord(record);
 
             }
@@ -110,7 +109,7 @@ public void update(Integer numbers,Integer drugId,String procurementId,String al
         allotRecordEntity.setAllotId(allotId);
         allotRecordEntity.setDrugId(drugId);
         allotRecordEntity.setRecordNumbers(numbers);
-            allotRecordMapper.insertAllotRecord(allotRecordEntity);
+        allotRecordMapper.insertAllotRecord(allotRecordEntity);
 
 
     System.out.println(numbers+"-----------------------"+procurementId+"--------------------"+drugId+"---------------------"+allotId);

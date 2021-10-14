@@ -9,7 +9,16 @@ public class LyhReportDetailsEntity {
     private String procurementId;
     private Integer drugId;
     private Integer numbers;
+    private Integer piCi;
 
+
+    public Integer getPiCi() {
+        return piCi;
+    }
+
+    public void setPiCi(Integer piCi) {
+        this.piCi = piCi;
+    }
 
     public int getDetailsId() {
         return detailsId;

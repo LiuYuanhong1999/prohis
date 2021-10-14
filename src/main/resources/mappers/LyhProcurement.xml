@@ -70,5 +70,28 @@ delete from lyhprocurement where
     left join lyhprocurementdetails b on a.procurement_id=b.procurement_id
     left join lyh_drug c on b.drug_id=c.drug_id
     left join lyhsupplier d on c.supplier_id=d.supplier_id
+    <where>
+        <if test="procurementState !='' and procurementState !=null">
+
+       a.procurement_state=#{procurementState}
+
+
+        </if>
+
+
+    </where>
+        order by a.procurement_date desc
     </select>
+
+
+    <select id="findAll2" resultMap="procurement">
+
+        select * from lyhprocurement a
+        left join lyhprocurementdetails b on a.procurement_id=b.procurement_id
+        left join lyh_drug c on b.drug_id=c.drug_id
+        left join lyhsupplier d on c.supplier_id=d.supplier_id
+        where a.procurement_state !=0  order by a.procurement_date desc
+
+    </select>
+
 </mapper>

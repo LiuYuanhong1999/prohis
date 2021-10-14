@@ -10,15 +10,13 @@ import java.util.Map;
 @Mapper
 public interface LyhProcurementMapper {
 
-public void insertBy(LyhProcurementEntity lyhProcurementEntity);
+         void insertBy(LyhProcurementEntity lyhProcurementEntity);
 
-public List<LyhProcurementEntity> findAll();
+         List<LyhProcurementEntity> findAll(String procurementState);
 
-public int updateById(Map<String,Object> map);
+         int updateById(Map<String,Object> map);
 
+         void deleteById(List<String> list);
 
-
-    public void deleteById(List<String> list);
-
-
+         List<LyhProcurementEntity> findAll2();
 }

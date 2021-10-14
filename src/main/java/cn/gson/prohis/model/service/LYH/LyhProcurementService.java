@@ -31,11 +31,15 @@ public class LyhProcurementService {
 
     }
 
-    public List<LyhProcurementEntity> findAll(){
-        return bs.findAll();
+    public List<LyhProcurementEntity> findAll(String procurementState){
+
+        System.out.println(procurementState+"-----------------------wwwwwwwwwwwwwwwwwww");
+        return bs.findAll(procurementState);
     }
 
-
+        public List<LyhProcurementEntity> findAll2(){
+        return bs.findAll2();
+        }
 
     public void deleteById(List<String> list){
         bs.deleteById(list);

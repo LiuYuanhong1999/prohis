@@ -6,6 +6,7 @@
         <result column="audit_date" property="auditDate"></result>
         <result column="audit_user" property="auditUser"></result>
         <result column="audit_state" property="auditState"></result>
+        <result column="meiYon" property="meiYon"></result>
         <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
             <id column="procurement_id"         property="procurementId"></id>
             <result column="procurement_price"  property="procurementPrice"></result>

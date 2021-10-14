@@ -72,8 +72,8 @@ public class LyhDrugEntity {
         this.drugName = drugName;
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Timestamp getDrugDate() {
         return drugDate;
     }
@@ -228,5 +228,27 @@ public class LyhDrugEntity {
 
     public void setAllotRecordEntity(LyhAllotRecordEntity allotRecordEntity) {
         this.allotRecordEntity = allotRecordEntity;
+    }
+
+
+
+    private List<LyhPharmacyRecord> lyhPharmacyRecords;
+
+    public List<LyhPharmacyRecord> getLyhPharmacyRecords() {
+        return lyhPharmacyRecords;
+    }
+
+    public void setLyhPharmacyRecords(List<LyhPharmacyRecord> lyhPharmacyRecords) {
+        this.lyhPharmacyRecords = lyhPharmacyRecords;
+    }
+
+    private List<LyhDrugRecord> drugRecords;
+
+    public List<LyhDrugRecord> getDrugRecords() {
+        return drugRecords;
+    }
+
+    public void setDrugRecords(List<LyhDrugRecord> drugRecords) {
+        this.drugRecords = drugRecords;
     }
 }

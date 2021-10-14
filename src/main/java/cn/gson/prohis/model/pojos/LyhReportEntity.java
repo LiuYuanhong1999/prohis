@@ -1,5 +1,8 @@
 package cn.gson.prohis.model.pojos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
@@ -41,7 +44,8 @@ public class LyhReportEntity {
         this.reportReason = reportReason;
     }
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     public Timestamp getReportTime() {
         return reportTime;
     }
