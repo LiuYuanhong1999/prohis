@@ -3,7 +3,7 @@ package cn.gson.prohis.model.pojos;
 public class ZsxProjectVo {
     public Integer projectId;
     public Double projectPrice;
-    public String presciptionDatailsExplain;
+    public String prescriptionDetailsAttention;
 
     public Integer getProjectId() {
         return projectId;
@@ -21,12 +21,12 @@ public class ZsxProjectVo {
         this.projectPrice = projectPrice;
     }
 
-    public String getPresciptionDatailsExplain() {
-        return presciptionDatailsExplain;
+    public String getPrescriptionDetailsAttention() {
+        return prescriptionDetailsAttention;
     }
 
-    public void setPresciptionDatailsExplain(String presciptionDatailsExplain) {
-        this.presciptionDatailsExplain = presciptionDatailsExplain;
+    public void setPrescriptionDetailsAttention(String prescriptionDetailsAttention) {
+        this.prescriptionDetailsAttention = prescriptionDetailsAttention;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class ZsxProjectVo {
         return "ZsxProjectVo{" +
                 "projectId=" + projectId +
                 ", projectPrice=" + projectPrice +
-                ", presciptionDatailsExplain='" + presciptionDatailsExplain + '\'' +
+                ", prescriptionDetailsAttention='" + prescriptionDetailsAttention + '\'' +
                 '}';
     }
 }

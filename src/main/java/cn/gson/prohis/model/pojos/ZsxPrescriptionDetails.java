@@ -20,6 +20,7 @@ public class ZsxPrescriptionDetails {
 
   private ZsxPrescription zsxPrescription;
 
+
   public ZsxPrescription getZsxPrescription() {
     return zsxPrescription;
   }

@@ -1,9 +1,6 @@
 package cn.gson.prohis.model.pojos;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.sql.Timestamp;
 
 public class ZsxCharge {
@@ -14,15 +11,25 @@ public class ZsxCharge {
   private long chargeOperatorId;
   private long dotor;
   private String chargeMoney;
-//  连接病人表
-  private ZsxPatientData patient;
+//  连接挂号表
+  private ZsxRegistration registration;
 
-  public ZsxPatientData getPatient() {
-    return patient;
+  public ZsxRegistration getRegistration() {
+    return registration;
   }
 
-  public void setPatient(ZsxPatientData patient) {
-    this.patient = patient;
+  public void setRegistration(ZsxRegistration registration) {
+    this.registration = registration;
+  }
+//  连接处方表
+  private ZsxPrescription prescription;
+
+  public ZsxPrescription getPrescription() {
+    return prescription;
+  }
+
+  public void setPrescription(ZsxPrescription prescription) {
+    this.prescription = prescription;
   }
 
   public Integer getChargeId() {
@@ -33,8 +40,6 @@ public class ZsxCharge {
     this.chargeId = chargeId;
   }
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd  HH:mm:SS")
-  @JsonFormat(pattern = "yyyy-MM-dd  HH:mm:SS", timezone = "GMT+8")
   public Timestamp getChargeTime() {
     return chargeTime;
   }
@@ -87,7 +92,8 @@ public class ZsxCharge {
             ", chargeOperatorId=" + chargeOperatorId +
             ", dotor=" + dotor +
             ", chargeMoney='" + chargeMoney + '\'' +
-            ", patient=" + patient +
+            ", registration=" + registration +
+            ", prescription=" + prescription +
             '}';
   }
 }

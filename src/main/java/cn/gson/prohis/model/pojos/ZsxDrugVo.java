@@ -4,7 +4,8 @@ public class ZsxDrugVo {
     public Integer drugId;
     public Integer numbers;
     public Double drugPrice;
-    public String presciptionDatailsExplain;
+    public String prescriptionDetailsAttention;
+    public Double projectPrice;
 
     public Integer getDrugId() {
         return drugId;
@@ -30,12 +31,20 @@ public class ZsxDrugVo {
         this.drugPrice = drugPrice;
     }
 
-    public String getPresciptionDatailsExplain() {
-        return presciptionDatailsExplain;
+    public String getPrescriptionDetailsAttention() {
+        return prescriptionDetailsAttention;
     }
 
-    public void setPresciptionDatailsExplain(String presciptionDatailsExplain) {
-        this.presciptionDatailsExplain = presciptionDatailsExplain;
+    public void setPrescriptionDetailsAttention(String prescriptionDetailsAttention) {
+        this.prescriptionDetailsAttention = prescriptionDetailsAttention;
+    }
+
+    public Double getProjectPrice() {
+        return projectPrice;
+    }
+
+    public void setProjectPrice(Double projectPrice) {
+        this.projectPrice = projectPrice;
     }
 
     @Override
@@ -44,7 +53,8 @@ public class ZsxDrugVo {
                 "drugId=" + drugId +
                 ", numbers=" + numbers +
                 ", drugPrice=" + drugPrice +
-                ", presciptionDatailsExplain='" + presciptionDatailsExplain + '\'' +
+                ", prescriptionDetailsAttention='" + prescriptionDetailsAttention + '\'' +
+                ", projectPrice=" + projectPrice +
                 '}';
     }
 }

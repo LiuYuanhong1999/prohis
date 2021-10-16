@@ -7,6 +7,35 @@ public class ZsxSurgeryFor {
     private String surgeryForDoctor;
     private String surgeryForNumber;
     private String surgeryForPrn;
+    private int surgeryForStaff;
+//    连接门诊处方表
+    private ZsxPrescription prescription;
+//    连接住院处方表
+    private TyhRecipeEntity recipeEntity;
+
+    public int getSurgeryForStaff() {
+        return surgeryForStaff;
+    }
+
+    public void setSurgeryForStaff(int surgeryForStaff) {
+        this.surgeryForStaff = surgeryForStaff;
+    }
+
+    public ZsxPrescription getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(ZsxPrescription prescription) {
+        this.prescription = prescription;
+    }
+
+    public TyhRecipeEntity getRecipeEntity() {
+        return recipeEntity;
+    }
+
+    public void setRecipeEntity(TyhRecipeEntity recipeEntity) {
+        this.recipeEntity = recipeEntity;
+    }
 
     public int getSurgeryForId() {
         return surgeryForId;

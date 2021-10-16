@@ -34,7 +34,8 @@
         select * from zsx_call_number
             inner join zsx_registration on zsx_call_number.registration_number=zsx_registration.registration_number
             inner join zsx_patient_data on zsx_registration.patient_data_id=zsx_patient_data.patient_data_id
-            inner join yxj_desk on zsx_registration.room=yxj_desk.desk_id order by zsx_call_number.call_number_time desc
+            inner join yxj_desk on zsx_registration.room=yxj_desk.desk_id
+            where TO_DAYS(zsx_call_number.call_number_time) = TO_DAYS(NOW()) order by zsx_call_number.call_number_time desc
     </select>
 
     <insert id="addCallNumber">

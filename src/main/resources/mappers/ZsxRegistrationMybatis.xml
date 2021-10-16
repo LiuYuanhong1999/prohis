@@ -33,18 +33,23 @@
         select * from zsx_registration
             inner join zsx_patient_data on zsx_registration.patient_data_id=zsx_patient_data.patient_data_id
             inner join yxj_desk on zsx_registration.room=yxj_desk.desk_id
---             where TO_DAYS(registration_time) = TO_DAYS(NOW())
+            where TO_DAYS(zsx_registration.registration_time) = TO_DAYS(NOW())
             order by registration_time desc
     </select>
 
 <!--    新增挂号单-->
     <insert id="addRegistration">
         insert into zsx_registration
-        (registration_id,registration_number,room,doctot,
-         registration_time,registration_fee,patient_data_id,registration_state,
-         registration_type,registration_name)values
-        (#{registrationId},#{registrationNumber},#{room},#{doctot},
-         #{registrationTime},#{registrationFee},#{patientDataId},#{registrationState},
+        (registration_id,registration_number,
+         room,doctot,
+         registration_time,registration_fee,
+         patient_data_id,registration_state,
+         registration_type,registration_name)
+            values
+        (#{registrationId},#{registrationNumber},
+         #{room},#{doctot},
+         #{registrationTime},#{registrationFee},
+         #{patientDataId},#{registrationState},
          #{registrationType},#{registrationName})
     </insert>
 

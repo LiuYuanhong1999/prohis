@@ -2,8 +2,10 @@ package cn.gson.prohis.model.service.ZSX;
 
 import cn.gson.prohis.model.mapper.ZSX.ZsxPrescriptionMapper;
 import cn.gson.prohis.model.pojos.ZsxPrescription;
+import cn.gson.prohis.model.pojos.ZsxPrescriptionDetails;
 import cn.gson.prohis.model.pojos.ZsxPrescriptionVo;
 import cn.gson.prohis.model.pojos.ZsxRegistration;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,6 +22,14 @@ public class ZsxPrescriptionService {
         return prescriptionMapper.findPrescription();
     }
 
+    public List<ZsxPrescriptionDetails> findPrescriptionDetailsDrug(String prescriptionId){
+        return prescriptionMapper.findPrescriptionDetailsDrug(prescriptionId);
+    }
+
+    public List<ZsxPrescriptionDetails> findPrescriptionDetailsProject(String prescriptionId){
+        return prescriptionMapper.findPrescriptionDetailsProject(prescriptionId);
+    }
+
     public List<ZsxRegistration> findRegistrationState(){
         return prescriptionMapper.findRegistrationState();
     }
@@ -34,24 +44,18 @@ public class ZsxPrescriptionService {
         prescription.setDoctor(0);
         prescription.setRegistrationId(prescription.getRegistration().getRegistrationId());
 
-//        prescriptionMapper.addPrescription(prescription);
-
-
-        System.err.println(prescription);
+        prescriptionMapper.addPrescription(prescription);
         prescription.getPrescriptionDetails().forEach(drug->{
-            System.out.println(drug);
             //药品新增
                 if (drug.drug.size()!=0){
                     drug.getDrug().forEach(v->{
-//                        v.drugPrice = v.drugPrice * v.numbers;
-                        System.err.println(v);
+                        v.projectPrice = v.numbers*v.drugPrice;
                         prescriptionMapper.addPrescriptionDetails(v,prescription.getPrescriptionId());
                     });
                 }
             //项目新增
                 if (drug.project.size()!=0){
                     drug.getProject().forEach(v->{
-                        System.out.println(v);
                         prescriptionMapper.addPrescriptionDetailsProject(v,prescription.getPrescriptionId());
                     });
                 }

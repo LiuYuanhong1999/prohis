@@ -1,6 +1,7 @@
 package cn.gson.prohis.controller.ZSX;
 
 import cn.gson.prohis.model.pojos.ZsxPrescription;
+import cn.gson.prohis.model.pojos.ZsxPrescriptionDetails;
 import cn.gson.prohis.model.pojos.ZsxPrescriptionVo;
 import cn.gson.prohis.model.pojos.ZsxRegistration;
 import cn.gson.prohis.model.service.ZSX.ZsxPrescriptionService;
@@ -20,6 +21,14 @@ public class ZsxPrescriptionController {
     @RequestMapping("/find-prescription")
     public List<ZsxPrescription> findPrescription(){
         return prescriptionService.findPrescription();
+    }
+    @RequestMapping("/find-prescription_details_drug")
+    public List<ZsxPrescriptionDetails> findPrescriptionDetails(String prescriptionId){
+        return prescriptionService.findPrescriptionDetailsDrug(prescriptionId);
+    }
+    @RequestMapping("/find-prescription_details_project")
+    public List<ZsxPrescriptionDetails> findPrescriptionDetailsProject(String prescriptionId){
+        return prescriptionService.findPrescriptionDetailsProject(prescriptionId);
     }
 
     @RequestMapping("/find-registration")

@@ -15,13 +15,13 @@ public class ZsxchargeService {
         return chargeMapper.findByCharge();
     }
 
-
-    public void saveCharge(ZsxCharge charge){
-
-        if (charge.getChargeId()==null || charge.getChargeId().equals("")){
-            chargeMapper.addCharge(charge);
-        }else{
-            chargeMapper.updateCharge(charge);
-        }
-    }
+//
+//    public void saveCharge(ZsxCharge charge){
+//
+//        if (charge.getChargeId()==null || charge.getChargeId().equals("")){
+//            chargeMapper.addCharge(charge);
+//        }else{
+//            chargeMapper.updateCharge(charge);
+//        }
+//    }
 }
