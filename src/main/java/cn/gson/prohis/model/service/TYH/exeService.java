@@ -1,19 +1,19 @@
 package cn.gson.prohis.model.service.TYH;
 
+
+
 import cn.gson.prohis.model.mapper.TYH.exeMapper;
 import cn.gson.prohis.model.pojos.TyhExecuteEntity;
 import cn.gson.prohis.model.pojos.TyhExecutedelEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class exeService {
     @Resource
-    exeMapper exeMapper;
+    private exeMapper exeMapper;
 
     public List<TyhExecuteEntity> findExecute(){
         return exeMapper.findExecute();
