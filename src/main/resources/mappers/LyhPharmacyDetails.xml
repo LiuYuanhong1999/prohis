@@ -60,18 +60,18 @@
                           left join lyh_drug c on b.drug_id=c.drug_id
                           left join lyhsupplier d on c.supplier_id=d.supplier_id
               <where>
-                    <if test="drugName !=null and drugName !=''">
-                        c.drug_name like '%${drugName}%'
+                    <if test="lyhPharmacyEntity.lyhDrugEntity.drugName !=null and lyhPharmacyEntity.lyhDrugEntity.drugName !=''">
+                        c.drug_name like '%${lyhPharmacyEntity.lyhDrugEntity.drugName}%'
                     </if>
-                    <if test="drugState !=null and drugState !=''">
-                    and  c.drug_state like '%${drugState}%'
+                    <if test="lyhPharmacyEntity.lyhDrugEntity.drugState !=null and lyhPharmacyEntity.lyhDrugEntity.drugState !=''">
+                    and  c.drug_state like '%${lyhPharmacyEntity.lyhDrugEntity.drugState}%'
                     </if>
-                    <if test="drugJixin !=null and drugJixin !=''">
-                      and c.drug_jixin like '%${drugJixin}%'
+                    <if test="lyhPharmacyEntity.lyhDrugEntity.drugJixin !=null and lyhPharmacyEntity.lyhDrugEntity.drugJixin !=''">
+                      and c.drug_jixin like '%${lyhPharmacyEntity.lyhDrugEntity.drugJixin}%'
                     </if>
 
-                    <if test="supplierName !=null and supplierName !=''">
-                        and d.supplier_name like '%${supplierName}%'
+                    <if test="lyhPharmacyEntity.lyhDrugEntity.lyhSupplierEntity.supplierName !=null and lyhPharmacyEntity.lyhDrugEntity.lyhSupplierEntity.supplierName !=''">
+                        and d.supplier_name like '%${lyhPharmacyEntity.lyhDrugEntity.lyhSupplierEntity.supplierName}%'
                     </if>
 
               </where>

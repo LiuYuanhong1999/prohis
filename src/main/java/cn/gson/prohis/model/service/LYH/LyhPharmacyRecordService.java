@@ -14,8 +14,8 @@ public class LyhPharmacyRecordService {
     LyhPharmacyRecordMapper pharmacyRecordMapper;
 
 
-    public List<LyhPharmacyRecord> findAll(){
-      return   pharmacyRecordMapper.findRecord();
+    public List<LyhPharmacyRecord> findAll(LyhPharmacyRecord record){
+      return   pharmacyRecordMapper.findRecord(record);
     }
 
 }

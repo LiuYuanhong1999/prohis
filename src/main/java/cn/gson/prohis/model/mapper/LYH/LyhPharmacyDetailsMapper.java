@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface LyhPharmacyDetailsMapper {
-    public List<LyhPharmacyDetailsEntity> findAll(String drugName,Integer drugState,String drugJixin,String supplierName);
+    public List<LyhPharmacyDetailsEntity> findAll(LyhPharmacyDetailsEntity pharmacyDetailsEntity);
 
 
     public void insertDetails(LyhPharmacyDetailsEntity lyhPharmacyDetailsEntity);

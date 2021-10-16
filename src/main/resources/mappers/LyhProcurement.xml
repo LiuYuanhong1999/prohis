@@ -8,7 +8,7 @@
         <result column="procurement_name"   property="procurementName"></result>
         <result column="procurement_date"   property="procurementDate"></result>
         <result column="procurement_firstdate"      property="procurementFirstdate"></result>
-
+        <result column="supplier_id" property="supplierId"></result>
 <collection property="lyhProcurementDetailsEntities" ofType="cn.gson.prohis.model.pojos.LyhProcurementDetailsEntity">
     <id column="pro_id" property="proId"></id>
     <result column="drug_id" property="drugId"></result>
@@ -77,7 +77,19 @@ delete from lyhprocurement where
 
 
         </if>
+            <if test="procurementName !=null and procurementName !=''">
+                and a.procurement_name like '%${procurementName}%'
+            </if>
+            <if test="procurementId !=null and procurementId !=''">
 
+                and a.procurement_id like '%${procurementId}%'
+
+
+            </if>
+            <if test="supplierId !=null and supplierId !=''">
+
+            and a.supplier_id=#{supplierId}
+            </if>
 
     </where>
         order by a.procurement_date desc

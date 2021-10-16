@@ -19,7 +19,16 @@ public class LyhProcurementEntity {
     private String procurementName;
     private Timestamp procurementDate;
     private Timestamp procurementFirstdate;
+    private int supplierId;
 
+
+    public int getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
+    }
 
     public String getProcurementId() {
         return procurementId;

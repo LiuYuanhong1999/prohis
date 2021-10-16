@@ -10,5 +10,5 @@ import java.util.List;
 public interface LyhPharmacyRecordMapper {
     void insertPharmacyRecord(LyhPharmacyRecord record);
 
-    List<LyhPharmacyRecord> findRecord();
+    List<LyhPharmacyRecord> findRecord(LyhPharmacyRecord record);
 }

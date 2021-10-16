@@ -31,10 +31,10 @@ public class LyhProcurementService {
 
     }
 
-    public List<LyhProcurementEntity> findAll(String procurementState){
+    public List<LyhProcurementEntity> findAll(LyhProcurementEntity procurementEntity){
 
-        System.out.println(procurementState+"-----------------------wwwwwwwwwwwwwwwwwww");
-        return bs.findAll(procurementState);
+        System.out.println(procurementEntity.getProcurementState()+"-----------------------wwwwwwwwwwwwwwwwwww");
+        return bs.findAll(procurementEntity);
     }
 
         public List<LyhProcurementEntity> findAll2(){

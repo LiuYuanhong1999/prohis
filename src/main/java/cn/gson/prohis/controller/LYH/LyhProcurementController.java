@@ -23,8 +23,8 @@ public class LyhProcurementController {
 
 
     @RequestMapping("find-procurement")
-    public List<LyhProcurementEntity> findAll(String procurementState){
-        return bs.findAll(procurementState);
+    public List<LyhProcurementEntity> findAll(@RequestBody LyhProcurementEntity procurementEntity){
+        return bs.findAll(procurementEntity);
     }
 
     @RequestMapping("find-procurement2")

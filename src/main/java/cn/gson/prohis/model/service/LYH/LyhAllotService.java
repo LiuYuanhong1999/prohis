@@ -58,9 +58,9 @@ public List<LyhAllotEntity> findAllot(){
 }
 
 //查询药房申请调拨药品记录
-public List<LyhPharmacyDetailsEntity> findPharmacy(String drugName,Integer drugState,String drugJixin,String supplierName){
+public List<LyhPharmacyDetailsEntity> findPharmacy(LyhPharmacyDetailsEntity pharmacyDetailsEntity){
 
-        return detailsMapper.findAll(drugName, drugState, drugJixin, supplierName);
+        return detailsMapper.findAll(pharmacyDetailsEntity);
 
 }
 

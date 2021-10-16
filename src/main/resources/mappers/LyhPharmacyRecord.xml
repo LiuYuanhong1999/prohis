@@ -37,6 +37,49 @@
         left join lyh_drug b on a.drug_id=b.drug_id
         left join  lyhsupplier c on b.supplier_id=c.supplier_id
 
+        <where>
+
+        <if test="piCi !=null and piCi !=''">
+            a.pi_ci like '%${piCi}%'
+
+        </if>
+
+
+<if test="lyhDrugEntity !=null and lyhDrugEntity !=''">
+    <if test="lyhDrugEntity.drugName!=null and lyhDrugEntity.drugName !=''">
+      and  b.drug_name like '%${lyhDrugEntity.drugName}%'
+
+    </if>
+
+    <if test="lyhDrugEntity.drugState !=null and lyhDrugEntity.drugState !=''">
+
+        and b.drug_state =#{drugState}
+
+    </if>
+
+    <if test="lyhDrugEntity.drugJixin !=null and lyhDrugEntity.drugJixin !=''">
+        and b.drug_jiXin like '%${drugJixin.drugJixin}%'
+
+    </if>
+
+
+    <if test="lyhDrugEntity.lyhSupplierEntity.supplierName !=null and lyhDrugEntity.lyhSupplierEntity.supplierName !=''">
+
+        and c.supplier_name like '%${lyhDrugEntity.lyhSupplierEntity.supplierName}%'
+
+
+    </if>
+
+
+
+
+
+</if>
+
+        </where>
+
+
+
         order by a.record_date desc
 
 

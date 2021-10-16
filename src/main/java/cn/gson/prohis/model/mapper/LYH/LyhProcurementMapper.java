@@ -12,7 +12,7 @@ public interface LyhProcurementMapper {
 
          void insertBy(LyhProcurementEntity lyhProcurementEntity);
 
-         List<LyhProcurementEntity> findAll(String procurementState);
+         List<LyhProcurementEntity> findAll(LyhProcurementEntity procurementEntity);
 
          int updateById(Map<String,Object> map);
 
