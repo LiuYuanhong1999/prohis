@@ -18,8 +18,8 @@ public class hosnotContorller {
     hosnotService hosnotService;
 
     @RequestMapping("/findAll-not")
-    public List<TyhHosnotEntity> findAllnot(){
-        return hosnotService.findAllnot();
+    public List<TyhHosnotEntity> findAllnot(String cha,String cha1){
+        return hosnotService.findAllnot(cha,cha1);
     }
 
     @RequestMapping("/find-regei")

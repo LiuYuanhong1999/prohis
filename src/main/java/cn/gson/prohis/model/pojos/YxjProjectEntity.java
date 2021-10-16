@@ -11,6 +11,16 @@ public class YxjProjectEntity {
     private Integer projectType;
     private Double projectPrice;
 
+    private TyhJiex tyhJiex;
+
+    public TyhJiex getTyhJiex() {
+        return tyhJiex;
+    }
+
+    public void setTyhJiex(TyhJiex tyhJiex) {
+        this.tyhJiex = tyhJiex;
+    }
+
     public int getProjectId() {
         return projectId;
     }

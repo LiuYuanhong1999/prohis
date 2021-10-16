@@ -19,8 +19,8 @@ public class hosnotService {
     @Resource
     ZsxRegistrationMapper zsxRegistrationMapper;
 
-    public List<TyhHosnotEntity> findAllnot(){
-        return hosnotMapper.findAllnot();
+    public List<TyhHosnotEntity> findAllnot(String cha, String cha2){
+        return hosnotMapper.findAllnot(cha,cha2);
     }
 
     public List<ZsxRegistration> findRegei(){

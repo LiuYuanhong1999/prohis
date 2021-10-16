@@ -19,6 +19,11 @@ public class exeController {
         return exeService.findExecute();
     }
 
+    @RequestMapping("find-execute2")
+    public List<TyhExecuteEntity> findExecute2(){
+        return exeService.findExecute2();
+    }
+
     @RequestMapping("find-executedel")
     public List<TyhExecutedelEntity> findExecutedel(String id){
         return exeService.findExecutedel(id);
@@ -32,5 +37,10 @@ public class exeController {
     @RequestMapping("updata2-execute")
     public void updata2(String id){
         exeService.updata2(id);
+    }
+
+    @RequestMapping("find-jie")
+    public List<TyhExecuteEntity> findJie(Integer id){
+        return exeService.findJie(id);
     }
 }

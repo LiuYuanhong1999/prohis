@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface hosnotMapper {
-    public List<TyhHosnotEntity> findAllnot();
+    public List<TyhHosnotEntity> findAllnot(String cha, String cha2);
 
     List<YxjDeskEntity> finddesk();
 

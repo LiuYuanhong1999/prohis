@@ -14,6 +14,7 @@
             <result column="execute_day" property="executeDay"></result>
             <result column="execute_price" property="executePrice"></result>
             <result column="patient_id" property="patientId"></result>
+            <result column="execute_time" property="executeTime"></result>
             <result column="execute_data" property="executeData"></result>
             <result column="execute_zt" property="executeZt"></result>
             <association property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
@@ -52,6 +53,7 @@
         <result column="execute_day" property="executeDay"></result>
         <result column="execute_price" property="executePrice"></result>
         <result column="patient_id" property="patientId"></result>
+        <result column="execute_time" property="executeTime"></result>
         <result column="execute_data" property="executeData"></result>
         <result column="execute_zt" property="executeZt"></result>
         <association property="tyhRecipeEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipeEntity">
@@ -81,7 +83,15 @@
         left join tyh_recipe tr on te.recipe_id=tr.recipe_id
         left join tyh_patient tp on te.patient_id=tp.patient_id
         left join tyh_hosreg th on th.patient_id=tp.patient_id
-        where to_days(te.execute_data) = to_days(now()) and tr.recipe_zt=1
+        where to_days(te.execute_data) = to_days(now()) and tr.recipe_zt=1 and te.execute_zt!=3
+    </select>
+
+    <select id="findExecute2" resultMap="execute">
+        select * from tyh_execute te
+        left join tyh_recipe tr on te.recipe_id=tr.recipe_id
+        left join tyh_patient tp on te.patient_id=tp.patient_id
+        left join tyh_hosreg th on th.patient_id=tp.patient_id
+        where te.execute_zt=3
     </select>
 
     <select id="findExecutedel" resultMap="executedel">
@@ -92,11 +102,19 @@
         where ted.execute_id=#{id}
     </select>
 
+    <select id="findJie" resultMap="executedel">
+        select * from tyh_execute te
+        left join tyh_executedel tel on te.execute_id=tel.execute_id
+        left join tyh_patient tp on te.patient_id=tp.patient_id
+        left join lyh_drug ld on tel.drug_id=ld.drug_id
+        where te.execute_zt=3 and te.patient_id=#{id}
+    </select>
+
     <update id="updata1">
         update tyh_execute set execute_zt=1 where execute_id=#{id}
     </update>
 
     <update id="updata2">
-        update tyh_execute set execute_zt=3 where execute_id=#{id}
+        update tyh_execute set execute_zt=3,execute_time=now() where execute_id=#{id}
     </update>
 </mapper>

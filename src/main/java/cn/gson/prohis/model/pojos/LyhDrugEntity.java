@@ -20,6 +20,16 @@ public class LyhDrugEntity {
     private String drugJixin;
     private String drugGuige;
 
+    private TyhJiex tyhJiex;
+
+    public TyhJiex getTyhJiex() {
+        return tyhJiex;
+    }
+
+    public void setTyhJiex(TyhJiex tyhJiex) {
+        this.tyhJiex = tyhJiex;
+    }
+
     public Integer getDrugState() {
         return drugState;
     }

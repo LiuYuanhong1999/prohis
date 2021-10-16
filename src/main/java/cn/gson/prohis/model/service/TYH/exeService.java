@@ -6,6 +6,8 @@ import cn.gson.prohis.model.pojos.TyhExecutedelEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,5 +29,15 @@ public class exeService {
 
     public void updata2(String id) {
         exeMapper.updata2(id);
+    }
+
+    public List<TyhExecuteEntity> findExecute2() {
+        return exeMapper.findExecute2();
+    }
+
+    public List<TyhExecuteEntity> findJie(Integer id){
+        System.out.println("sdasdasdasdasdsadasdas");
+        System.out.println(id);
+        return exeMapper.findJie(id);
     }
 }

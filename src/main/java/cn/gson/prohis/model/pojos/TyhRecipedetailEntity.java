@@ -132,4 +132,24 @@ public class TyhRecipedetailEntity {
     public int hashCode() {
         return Objects.hash(recipedetailId, recipeId, recipedetailProject, recipedetailDurg, recipedetailPrice, recipedetailNumber, recipedetailExplain);
     }
+
+    public ZsxOperationNote zsxOperationNote;
+
+    public ZsxOperationNote getZsxOperationNote() {
+        return zsxOperationNote;
+    }
+
+    public void setZsxOperationNote(ZsxOperationNote zsxOperationNote) {
+        this.zsxOperationNote = zsxOperationNote;
+    }
+
+    public YxjRecord yxjRecord;
+
+    public YxjRecord getYxjRecord() {
+        return yxjRecord;
+    }
+
+    public void setYxjRecord(YxjRecord yxjRecord) {
+        this.yxjRecord = yxjRecord;
+    }
 }

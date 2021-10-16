@@ -23,14 +23,14 @@ public class YxjRecordService {
      * 新增体检记录
      * @param yxjRecord
      */
-    public void addRecord(YxjRecord yxjRecord){
-        if(yxjRecord.getRecordId()!=null){
-            yxjRecordMapper.updateRecord(yxjRecord);
-        }else {
-            yxjRecordMapper.addRecord(yxjRecord);
-        }
-
-    }
+//    public void addRecord(YxjRecord yxjRecord){
+//        if(yxjRecord.getRecordId()!=null){
+//            yxjRecordMapper.updateRecord(yxjRecord);
+//        }else {
+//            yxjRecordMapper.addRecord(yxjRecord);
+//        }
+//
+//    }
 
 
     /**

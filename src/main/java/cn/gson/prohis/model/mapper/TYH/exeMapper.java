@@ -15,4 +15,8 @@ public interface exeMapper {
     void updata1(String id);
 
     void updata2(String id);
+
+    List<TyhExecuteEntity> findExecute2();
+
+    List<TyhExecuteEntity> findJie(Integer id);
 }
