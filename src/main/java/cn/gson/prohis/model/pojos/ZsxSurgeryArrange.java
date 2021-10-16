@@ -1,17 +1,34 @@
 package cn.gson.prohis.model.pojos;
 
-import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 public class ZsxSurgeryArrange {
     private int surgeryArrangeId;
     private Timestamp surgeryArrangeTime;
     private String surgeryArrangeName;
-    private Integer patientDataId;
+    private String surgeryForNumber;
     private String surgeryArrangeDoctor;
     private Integer operatingRoomId;
     private String surgeryArrangeNurse;
+
+    private ZsxSurgeryFor surgeryFor;
+    private ZsxOperatingRoom operatingRoom;
+
+    public ZsxSurgeryFor getSurgeryFor() {
+        return surgeryFor;
+    }
+
+    public void setSurgeryFor(ZsxSurgeryFor surgeryFor) {
+        this.surgeryFor = surgeryFor;
+    }
+
+    public ZsxOperatingRoom getOperatingRoom() {
+        return operatingRoom;
+    }
+
+    public void setOperatingRoom(ZsxOperatingRoom operatingRoom) {
+        this.operatingRoom = operatingRoom;
+    }
 
     public int getSurgeryArrangeId() {
         return surgeryArrangeId;
@@ -37,12 +54,12 @@ public class ZsxSurgeryArrange {
         this.surgeryArrangeName = surgeryArrangeName;
     }
 
-    public Integer getPatientDataId() {
-        return patientDataId;
+    public String getSurgeryForNumber() {
+        return surgeryForNumber;
     }
 
-    public void setPatientDataId(Integer patientDataId) {
-        this.patientDataId = patientDataId;
+    public void setSurgeryForNumber(String surgeryForNumber) {
+        this.surgeryForNumber = surgeryForNumber;
     }
 
     public String getSurgeryArrangeDoctor() {

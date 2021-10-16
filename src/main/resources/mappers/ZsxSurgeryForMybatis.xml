@@ -120,4 +120,82 @@
          #{surgeryForDoctor},#{surgeryForNumber},
          #{surgeryForPrn},#{surgeryForStaff},#{recipeId})
     </insert>
+
+<!--门诊-->
+    <resultMap id="prescription" type="cn.gson.prohis.model.pojos.ZsxPrescription">
+        <id column="prescription_id" property="prescriptionId"/>
+        <result column="doctor" property="doctor"/>
+        <result column="prescription_time" property="prescriptionTime"/>
+        <result column="prescription_money" property="prescriptionMoney"/>
+        <!--        处方详情表-->
+        <collection property="prescriptionDetails" ofType="cn.gson.prohis.model.pojos.ZsxPrescriptionDetails">
+            <id column="prescription_details_id" property="prescriptionDetailsId"/>
+            <result column="medicine_count" property="medicineCount"/>
+            <result column="medicine_subtotal" property="medicineSubtotal"/>
+            <result column="prescription_details_attention" property="prescriptionDetailsAttention"/>
+            <result column="prescription_details_explain" property="prescriptionDetailsExplain"/>
+            <!--            药品-->
+            <collection property="drugEntity" ofType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+                <id column="drug_id" property="drugId"></id>
+                <result column="drug_name" property="drugName"></result>
+                <result column="drug_date" property="drugDate"></result>
+                <result column="drug_price" property="drugPrice"></result>
+                <result column="supplier_id" property="supplierId"></result>
+                <result column="drug_jixin" property="drugJixin"></result>
+                <result column="drug_guige" property="drugGuige"></result>
+                <result column="drug_state" property="drugState"></result>
+            </collection>
+            <!--            项目-->
+            <collection property="project" ofType="cn.gson.prohis.model.pojos.YxjProjectEntity">
+                <id column="project_id" property="projectId"></id>
+                <result column="project_name" property="projectName"></result>
+                <result column="project_type" property="projectType"></result>
+                <result column="project_price" property="projectPrice"></result>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="selectPrescription" resultMap="prescription">
+        select * from zsx_prescription
+        inner join zsx_prescription_details on zsx_prescription.prescription_id=zsx_prescription_details.prescription_id
+        inner join yxj_project on zsx_prescription_details.prescription_project=yxj_project.project_id
+        where yxj_project.project_type=1
+    </select>
+
+
+    <resultMap id="prescription1" type="cn.gson.prohis.model.pojos.ZsxPrescription">
+        <id column="prescription_id" property="prescriptionId"/>
+        <result column="doctor" property="doctor"/>
+        <result column="prescription_time" property="prescriptionTime"/>
+        <result column="prescription_money" property="prescriptionMoney"/>
+        <!--        挂号-->
+        <association property="registration" javaType="cn.gson.prohis.model.pojos.ZsxRegistration">
+            <id column="registration_id" property="registrationId"></id>
+            <result column="registration_number" property="registrationNumber"></result>
+            <result column="patient_data_id" property="patientDataId"></result>
+            <result column="room" property="room"></result>
+            <result column="doctot" property="doctot"></result>
+            <result column="registration_time" property="registrationTime"></result>
+            <result column="registration_fee" property="registrationFee"></result>
+            <result column="registration_state" property="registrationState"></result>
+            <result column="registration_type" property="registrationType"/>
+            <result column="registration_name" property="registrationName"/>
+            <!--            病人-->
+            <association property="patient" javaType="cn.gson.prohis.model.pojos.ZsxPatientData">
+                <id column="patient_data_id" property="patientDataId"></id>
+                <result column="patient_data_card" property="patientDataCard"></result>
+                <result column="patient_data_name" property="patientDataName"></result>
+                <result column="patient_data_phone" property="patientDataPhone"></result>
+                <result column="patient_data_sex" property="patientDataSex"></result>
+                <result column="medical_card_number" property="medicalCardNumber"></result>
+            </association>
+        </association>
+    </resultMap>
+    <select id="selectPatient" resultMap="prescription1">
+        select * from zsx_prescription
+                inner join zsx_registration on zsx_prescription.registration_id=zsx_registration.registration_id
+                inner join zsx_patient_data on zsx_registration.patient_data_id = zsx_patient_data.patient_data_id
+        where zsx_prescription.prescription_id = #{prescriptionId}
+    </select>
+<!--    住院-->
+
 </mapper>
