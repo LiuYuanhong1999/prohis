@@ -6,6 +6,8 @@ import cn.gson.prohis.model.pojos.TyhExecutedelEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,13 +23,6 @@ public class exeService {
         return exeMapper.findExecutedel(id);
     }
 
-    //查询发药药品
-
-    public List<TyhExecuteEntity> findAll(){
-        return exeMapper.findExecute2();
-    }
-
-
     public void updata1(String id) {
         exeMapper.updata1(id);
     }
@@ -36,7 +31,13 @@ public class exeService {
         exeMapper.updata2(id);
     }
 
-    public void update3(String id) {
-        exeMapper.update3(id);
+    public List<TyhExecuteEntity> findExecute2() {
+        return exeMapper.findExecute2();
+    }
+
+    public List<TyhExecuteEntity> findJie(Integer id){
+        System.out.println("sdasdasdasdasdsadasdas");
+        System.out.println(id);
+        return exeMapper.findJie(id);
     }
 }

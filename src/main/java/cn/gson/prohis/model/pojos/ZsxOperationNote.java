@@ -1,26 +1,88 @@
 package cn.gson.prohis.model.pojos;
 
-import javax.persistence.*;
-import java.util.Objects;
+
+import java.sql.Timestamp;
 
 public class ZsxOperationNote {
-    private int operationNoteId;
-    private Integer operationId;
 
-    public int getOperationNoteId() {
-        return operationNoteId;
-    }
+  private long operationNoteId;
+  private long operationId;
+  private long surgeryArrangeId;
+  private String operationNoteMoney;
+  private long operationZt;
+  private long executedelId;
+  private Timestamp operDate;
 
-    public void setOperationNoteId(int operationNoteId) {
-        this.operationNoteId = operationNoteId;
-    }
+  public Timestamp getOperDate() {
+    return operDate;
+  }
 
-    public Integer getOperationId() {
-        return operationId;
-    }
+  public void setOperDate(Timestamp operDate) {
+    this.operDate = operDate;
+  }
 
-    public void setOperationId(Integer operationId) {
-        this.operationId = operationId;
-    }
+  public long getOperationNoteId() {
+    return operationNoteId;
+  }
 
-}
+  public void setOperationNoteId(long operationNoteId) {
+    this.operationNoteId = operationNoteId;
+  }
+
+
+  public long getOperationId() {
+    return operationId;
+  }
+
+  public void setOperationId(long operationId) {
+    this.operationId = operationId;
+  }
+
+
+  public long getSurgeryArrangeId() {
+    return surgeryArrangeId;
+  }
+
+  public void setSurgeryArrangeId(long surgeryArrangeId) {
+    this.surgeryArrangeId = surgeryArrangeId;
+  }
+
+
+  public String getOperationNoteMoney() {
+    return operationNoteMoney;
+  }
+
+  public void setOperationNoteMoney(String operationNoteMoney) {
+    this.operationNoteMoney = operationNoteMoney;
+  }
+
+
+  public long getOperationZt() {
+    return operationZt;
+  }
+
+  public void setOperationZt(long operationZt) {
+    this.operationZt = operationZt;
+  }
+
+
+  public long getExecutedelId() {
+    return executedelId;
+  }
+
+  public void setExecutedelId(long executedelId) {
+    this.executedelId = executedelId;
+  }
+
+  public TyhRecipedetailEntity tyhRecipedetailEntity;
+
+  public TyhRecipedetailEntity getTyhRecipedetailEntity() {
+    return tyhRecipedetailEntity;
+  }
+
+  public void setTyhRecipedetailEntity(TyhRecipedetailEntity tyhRecipedetailEntity) {
+    this.tyhRecipedetailEntity = tyhRecipedetailEntity;
+  }}
+
+
+

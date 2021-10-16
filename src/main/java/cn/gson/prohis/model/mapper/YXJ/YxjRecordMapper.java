@@ -45,4 +45,7 @@ public interface YxjRecordMapper {
      * @return
      */
     YxjPhysical selPhId(Integer phId);
+
+
+    List<YxjRecord> findRecord(Integer id);
 }

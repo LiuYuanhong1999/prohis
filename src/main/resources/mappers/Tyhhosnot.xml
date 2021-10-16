@@ -55,6 +55,23 @@
         left join tyh_patient tp on th.bingren=tp.patient_id
         left join tyh_hospital tl on th.hospital_id=tl.hospital_id
         left join tyh_inpatient ti on tl.inp_id=ti.inp_id
+        <if test="cha != '' and cha2 != ''">
+            where (th.hosnot_num like '%${cha}%'
+            or tl.hospital_name like '%${cha}%'
+            or tp.patient_name like '%${cha}%'
+            or yd.desk_name like '%${cha}%')
+            and th.hosnot_zt = #{cha2}
+        </if>
+        <if test="cha != '' and cha2 == ''">
+            where th.hosnot_num like '%${cha}%'
+            or tl.hospital_name like '%${cha}%'
+            or tp.patient_name like '%${cha}%'
+            or yd.desk_name like '%${cha}%'
+        </if>
+        <if test="cha == '' and cha2 != ''">
+            where th.hosnot_zt = #{cha2}
+        </if>
+        order by hosnot_date desc
     </select>
 
     <select id="finddesk" resultMap="tyhdesk">

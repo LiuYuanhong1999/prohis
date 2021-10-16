@@ -1,30 +1,21 @@
 package cn.gson.prohis.model.pojos;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.transaction.Transactional;
-import javax.xml.crypto.Data;
-import java.beans.Transient;
-import java.util.Date;
 
-/**
- * 体检记录实体类
- */
 public class YxjRecord {
 
-  private Integer recordId;
+  private long recordId;
   private String recordName;
   private long phId;
   private String recordZxr;
-  private Date recordTime;
+  private java.sql.Timestamp recordTime;
+  private long recordZt;
 
 
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public Integer getRecordId() {
+  public long getRecordId() {
     return recordId;
   }
 
-  public void setRecordId(Integer recordId) {
+  public void setRecordId(long recordId) {
     this.recordId = recordId;
   }
 
@@ -55,33 +46,31 @@ public class YxjRecord {
     this.recordZxr = recordZxr;
   }
 
-  public Date getRecordTime() { return recordTime; }
 
-  public void setRecordTime(Date recordTime) { this.recordTime = recordTime; }
-
-  /**
-   * 多条记录对应一个类别
-   */
-  private YxjPhysical yxjPhysical;
-
-
-  @Transactional
-  public YxjPhysical getYxjPhysical() {
-    return yxjPhysical;
+  public java.sql.Timestamp getRecordTime() {
+    return recordTime;
   }
 
-  public void setYxjPhysical(YxjPhysical yxjPhysical) {
-    this.yxjPhysical = yxjPhysical;
+  public void setRecordTime(java.sql.Timestamp recordTime) {
+    this.recordTime = recordTime;
   }
 
-  @Override
-  public String toString() {
-    return "YxjRecord{" +
-            "recordId=" + recordId +
-            ", recordName='" + recordName + '\'' +
-            ", phId=" + phId +
-            ", recordZxr='" + recordZxr + '\'' +
-            ", yxjPhysical=" + yxjPhysical +
-            '}';
+
+  public long getRecordZt() {
+    return recordZt;
+  }
+
+  public void setRecordZt(long recordZt) {
+    this.recordZt = recordZt;
+  }
+
+  public TyhRecipedetailEntity tyhRecipedetailEntity;
+
+  public TyhRecipedetailEntity getTyhRecipedetailEntity() {
+    return tyhRecipedetailEntity;
+  }
+
+  public void setTyhRecipedetailEntity(TyhRecipedetailEntity tyhRecipedetailEntity) {
+    this.tyhRecipedetailEntity = tyhRecipedetailEntity;
   }
 }

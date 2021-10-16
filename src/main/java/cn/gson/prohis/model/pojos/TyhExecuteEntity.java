@@ -12,8 +12,17 @@ public class TyhExecuteEntity {
     private Integer executeDay;
     private Double executePrice;
     private Integer patientId;
+    private Timestamp executeTime;
     private Timestamp executeData;
     private Integer executeZt;
+
+    public Timestamp getExecuteTime() {
+        return executeTime;
+    }
+
+    public void setExecuteTime(Timestamp executeTime) {
+        this.executeTime = executeTime;
+    }
 
     public String getExecuteId() {
         return executeId;

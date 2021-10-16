@@ -28,8 +28,8 @@ public class YxjRecordController {
      * 新增体检记录
      * @param yxjRecord
      */
-    @RequestMapping("/addRecord")
-    public void addRecord(@RequestBody YxjRecord yxjRecord){yxjRecordService.addRecord(yxjRecord);}
+//    @RequestMapping("/addRecord")
+//    public void addRecord(@RequestBody YxjRecord yxjRecord){yxjRecordService.addRecord(yxjRecord);}
 
     /**
      * 修改体检记录
@@ -42,8 +42,8 @@ public class YxjRecordController {
      * 根据Id删除记录
      * @param recordId
      */
-    @RequestMapping("/delRecord")
-    public void delRecord(@RequestBody YxjRecord recordId){yxjRecordService.delRecord(recordId.getRecordId());}
+//    @RequestMapping("/delRecord")
+//    public void delRecord(@RequestBody YxjRecord recordId){yxjRecordService.delRecord(recordId.getRecordId());}
 
     /**
      * 查询体检类别表

@@ -12,12 +12,11 @@ public interface exeMapper {
 
     List<TyhExecutedelEntity> findExecutedel(String id);
 
-    //查询发药中的医嘱
-    List<TyhExecuteEntity> findExecute2();
-
     void updata1(String id);
 
     void updata2(String id);
 
-    void update3(String id);
+    List<TyhExecuteEntity> findExecute2();
+
+    List<TyhExecuteEntity> findJie(Integer id);
 }

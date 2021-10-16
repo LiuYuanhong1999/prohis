@@ -1,11 +1,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.gson.prohis.model.mapper.YXJ.YxjRecordMapper">
-    <resultMap id="record" type="cn.gson.prohis.model.pojos.YxjRecord">
-        <id column="record_id" property="recordId"></id>
-        <result column="record_name" property="recordName"></result>
-        <result column="record_zxr" property="recordZxr"></result>
-        <result column="record_time" property="recordTime"></result>
-        <result column="record_zt" property="recordZt"></result>
+<mapper namespace="cn.gson.prohis.model.mapper.ZSX.opernoteMapper">
+    <resultMap id="poernot" type="cn.gson.prohis.model.pojos.ZsxOperationNote">
+        <id column="operation_note_id" property="operationNoteId"></id>
+        <result column="operation_id" property="operationId"></result>
+        <result column="surgery_arrange_id" property="surgeryArrangeId"></result>
+        <result column="operation_note_money" property="operationNoteMoney"></result>
+        <result column="operation_zt" property="operationZt"></result>
+        <result column="executedel_id" property="executedelId"></result>
+        <result column="oper_date" property="operDate"></result>
 
         <association property="tyhRecipedetailEntity" javaType="cn.gson.prohis.model.pojos.TyhRecipedetailEntity">
             <id column="recipedetail_id" property="recipedetailId"></id>
@@ -42,43 +44,12 @@
         </association>
     </resultMap>
 
-
-    <select id="findRecord" resultMap="record">
-        select * from yxj_record zo
-        left join tyh_recipedetail trl on zo.ph_id=trl.recipedetail_id
+    <select id="findOper" resultMap="poernot">
+        select * from zsx_operation_note zo
+        left join tyh_recipedetail trl on zo.executedel_id=trl.recipedetail_id
         left join yxj_project yp on trl.recipedetail_project=yp.project_id
         left join tyh_recipe tr on trl.recipe_id=tr.recipe_id
         left join tyh_patient tp on tr.patient_id=tp.patient_id
-        where zo.record_zt=2 and tp.patient_id=#{id}
+        where zo.operation_zt=2 and tp.patient_id=#{id}
     </select>
-
-    <!--  查询所有记录  -->
-    <select id="allRecord" resultMap="record">
-        SELECT * FROM yxj_record r LEFT JOIN physical p ON r.ph_id = p.ph_id ORDER BY record_time DESC
-    </select>
-
-
-    <!--  新增体检记录  -->
-    <insert id="addRecord">
-        INSERT INTO yxj_record(record_id,record_name,ph_id,record_zxr,record_time)
-        VALUES(#{recordId},#{recordName},#{phId},#{recordZxr},#{recordTime})
-    </insert>
-
-    <!--  修改体检记录  -->
-    <update id="updateRecord">
-        UPDATE yxj_record SET record_name=#{recordName},record_zxr=#{recordZxr},record_time=#{recordTime} WHERE record_id = #{recordId}
-    </update>
-
-    <!--  删除体检记录  -->
-    <delete id="delRecord">
-        DELETE FROM yxj_record WHERE record_id = #{recordId}
-    </delete>
-
-
-    <!--  查询体检类别  -->
-    <select id="selPhysical" resultMap="record">
-        SELECT * FROM physical
-    </select>
-
-
 </mapper>
