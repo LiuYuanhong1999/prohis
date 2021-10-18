@@ -50,7 +50,6 @@ public class LyhPharmacyService {
 
         bs.updateById3(numbers, drugId);
 
-        System.out.println("药房+---------------------------------------------------------");
         bs.updateById4(numbers, drugId);
 
 

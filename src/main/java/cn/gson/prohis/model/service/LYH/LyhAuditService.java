@@ -16,9 +16,25 @@ public class LyhAuditService {
     LyhAuditMapper bs;
 
 
-    public List<LyhAuditEntity> findAll(){
-        return bs.findAll();
+    public List<LyhAuditEntity> findAll(LyhAuditEntity auditEntity){
+
+        System.out.println(auditEntity.getAuditState());
+
+        return bs.findAll(auditEntity);
     }
+
+
+    public List<LyhAuditEntity> findAll2(LyhAuditEntity auditEntity){
+
+        if (auditEntity.getAuditState() ==null){
+            System.out.println("-------------------------------------------1");
+            return bs.findAll2();
+        }else {
+            System.out.println("-----------------------------------------------2");
+            return bs.findAll3(auditEntity);
+    }
+
+}
 
 
 
@@ -29,9 +45,9 @@ public class LyhAuditService {
 
 
 
-    public int updateById(Map<String,Object> map){
+    public void updateById(Integer auditState,Integer auditId){
 
-        return bs.updateById(map);
+         bs.updateById(auditState, auditId);
     }
 }
 

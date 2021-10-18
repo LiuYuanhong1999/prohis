@@ -41,6 +41,10 @@ public class LyhAllotController {
     }
 
 
+    @RequestMapping("find-allot2")
+    public List<LyhAllotEntity> findAll2(@RequestBody LyhAllotEntity allotEntity){
+        return bs.findAll2(allotEntity);
+    }
 
     @RequestMapping("find-pharmacyDetails")
     public List<LyhPharmacyDetailsEntity> findAll2(@RequestBody LyhPharmacyDetailsEntity pharmacyDetailsEntity){

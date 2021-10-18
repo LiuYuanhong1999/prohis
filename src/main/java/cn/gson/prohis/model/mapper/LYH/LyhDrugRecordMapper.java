@@ -18,5 +18,5 @@ public interface LyhDrugRecordMapper {
 
     void updateByReport(String ProcurementId,Integer drugId,Integer numbers);
 
-    List<LyhDrugRecord> findDrugRecord();
+    List<LyhDrugRecord> findDrugRecord(LyhDrugRecord drugRecord);
 }

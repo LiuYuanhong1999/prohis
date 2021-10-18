@@ -7,6 +7,7 @@
         <result column="audit_user" property="auditUser"></result>
         <result column="audit_state" property="auditState"></result>
         <result column="meiYon" property="meiYon"></result>
+        <result column="supplier_id" property="supplierId"></result>
         <association property="lyhProcurementEntity" javaType="cn.gson.prohis.model.pojos.LyhProcurementEntity">
             <id column="procurement_id"         property="procurementId"></id>
             <result column="procurement_price"  property="procurementPrice"></result>
@@ -41,33 +42,99 @@
     </resultMap>
 
 
+
+
     <select id="findAll" resultMap="audit">
         select * from lyhaudit a left join lyhprocurement b on a.procurement_id=b.procurement_id
                                  left join lyhprocurementdetails c on b.procurement_id=c.procurement_id
                                  left join lyh_drug d on c.drug_id=d.drug_id
                                  left join lyhsupplier e on d.supplier_id=e.supplier_id
 
+        <where>
+            <if test="procurementId !=null and procurementId !=''">
+                and b.procurement_id like '%${procurementId}%'
+            </if>
+
+            <if test="auditUser !=null and auditUser !=''">
+
+                and a.audit_user like '%${auditUser}%'
+
+            </if>
+
+            <if test="supplierId !=null and supplierId !=''">
+
+                and a.supplier_id =#{supplierId}
+
+            </if>
+                and a.audit_state=#{auditState}
+        </where>
+
+
+        order by a.audit_date desc
+    </select>
+
+
+    <select id="findAll2" resultMap="audit">
+        select * from lyhaudit a left join lyhprocurement b on a.procurement_id=b.procurement_id
+        left join lyhprocurementdetails c on b.procurement_id=c.procurement_id
+        left join lyh_drug d on c.drug_id=d.drug_id
+        left join lyhsupplier e on d.supplier_id=e.supplier_id
+        where a.audit_state !=0 order by a.audit_date desc
+    </select>
+
+
+    <select id="findAll3" resultMap="audit">
+        select * from lyhaudit a left join lyhprocurement b on a.procurement_id=b.procurement_id
+        left join lyhprocurementdetails c on b.procurement_id=c.procurement_id
+        left join lyh_drug d on c.drug_id=d.drug_id
+        left join lyhsupplier e on d.supplier_id=e.supplier_id
+
+        <where>
+            <if test="procurementId !=null and procurementId !=''">
+                and b.procurement_id like '%${procurementId}%'
+            </if>
+
+              <if test="auditState !=null and auditState !=''">
+
+                        and a.audit_state=#{auditState}
+
+              </if>
+
+            <if test="auditUser !=null and auditUser !=''">
+
+                and a.audit_user like '%${auditUser}%'
+
+            </if>
+
+            <if test="supplierId !=null and supplierId !=''">
+
+                and a.supplier_id =#{supplierId}
+
+            </if>
+            and a.audit_state !=0
+        </where>
+
+
         order by a.audit_date desc
     </select>
 
 <!--批量修改-->
-    <update id="updateById" parameterType="LyhAuditEntity">
-        update lyhaudit set audit_state=#{auditState,jdbcType=INTEGER}
-        where audit_id in
-        <foreach collection="auditId" item="auditId" open="(" separator="," close=")">
-            #{auditId}
-        </foreach>
+    <update id="updateById" >
+       update lyhaudit set audit_state=#{auditState} where audit_id=#{auditId}
     </update>
 
 <!--批量新增-->
     <insert id="insertAudit" useGeneratedKeys="true" keyProperty="auditId" parameterType="cn.gson.prohis.model.pojos.LyhAuditEntity">
-        insert into lyhaudit(audit_id,procurement_id)
+        insert into lyhaudit(audit_id,procurement_id,supplier_id)
         values
 
         <foreach collection="list" item="item" index="index" separator=",">
             (
              #{item.auditId,jdbcType=INTEGER},
-             #{item.procurementId,jdbcType=VARCHAR})
+             #{item.procurementId,jdbcType=VARCHAR},
+             #{item.supplierId,jdbcType=INTEGER}
+             )
+
         </foreach>
 
 

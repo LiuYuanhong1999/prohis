@@ -15,9 +15,17 @@ public class LyhAuditEntity {
     private Timestamp auditDate;
     private String auditUser;
     private Integer auditState;
-
     private Integer meiYon;
+    private Integer supplierId;
 
+
+    public Integer getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
+    }
 
     public Integer getMeiYon() {
         return meiYon;

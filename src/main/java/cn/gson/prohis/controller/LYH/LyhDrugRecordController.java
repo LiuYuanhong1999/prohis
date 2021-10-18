@@ -2,6 +2,7 @@ package cn.gson.prohis.controller.LYH;
 
 import cn.gson.prohis.model.pojos.LyhDrugRecord;
 import cn.gson.prohis.model.service.LYH.LyhDrugRecordService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +18,8 @@ public class LyhDrugRecordController {
 
 
     @RequestMapping("/find-drugRecord")
-    public List<LyhDrugRecord> findAll(){
-      return   drugRecordService.findAll();
+    public List<LyhDrugRecord> findAll(@RequestBody LyhDrugRecord drugRecord) {
+      return   drugRecordService.findAll(drugRecord);
     }
 
 }

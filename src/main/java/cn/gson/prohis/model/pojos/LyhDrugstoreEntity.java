@@ -16,7 +16,29 @@ public class LyhDrugstoreEntity {
     private Timestamp drugstoreDate;
     private String procurementId;
     private Integer auditId;
-private int piCi;
+
+    private Timestamp startTime;
+
+    private Timestamp endTime;
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
+
+    private int piCi;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getDrugstoreId() {
@@ -55,7 +77,7 @@ private int piCi;
 
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:MM:ss", timezone = "GMT+8")
     public Timestamp getDrugstoreDate() {
         return drugstoreDate;
     }

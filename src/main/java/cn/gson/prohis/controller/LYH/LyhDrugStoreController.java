@@ -19,8 +19,8 @@ public class LyhDrugStoreController {
 
 
     @RequestMapping("/find-drugstore")
-    public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId){
-        return bs.findAll(drugId, procurementId);
+    public List<LyhDrugstoreEntity> findAll(@RequestBody LyhDrugstoreEntity drugstoreEntity){
+        return bs.findAll(drugstoreEntity);
     }
 
 @PostMapping(value = "/update-drugstore" , produces = "application/json")
@@ -29,10 +29,6 @@ public class LyhDrugStoreController {
 
    bs.updateById(json);
 
-//    System.out.println(numbers);
-//    System.out.println(drugId);
-//    System.out.println(procurementId);
-//    bs.updateById(numbers,drugId,procurementId);
 
     return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("success");
 }

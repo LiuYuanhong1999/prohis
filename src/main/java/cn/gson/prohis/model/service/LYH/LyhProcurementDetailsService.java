@@ -16,7 +16,5 @@ public void updateById(Integer numbers ,Integer proId){
 }
 
 
-//   public void insertDetails(List<LyhProcurementDetailsEntity> lyhProcurementDetailsEntities){
-//     bs.insertDetails(lyhProcurementDetailsEntities);
-//   }
+
 }

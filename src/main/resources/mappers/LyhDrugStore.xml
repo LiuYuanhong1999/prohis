@@ -51,13 +51,33 @@
             left join lyhaudit d on a.audit_id=d.audit_id
             left join lyhsupplier e on b.supplier_id=e.supplier_id
         <where>
-            <if test="drugId !=null and drugId!=''">
+            <if test="lyhDrugEntity !=null and lyhDrugEntity !=''">
 
-            a.drug_id=#{drugId}
+                <if test="lyhDrugEntity.drugName !=null and lyhDrugEntity.drugName !=''">
+
+                    and   b.drug_name like '%${lyhDrugEntity.drugName}'
+                </if>
+                <if test="lyhDrugEntity.drugState !=null and lyhDrugEntity.drugState !=''">
+                    and b.drug_state like '%${lyhDrugEntity.drugState}%'
+                </if>
+
+                <if test="lyhDrugEntity.drugJixin !=null and lyhDrugEntity.drugJixin !=''">
+
+                    and b.drug_Jixin like '%${lyhDrugEntity.drugJixin}%'
+                </if>
+
+                <if test="lyhDrugEntity.drugGuige !=null and lyhDrugEntity.drugGuige !=''">
+
+                    and b.drug_guige like '%${lyhDrugEntity.drugGuige}%'
+                </if>
+
+                <if test="lyhDrugEntity.drugDate !=null ">
+                    and b.drug_date =#{lyhDrugEntity.drugDate}
+                </if>
+
+
             </if>
-        <if test="procurementId !=null and procurementId !=''">
-            and a.procurement_id=#{procurementId}
-        </if>
+
         </where>
 
 

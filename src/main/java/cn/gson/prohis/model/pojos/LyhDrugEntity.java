@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,7 +14,11 @@ import java.util.Objects;
 public class LyhDrugEntity {
     private int drugId;
     private String drugName;
-    private Timestamp drugDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date drugDate;
+
     private BigDecimal drugPrice;
     private Integer supplierId;
     private Integer drugState;
@@ -82,13 +87,12 @@ public class LyhDrugEntity {
         this.drugName = drugName;
     }
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    public Timestamp getDrugDate() {
+
+    public Date getDrugDate() {
         return drugDate;
     }
 
-    public void setDrugDate(Timestamp drugDate) {
+    public void setDrugDate(Date drugDate) {
         this.drugDate = drugDate;
     }
 

@@ -6,7 +6,7 @@
         <result column="pi_ci" property="piCi"></result>
         <result column="numbers" property="numbers"></result>
         <result column="recode_date" property="recodeDate"></result>
-
+        <result column="procurement_id" property="procurementId"></result>
         <association property="drugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
 
             <id column="drug_id" property="drugId"></id>
@@ -36,6 +36,36 @@
         left join lyh_drug b on a.drug_id=b.drug_id
         left join lyhsupplier c on b.supplier_id=c.supplier_id
 
+        <where>
+          <if test="drugEntity !=null and drugEntity !=''">
+
+              <if test="drugEntity.drugName !=null and drugEntity.drugName !=''">
+                   and b.drug_name like '%${drugEntity.drugName}'
+              </if>
+
+              <if test="drugEntity.drugState !=null and drugEntity.drugState !=''">
+                    and b.drug_state =#{drugEntity.drugState}
+              </if>
+
+              <if test="drugEntity.lyhSupplierEntity.supplierId !=null and drugEntity.lyhSupplierEntity.supplierId">
+                    and c.supplier_id =#{drugEntity.lyhSupplierEntity.supplierId}
+
+              </if>
+
+          </if>
+            <if test="piCi !=null and piCi !=''">
+
+                and a.pi_ci like '%${piCi}'
+
+            </if>
+
+
+            <if test="procurementId !=null and procurementId !=''">
+
+                and a.procurment_id like '%${procurementId}'
+            </if>
+        </where>
+
         order by a.recode_date desc
 
 
@@ -46,7 +76,7 @@
 
     <insert id="insertDrugRecord">
 
-    insert into lyhdrugrecord(drug_id,pi_ci,numbers,procurementId) values (#{drugId},#{piCi},#{numbers},#{procurementId})
+    insert into lyhdrugrecord(drug_id,pi_ci,numbers,procurement_id) values (#{drugId},#{piCi},#{numbers},#{procurementId})
 
     </insert>
 

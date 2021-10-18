@@ -17,7 +17,6 @@ public class LyhProcurementController {
 
     @PostMapping("add-procurement")
     public void addProcurement(@RequestBody LyhProcurementEntity lyhProcurementEntity){
-        System.out.println(lyhProcurementEntity);
         bs.addProcurement(lyhProcurementEntity);
     }
 
@@ -28,8 +27,8 @@ public class LyhProcurementController {
     }
 
     @RequestMapping("find-procurement2")
-    public List<LyhProcurementEntity> findAll2(String procurementId){
-        return bs.findAll2();
+    public List<LyhProcurementEntity> findAll2(@RequestBody LyhProcurementEntity procurementEntity){
+        return bs.findAll2(procurementEntity);
     }
 
     @RequestMapping("/update-procurement")

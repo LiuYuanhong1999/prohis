@@ -8,6 +8,7 @@ import cn.gson.prohis.model.pojos.LyhProcurementEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,18 @@ public class LyhProcurementService {
     @Resource
     LyhProcurementDetailsMapper ds;
     public void addProcurement(LyhProcurementEntity lyhProcurementEntity){
-        bs.insertBy(lyhProcurementEntity);
+
+        Timestamp d = new Timestamp(System.currentTimeMillis());
+
+        LyhProcurementEntity procurement=new LyhProcurementEntity();
+        procurement.setProcurementId(lyhProcurementEntity.getProcurementId());
+        procurement.setProcurementState(lyhProcurementEntity.getProcurementState());
+        procurement.setProcurementName(lyhProcurementEntity.getProcurementName());
+        procurement.setSupplierId(lyhProcurementEntity.getSupplierId());
+        procurement.setProcurementDate(d);
+
+
+        bs.insertBy(procurement);
         System.out.println(lyhProcurementEntity.getProcurementId());
         for (LyhProcurementDetailsEntity entity : lyhProcurementEntity.getLyhProcurementDetailsEntities()) {
 
@@ -37,8 +49,18 @@ public class LyhProcurementService {
         return bs.findAll(procurementEntity);
     }
 
-        public List<LyhProcurementEntity> findAll2(){
-        return bs.findAll2();
+
+
+        public List<LyhProcurementEntity> findAll2(LyhProcurementEntity procurementEntity){
+
+        if (procurementEntity.getProcurementState().isEmpty()){
+
+            return bs.findAll3();
+        }else {
+
+            return bs.findAll2(procurementEntity);
+        }
+
         }
 
     public void deleteById(List<String> list){

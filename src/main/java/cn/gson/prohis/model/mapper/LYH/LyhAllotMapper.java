@@ -13,7 +13,7 @@ public interface LyhAllotMapper {
 
     public void insertAllot(LyhAllotEntity lyhAllotEntity);
 
-
+    public List<LyhAllotEntity> findAll2(LyhAllotEntity allotEntity);
 
     public int updateById(Map<String,Object> map);
 }

@@ -7,6 +7,7 @@
         <result column="allot_number" property="allotNumber"></result>
         <result column="drug_id" property="drugId"></result>
         <result column="allot_time" property="allotTime"></result>
+        <result column="allot_nowtime" property="allotNowtime"></result>
         <association property="pharmacyEntity" javaType="cn.gson.prohis.model.pojos.LyhPharmacyEntity">
     <id column="pharmacy_id" property="pharmacyId"></id>
     <result column="drug_id" property="drugId"></result>
@@ -49,8 +50,15 @@
         left join lyh_drug c on c.drug_id = b.drug_id
         left join lyhsupplier d on c.supplier_id=d.supplier_id
 
-        where a.allot_state=0
 
+
+        <where>
+
+
+
+            a.allot_state=0
+        </where>
+                order by a.allot_time desc
 
     </select>
 
@@ -65,8 +73,19 @@
                           left join lyh_drug c on c.drug_id = b.drug_id
                           left join lyhsupplier d on c.supplier_id=d.supplier_id
 
-        where a.allot_state is not 1
+        <where>
+            <if test="allotId!=null and allotId !=''">
+                and a.allot_id like '%${allotId}%'
+            </if>
 
+            <if test="allotState !=null and allotState !=''">
+                and a.allot_state =#{allotState}
+
+            </if>
+            and
+            a.allot_state  !=0
+        </where>
+            order by a.allot_nowtime desc
 
     </select>
 
@@ -74,8 +93,8 @@
 
 
     <insert id="insertAllot">
-        insert into lyhallot(allot_id)
-        values (#{allotId})
+        insert into lyhallot(allot_id,allot_time)
+        values (#{allotId},#{allotTime})
     </insert>
 
 

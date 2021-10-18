@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -31,8 +32,11 @@ public class LyhDrugStoreService {
 
 
 
-    public List<LyhDrugstoreEntity> findAll(Integer drugId,String procurementId){
-        return bs.findAll(drugId, procurementId);
+    public List<LyhDrugstoreEntity> findAll(LyhDrugstoreEntity drugstoreEntity){
+
+
+
+        return bs.findAll(drugstoreEntity);
     }
 
 
@@ -50,8 +54,6 @@ public void updateById(String json){
     for (DrugStoreVo vo : p) {
         List<LyhDrugstoreEntity> s=bs.findByName(vo.getDrugId());
             if (s.isEmpty()){
-                System.out.println(vo.getPiCi()+"批次");
-                System.out.println(vo.getNumbers()+vo.getDrugId()+"-------qwqwwwwwwwwwwwwwwwwwwwwwwwww");
                 LyhDrugstoreEntity lyhDrugstoreEntity=new LyhDrugstoreEntity();
                 lyhDrugstoreEntity.setDrugId(vo.getDrugId());
                 lyhDrugstoreEntity.setDrugstoreNumber(vo.getNumbers());
@@ -77,12 +79,9 @@ public void updateById(String json){
 
 
             }else {
-                System.out.println("2----------------------------===============================================================");
-                System.out.println(vo.getPiCi()+"批次");
-                bs.updateById(vo.getNumbers(),vo.getDrugId());
-                System.out.printf("----shu"+vo.getNumbers()+"id" +vo.getDrugId()) ;
-                LyhDrugStoreDetailsEntity detailsEntity=new LyhDrugStoreDetailsEntity();
 
+                bs.updateById(vo.getNumbers(),vo.getDrugId());
+                LyhDrugStoreDetailsEntity detailsEntity=new LyhDrugStoreDetailsEntity();
                 detailsEntity.setDrugId(vo.getDrugId());
                 detailsEntity.setNumbers(vo.getNumbers());
                 detailsEntity.setProcurementId(vo.getProcurementId());

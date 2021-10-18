@@ -16,7 +16,17 @@ public class LyhAllotEntity {
     private Integer allotNumber;
     private Integer drugId;
     private Timestamp allotTime;
+    private Timestamp allotNowtime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    public Timestamp getAllotNowtime() {
+        return allotNowtime;
+    }
+
+    public void setAllotNowtime(Timestamp allotNowtime) {
+        this.allotNowtime = allotNowtime;
+    }
 
     public String getAllotId() {
         return allotId;

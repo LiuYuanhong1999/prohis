@@ -22,27 +22,27 @@ public class LyhAuditController {
 
 
     @RequestMapping("/find-audit")
-    public List<LyhAuditEntity> findAll(){
-        return bs.findAll();
+    public List<LyhAuditEntity> findAll(@RequestBody LyhAuditEntity auditEntity){
+        return bs.findAll(auditEntity);
     }
 
-
+    @RequestMapping("/find-audit2")
+    public List<LyhAuditEntity> findAll2(@RequestBody LyhAuditEntity auditEntity){
+        return bs.findAll2(auditEntity);
+    }
 
     @PostMapping("/add-audit")
     public AjaxResult insertAudit(@RequestBody List<LyhAuditEntity> list){
-        System.out.println(list);
+
         bs.insertAudit(list);
         return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
     }
 
 
     @RequestMapping("/update-audit")
-    public AjaxResult updateById(String auditState,String auditId){
-        Map<String,Object> map=new HashMap<>();
-        List<String> idList= Arrays.asList(auditId.split(","));
-        map.put("auditState",auditState);
-        map.put("auditId",idList);
-        bs.updateById(map);
+    public AjaxResult updateById(Integer auditState,Integer auditId){
+
+        bs.updateById(auditState, auditId);
         return AjaxResult.me().setSuccess(false).setMsg("修改成功").setObject("sucess");
 
 

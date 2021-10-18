@@ -9,12 +9,14 @@ import java.util.Map;
 @Mapper
 public interface LyhAuditMapper {
 
-    public List<LyhAuditEntity> findAll();
+    public List<LyhAuditEntity> findAll(LyhAuditEntity auditEntity);
 
+    public List<LyhAuditEntity> findAll2();
+    public List<LyhAuditEntity> findAll3(LyhAuditEntity auditEntity);
 
     public int insertAudit(List<LyhAuditEntity> list);
 
 
 
-    public int updateById(Map<String,Object> map);
+    public void updateById(Integer auditState,Integer auditId);
 }

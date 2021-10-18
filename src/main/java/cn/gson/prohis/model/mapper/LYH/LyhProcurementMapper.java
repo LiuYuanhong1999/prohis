@@ -18,5 +18,7 @@ public interface LyhProcurementMapper {
 
          void deleteById(List<String> list);
 
-         List<LyhProcurementEntity> findAll2();
+         List<LyhProcurementEntity> findAll2(LyhProcurementEntity procurement);
+
+         List<LyhProcurementEntity> findAll3();
 }
