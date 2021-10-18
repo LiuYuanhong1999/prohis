@@ -5,11 +5,14 @@ import java.sql.Timestamp;
 public class ZsxSurgeryArrange {
     private int surgeryArrangeId;
     private Timestamp surgeryArrangeTime;
+    private String surgeryArrangeNumber;
     private String surgeryArrangeName;
     private String surgeryForNumber;
     private String surgeryArrangeDoctor;
     private Integer operatingRoomId;
     private String surgeryArrangeNurse;
+    private int surgeryArrangeStaff;
+    private String surgeryArrangeType;
 
     private ZsxSurgeryFor surgeryFor;
     private ZsxOperatingRoom operatingRoom;
@@ -44,6 +47,14 @@ public class ZsxSurgeryArrange {
 
     public void setSurgeryArrangeTime(Timestamp surgeryArrangeTime) {
         this.surgeryArrangeTime = surgeryArrangeTime;
+    }
+
+    public String getSurgeryArrangeNumber() {
+        return surgeryArrangeNumber;
+    }
+
+    public void setSurgeryArrangeNumber(String surgeryArrangeNumber) {
+        this.surgeryArrangeNumber = surgeryArrangeNumber;
     }
 
     public String getSurgeryArrangeName() {
@@ -86,4 +97,19 @@ public class ZsxSurgeryArrange {
         this.surgeryArrangeNurse = surgeryArrangeNurse;
     }
 
+    public int getSurgeryArrangeStaff() {
+        return surgeryArrangeStaff;
+    }
+
+    public void setSurgeryArrangeStaff(int surgeryArrangeStaff) {
+        this.surgeryArrangeStaff = surgeryArrangeStaff;
+    }
+
+    public String getSurgeryArrangeType() {
+        return surgeryArrangeType;
+    }
+
+    public void setSurgeryArrangeType(String surgeryArrangeType) {
+        this.surgeryArrangeType = surgeryArrangeType;
+    }
 }

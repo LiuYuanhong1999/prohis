@@ -18,15 +18,15 @@ public class ZsxPrescriptionDetails {
   private String prescriptionDetailsExplain;
   private String prescriptionId;
 
-  private ZsxPrescription zsxPrescription;
+  private ZsxPrescription prescription;
 
 
-  public ZsxPrescription getZsxPrescription() {
-    return zsxPrescription;
+  public ZsxPrescription getPrescription() {
+    return prescription;
   }
 
-  public void setZsxPrescription(ZsxPrescription zsxPrescription) {
-    this.zsxPrescription = zsxPrescription;
+  public void setPrescription(ZsxPrescription prescription) {
+    this.prescription = prescription;
   }
 
   public String getPrescriptionId() {
