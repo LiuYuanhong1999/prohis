@@ -52,4 +52,35 @@
         left join tyh_patient tp on tr.patient_id=tp.patient_id
         where zo.operation_zt=2 and tp.patient_id=#{id}
     </select>
+
+    <insert id="addJie">
+        insert into tyh_jie(jie_id,jie_date,jie_price,hosreg_num,patient_id)
+        values(#{jieId},#{jieDate},#{jiePrice},#{hosregNum},#{patientId})
+    </insert>
+
+    <insert id="addJiex">
+        insert into tyh_jiex(project_id,drug_id,jie_id,jiex_num)
+        values(#{projectId},#{drugId},#{jieId},#{executedelNumber})
+    </insert>
+
+    <update id="updataJie">
+        update tyh_execute set execute_zt=4 where patient_id=#{patientId}
+    </update>
+
+    <update id="updateJie2">
+        update zsx_operation_note set operation_zt=1 where patient_id=#{patientId}
+    </update>
+
+    <update id="updateJie3">
+        update yxj_record set record_zt=1 where patient_id=#{patientId}
+    </update>
+
+    <update id="updateYj">
+        update tyh_patient set patient_yue=patient_yue-#{jiePrice} where patient_id=#{patientId}
+    </update>
+
+    <insert id="addYj">
+        insert into tyh_cash(cash_num,hosreg_num,cash_price)
+        values(#{a},#{hosregNum},#{b})
+    </insert>
 </mapper>

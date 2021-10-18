@@ -39,6 +39,16 @@
         </if>
     </select>
 
+    <select id="findTcash" resultMap="cash">
+        select * from tyh_hosreg th left join
+        tyh_patient tp on th.patient_id=tp.patient_id
+        where th.hosreg_zt=3 and tp.patient_yue>0
+        <if test="cha != null">
+            and (th.hosreg_num like '%${cha}%'
+            or tp.patient_name like '%${cha}%')
+        </if>
+    </select>
+
 
     <select id="findAllcash" resultMap="cash">
         select * from tyh_cash
@@ -74,5 +84,14 @@
 
     <update id="updateyue2">
         update tyh_patient set patient_yue=patient_yue-#{price} where patient_id=#{pid}
+    </update>
+
+    <insert id="delTcash">
+        INSERT INTO tyh_cash(cash_num,cash_date,hosreg_num,cash_price)
+        VALUES(#{cashNum},#{cashDate},#{hosregNum},#{cashPrice})
+    </insert>
+
+    <update id="xiuYue">
+        update tyh_patient set patient_yue=patient_yue+#{cashPrice} where patient_id=#{patientId}
     </update>
 </mapper>

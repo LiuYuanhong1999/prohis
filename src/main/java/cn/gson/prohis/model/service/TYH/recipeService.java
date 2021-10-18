@@ -9,8 +9,6 @@ import cn.gson.prohis.model.pojos.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,6 +27,9 @@ public class recipeService {
 
     @Resource
     patMapper patMapper;
+
+    @Resource
+    haoMapper haoMapper;
 
     public List<TyhHosregEntity> chufangbr(String cha) {
         return regMapper.chufangbr(cha);
@@ -70,11 +71,7 @@ public class recipeService {
         TyhHosregEntity selchuf = regMapper.selchuf(tyhRecipeEntity.getPatientId());
 
         if (selchuf.getHosregZt()==1){
-            SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
-            Date date = new Date();
-            String a = myFmt.format(date);
-            String b = "cf";
-            tyhRecipeEntity.setRecipeId(b + a);
+            tyhRecipeEntity.setRecipeId(haoMapper.hao("cf"));
             recipeMapper.addchufang(tyhRecipeEntity);
 
 
@@ -91,11 +88,7 @@ public class recipeService {
                 //护士
                 int data = 0;
                 for (int i = 1;i<=tyhRecipeEntity.getRecipeDay();i++){
-                    SimpleDateFormat myFmt1 = new SimpleDateFormat("yyMMddHHmmssSSS");
-                    Date date1 = new Date();
-                    String c = myFmt1.format(date1);
-                    String d = "hs";
-                    tyhRecipeEntity.setExecuteId(d+c);
+                    tyhRecipeEntity.setExecuteId(haoMapper.hao("hs"));
                     recipeMapper.addexe(tyhRecipeEntity,i);
                     recipeMapper.updatadata(tyhRecipeEntity.getExecuteId(),data);
                     data++;

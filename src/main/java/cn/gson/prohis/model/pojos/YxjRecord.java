@@ -9,7 +9,15 @@ public class YxjRecord {
   private String recordZxr;
   private java.sql.Timestamp recordTime;
   private long recordZt;
+  private long patientId;
 
+  public long getPatientId() {
+    return patientId;
+  }
+
+  public void setPatientId(long patientId) {
+    this.patientId = patientId;
+  }
 
   public long getRecordId() {
     return recordId;

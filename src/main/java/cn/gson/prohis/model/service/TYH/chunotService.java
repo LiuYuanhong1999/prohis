@@ -7,14 +7,15 @@ import cn.gson.prohis.model.pojos.TyhHosregEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class chunotService {
     @Resource
     chunotMapper chunotMapper;
+
+    @Resource
+    haoMapper haoMapper;
 
     @Resource
     regMapper regMapper;
@@ -32,11 +33,7 @@ public class chunotService {
     }
 
     public void addchunot(TyhChunotEntity tyhChunotEntity) {
-        SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
-        Date date = new Date();
-        String a=myFmt.format(date);
-        String b="cytz_";
-        tyhChunotEntity.setChunotNum(b + a);
+        tyhChunotEntity.setChunotNum(haoMapper.hao("cy"));
         chunotMapper.addchunot(tyhChunotEntity);
         chunotMapper.updatereg(tyhChunotEntity.getHosregNum());
     }

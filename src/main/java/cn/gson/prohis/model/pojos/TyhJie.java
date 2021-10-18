@@ -1,20 +1,44 @@
 package cn.gson.prohis.model.pojos;
 
 
+
+import javax.persistence.criteria.CriteriaBuilder;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class TyhJie {
 
   private String jieId;
-  private java.sql.Timestamp jieDate;
+  private Timestamp jieDate;
   private double jiePrice;
   private String hosregNum;
+  private Integer patientId;
+
+  public TyhHosregEntity tyhHosregEntity;
+
+  public TyhHosregEntity getTyhHosregEntity() {
+    return tyhHosregEntity;
+  }
+
+  public void setTyhHosregEntity(TyhHosregEntity tyhHosregEntity) {
+    this.tyhHosregEntity = tyhHosregEntity;
+  }
+
+  public Integer getPatientId() {
+    return patientId;
+  }
+
+  public void setPatientId(Integer patientId) {
+    this.patientId = patientId;
+  }
 
   private List<TyhJiex> tyhJiexes;
 
   public List<TyhJiex> getTyhJiexes() {
     return tyhJiexes;
   }
+
+
 
   public void setTyhJiexes(List<TyhJiex> tyhJiexes) {
     this.tyhJiexes = tyhJiexes;

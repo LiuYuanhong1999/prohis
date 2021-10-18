@@ -12,6 +12,15 @@ public class ZsxOperationNote {
   private long operationZt;
   private long executedelId;
   private Timestamp operDate;
+  private long patientId;
+
+  public long getPatientId() {
+    return patientId;
+  }
+
+  public void setPatientId(long patientId) {
+    this.patientId = patientId;
+  }
 
   public Timestamp getOperDate() {
     return operDate;

@@ -8,8 +8,6 @@ import cn.gson.prohis.model.pojos.ZsxRegistration;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,6 +16,9 @@ public class hosnotService {
     hosnotMapper hosnotMapper;
     @Resource
     ZsxRegistrationMapper zsxRegistrationMapper;
+
+    @Resource
+    haoMapper haoMapper;
 
     public List<TyhHosnotEntity> findAllnot(String cha, String cha2){
         return hosnotMapper.findAllnot(cha,cha2);
@@ -41,11 +42,7 @@ public class hosnotService {
         hosnotMapper.addbr(tyhHosnotEntity);
 
         //新增住院通知表
-        SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
-        Date date = new Date();
-        String a=myFmt.format(date);
-        String b="tz";
-        tyhHosnotEntity.setHosnotNum(b+a);
+        tyhHosnotEntity.setHosnotNum(haoMapper.hao("zytz"));
         hosnotMapper.addhosnot(tyhHosnotEntity);
 
         //修改门诊状态

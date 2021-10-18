@@ -1,0 +1,58 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gson.prohis.model.mapper.TYH.JieMapper">
+    <resultMap id="Jie" type="cn.gson.prohis.model.pojos.TyhJie">
+        <id column="jie_id" property="jieId"></id>
+        <result column="jie_date" property="jieDate"></result>
+        <result column="jie_price" property="jiePrice"></result>
+        <result column="hosreg_num" property="hosregNum"></result>
+        <result column="patient_id" property="patientId"></result>
+        <association property="tyhHosregEntity" javaType="cn.gson.prohis.model.pojos.TyhHosregEntity">
+            <id column="hosreg_num" property="hosregNum"></id>
+            <result column="hosreg_date" property="hosregDate"></result>
+            <result column="hosreg_date" property="hosregDate"></result>
+            <association property="tyhPatientEntity" javaType="cn.gson.prohis.model.pojos.TyhPatientEntity">
+                <id column="patient_id" property="patientId"></id>
+                <result column="patient_name" property="patientName"></result>
+                <result column="patient_sex" property="patientSex"></result>
+                <result column="patient_yue" property="patientYue"></result>
+            </association>
+        </association>
+    </resultMap>
+
+    <resultMap id="Jiex" type="cn.gson.prohis.model.pojos.TyhJiex">
+        <id column="jiex_id" property="jiexId"></id>
+        <result column="project_id" property="projectId"></result>
+        <result column="drug_id" property="drugId"></result>
+        <result column="jiex_price" property="jeixPrice"></result>
+        <result column="jie_id" property="jieId"></result>
+        <result column="jiex_num" property="jiexNum"></result>
+        <collection property="yxjProjectEntity" javaType="cn.gson.prohis.model.pojos.YxjProjectEntity">
+            <id column="project_id" property="projectId"></id>
+            <result column="project_name" property="projectName"></result>
+            <result column="project_type" property="projectType"></result>
+            <result column="project_price" property="projectPrice"></result>
+        </collection>
+        <collection property="lyhDrugEntity" javaType="cn.gson.prohis.model.pojos.LyhDrugEntity">
+            <id column="drug_id" property="drugId"></id>
+            <result column="drug_name" property="drugName"></result>
+            <result column="drug_date" property="drugDate"></result>
+            <result column="drug_price" property="drugPrice"></result>
+            <result column="supplier_id" property="supplierId"></result>
+        </collection>
+    </resultMap>
+
+
+    <select id="findJie" resultMap="Jie">
+        select * from tyh_jie tj
+        left join tyh_hosreg th on tj.hosreg_num=th.hosreg_num
+        left join tyh_patient tp on th.patient_id=tp.patient_id
+        where th.patient_id=#{id}
+    </select>
+
+    <select id="findJiex" resultMap="Jiex">
+        select * from tyh_jiex tjx
+        left join lyh_drug ld on tjx.drug_id=ld.drug_id
+        left join yxj_project yp on tjx.project_id=yp.project_id
+        where tjx.jie_id=#{id}
+    </select>
+</mapper>
