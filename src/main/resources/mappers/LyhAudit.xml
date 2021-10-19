@@ -118,6 +118,20 @@
         order by a.audit_date desc
     </select>
 
+
+    <select id="findAll4" resultMap="audit">
+        select * from lyhaudit a left join lyhprocurement b on a.procurement_id=b.procurement_id
+                                 left join lyhprocurementdetails c on b.procurement_id=c.procurement_id
+                                 left join lyh_drug d on c.drug_id=d.drug_id
+                                 left join lyhsupplier e on d.supplier_id=e.supplier_id
+
+        where a.audit_state =1
+
+        order by a.audit_date desc
+
+    </select>
+
+
 <!--批量修改-->
     <update id="updateById" >
        update lyhaudit set audit_state=#{auditState} where audit_id=#{auditId}

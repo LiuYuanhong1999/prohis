@@ -40,7 +40,10 @@ public class LyhReportController {
         return reportService.findAll2();
     }
 
-
+    @RequestMapping("/find-audit4")
+    public List<LyhAuditEntity> findAll4(){
+        return reportService.findAll3();
+    }
 
     @RequestMapping("/update-report")
     public void updateById(Integer reportState,Integer reportId){

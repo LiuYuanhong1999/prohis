@@ -14,6 +14,7 @@ public interface LyhAuditMapper {
     public List<LyhAuditEntity> findAll2();
     public List<LyhAuditEntity> findAll3(LyhAuditEntity auditEntity);
 
+    public List<LyhAuditEntity> findAll4();
     public int insertAudit(List<LyhAuditEntity> list);
 
 

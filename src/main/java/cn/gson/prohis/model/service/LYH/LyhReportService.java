@@ -1,9 +1,6 @@
 package cn.gson.prohis.model.service.LYH;
 
-import cn.gson.prohis.model.mapper.LYH.LyhDrugRecordMapper;
-import cn.gson.prohis.model.mapper.LYH.LyhDrugStoreMapper;
-import cn.gson.prohis.model.mapper.LYH.LyhReportDetailsMapper;
-import cn.gson.prohis.model.mapper.LYH.LyhReportMapper;
+import cn.gson.prohis.model.mapper.LYH.*;
 import cn.gson.prohis.model.pojos.*;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +24,8 @@ public class LyhReportService {
     @Resource
     LyhDrugStoreMapper drugStoreMapper;
 
+    @Resource
+    LyhAuditMapper auditMapper;
 
 
     public List<LyhReportEntity> findAll(Integer reportState){
@@ -68,7 +67,7 @@ public class LyhReportService {
     }
 
     //退货扣除药库药品库存数量
-        public void updateByReport(String procurementId,Integer drugId,Integer numbers){
+    public void updateByReport(String procurementId,Integer drugId,Integer numbers){
 
 
 
@@ -80,7 +79,9 @@ public class LyhReportService {
         }
 
 
+    //查询已入库的采购单
 
-
-
+    public List<LyhAuditEntity> findAll3(){
+        return auditMapper.findAll4();
+    }
 }
