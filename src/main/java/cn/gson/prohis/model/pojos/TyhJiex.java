@@ -1,6 +1,7 @@
 package cn.gson.prohis.model.pojos;
 
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class TyhJiex {
@@ -10,6 +11,24 @@ public class TyhJiex {
   private long drugId;
   private double jeixPrice;
   private String jieId;
+  private double executedelNumber;
+  private Integer jiexNum;
+
+  public Integer getJiexNum() {
+    return jiexNum;
+  }
+
+  public void setJiexNum(Integer jiexNum) {
+    this.jiexNum = jiexNum;
+  }
+
+  public double getExecutedelNumber() {
+    return executedelNumber;
+  }
+
+  public void setExecutedelNumber(double executedelNumber) {
+    this.executedelNumber = executedelNumber;
+  }
 
   @Override
   public String toString() {
@@ -40,6 +59,14 @@ public class TyhJiex {
 
   private LyhDrugEntity lyhDrugEntity;
 
+  public LyhDrugEntity getLyhDrugEntity() {
+    return lyhDrugEntity;
+  }
+
+  public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
+    this.lyhDrugEntity = lyhDrugEntity;
+  }
+
   private TyhJie tyhJie;
 
   public YxjProjectEntity getYxjProjectEntity() {
@@ -48,14 +75,6 @@ public class TyhJiex {
 
   public void setYxjProjectEntity(YxjProjectEntity yxjProjectEntity) {
     this.yxjProjectEntity = yxjProjectEntity;
-  }
-
-  public LyhDrugEntity getLyhDrugEntity() {
-    return lyhDrugEntity;
-  }
-
-  public void setLyhDrugEntity(LyhDrugEntity lyhDrugEntity) {
-    this.lyhDrugEntity = lyhDrugEntity;
   }
 
   public TyhJie getTyhJie() {
@@ -91,7 +110,6 @@ public class TyhJiex {
     this.projectId = projectId;
   }
 
-
   public long getDrugId() {
     return drugId;
   }
@@ -99,7 +117,6 @@ public class TyhJiex {
   public void setDrugId(long drugId) {
     this.drugId = drugId;
   }
-
 
   public double getJeixPrice() {
     return jeixPrice;

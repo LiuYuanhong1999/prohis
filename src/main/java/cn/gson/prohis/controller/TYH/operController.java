@@ -1,8 +1,6 @@
 package cn.gson.prohis.controller.TYH;
 
-import cn.gson.prohis.model.pojos.TyhJie;
-import cn.gson.prohis.model.pojos.YxjRecord;
-import cn.gson.prohis.model.pojos.ZsxOperationNote;
+import cn.gson.prohis.model.pojos.*;
 import cn.gson.prohis.model.service.TYH.operService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,6 +27,6 @@ public class operController {
 
     @PostMapping("add-jie")
     public void addJie(@RequestBody TyhJie jie){
-        System.out.println(jie);
+        operService.addJie(jie);
     }
 }

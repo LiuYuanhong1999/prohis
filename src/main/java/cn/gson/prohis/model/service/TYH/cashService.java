@@ -6,8 +6,6 @@ import cn.gson.prohis.model.pojos.TyhHosregEntity;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -15,8 +13,15 @@ public class cashService {
     @Resource
     cashMapper cashMapper;
 
+    @Resource
+    haoMapper haoMapper;
+
     public List<TyhCashEntity> findAll(String cha){
         return cashMapper.findAll(cha);
+    }
+
+    public List<TyhCashEntity> findTcash(String cha){
+        return cashMapper.findTcash(cha);
     }
 
     public List<TyhCashEntity> findAllcash(String cha){
@@ -24,13 +29,8 @@ public class cashService {
     }
 
     public void addcash(TyhCashEntity tyhCashEntity) {
-        SimpleDateFormat myFmt = new SimpleDateFormat("yyMMddHHmmssSSS");
-        Date date = new Date();
-        String a=myFmt.format(date);
-        String b="yajin_";
-        tyhCashEntity.setCashNum(b + a);
+        tyhCashEntity.setCashNum(haoMapper.hao("yj"));
         TyhHosregEntity tyhHosregEntity = cashMapper.findnum2(tyhCashEntity.getHosregNum());
-        System.out.println(tyhCashEntity.getCashPrice());
         cashMapper.addcash(tyhCashEntity);
         cashMapper.updateyue(tyhCashEntity.getCashPrice(),tyhHosregEntity.getTyhPatientEntity().getPatientId());
     }
@@ -46,5 +46,13 @@ public class cashService {
     public void delcash(TyhCashEntity tyhCashEntity) {
         cashMapper.delcash(tyhCashEntity.getCashNum());
         cashMapper.updateyue2(tyhCashEntity.getCashPrice(),tyhCashEntity.getTyhHosregEntity().getTyhPatientEntity().getPatientId());
+    }
+
+    public void delTcash(TyhCashEntity s) {
+        s.setCashNum(haoMapper.hao("yj"));
+        s.setCashPrice(0-s.getCashPrice());
+        System.out.println(s);
+        cashMapper.delTcash(s);
+        cashMapper.xiuYue(s);
     }
 }

@@ -36,8 +36,6 @@ public class exeService {
     }
 
     public List<TyhExecuteEntity> findJie(Integer id){
-        System.out.println("sdasdasdasdasdsadasdas");
-        System.out.println(id);
         return exeMapper.findJie(id);
     }
 }

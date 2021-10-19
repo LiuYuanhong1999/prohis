@@ -24,6 +24,36 @@ public class LyhDrugEntity {
     private Integer drugState;
     private String drugJixin;
     private String drugGuige;
+
+    @Override
+    public String toString() {
+        return "LyhDrugEntity{" +
+                "drugId=" + drugId +
+                ", drugName='" + drugName + '\'' +
+                ", drugDate=" + drugDate +
+                ", drugPrice=" + drugPrice +
+                ", supplierId=" + supplierId +
+                ", drugState=" + drugState +
+                ", drugJixin='" + drugJixin + '\'' +
+                ", drugGuige='" + drugGuige + '\'' +
+                ", drugJia=" + drugJia +
+                ", tyhJiex=" + tyhJiex +
+                ", lyhDrugstoreEntities=" + lyhDrugstoreEntities +
+                ", lyhProcurementEntities=" + lyhProcurementEntities +
+                ", lyhSupplierEntity=" + lyhSupplierEntity +
+                ", lyhProcurementDetailsEntities=" + lyhProcurementDetailsEntities +
+                ", list=" + list +
+                ", lyhPharmacyEntity=" + lyhPharmacyEntity +
+                ", lyhPharmacyEntities=" + lyhPharmacyEntities +
+                ", tyhRecipedetailEntities=" + tyhRecipedetailEntities +
+                ", tyhExecutedelEntities=" + tyhExecutedelEntities +
+                ", list2=" + list2 +
+                ", allotRecordEntity=" + allotRecordEntity +
+                ", lyhPharmacyRecords=" + lyhPharmacyRecords +
+                ", drugRecords=" + drugRecords +
+                '}';
+    }
+
     private Integer drugJia;
 
 
@@ -264,5 +294,15 @@ public class LyhDrugEntity {
 
     public void setDrugRecords(List<LyhDrugRecord> drugRecords) {
         this.drugRecords = drugRecords;
+    }
+
+    private drug drug;
+
+    public cn.gson.prohis.model.pojos.drug getDrug() {
+        return drug;
+    }
+
+    public void setDrug(cn.gson.prohis.model.pojos.drug drug) {
+        this.drug = drug;
     }
 }

@@ -12,6 +12,27 @@ public class TyhCashEntity {
     private Timestamp cashDate;
     private String hosregNum;
     private Double cashPrice;
+    private Integer patientId;
+
+    @Override
+    public String toString() {
+        return "TyhCashEntity{" +
+                "cashNum='" + cashNum + '\'' +
+                ", cashDate=" + cashDate +
+                ", hosregNum='" + hosregNum + '\'' +
+                ", cashPrice=" + cashPrice +
+                ", patientId=" + patientId +
+                ", tyhHosregEntity=" + tyhHosregEntity +
+                '}';
+    }
+
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
 
     public String getCashNum() {
         return cashNum;
@@ -55,14 +76,4 @@ public class TyhCashEntity {
         this.tyhHosregEntity = tyhHosregEntity;
     }
 
-    @Override
-    public String toString() {
-        return "TyhCashEntity{" +
-                "cashNum='" + cashNum + '\'' +
-                ", cashDate=" + cashDate +
-                ", hosregNum='" + hosregNum + '\'' +
-                ", cashPrice=" + cashPrice +
-                ", tyhHosregEntity=" + tyhHosregEntity +
-                '}';
-    }
 }

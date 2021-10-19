@@ -22,6 +22,11 @@ public class CashController {
         return cashService.findAll(cha);
     }
 
+    @RequestMapping("/findAll-tcash")
+    public List<TyhCashEntity> findTcash(String cha){
+        return cashService.findTcash(cha);
+    }
+
     @RequestMapping("/findAll-cash1")
     public List<TyhCashEntity> findAllcash(String cha){
         return cashService.findAllcash(cha);
@@ -31,7 +36,12 @@ public class CashController {
     public void addcash(@RequestBody TyhCashEntity tyhCashEntity){
         cashService.addcash(tyhCashEntity);
     }
- 
+
+    @PostMapping("/del-tcash")
+    public void delTcash(@RequestBody TyhCashEntity tyhCashEntity){
+        cashService.delTcash(tyhCashEntity);
+    }
+
     @RequestMapping("/find-num")
     public List<TyhHosregEntity> findnum(){
         return cashService.findnum();
