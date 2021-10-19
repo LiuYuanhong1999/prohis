@@ -3,9 +3,12 @@
     <resultMap id="surgeryArrange" type="cn.gson.prohis.model.pojos.ZsxSurgeryArrange">
         <id column="surgery_arrange_id" property="surgeryArrangeId"/>
         <result column="surgery_arrange_time" property="surgeryArrangeTime"/>
+        <result column="surgery_arrange_number" property="surgeryArrangeNumber"/>
         <result column="surgery_arrange_name" property="surgeryArrangeName"/>
         <result column="surgery_arrange_doctor" property="surgeryArrangeDoctor"/>
         <result column="surgery_arrange_nurse" property="surgeryArrangeNurse"/>
+        <result column="surgery_arrange_staff" property="surgeryArrangeStaff"/>
+        <result column="surgery_arrange_type" property="surgeryArrangeType"/>
 <!--        手术申请-->
         <association property="surgeryFor" javaType="cn.gson.prohis.model.pojos.ZsxSurgeryFor">
             <id column="surgery_for_id" property="surgeryForId"/>
@@ -92,10 +95,90 @@
 
     <select id="findSurgeryArrange" resultMap="surgeryArrange">
         select * from zsx_surgery_arrange
-            inner join zsx_surgery_for on zsx_surgery_arrange.surgery_for_id = zsx_surgery_for.surgery_for_id
+            inner join zsx_surgery_for on zsx_surgery_arrange.surgery_for_number = zsx_surgery_for.surgery_for_number
             inner join zsx_operating_room on zsx_surgery_arrange.operating_room_id = zsx_operating_room.operating_room_id
             inner join zsx_prescription on zsx_surgery_for.prescription_id = zsx_prescription.prescription_id
             inner join zsx_registration on zsx_prescription.registration_id = zsx_registration.registration_id
             inner join zsx_patient_data on zsx_registration.patient_data_id = zsx_patient_data.patient_data_id
+        where zsx_surgery_arrange.surgery_arrange_staff=0
     </select>
+
+    <!--    手术室-->
+    <resultMap id="operating" type="cn.gson.prohis.model.pojos.ZsxOperatingRoom">
+        <id column="operating_room_id" property="operatingRoomId"/>
+        <result column="operating_room_name" property="operatingRoomName"/>
+        <result column="operating_room_type" property="operatingRoomType"/>
+        <result column="operating_room_place" property="operatingRoomPlace"/>
+        <result column="operating_room_charge" property="operatingRoomCharge"/>
+        <result column="operating_room_maintain" property="operatingRoomMaintain"/>
+        <result column="operating_room_employ" property="operatingRoomEmploy"/>
+        <result column="operating_room_type_id" property="operatingRoomTypeId"/>
+        <result column="desk_id" property="deskId"/>
+            <!--手术室类别-->
+            <association property="operatingRoom" javaType="cn.gson.prohis.model.pojos.ZsxOperatingRoomType">
+                <id column="operating_room_type_id" property="operatingRoomTypeId"/>
+                <result column="operating_room_type_name" property="operatingRoomTypeName"/>
+            </association>
+    </resultMap>
+
+    <select id="selectOperatingRoom" resultMap="operating">
+        select * from zsx_operating_room
+    </select>
+
+<!--    手术申请单-->
+    <resultMap id="surgeryFor" type="cn.gson.prohis.model.pojos.ZsxSurgeryFor">
+        <id column="surgery_for_id" property="surgeryForId"/>
+        <result column="surgery_for_name" property="surgeryForName"/>
+        <result column="patient_data_id" property="patientDataId"/>
+        <result column="surgery_for_doctor" property="surgeryForDoctor"/>
+        <result column="surgery_for_number" property="surgeryForNumber"/>
+        <result column="surgery_for_prn" property="surgeryForPrn"/>
+        <result column="surgery_for_staff" property="surgeryForStaff"/>
+        <result column="prescription_id" property="prescriptionId"/>
+        <result column="recipe_id" property="recipeId"/>
+    </resultMap>
+
+    <select id="selectSurgeryFor" resultMap="surgeryFor">
+        select * from zsx_surgery_for where surgery_for_staff = 1
+    </select>
+
+<!--    科室-->
+    <resultMap id="desk" type="cn.gson.prohis.model.pojos.YxjDesk">
+        <id column="desk_id" property="deskId"></id>
+        <result column="desk_name" property="deskName"></result>
+        <result column="desk_time" property="deskTime"></result>
+    </resultMap>
+
+    <select id="selectDesk" resultMap="desk">
+        select * from yxj_desk
+    </select>
+
+<!--    新增手术安排-->
+    <insert id="addSurgeryArrange">
+        insert into zsx_surgery_arrange
+            (surgery_arrange_id,surgery_arrange_number,
+             surgery_arrange_time,surgery_arrange_name,
+             surgery_for_number,surgery_arrange_doctor,
+             operating_room_id,surgery_arrange_nurse,surgery_arrange_staff,surgery_arrange_type)
+             values
+             (#{surgeryArrangeId},#{surgeryArrangeNumber},
+              #{surgeryArrangeTime},#{surgeryArrangeName},
+              #{surgeryForNumber},#{surgeryArrangeDoctor},
+              #{operatingRoomId},#{surgeryArrangeNurse},#{surgeryArrangeStaff},#{surgeryArrangeType})
+    </insert>
+
+<!--    修改手术安排-->
+    <update id="updateSurgeryArrange">
+        update zsx_surgery_arrange set surgery_arrange_time=#{surgeryArrangeTime},
+                                       surgery_arrange_name=#{surgeryArrangeName},surgery_for_number=#{surgeryForNumber},
+                                       surgery_arrange_doctor=#{surgeryArrangeDoctor},operating_room_id=#{operatingRoomId},
+                                       surgery_arrange_nurse=#{surgeryArrangeNurse},surgery_arrange_type=#{surgeryArrangeType}
+        where surgery_arrange_number=#{surgeryArrangeNumber}
+    </update>
+
+<!--    进手术治疗-->
+    <update id="updateSurgeryArrangeStaff">
+        update zsx_surgery_arrange set surgery_arrange_staff = 1
+        where surgery_arrange_number=#{surgeryArrangeNumber}
+    </update>
 </mapper>
